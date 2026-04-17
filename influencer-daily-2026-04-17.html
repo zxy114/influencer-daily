@@ -1,622 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI 网红工具日报 | 2026-04-17</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI 网红工具日报 - 2026年4月17日</title>
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --card: #12121a;
-    --card-hover: #1a1a28;
-    --border: #2a2a3a;
-    --text: #e8e8f0;
-    --text-dim: #8888a0;
-    --accent: #6c5ce7;
-    --accent-light: #a29bfe;
-    --green: #00b894;
-    --orange: #fdcb6e;
-    --red: #ff6b6b;
-    --gold: #f39c12;
-    --tag-tool: #6c5ce7;
-    --tag-tutorial: #00b894;
-    --tag-prompt: #fd79a8;
-    --tag-workflow: #0984e3;
-    --tag-mindset: #e17055;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    line-height: 1.7;
-    padding: 0;
-  }
-  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.7;color:#e0e0e0;background:#1a1a2e;padding:10px}
+.container{max-width:900px;margin:0 auto;background:#16213e;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.3);overflow:hidden}
+.header{background:linear-gradient(135deg,#0f3460,#533483);color:#fff;padding:25px 20px;text-align:center}
+.header h1{font-size:1.8em;margin-bottom:5px}.header .sub{font-size:.85em;opacity:.85}
+.article{padding:18px 20px;border-bottom:1px solid #2a2a4a}
+.article h2{color:#e94560;font-size:1.05em;margin-bottom:8px;line-height:1.4}
+.article .hl h2{color:#ff6b35}
+.meta{display:flex;gap:10px;margin-bottom:10px;font-size:.8em;flex-wrap:wrap;opacity:.8}
+.meta span{padding:2px 6px;border-radius:4px}
+.meta .date{background:#0f3460;color:#fff}
+.meta .handle{background:#533483;color:#fff}
+.meta .score{background:#e94560;color:#fff}
+.meta .cat{background:#1a1a2e;color:#e0e0e0;border:1px solid #e94560}
+.section{margin:8px 0;padding:10px 14px;background:#1a1a2e;border-radius:6px}
+.section strong{color:#e94560}
+.section p{color:#ccc;margin:4px 0}
+.sources{margin-top:10px;font-size:.8em;color:#888}
+.sources a{color:#53a8e2;text-decoration:none}.sources a:hover{text-decoration:underline}
+.stats{padding:16px 20px;background:#1a1a2e;border-bottom:1px solid #2a2a4a}
+.stats table{width:100%;border-collapse:collapse}
+.stats th,.stats td{padding:6px 10px;text-align:left;border-bottom:1px solid #2a2a4a}
+.stats th{color:#e94560}
+.footer{background:#0f3460;color:#fff;padding:16px;text-align:center;font-size:.85em}
+@media(max-width:600px){body{padding:5px}.header h1{font-size:1.4em}.article{padding:12px}}
+</style></head><body><div class="container">
+<div class="header"><h1>🎯 AI 网红工具日报</h1><div class="sub">📅 2026 年 4 月 17 日 | 数据来源：X/Twitter 65 位 AI 网红账号</div></div>
+<div class="stats"><table><tr><th>状态</th><th>数量</th></tr><tr><td>收录</td><td>8</td></tr><tr><td>数据来源</td><td>Twitter + Web 交叉验证</td></tr></table></div>
+<div class="article "><h2>1. 🔥 头条 **Karpathy：用 LLM 构建个人知识库（LLM Wiki 模式）**</h2><div class="meta"><span class="date">2026-04-04</span><span class="handle">@karpathy </span><span class="score">❤️ 56,197</span><span class="cat">工具 / 工作流</span></div><div class="section"><strong>推文原文</strong><p>Something I'm finding very useful recently: using LLMs to build personal knowledge bases for various topics of research interest. I index source documents into a raw/ directory, then use an LLM to incrementally "compile" a wiki — just .md files with summaries, backlinks, categorized concepts. I use Obsidian Web Clipper to convert web articles to .md, then hotkey to download related images. The LLM writes and maintains all wiki data, I rarely touch it directly. Once wiki is big enough (~100 articles, ~400K words), I can ask complex questions against it.</p></div><div class="section"><strong>中文翻译</strong><p>最近发现非常有用的方法：用 LLM 构建个人知识库。我把原始文档（文章、论文、代码库等）放进 raw/ 目录，然后用 LLM 增量"编译"成一个 wiki——就是 .md 文件的集合，包含摘要、反向链接、分类概念。用 Obsidian Web Clipper 把网页文章转成 .md，一键下载相关图片。LLM 自动编写和维护 wiki，我几乎不手动编辑。当 wiki 足够大（约 100 篇文章、40 万字），可以向 LLM agent 提问复杂问题，它会去研究答案。</p></div><div class="section"><strong>如何应用</strong><p>用 Obsidian + LLM 搭建个人知识库，LLM 自动维护 wiki，你可以专注于提问和探索。参考 karpathy 的 GitHub Gist 模板。</p></div><div class="section"><strong>解读分析</strong><p>这条推文是本周最火的 AI 工具分享，56K likes 说明共鸣极强。它代表了一个趋势——从"用 AI 写代码"转向"用 AI 管理知识"。Obsidian + LLM 的组合正在成为知识工作者的标配。
 
-  /* Header */
-  .header {
-    text-align: center;
-    padding: 48px 20px 32px;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    border-bottom: 2px solid var(--accent);
-    margin-bottom: 32px;
-  }
-  .header h1 {
-    font-size: 2.2em;
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-light), var(--green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
-  }
-  .header .date { color: var(--text-dim); font-size: 1em; }
-  .header .subtitle { color: var(--text-dim); font-size: 0.9em; margin-top: 12px; }
+🔗 来源：[Karpathy Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | [完整推文](https://x.com/karpathy/status/2039805659525644595)
 
-  /* Stats */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-  }
-  .stat-card .num { font-size: 1.8em; font-weight: 800; color: var(--accent-light); }
-  .stat-card .label { font-size: 0.8em; color: var(--text-dim); margin-top: 4px; }
+---</p></div><div class="sources">🔗 <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy Gist</a> | <a href="https://x.com/karpathy/status/2039805659525644595" target="_blank">完整推文</a></div></div><div class="article "><h2>2. 🔥 OpenAI Codex 桌面端重大更新：电脑操控 + 内置浏览器 + 图像生成 + 记忆 📅 发布日期：2026-04-16</h2><div class="meta"><span class="date">2026-04-16</span><span class="handle">@OpenAI</span><span class="cat">工具 / 工作流</span></div><div class="section"><strong>核心功能</strong><p>1. **Computer Use（电脑操控）** — Codex 可以直接操控你的电脑，运行命令行、操作应用、浏览网页
+2. **In-App Browser（内置浏览器）** — 无需切换到外部浏览器，直接在 Codex 内浏览和操作网页应用
+3. **Image Generation（图像生成）** — 集成 gpt-image-1.5，可在开发/设计流程中直接生成和迭代图片
+4. **Memory（记忆功能）** — Codex 现在能记住上次工作内容，不用每次都重新解释项目上下文
+5. **Automation Heartbeat（自动化心跳）** — Codex 可以自动唤醒，继续执行长期任务（跨天/跨周）
+6. **Multi-Agent Workflows（多 Agent 工作流）** — 可同时部署多个专业 Agent 并行处理任务</p></div><div class="section"><strong>如何应用</strong><p>如果你用 Codex Desktop，立即升级。电脑操控 + 记忆功能可以大幅提升开发效率——不用每次重启都重新解释项目。</p></div><div class="section"><strong>解读分析</strong><p>这六项功能合在一起，Codex 正在变成 OpenAI 的"瑞士军刀"。Computer Use 对标 Anthropic 的 Claude Code 电脑操控能力，Memory 解决了 Codex 最大的痛点（每次重启丢失上下文），Automation Heartbeat 意味着你可以让 Codex  overnight 跑完一个大型重构任务。
 
-  /* Trends */
-  .trends {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 32px;
-  }
-  .trends h2 { font-size: 1.3em; margin-bottom: 16px; color: var(--gold); }
-  .trend-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  .trend-item:last-child { border-bottom: none; }
-  .trend-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .trend-dot.red { background: var(--red); }
-  .trend-dot.yellow { background: var(--orange); }
-  .trend-dot.green { background: var(--green); }
-  .trend-label { font-size: 0.95em; }
+🔗 来源：[TechCrunch](https://techcrunch.com/2026/04/16/openai-takes-aim-at-anthropic-with-beefed-up-codex-that-gives-it-more-power-over-your-desktop/) | [MacRumors](https://www.macrumors.com/2026/04/16/openai-codex-mac-update/) | [ZDNET](https://www.zdnet.com/article/openai-codex-desktop-update/)
 
-  /* Article Card */
-  .article {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    margin-bottom: 20px;
-    transition: border-color 0.2s;
-  }
-  .article:hover { border-color: var(--accent); }
-  .article .rank {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.85em;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-  }
-  .article h3 {
-    font-size: 1.25em;
-    font-weight: 700;
-    margin-bottom: 12px;
-    line-height: 1.4;
-  }
-  .article .score {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.85em;
-    color: var(--gold);
-    margin-left: 12px;
-  }
+---</p></div><div class="sources">🔗 <a href="https://techcrunch.com/2026/04/16/openai-takes-aim-at-anthropic-with-beefed-up-codex-that-gives-it-more-power-over-your-desktop/" target="_blank">TechCrunch</a> | <a href="https://www.macrumors.com/2026/04/16/openai-codex-mac-update/" target="_blank">MacRumors</a> | <a href="https://www.zdnet.com/article/openai-codex-desktop-update/" target="_blank">ZDNET</a></div></div><div class="article "><h2>3. Claude Code Routines：定时自动化编程 📅 发布日期：2026-04-15</h2><div class="meta"><span class="date">2026-04-15</span><span class="handle">@AnthropicAI</span><span class="cat">工具 / 工作流</span></div><div class="section"><strong>核心内容</strong><p>Claude Code 新增 Routines 功能——可以设置定时任务让 Claude 自动执行编程任务，支持三种触发方式：定时触发、条件触发、手动触发。Claude 在云端运行，可以持续工作数小时甚至数天。</p></div><div class="section"><strong>如何应用</strong><p>设置 Claude Code 每天凌晨自动运行测试、检查依赖更新、重构代码。适合 CI/CD 之外的轻量自动化。</p></div><div class="section"><strong>解读分析</strong><p>Anthropic 在 Claude Code 自动化方面又领先一步。Routines 意味着 Claude 不再只是"你问它答"的工具，而是可以自主工作的 Agent。
 
-  /* Tags */
-  .tags { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-  .tag {
-    font-size: 0.75em;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-weight: 600;
-    color: #fff;
-  }
-  .tag.tool { background: var(--tag-tool); }
-  .tag.tutorial { background: var(--tag-tutorial); }
-  .tag.prompt { background: var(--tag-prompt); }
-  .tag.workflow { background: var(--tag-workflow); }
-  .tag.mindset { background: var(--tag-mindset); }
+🔗 来源：[Anthropic 官方](https://www.anthropic.com) | [Twitter 讨论](https://x.com/AnthropicAI)
 
-  /* Quote */
-  .quote {
-    background: rgba(108, 92, 231, 0.08);
-    border-left: 3px solid var(--accent);
-    padding: 14px 18px;
-    border-radius: 0 8px 8px 0;
-    margin: 14px 0;
-    font-size: 0.92em;
-    line-height: 1.8;
-    color: var(--text);
-  }
-  .quote .author { color: var(--text-dim); font-size: 0.85em; margin-top: 8px; }
+---</p></div><div class="sources">🔗 <a href="https://www.anthropic.com" target="_blank">Anthropic 官方</a> | <a href="https://x.com/AnthropicAI" target="_blank">Twitter 讨论</a></div></div><div class="article "><h2>4. swyx：AI 认知鸿沟——免费用户 vs. 超级用户的分裂 📅 发布日期：2026-04-15</h2><div class="meta"><span class="date">2026-04-15</span><span class="handle">@swyx</span><span class="cat">思维</span></div><div class="section"><strong>核心内容</strong><p>AI 社区正在分裂成两个群体：只用免费 ChatGPT 的人（觉得 AI 经常出错）和付费使用 Codex/Claude Code 的人（觉得 AI 已经改变工作方式）。两者的认知差距越来越大。</p></div><div class="section"><strong>如何应用</strong><p>如果你只用免费 ChatGPT，试试付费版 + Codex/Claude Code，体验完全不同。</p></div><div class="section"><strong>解读分析</strong><p>这反映了 AI 工具的"马太效应"——用得好的人越来越好，不用的越来越觉得 AI 没用。建议内容创作者至少体验一次付费版，否则很难理解前沿能力。
 
-  /* Highlights */
-  .highlights { margin: 14px 0; }
-  .highlights li {
-    padding: 4px 0;
-    font-size: 0.92em;
-    color: var(--text);
-  }
-  .highlights li::marker { color: var(--accent-light); }
+🔗 来源：[swyx Twitter](https://x.com/swyx)
 
-  /* How to apply */
-  .apply {
-    background: rgba(0, 184, 148, 0.08);
-    border: 1px solid rgba(0, 184, 148, 0.2);
-    border-radius: 10px;
-    padding: 16px;
-    margin: 14px 0;
-  }
-  .apply .label { color: var(--green); font-weight: 700; font-size: 0.9em; margin-bottom: 6px; }
-  .apply .content { font-size: 0.9em; color: var(--text); line-height: 1.7; }
+---</p></div><div class="sources">🔗 <a href="https://x.com/swyx" target="_blank">swyx Twitter</a></div></div><div class="article "><h2>5. AI 网红"想法文件"模式：分享想法而非代码 📅 发布日期：2026-04-04</h2><div class="meta"><span class="date">2026-04-04</span><span class="handle">@karpathy </span><span class="score">❤️ 26,078</span><span class="cat">思维 / 工作流</span></div><div class="section"><strong>核心内容</strong><p>Karpathy 提出"想法文件"（idea file）概念——在 LLM Agent 时代，不需要分享具体代码，只需要分享想法，对方的 Agent 会自动为你的需求定制实现。</p></div><div class="section"><strong>如何应用</strong><p>分享你的项目想法时用 idea file 格式（简短描述 + 成功标准），让读者用自己的 Agent 来实现。</p></div><div class="section"><strong>解读分析</strong><p>这代表知识分享方式的根本转变——从"给代码"到"给想法"。在 Agent 时代，实现成本趋近于零，创意才是核心资产。
 
-  /* Sources */
-  .sources {
-    font-size: 0.8em;
-    color: var(--text-dim);
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-  .sources a {
-    color: var(--accent-light);
-    text-decoration: none;
-    margin-right: 12px;
-  }
-  .sources a:hover { text-decoration: underline; }
+🔗 来源：[Karpathy Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | [推文](https://x.com/karpathy/status/2040470801506541998)
 
-  /* Code */
-  code {
-    background: rgba(108, 92, 231, 0.15);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-family: 'SF Mono', 'Fira Code', monospace;
-  }
-  pre {
-    background: #0d0d14;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px;
-    overflow-x: auto;
-    font-size: 0.82em;
-    line-height: 1.6;
-    margin: 10px 0;
-  }
+---</p></div><div class="sources">🔗 <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy Gist</a> | <a href="https://x.com/karpathy/status/2040470801506541998" target="_blank">推文</a></div></div><div class="article "><h2>6. OpenAI Codex 插件市场：从 GitHub 直接安装 📅 发布日期：2026-04-16</h2><div class="meta"><span class="date">2026-04-16</span><span class="handle">@OpenAI</span><span class="cat">工具</span></div><div class="section"><strong>核心内容</strong><p>Codex 新增 marketplace 功能，支持从 GitHub、Git URL、本地目录直接安装插件。开发者可以发布自己的 Codex 插件，其他人一键安装使用。</p></div><div class="section"><strong>如何应用</strong><p>如果你有常用的 Codex 配置/脚本，可以打包成插件发布到 GitHub，方便团队共享。</p></div><div class="section"><strong>解读分析</strong><p>插件市场是 Codex 生态化的关键一步。类似 VS Code 的扩展市场，Codex 正在构建自己的开发者生态。
 
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 14px 0;
-    font-size: 0.88em;
-  }
-  th, td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  th {
-    background: rgba(108, 92, 231, 0.1);
-    color: var(--accent-light);
-    font-weight: 600;
-  }
+🔗 来源：[OpenAI Changelog](https://developers.openai.com/codex/changelog)
 
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 32px 20px;
-    color: var(--text-dim);
-    font-size: 0.85em;
-    border-top: 1px solid var(--border);
-    margin-top: 32px;
-  }
+---</p></div><div class="sources">🔗 <a href="https://developers.openai.com/codex/changelog" target="_blank">OpenAI Changelog</a></div></div><div class="article "><h2>7. Obsidian + AI 知识库教程爆火 📅 发布日期：2026-04-16</h2><div class="meta"><span class="date">2026-04-16</span><span class="cat">教程</span></div><div class="section"><strong>核心内容</strong><p>受 Karpathy LLM Wiki 启发，多位创作者发布了完整的 Obsidian + AI 知识库搭建教程。包括下载版 Starter Kit、分步指南、Obsidian 插件配置。</p></div><div class="section"><strong>如何应用</strong><p>搜索 "karpathy LLM wiki Obsidian" 找到教程，一个下午就能搭建好个人知识库。</p></div><div class="section"><strong>解读分析</strong><p>一条推文催生了数十篇教程和工具，这就是"想法文件"模式的实际效果——Karpathy 不需要写代码，社区自动实现了。
 
-  @media (max-width: 640px) {
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .header h1 { font-size: 1.6em; }
-    .article { padding: 20px; }
-  }
-</style>
-</head>
-<body>
+🔗 来源：[Substack 教程](https://aimaker.substack.com/p/llm-wiki-obsidian-knowledge-base-andrej-karphaty) | [Medium](https://medium.com/@k.balu124/i-used-karpathys-llm-wiki-to-build-a-knowledge-base-that-maintains-itself-with-ai-df968e4f5ea0)
 
-<div class="header">
-  <h1>🤖 AI 网红工具日报</h1>
-  <div class="date">2026 年 4 月 17 日 · 星期四</div>
-  <div class="subtitle">聚焦个人创作者视角：工具 · 教程 · Prompt · 工作流 · 思维</div>
-</div>
+---</p></div><div class="sources">🔗 <a href="https://aimaker.substack.com/p/llm-wiki-obsidian-knowledge-base-andrej-karphaty" target="_blank">Substack 教程</a> | <a href="https://medium.com/@k.balu124/i-used-karpathys-llm-wiki-to-build-a-knowledge-base-that-maintains-itself-with-ai-df968e4f5ea0" target="_blank">Medium</a></div></div><div class="article "><h2>8. Codex 内置图片生成：gpt-image-1.5 集成 📅 发布日期：2026-04-16</h2><div class="meta"><span class="date">2026-04-16</span><span class="handle">@OpenAI</span><span class="cat">工具</span></div><div class="section"><strong>核心内容</strong><p>Codex 集成 gpt-image-1.5，可在编程/设计流程中直接生成和迭代图片。无需切换到 ChatGPT App，支持前端设计、Mockup、游戏资产等场景。</p></div><div class="section"><strong>如何应用</strong><p>在 Codex 中直接用自然语言描述图片需求，生成后可以直接用于项目。适合需要频繁生成 UI 素材的开发者。</p></div><div class="section"><strong>解读分析</strong><p>图片生成 + 代码生成的结合，让 Codex 成为真正的"全栈 AI 工具"。设计师可以描述需求，Codex 同时生成代码和图片。
 
-<div class="container">
+🔗 来源：[OpenAI 官方推文](https://x.com/OpenAI)
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="num">65</div>
-      <div class="label">监控账号</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">~50</div>
-      <div class="label">筛选推文</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">12</div>
-      <div class="label">入选条数</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">18</div>
-      <div class="label">最高分</div>
-    </div>
-  </div>
+---
 
-  <!-- Trends -->
-  <div class="trends">
-    <h2>📈 本周趋势</h2>
-    <div class="trend-item"><span class="trend-dot red"></span><span class="trend-label"><strong>桌面 AI 超级应用</strong> — Codex + Claude Code 都在变成全能桌面工具</span></div>
-    <div class="trend-item"><span class="trend-dot red"></span><span class="trend-label"><strong>自动化编程</strong> — Routines、心跳 Agent、定时任务成为标配</span></div>
-    <div class="trend-item"><span class="trend-dot yellow"></span><span class="trend-label"><strong>个人知识库革命</strong> — Karpathy LLM Wiki 引爆 10+ 衍生项目</span></div>
-    <div class="trend-item"><span class="trend-dot yellow"></span><span class="trend-label"><strong>MCP 标准化</strong> — 500+ 服务器，但 52% 不健康</span></div>
-    <div class="trend-item"><span class="trend-dot yellow"></span><span class="trend-label"><strong>工具融合</strong> — Cursor + Claude + Codex 协同 > 竞争</span></div>
-    <div class="trend-item"><span class="trend-dot green"></span><span class="trend-label"><strong>多模态基线</strong> — 纯文本模型已成历史</span></div>
-  </div>
-
-  <!-- Article 1 -->
-  <div class="article">
-    <span class="rank">#1</span>
-    <span class="score">⭐ 18/20</span>
-    <h3>OpenAI Codex 升级为「超级应用」—— 电脑操控、浏览器、图像生成、记忆全来了</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag workflow">工作流</span>
-    </div>
-    <div class="quote">
-      "它现在可以在你的 Mac 上使用应用程序、连接更多工具、创建图像、从过往操作中学习、记住你的工作方式，并承接持续性和重复性任务。"
-      <div class="author">— @OpenAI，2026 年 4 月 16 日</div>
-    </div>
-    <ul class="highlights">
-      <li><strong>后台电脑操控</strong>：Mac 上后台操作桌面应用，支持多 Agent 并行</li>
-      <li><strong>内置浏览器</strong>：基于 OpenAI Atlas，无需切换应用</li>
-      <li><strong>图像生成</strong>：集成 gpt-image-1.5，生成 mockup 和设计</li>
-      <li><strong>记忆功能（预览）</strong>：回忆之前工作会话，了解用户偏好</li>
-      <li><strong>自动化心跳</strong>：自动唤醒继续跨天/周级别长期任务</li>
-      <li><strong>首次支持 Intel Mac</strong> + 111 个插件集成</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">Mac 开发者立即更新 Codex。利用后台电脑操控做前端迭代——让 Codex 一边改代码一边在浏览器验证，用图像生成创建 UI mockup。记忆功能减少每次会话的上下文重建。</div>
-    </div>
-    <div class="sources">
-      <a href="https://x.com/OpenAI">@OpenAI</a>
-      <a href="https://www.macrumors.com/2026/04/16/openai-codex-mac-update/">MacRumors</a>
-      <a href="https://techcrunch.com/2026/04/16/openai-takes-aim-at-anthropic-with-beefed-up-codex-that-gives-it-more-power-over-your-desktop/">TechCrunch</a>
-    </div>
-  </div>
-
-  <!-- Article 2 -->
-  <div class="article">
-    <span class="rank">#2</span>
-    <span class="score">⭐ 17/20</span>
-    <h3>Anthropic 推出 Claude Code「Routines」—— 定时自动化编程任务</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag workflow">工作流</span>
-    </div>
-    <div class="quote">
-      "配置一次（提示词 + 仓库 + 连接器），它就可以按计划运行、通过 API 调用触发，或响应事件。Routines 运行在云端，不需要保持笔记本开机。"
-      <div class="author">— @claudeai，2026 年 4 月 14 日</div>
-    </div>
-    <ul class="highlights">
-      <li><strong>三种触发</strong>：定时 (cron)、API (HTTP POST)、GitHub 事件</li>
-      <li><strong>云端运行</strong>：Anthropic 云端执行，不依赖本地机器</li>
-      <li><strong>完整上下文</strong>：提示词 + 仓库 + 连接器（Slack、Linear 等）</li>
-      <li><strong>支持计划</strong>：Pro / Max / Team / Enterprise</li>
-    </ul>
-    <pre><code>curl -X POST https://api.anthropic.com/v1/claude_code/routines/trig_XXXXX/fire \
-  -H "Authorization: Bearer sk-ant-oat01-xxxxx" \
-  -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
-  -d '{"text": "Sentry alert SEN-4521 in prod. Investigate and fix."}'</code></pre>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">设置每日凌晨 2 点自动检查新 PR 的 Routine，或配置 Sentry 告警触发自动修复——生产出错时自动诊断并修复。</div>
-    </div>
-    <div class="sources">
-      <a href="https://x.com/claudeai">@claudeai</a>
-      <a href="https://code.claude.com/docs/en/scheduled-tasks">Claude 文档</a>
-      <a href="https://9to5mac.com/2026/04/14/anthropic-adds-repeatable-routines-feature-to-claude-code-heres-how-it-works/">9to5Mac</a>
-    </div>
-  </div>
-
-  <!-- Article 3 -->
-  <div class="article">
-    <span class="rank">#3</span>
-    <span class="score">⭐ 15/20</span>
-    <h3>Karpathy：AI 用户之间的「认知鸿沟」正在扩大</h3>
-    <div class="tags">
-      <span class="tag mindset">思维</span>
-    </div>
-    <div class="quote">
-      "从我的时间线来看，对 AI 能力的理解正在出现越来越大的鸿沟。很多人去年试过免费版 ChatGPT，并让它过度影响了看法。这群人对模型的幻觉嗤之以鼻。但免费和过时的模型并不能反映今年最先进 agentic 模型的能力——尤其是 Codex 和 Claude Code。"
-      <div class="author">— @karpathy，2026 年 4 月 9 日 · 26,563 互动</div>
-    </div>
-    <ul class="highlights">
-      <li><strong>两群人分裂</strong>：免费 ChatGPT 用户 vs. Codex/Claude Code 超级用户</li>
-      <li><strong>技术能力是「尖峰」的</strong>：编程/数学/研究进步巨大，日常查询进步不明显</li>
-      <li><strong>AI 精神病学</strong>：技术用户经历了「令人震惊的能力飞跃」</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">向非技术人员解释 AI 时，不要空谈「AI 很厉害」，展示具体 agentic 工作流（如全自动 PR→部署流程）。你的 AI 认知已远超大多数人——保持耐心。</div>
-    </div>
-    <div class="sources">
-      <a href="https://x.com/karpathy/status/2042334451611693415">@karpathy</a>
-      <a href="https://www.businessinsider.com/andrej-karpathy-growing-gap-ai-understanding-2026-4">Business Insider</a>
-    </div>
-  </div>
-
-  <!-- Article 4 -->
-  <div class="article">
-    <span class="rank">#4</span>
-    <span class="score">⭐ 16/20</span>
-    <h3>Karpathy 的「LLM Wiki」模式——引爆个人知识库革命</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag workflow">工作流</span>
-      <span class="tag mindset">思维</span>
-    </div>
-    <p>Karpathy 4 月初发布的 GitHub Gist，提出用 LLM 自动构建和维护个人知识库，而非每次都做 RAG 查询。4 月 5-8 日涌现 7+ 个实现项目。</p>
-    <ul class="highlights">
-      <li><strong>raw/</strong> — 原始来源（文章、笔记、转录，不可变）</li>
-      <li><strong>wiki/</strong> — LLM 生成的 wiki 页面（LLM 完全拥有）</li>
-      <li><strong>CLAUDE.md</strong> — schema 文件（将 Claude 变成纪律严明的 wiki 维护者）</li>
-      <li><strong>衍生项目</strong>：obsidian-wiki、memoriki、llm_wiki、llmwiki-cli、obsidian-llm-wiki-local 等</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">克隆任意 LLM Wiki 项目，把阅读笔记放进 raw/ 文件夹，让 Claude 自动编译成结构化 wiki。下次问问题时 AI 直接从 wiki 回答。适合知识工作者和研究者。</div>
-    </div>
-    <div class="sources">
-      <a href="https://gist.github.com/karpathy">Karpathy Gist</a>
-      <a href="https://www.mindstudio.ai/blog/karpathy-llm-wiki-knowledge-base-pattern">MindStudio</a>
-      <a href="https://aimaker.substack.com/p/llm-wiki-obsidian-knowledge-base-andrej-karphaty">Substack</a>
-    </div>
-  </div>
-
-  <!-- Article 5 -->
-  <div class="article">
-    <span class="rank">#5</span>
-    <span class="score">⭐ 14/20</span>
-    <h3>Google Chrome 推出「Skills」—— 一键复用 AI 提示词工作流</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag workflow">工作流</span>
-    </div>
-    <ul class="highlights">
-      <li><strong>一键调用</strong>：在提示词框输入 <code>/</code> 即可调用已保存的 Skills</li>
-      <li><strong>跨标签页运行</strong>：可在多个标签页同时运行一个 Skill</li>
-      <li><strong>内置库</strong>：Google 提供常用 Skills（文档扫描、对比分析等）</li>
-      <li><strong>可自定义</strong>：创建、修改、分享自己的 Skills</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">常对网页做相同分析（总结论点、提取价格）？保存为 Skill，下次输入 / 即可一键运行。适合研究人员、采购、内容创作者。</div>
-    </div>
-    <div class="sources">
-      <a href="https://blog.google/products-and-platforms/products/chrome/skills-in-chrome/">Google Blog</a>
-      <a href="https://techcrunch.com/2026/04/14/google-adds-ai-skills-to-chrome-to-help-you-save-favorite-workflows/">TechCrunch</a>
-      <a href="https://arstechnica.com/google/2026/04/google-introduces-skills-in-chrome-to-make-gemini-prompts-instantly-reusable/">Ars Technica</a>
-    </div>
-  </div>
-
-  <!-- Article 6 -->
-  <div class="article">
-    <span class="rank">#6</span>
-    <span class="score">⭐ 14/20</span>
-    <h3>AI 编码工具大融合—— Cursor + Claude Code + Codex 正在合并</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag mindset">思维</span>
-    </div>
-    <table>
-      <tr><th>数据</th><th>值</th></tr>
-      <tr><td>每天使用 AI 编码工具的开发者</td><td>84%</td></tr>
-      <tr><td>信任未经审查 AI 代码的</td><td>仅 29%</td></tr>
-      <tr><td>Cursor 新功能</td><td>并行 Agent 编排</td></tr>
-      <tr><td>OpenAI 新发布</td><td>Claude Code 官方插件</td></tr>
-    </table>
-    <p><strong>典型组合</strong>：Cursor（界面层）+ Claude Code（推理引擎）+ Codex（代码生成）</p>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">用 Cursor 管理多 Agent 协作，Claude Code 处理复杂逻辑推理，Codex 做快速代码生成。MCP v2.1 让工具配置跨客户端一致。</div>
-    </div>
-    <div class="sources">
-      <a href="https://dev.to/alexmercedcoder/ai-weekly-agents-models-and-chips-april-9-15-2026-486f">DEV Community</a>
-      <a href="https://thenewstack.io/ai-coding-tool-stack/">The New Stack</a>
-    </div>
-  </div>
-
-  <!-- Article 7 -->
-  <div class="article">
-    <span class="rank">#7</span>
-    <span class="score">⭐ 13/20</span>
-    <h3>Anthropic 发布 2026 Agentic 编码报告</h3>
-    <div class="tags">
-      <span class="tag mindset">思维</span>
-      <span class="tag tutorial">教程</span>
-    </div>
-    <ul class="highlights">
-      <li>Agentic 编码采纳率在 Q1 2026 <strong>翻倍</strong></li>
-      <li>AI Agent 使代码审查时间减少 <strong>40-60%</strong></li>
-      <li>最大瓶颈不是 AI 能力，而是人类对 AI 输出的<strong>信任建立</strong></li>
-      <li>MCP 协议成为 agentic 工具互操作的<strong>事实标准</strong></li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">用 40-60% 代码审查时间减少的数据做 ROI 计算，说服团队/管理层投资 AI 编码工具。</div>
-    </div>
-    <div class="sources">
-      <a href="https://www.anthropic.com">Anthropic</a>
-      <a href="https://www.reddit.com/r/ClaudeAI/comments/1smuabd/read_through_anthropics_2026_agentic_coding/">Reddit 讨论</a>
-    </div>
-  </div>
-
-  <!-- Article 8 -->
-  <div class="article">
-    <span class="rank">#8</span>
-    <span class="score">⭐ 13/20</span>
-    <h3>MCP 生态爆发：500+ 服务器，9700 万月下载</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-    </div>
-    <ul class="highlights">
-      <li><strong>500+ 公共 MCP 服务器</strong>，9700 万+ 月 SDK 下载</li>
-      <li><strong>Top 服务器</strong>：Taskade（22+ 工具）、GitHub（官方）、Exa（最强搜索）、Filesystem（本地文件）</li>
-      <li>⚠️ <strong>安全警示</strong>：2,181 个端点中 52% 完全失效，仅 9% 健康</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">从 Filesystem MCP（本地文件）和 GitHub MCP（仓库管理）开始扩展 Claude Code / Codex 能力。使用 MCP Gateway 统一管理认证，避免安全风险。</div>
-    </div>
-    <div class="sources">
-      <a href="https://www.taskade.com/blog/mcp-servers">Taskade</a>
-      <a href="https://www.truefoundry.com/blog/best-mcp-security-tools">TrueFoundry</a>
-    </div>
-  </div>
-
-  <!-- Article 9 -->
-  <div class="article">
-    <span class="rank">#9</span>
-    <span class="score">⭐ 11/20</span>
-    <h3>Claude Mythos Preview —— Anthropic 新模型聚焦安全与编码</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-    </div>
-    <ul class="highlights">
-      <li>SWE-bench Verified: <strong>93.9%</strong></li>
-      <li>GPQA Diamond: <strong>94.6%</strong></li>
-      <li>超越 Opus 4.6 的「阶跃式」提升</li>
-      <li>专注：网络安全漏洞检测、推理、编码</li>
-      <li>定价：$25/百万输入 token，$125/百万输出 token</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">安全团队或代码审计需求，联系 Anthropic 申请 Project Glasswing 访问。Mythos 在漏洞检测性能可能替代部分手动审查。</div>
-    </div>
-    <div class="sources">
-      <a href="https://llm-stats.com/ai-news">LLM Stats</a>
-    </div>
-  </div>
-
-  <!-- Article 10 -->
-  <div class="article">
-    <span class="rank">#10</span>
-    <span class="score">⭐ 11/20</span>
-    <h3>开源模型井喷：Gemma 4、GLM-5.1、Qwen 3.6-Plus</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-    </div>
-    <table>
-      <tr><th>模型</th><th>发布方</th><th>亮点</th><th>许可</th></tr>
-      <tr><td><strong>Gemma 4</strong></td><td>Google</td><td>4 变体，多模态</td><td>Apache 2.0</td></tr>
-      <tr><td><strong>GLM-5.1</strong></td><td>智谱 AI</td><td>744B MoE</td><td>MIT</td></tr>
-      <tr><td><strong>GLM-5V-Turbo</strong></td><td>智谱 AI</td><td>视觉到代码</td><td>MIT</td></tr>
-      <tr><td><strong>Qwen 3.6-Plus</strong></td><td>阿里</td><td>100 万 token 上下文</td><td>—</td></tr>
-    </table>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">本地部署首选 Gemma 4（Apache 2.0）和 GLM-5.1（MIT）。需要超长上下文选 Qwen 3.6-Plus。注意 GLM-5.1 需要较强硬件。</div>
-    </div>
-    <div class="sources">
-      <a href="https://whatllm.org/blog/new-ai-models-april-2026">WhatLLM</a>
-      <a href="https://dev.to/alexmercedcoder/ai-weekly-agents-models-and-chips-april-9-15-2026-486f">DEV Community</a>
-    </div>
-  </div>
-
-  <!-- Article 11 -->
-  <div class="article">
-    <span class="rank">#11</span>
-    <span class="score">⭐ 10/20</span>
-    <h3>Cursor 平行 Agent 编排 —— 多 AI 同时干活</h3>
-    <div class="tags">
-      <span class="tag tool">工具</span>
-      <span class="tag workflow">工作流</span>
-    </div>
-    <ul class="highlights">
-      <li>重新设计界面，支持并行编排多个 AI Agent</li>
-      <li>一个写前端、一个写后端、一个写测试</li>
-      <li>统一调试和审查环境</li>
-      <li>与 Claude Code、Codex 协同工作</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">升级 Cursor 到最新版。新项目尝试同时启动 2-3 个 Agent：UI 组件、API 逻辑、测试分工协作。</div>
-    </div>
-    <div class="sources">
-      <a href="https://thenewstack.io/ai-coding-tool-stack/">The New Stack</a>
-    </div>
-  </div>
-
-  <!-- Article 12 -->
-  <div class="article">
-    <span class="rank">#12</span>
-    <span class="score">⭐ 10/20</span>
-    <h3>MCP 服务器设计最佳实践 —— 从集成混乱到可控执行</h3>
-    <div class="tags">
-      <span class="tag tutorial">教程</span>
-      <span class="tag workflow">工作流</span>
-    </div>
-    <ul class="highlights">
-      <li><strong>能力建模</strong> — 明确每个工具做什么，避免重叠</li>
-      <li><strong>工具精选</strong> — 少而精 > 多而杂</li>
-      <li><strong>护栏机制</strong> — 输入验证、权限控制、输出审查</li>
-      <li><strong>受控执行</strong> — 超时、重试、降级策略</li>
-    </ul>
-    <div class="apply">
-      <div class="label">💡 如何应用</div>
-      <div class="content">建自己的 MCP 服务器时，遵循四步法。先用 Supabase 方式做快速验证（直接问 AI「数据库有哪些表？」），再逐步加强安全。</div>
-    </div>
-    <div class="sources">
-      <a href="https://www.itential.com/blog/company/itential-mcp/designing-mcp-servers-for-infrastructure">Itential</a>
-      <a href="https://supabase.com/docs/guides/getting-started/mcp">Supabase</a>
-    </div>
-  </div>
-
-  <div class="footer">
-    <p>🤖 AI 网红工具日报 · 由自动流水线生成</p>
-    <p>下次更新：2026-04-18 · 来源：65 个 AI 领域 X 账号</p>
-  </div>
-
-</div>
-
-</body>
-</html>
+*日报生成时间：2026-04-17 09:50 北京时间*
+*流水线状态：v3（twitter user-posts 模式）</p></div><div class="sources">🔗 <a href="https://x.com/OpenAI" target="_blank">OpenAI 官方推文</a></div></div><div class="footer"><p>🎯 AI 网红工具日报 - 2026 年 4 月 17 日</p><p>聚焦：工具/教程/Prompt/工作流</p></div></div></body></html>
