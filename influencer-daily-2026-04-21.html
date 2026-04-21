@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-04-21</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.7;
+    padding: 0;
+  }
+  .header {
+    background: linear-gradient(135deg, #161b22 0%, #1a1e2e 50%, #0d1117 100%);
+    border-bottom: 1px solid #21262d;
+    padding: 40px 20px 30px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 2rem;
+    color: #58a6ff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .header .subtitle {
+    color: #8b949e;
+    font-size: 0.95rem;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #58a6ff;
+  }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #8b949e;
+    margin-top: 4px;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: #388bfd55;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 14px 0 0 14px;
+  }
+  .card.rank-1::before { background: linear-gradient(180deg, #ffd700, #ff8c00); }
+  .card.rank-2::before { background: linear-gradient(180deg, #c0c0c0, #a0a0a0); }
+  .card.rank-3::before { background: linear-gradient(180deg, #cd7f32, #a0522d); }
+  .card.rank-default::before { background: #388bfd; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .rank-badge {
+    background: linear-gradient(135deg, #238636, #2ea043);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .rank-badge.top { background: linear-gradient(135deg, #d29922, #e3b341); color: #0d1117; }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #f0f6fc;
+    flex: 1;
+  }
+  .score-badge {
+    background: #1c3a5f;
+    color: #58a6ff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 3px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .tag {
+    background: #1c2333;
+    color: #79c0ff;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #30363d;
+  }
+  .source {
+    font-size: 0.82rem;
+    color: #8b949e;
+    margin-bottom: 12px;
+  }
+  .source a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .engagement {
+    font-size: 0.82rem;
+    color: #8b949e;
+    margin-bottom: 14px;
+  }
+  .summary {
+    background: #0d1117;
+    border-left: 3px solid #388bfd44;
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+    font-size: 0.92rem;
+    color: #b1bac4;
+  }
+  .apply-section {
+    background: #1a2332;
+    border: 1px solid #1f6feb44;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .apply-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3fb950;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .apply-text {
+    font-size: 0.9rem;
+    color: #b1bac4;
+  }
+  .trends {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 32px;
+  }
+  .trends h3 {
+    color: #f0883e;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+  .trend-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #21262d;
+    font-size: 0.92rem;
+    color: #b1bac4;
+  }
+  .trend-item:last-child { border-bottom: none; }
+  .trend-item strong { color: #f0f6fc; }
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #484f58;
+    font-size: 0.82rem;
+    border-top: 1px solid #21262d;
+  }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .card { padding: 18px; }
+    .card-header { flex-wrap: wrap; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🤖 AI 网红工具日报</h1>
+  <div class="subtitle">2026-04-21 (周二) · 从 5 组缓存 90+ 条推文中精选</div>
+</div>
+
+<div class="container">
+
+  <div class="stats-bar">
+    <div class="stat-card"><div class="num">5/5</div><div class="label">缓存组完成</div></div>
+    <div class="stat-card"><div class="num">90+</div><div class="label">原始推文</div></div>
+    <div class="stat-card"><div class="num">14</div><div class="label">精选入库</div></div>
+    <div class="stat-card"><div class="num">15%</div><div class="label">收录率</div></div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge top">#1</span>
+      <span class="card-title">Claude Design 16 分钟全能教程</span>
+      <span class="score-badge">⭐ 9.5</span>
+    </div>
+    <div class="tags"><span class="tag">教程</span><span class="tag">工具</span></div>
+    <div class="source">📌 @petergyang · <a href="https://x.com/petergyang/status/2045522933943238934" target="_blank">查看推文</a></div>
+    <div class="engagement">33 ❤️ · 71 🔄 · 147K 👀</div>
+    <div class="summary">Peter Yang 发布的 Claude Design 完整教程，16 分钟演示如何用 Claude Design 创建视频、幻灯片、网站、应用程序，甚至从零搭建一套初始设计系统。覆盖从创意到落地的全流程。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">想做快速原型？打开 Claude Design，跟着教程一步步来——从设计系统到完整应用，一次搞定。特别适合非设计背景的创业者快速出 MVP。</div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge top">#2</span>
+      <span class="card-title">Claude Opus 4.7 正式发布</span>
+      <span class="score-badge">⭐ 9.3</span>
+    </div>
+    <div class="tags"><span class="tag">工具</span><span class="tag">工作流</span></div>
+    <div class="source">📌 @AnthropicAI · <a href="https://x.com/AnthropicAI/status/2044785261393977612" target="_blank">查看推文</a></div>
+    <div class="engagement">4,700 ❤️ · 16,000 🔄 · 13.2M 👀</div>
+    <div class="summary">Claude Opus 4.7——Anthropic 迄今为止最强的 Opus 模型。三大升级：① 处理长时间运行任务更严谨；② 指令遵循更精确；③ 自动验证输出后再汇报。适合复杂、多步骤的代理工作流。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">跑长任务时切换到 Opus 4.7，它会自检输出质量。特别适合代码重构、长文档分析、多文件项目修改等场景——减少返工。</div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge top">#3</span>
+      <span class="card-title">Claude Code 8 项新功能汇总</span>
+      <span class="score-badge">⭐ 9.0</span>
+    </div>
+    <div class="tags"><span class="tag">工具</span><span class="tag">工作流</span></div>
+    <div class="source">📌 @_catwu · <a href="https://x.com/_catwu/status/1903130881205977320" target="_blank">查看推文</a></div>
+    <div class="engagement">1M+ 👀</div>
+    <div class="summary">Anthropic 团队发布的 Claude Code 8 项重磅更新：Microcompact（清理旧工具调用以延长会话长度）、Subagents（@-mention 支持 + 模型选择）、PDF 直接读取等。大幅提升开发效率和会话持续性。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">立即升级最新版。Microcompact 解决长会话截断问题，Subagents 让你按需分配不同模型给子代理。</div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#4</span>
+      <span class="card-title">Anthropic 团队如何用 Claude Code（内部揭秘）</span>
+      <span class="score-badge">⭐ 8.8</span>
+    </div>
+    <div class="tags"><span class="tag">工作流</span><span class="tag">思维</span></div>
+    <div class="source">📌 @_catwu · <a href="https://x.com/_catwu/status/1930703532715626587" target="_blank">查看推文</a></div>
+    <div class="engagement">4,300 ❤️ · 488 🔄 · 842K 👀</div>
+    <div class="summary">来自 Anthropic 内部的一手分享：产品工程、增长营销、法务等不同团队如何使用 Claude Code。展示了 AI 编码代理超越"写代码"的边界——文档处理、数据分析、流程自动化都能覆盖。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">不要只把 Claude Code 当编程工具。试试让它处理数据清洗、文档翻译、法律条款对比——跨职能应用最大化投资回报。</div>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#5</span>
+      <span class="card-title">AI Fast Track 免费 5 天课程</span>
+      <span class="score-badge">⭐ 8.7</span>
+    </div>
+    <div class="tags"><span class="tag">教程</span><span class="tag">思维</span></div>
+    <div class="source">📌 @alliekmiller · Pinned 推文</div>
+    <div class="summary">Allie K. Miller 推出的免费 5 天 AI 快速课程。核心理念：不要只是"复制粘贴 ChatGPT 提示词"，而是学会构建个人 AI 软件、自动化流程，真正解决你的问题。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">AI 进阶必学——从"会用 AI"到"用 AI 构建工具"的分水岭。花 5 天系统学习，建立自己的 AI 工作流库。</div>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#6</span>
+      <span class="card-title">零基础 30 分钟用 AI 构建 App</span>
+      <span class="score-badge">⭐ 8.7</span>
+    </div>
+    <div class="tags"><span class="tag">教程</span><span class="tag">工具</span></div>
+    <div class="source">📌 @AndrewYNg · Pinned 推文</div>
+    <div class="summary">吴恩达面向零编程基础学习者的新课：30 分钟内描述一个 App 创意，用 AI 构建出可运行的 Web 应用。课程项目是一个有趣的交互式生日贺卡。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">不会写代码但有好点子？这堂课展示了 2026 年新范式——用自然语言描述需求，AI 负责实现。适合产品经理和创业者。</div>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#7</span>
+      <span class="card-title">Claude Code 作为通用代理的全场景用法</span>
+      <span class="score-badge">⭐ 8.5</span>
+    </div>
+    <div class="tags"><span class="tag">工作流</span><span class="tag">工具</span></div>
+    <div class="source">📌 @trq212 · <a href="https://x.com/trq212" target="_blank">查看推文</a></div>
+    <div class="summary">Anthropic 员工的惊人发现：团队大量使用 Claude Code 作为通用代理，不仅限于代码。从数据分析到文档处理到流程自动化——"Claude Code is All You Need"。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">把 Claude Code 当成万能助手。试试让它帮你整理数据、写报告、分析趋势——超出编程边界的用法往往最令人惊喜。</div>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#8</span>
+      <span class="card-title">Claude Code 做视频编辑（Vibe Coding）</span>
+      <span class="score-badge">⭐ 8.3</span>
+    </div>
+    <div class="tags"><span class="tag">教程</span><span class="tag">工作流</span></div>
+    <div class="source">📌 @trq212 · <a href="https://x.com/trq212" target="_blank">查看推文</a></div>
+    <div class="summary">所有展示的短视频都是由 Claude Code "Vibe Coding" 生成的。详细教程展示如何用 AI 编码代理完成视频编辑工作流——从脚本生成到画面处理到最终导出，全程无需传统视频编辑软件。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">内容创作者注意：Claude Code 可替代部分视频编辑工作。用代码思维处理视频——批量处理、自动化模板、快速迭代。</div>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#9</span>
+      <span class="card-title">Claude 使用技巧 100 条</span>
+      <span class="score-badge">⭐ 8.0</span>
+    </div>
+    <div class="tags"><span class="tag">Prompt</span><span class="tag">教程</span></div>
+    <div class="source">📌 @MIT_CSAIL · <a href="https://x.com/MIT_CSAIL/status/2046257659586683281" target="_blank">查看推文</a></div>
+    <div class="engagement">131 ❤️ · 20 🔄 · 7.3K 👀 · 127 🔖</div>
+    <div class="summary">MIT CSAIL 联合整理的 100 条 Claude 使用技巧，覆盖提示词优化、多步任务分解、上下文管理、代码生成最佳实践等。书签量是点赞量的近一倍，实用价值极高。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">收藏作为日常参考。重点学习提示词结构优化和多步任务分解——对日常 AI 使用效率提升最明显。</div>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#10</span>
+      <span class="card-title">Erik Brynjolfsson 的 AI 工作流 MasterClass</span>
+      <span class="score-badge">⭐ 7.8</span>
+    </div>
+    <div class="tags"><span class="tag">教程</span><span class="tag">思维</span></div>
+    <div class="source">📌 @erikbryn · <a href="https://x.com/erikbryn/status/2045586582879764872" target="_blank">查看推文</a></div>
+    <div class="engagement">26 ❤️ · 35 🔖 · 20K 👀</div>
+    <div class="summary">斯坦福教授 Erik Brynjolfsson 在 MasterClass 开设的 AI 工作流课程。核心观点：AI 应该叫 IA（智能增强），重点是用 AI 提升日常工作效率，而非替代人类。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">改变对 AI 的定位——不是"替代我"，而是"增强我"。课程涵盖具体工作流设计方法，适合想系统化提升 AI 协作效率的职场人。</div>
+    </div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#11</span>
+      <span class="card-title">Prism Paper Review：论文审阅 AI 工作流</span>
+      <span class="score-badge">⭐ 7.5</span>
+    </div>
+    <div class="tags"><span class="tag">工作流</span><span class="tag">工具</span></div>
+    <div class="source">📌 @kevinweil · <a href="https://x.com/kevinweil/status/2041573799775367525" target="_blank">查看推文</a></div>
+    <div class="engagement">855 ❤️ · 86 🔄</div>
+    <div class="summary">Prism 推出的 Paper Review 功能：专门用于审阅技术和科学论文的 AI 工作流。保持学术严谨性的同时利用 AI 加速审阅流程。由 GPT-5.4 Pro 驱动的 Codex Skill 实现。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">研究人员和技术写作者可直接使用 Paper Review 审阅论文。保持学术标准的同时，把审阅时间缩短数倍。</div>
+    </div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#12</span>
+      <span class="card-title">AI 时代批判性思维 + 系统化组织</span>
+      <span class="score-badge">⭐ 7.3</span>
+    </div>
+    <div class="tags"><span class="tag">思维</span><span class="tag">工作流</span></div>
+    <div class="source">📌 @JustinLin610 · <a href="https://x.com/JustinLin610/status/2043749803780432338" target="_blank">查看推文</a></div>
+    <div class="engagement">231 ❤️ · 192 🔖 · 48K 👀</div>
+    <div class="summary">Agent 时代的两个核心能力：① 批判性思维——与 Agent 辩论、列出正反理由深化思考；② 系统化组织设计——建立健康的工作流程和工具体系，让人类与 Agent 协作效率指数级提升。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">用 AI 做决策时，强制自己列出反对意见（让 AI 扮演反方）。同时建立团队级 AI 使用规范——什么场景用什么模型、如何验证输出。</div>
+    </div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#13</span>
+      <span class="card-title">Tab Out 纯 Chrome 扩展简化版</span>
+      <span class="score-badge">⭐ 7.0</span>
+    </div>
+    <div class="tags"><span class="tag">工具</span></div>
+    <div class="source">📌 @zarazhangrui · <a href="https://x.com/zarazhangrui/status/2044114136364397043" target="_blank">查看推文</a></div>
+    <div class="engagement">227 ❤️ · 13 🔄</div>
+    <div class="summary">Tab Out 更新为纯 Chrome 扩展——无需服务器、无需 Node.js、无需 npm。已保存标签页存储在本地。极大降低使用门槛，浏览器装即用。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">经常管理大量标签页？Tab Out 的零依赖版本值得尝试。Chrome 扩展商店直接安装，不用装任何环境。</div>
+    </div>
+  </div>
+
+  <!-- Card 14 -->
+  <div class="card rank-default">
+    <div class="card-header">
+      <span class="rank-badge">#14</span>
+      <span class="card-title">用 LLM 扮演理想 persona 加速职业发展</span>
+      <span class="score-badge">⭐ 7.0</span>
+    </div>
+    <div class="tags"><span class="tag">Prompt</span><span class="tag">思维</span></div>
+    <div class="source">📌 @realmadhuguru · <a href="https://x.com/realmadhuguru" target="_blank">查看推文</a></div>
+    <div class="summary">一个独特的 Prompt 技巧：给 LLM 设定你向往的 persona（比如你想成为的资深工程师），把原始想法发给它，让它以那个 persona 的视角重新构建和批评。定期让它总结方法，学习内化。</div>
+    <div class="apply-section">
+      <div class="apply-label">💡 如何应用</div>
+      <div class="apply-text">想提升某领域能力？让 AI 扮演该领域顶尖专家，定期讨论你的想法。让 AI 总结推理方法，你系统学习——比传统学习快 3 倍。</div>
+    </div>
+  </div>
+
+  <!-- Trends -->
+  <div class="trends">
+    <h3>🔥 今日趋势</h3>
+    <div class="trend-item"><strong>1. Claude Opus 4.7 引爆全网</strong> — 最强模型发布，多家创作者发布配套教程</div>
+    <div class="trend-item"><strong>2. Claude Code 边界扩展</strong> — 从代码工具 → 通用代理（视频编辑、数据分析、文档处理）</div>
+    <div class="trend-item"><strong>3. AI 教育热潮</strong> — 吴恩达、Allie K. Miller、Erik Brynjolfsson 同日推出新课程</div>
+    <div class="trend-item"><strong>4. "Vibe Coding" 持续升温</strong> — 用 AI 代理完成非编码任务的趋势明显加速</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  🤖 AI 网红工具日报 · 小瓜自动生成 · 2026-04-21 10:00 UTC
+</div>
+
+</body>
+</html>
