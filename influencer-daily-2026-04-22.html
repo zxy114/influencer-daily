@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 网红工具日报 | 2026-04-22</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f0883e;
+    --accent4: #bc8cff;
+    --accent5: #f778ba;
+    --tag-tool: #1f6feb;
+    --tag-tutorial: #238636;
+    --tag-prompt: #8957e5;
+    --tag-workflow: #d29922;
+    --tag-thinking: #f85149;
+    --star: #f0c000;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    line-height: 1.7;
+    padding: 0;
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 48px 20px 32px;
+    background: linear-gradient(135deg, #161b22 0%, #1a1a2e 50%, #161b22 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(88,166,255,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(188,140,255,0.04) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
+  @keyframes pulse { 0%{transform:scale(1)} 100%{transform:scale(1.05)} }
+  .header h1 { font-size: 2rem; position: relative; }
+  .header .subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    position: relative;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+  .stat-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  .stat-item .num { color: var(--accent); font-weight: 700; }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 24px 0 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(88,166,255,0.08);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .rank {
+    font-size: 1.6rem;
+    font-weight: 800;
+    min-width: 40px;
+    text-align: center;
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex: 1;
+  }
+  .stars {
+    color: var(--star);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .card-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .card-meta a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .card-meta a:hover { text-decoration: underline; }
+  .card-summary {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 14px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .card-apply {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+  .card-apply strong { color: var(--accent2); }
+
+  /* Tags */
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .tag-工具 { background: var(--tag-tool); }
+  .tag-教程 { background: var(--tag-tutorial); }
+  .tag-Prompt { background: var(--tag-prompt); }
+  .tag-工作流 { background: var(--tag-workflow); }
+  .tag-思维 { background: var(--tag-thinking); }
+
+  /* Trends */
+  .trends {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .trends h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+  .trends ul {
+    list-style: none;
+    padding: 0;
+  }
+  .trends li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    font-size: 0.9rem;
+  }
+  .trends li:last-child { border-bottom: none; }
+  .trends li::before {
+    content: '→ ';
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.4rem; }
+    .card { padding: 16px; }
+    .stats-bar { gap: 8px; }
+    .stat-item { padding: 6px 10px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🤖 AI 网红工具日报</h1>
+  <div class="subtitle">2026-04-22（周三）· 从 5 组缓存约 60+ 条推文中精选 14 条</div>
+</div>
+
+<div class="container">
+
+  <div class="stats-bar">
+    <div class="stat-item">📦 缓存 <span class="num">5/5</span></div>
+    <div class="stat-item">🔍 筛选率 <span class="num">23%</span></div>
+    <div class="stat-item">🏆 收录 <span class="num">14 条</span></div>
+    <div class="stat-item">👁 最高浏览 <span class="num">13.3M</span></div>
+  </div>
+
+  <div class="section-title">🏆 Top 14 精选</div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">🥇</span>
+      <span class="card-title">Claude Design 16 分钟全能教程</span>
+      <span class="stars">⭐ 9.5</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/petergyang/status/2045522933943238934" target="_blank">@petergyang</a></span>
+      <span>❤️ 36 · 🔄 74 · 👀 147K</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-教程">教程</span>
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="card-summary">Peter Yang 发布的 Claude Design 完整教程，16 分钟演示如何创建视频、幻灯片、网站、应用程序，甚至从零搭建初始设计系统。覆盖从创意到落地的全流程。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>想做快速原型？跟着教程一步步来——从设计系统到完整应用，一次搞定。适合非设计背景的创作者快速出 MVP。</div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">🥈</span>
+      <span class="card-title">Claude Opus 4.7 正式发布</span>
+      <span class="stars">⭐ 9.3</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/AnthropicAI/status/2044785261393977612" target="_blank">@AnthropicAI</a></span>
+      <span>❤️ 4.7K · 🔄 16K · 👀 13.3M</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-工作流">工作流</span>
+    </div>
+    <div class="card-summary">Anthropic 最强 Opus 模型：① 长任务处理更严谨；② 指令遵循更精确；③ 自动验证输出后汇报。可以放心把最难的活儿交给它。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>长任务切换到 Opus 4.7，它会自检输出质量。适合代码重构、长文档分析、多文件项目修改——减少返工。</div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">🥉</span>
+      <span class="card-title">用 Claude Code 做视频编辑</span>
+      <span class="stars">⭐ 9.0</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/trq212" target="_blank">@trq212</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-教程">教程</span>
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="card-summary">用 Claude Code 作为视频编辑器——所有展示视频都是通过 Claude Code vibe coding 生成的。从安装到出片的完整流程分享。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>不需要专业视频软件。用 Claude Code 写 FFmpeg 脚本，自然语言描述效果，AI 帮你生成代码并执行。</div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">4</span>
+      <span class="card-title">Claude Code 8 项新功能汇总</span>
+      <span class="stars">⭐ 8.8</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/_catwu" target="_blank">@_catwu</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-工作流">工作流</span>
+    </div>
+    <div class="card-summary">Anthropic 团队发布的 Claude Code 8 项重磅更新汇总，开发效率和会话持续性大幅提升。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>日常使用 Claude Code 的开发者，立即升级到最新版本，解锁新功能带来的效率提升。</div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">5</span>
+      <span class="card-title">Anthropic 团队如何用 Claude Code（内部揭秘）</span>
+      <span class="stars">⭐ 8.7</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/_catwu" target="_blank">@_catwu</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-思维">思维</span>
+    </div>
+    <div class="card-summary">Anthropic 内部一手分享：产品工程、增长营销、法务团队如何使用 Claude Code。AI 编码代理超越"写代码"的边界。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>不要只把 Claude Code 当编程工具——试试数据清洗、文档翻译、法律条款对比，跨职能应用最大化 ROI。</div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">6</span>
+      <span class="card-title">System Prompt 学习——LLM 缺失的学习范式</span>
+      <span class="stars">⭐ 8.5</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/karpathy/status/1921368644069765486" target="_blank">@karpathy</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-思维">思维</span>
+      <span class="tag tag-Prompt">Prompt</span>
+    </div>
+    <div class="card-summary">Karpathy 提出 LLM 缺少"系统提示学习"范式。人类学习更像改变 system prompt——总结经验下次直接使用，而非反复微调参数。Claude 的 system prompt 约 17,000 词，包含大量问题解决策略。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>优化 prompt 工程思路——把反复验证有效的策略写入 system prompt，比反复微调更高效。</div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">7</span>
+      <span class="card-title">Claude Opus 4.5 Prompt 优化指南</span>
+      <span class="stars">⭐ 8.5</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/alexalbert__/status/1993365963706913257" target="_blank">@alexalbert__</a></span>
+      <span>👀 608K</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-Prompt">Prompt</span>
+      <span class="tag tag-教程">教程</span>
+    </div>
+    <div class="card-summary">Anthropic 研究团队基于大量内部测试，总结的 Claude Opus 4.5 最佳 prompt 实践。涵盖精确输出和可靠性技巧。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>使用 Claude 级别模型的用户必看，特别是结构化 prompt 和验证步骤的设计技巧。</div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">8</span>
+      <span class="card-title">AI Fast Track 免费 5 天课程</span>
+      <span class="stars">⭐ 8.5</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/alliekmiller" target="_blank">@alliekmiller</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-教程">教程</span>
+      <span class="tag tag-思维">思维</span>
+    </div>
+    <div class="card-summary">Allie K. Miller 的免费 5 天 AI 快速课程：从"复制粘贴 ChatGPT"到构建个人 AI 软件和自动化流程。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>AI 进阶必学——从"会用 AI"到"用 AI 构建工具"的分水岭，花 5 天建立自己的 AI 工作流库。</div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">9</span>
+      <span class="card-title">用 Claude Code 制作前端幻灯片</span>
+      <span class="stars">⭐ 8.3</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/zarazhangrui/status/2028152141072994717" target="_blank">@zarazhangrui</a></span>
+      <span>❤️ 34 · 🔄 412</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-教程">教程</span>
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="card-summary">张瑞的前端幻灯片制作流程：让 Claude Code 创建像幻灯片的网站，迭代数十次直到满意。AI 替代传统 PPT 工具。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>下次做 presentation 试试网页版幻灯片——比 PPT 更灵活、更容易分享，还能嵌入交互元素。</div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">10</span>
+      <span class="card-title">Kimi K2.6：13 小时自主优化金融引擎</span>
+      <span class="stars">⭐ 8.2</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/Kimi_Moonshot/status/2046531057147933137" target="_blank">@Kimi_Moonshot</a></span>
+      <span>👀 11.4K</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-工作流">工作流</span>
+    </div>
+    <div class="card-summary">Kimi K2.6 在 13 小时中迭代 12 种优化策略，发起 1000+ 工具调用，修改 4000+ 行代码。对 8 年历史的金融撮合引擎重构，吞吐量提升 185%。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>Agent 模式长程编码已可用于真实项目。复杂代码库重构时，让 AI Agent 持续工作数小时——它比你想的更有耐心。</div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">11</span>
+      <span class="card-title">Agent 工作流：让 AI 持续工作数小时的秘诀</span>
+      <span class="stars">⭐ 8.2</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/steipete/status/1941494308709990671" target="_blank">@steipete</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-Prompt">Prompt</span>
+    </div>
+    <div class="card-summary">让 Agent 用 Markdown 文件跟踪工作进度非常有效——配合自动化循环，AI 可以直接工作数小时无需人工干预。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>给 AI Agent 一个 markdown 文件作"工作日志"，让它每次更新进度。配合自动循环，Agent 就能独立完成复杂任务。</div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">12</span>
+      <span class="card-title">Claude Code Web + iOS 版发布</span>
+      <span class="stars">⭐ 8.0</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/_catwu" target="_blank">@_catwu</a></span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="card-summary">Claude Code 推出 Web 版和 iOS App，团队日常使用。随时随地使用 AI 编码助手。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>灵感来了随时开始——手机或浏览器里直接用。适合快速原型、代码审查、随时随地的小修改。</div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">13</span>
+      <span class="card-title">Prism Paper Review：AI 论文评审工作流</span>
+      <span class="stars">⭐ 7.8</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/kevinweil/status/2041573799775367525" target="_blank">@kevinweil</a></span>
+      <span>❤️ 110 · 🔄 856</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-工作流">工作流</span>
+    </div>
+    <div class="card-summary">Prism 的 Paper Review 功能——用 AI 评审技术和科学论文。核心理念：用 AI 提升科学严谨性和可复现性，而非制造垃圾内容。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>研究者和技术写作者可用来快速评审论文——检查逻辑漏洞、方法论缺陷、引用准确性。</div>
+  </div>
+
+  <!-- Card 14 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">14</span>
+      <span class="card-title">给 AI 工具，而不是加限制</span>
+      <span class="stars">⭐ 7.8</span>
+    </div>
+    <div class="card-meta">
+      <span>📌 来源: <a href="https://x.com/zarazhangrui/status/2031075413133504801" target="_blank">@zarazhangrui</a></span>
+      <span>❤️ 9 · 🔄 98</span>
+    </div>
+    <div class="tags">
+      <span class="tag tag-思维">思维</span>
+      <span class="tag tag-Prompt">Prompt</span>
+    </div>
+    <div class="card-summary">大多数 AI 产品限制模型，但 Claude Code 和 OpenClaw 展示了相反思路：给模型工具，给上下文，放开约束。真正的神奇发生在你移除限制的时候。</div>
+    <div class="card-apply"><strong>💡 如何应用：</strong>设计 prompt 时先给工具权限和完整上下文，再让 AI 自由发挥。不要先限制格式和范围。</div>
+  </div>
+
+  <!-- Trends -->
+  <div class="trends">
+    <h3>📈 趋势观察</h3>
+    <ul>
+      <li><strong>Claude Design 成为新热点</strong> — 多个创作者发布教程，16 分钟从视频到应用全覆盖</li>
+      <li><strong>长程 Agent 工作流崛起</strong> — Kimi K2.6 的 13 小时自主优化 + Agent 持续工作技巧</li>
+      <li><strong>"给工具不加限制"成为新范式</strong> — 从张瑞分享到 Karpathy 的 System Prompt 学习理念</li>
+      <li><strong>Claude Code 持续扩展</strong> — 8 项新功能、Web/iOS 版本、视频编辑能力、团队级应用</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  AI 网红工具日报 · 自动生成 + 人工筛选 · <a href="https://github.com/zxy114/influencer-daily" target="_blank">GitHub</a>
+</div>
+</body>
+</html>
