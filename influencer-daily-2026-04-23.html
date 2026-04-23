@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 网红工具日报 — 2026-04-23</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --card-border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #f78166;
+    --accent3: #3fb950;
+    --accent4: #d2a8ff;
+    --tag-bg: #1f2937;
+    --score-bg: #238636;
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header .date { color: var(--text-muted); font-size: 0.95rem; }
+  .header .tagline { color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
+
+  /* Stats bar */
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  .stat {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 100px;
+  }
+  .stat .num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .rank {
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    flex: 1;
+  }
+  .score {
+    background: var(--score-bg);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .card-text {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    padding-left: 48px;
+  }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding-left: 48px;
+  }
+  .source {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .source:hover { text-decoration: underline; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .tag.tool { color: var(--accent); border: 1px solid #1f3a5f; }
+  .tag.tutorial { color: var(--accent3); border: 1px solid #1a3d2a; }
+  .tag.prompt { color: var(--accent4); border: 1px solid #2d1f4e; }
+  .tag.workflow { color: var(--accent2); border: 1px solid #3d2517; }
+  .tag.thinking { color: #e3b341; border: 1px solid #3d3317; }
+  .tip {
+    margin-top: 12px;
+    padding-left: 48px;
+  }
+  .tip-label {
+    color: var(--accent3);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .tip-text {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .card-text, .card-meta, .tip { padding-left: 0; }
+    .card-header { flex-wrap: wrap; }
+    .header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🤖 AI 网红工具日报</h1>
+  <div class="date">2026 年 4 月 23 日 · 星期四</div>
+  <div class="tagline">每日精选 Twitter/X AI 网红高价值内容，快速发现实用工具和技巧</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">12</div><div class="label">精选条目</div></div>
+  <div class="stat"><div class="num">4/5</div><div class="label">缓存完成</div></div>
+  <div class="stat"><div class="num">53</div><div class="label">原始推文</div></div>
+</div>
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">1</div>
+    <div class="card-title">🏢 Shopify 的 AI 原生工程实践</div>
+    <div class="score">11/10</div>
+  </div>
+  <div class="card-text">Shopify CTO 分享了 100% AI 采纳率、无限 Token 使用策略。开发了 Tangle、Tangent 实验框架和 SimGym（用历史数据模拟真实客户）。现在 AI 编码的真正瓶颈是 PR 审查和 CI/CD，自动研究循环正在解锁各领域效率提升。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/swyx/status/2047037776399614232" target="_blank">@swyx</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+    <span class="tag thinking">思维</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">技术团队负责人可参考 Shopify 的"无限 Token + 自动研究循环"策略。SimGym 思路：用你的业务历史数据训练模拟环境来测试 AI 输出。</div>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">2</div>
+    <div class="card-title">🤖 ChatGPT 工作空间 Agent</div>
+    <div class="score">10/10</div>
+  </div>
+  <div class="card-text">OpenAI 推出工作空间 Agent，可跨工具处理复杂任务和长时间运行的工作流。从文档、邮件、聊天、代码中拉取上下文，执行更新 Linear、创建文档、发消息等操作。在 Slack 中可加入线程理解需求并解决问题。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/OpenAI/status/2047008987665809771" target="_blank">@OpenAI</a>
+    <a class="source" href="https://x.com/levie/status/2047028112626749645" target="_blank">@levie</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">立即试用，连接到 Linear、Slack、Google Docs。从简单场景开始：自动汇总每日 Slack 讨论并生成 Linear 工单。</div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">3</div>
+    <div class="card-title">🧠 Claude Code "第二大脑"搭建法</div>
+    <div class="score">9/10</div>
+  </div>
+  <div class="card-text">Mercury VP Ryan 通过在 Claude Code 中构建经过 5 年工作历史训练的"第二大脑"，将生产力提升了 2 倍。它本地运行，且每天都在变好。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/petergyang/status/2046597450279125132" target="_blank">@petergyang</a>
+    <span class="tag tutorial">教程</span>
+    <span class="tag prompt">Prompt</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">收集过去的工作文档、代码、笔记，导入 Claude Code 上下文。关键：每次完成重要工作后把关键决策存入知识库，持续更新。</div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">4</div>
+    <div class="card-title">⚙️ Claude Code 1M Token 上下文管理</div>
+    <div class="score">9/10</div>
+  </div>
+  <div class="card-text">1M Token 上下文窗口是双刃剑 —— 让 Claude Code 更自主地长时间运行，但不小心管理会导致上下文污染。关键问题：一个还是两个 Session？何时 compact/rewind/subagent？什么导致糟糕的 compact？</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/trq212/status/2044548257058328723" target="_blank">@trq212</a>
+    <span class="tag tutorial">教程</span>
+    <span class="tag thinking">思维</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">新任务启动独立 Session 避免污染。Session 变慢时及时 compact 并检查结果。复杂任务用 subagent 而非塞进一个上下文。</div>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">5</div>
+    <div class="card-title">📊 Linear 中的 15 种 AI 工作流</div>
+    <div class="score">8/10</div>
+  </div>
+  <div class="card-text">90% 的 AI 工作已转移到 Linear：每日报告、用户痛点趋势、发布日期检查、编码 Agent 修复产品、投资者更新、会议记录提取跟进、客户通话准备、新功能调研、博客撰写等等。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/petergyang/status/2047035986388156611" target="_blank">@petergyang</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">用 Linear 的 AI 做日报摘要、分析用户反馈趋势、从会议记录生成工单。关键：在工作上下文内使用 AI，不需要切换工具。</div>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">6</div>
+    <div class="card-title">🔀 Opus 4.7 工作流三大转变</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">Opus 4.7 已在 Claude Code 上线！最佳使用方式：把它当作你在委派任务的工程师，而不是逐行指导的结对编程伙伴。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/_catwu/status/2044808533905178822" target="_blank">@_catwu</a>
+    <span class="tag workflow">工作流</span>
+    <span class="tag thinking">思维</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">从"手把手指导"切换到"目标+约束"模式。告诉 AI 你要什么和边界条件，让它自主完成。适合复杂任务整体委派。</div>
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">7</div>
+    <div class="card-title">💼 Claude Cowork 5 分钟快速入门</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">面向非技术商务人士。只需指向一个文件夹，描述你想要的结果，就能得到完成的 Excel、Word、整理好的文件和幻灯片。包含 3 步安装、5 个真实案例、技能创建和定时任务设置。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/alliekmiller/status/2046303169781883220" target="_blank">@alliekmiller</a>
+    <span class="tag tutorial">教程</span>
+    <span class="tag tool">工具</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">适合不想用终端的商务人士。下载指南跟着 3 步安装，用内置 5 个 Prompt 模板快速上手。把重复性工作做成可复用技能。</div>
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">8</div>
+    <div class="card-title">🎵 MiniMax Music 2.6 提示词技巧</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">MiniMax Music 2.6 已接入 Sonus AI Music。人声更丰富、乐器细节更清晰、风格表达更强。最佳效果：使用描述性 Prompt 包含风格和情绪标签，指定声音特征。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a>
+    <span class="tag prompt">Prompt</span>
+    <span class="tag tool">工具</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">Prompt 中明确风格（"lo-fi hip hop, 85 BPM, warm"）和情绪（"melancholic, introspective"），指定声音特征（"female alto, breathy tone"）。</div>
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">9</div>
+    <div class="card-title">🎨 Picsart Aura —— AI 角色一致性创作</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">创建一次 AI 角色，永久生成内容。图片、视频、活动全部来自一次对话。用 Picsart Aura 实现角色一致性，改变创意工作的规模化方式。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/Ronald_vanLoon/status/2046604751563817207" target="_blank">@Ronald_vanLoon</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">创建品牌 AI 角色并保存设定，每次生成内容时调用同一角色确保品牌一致性。适合社交媒体内容创作者。</div>
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">10</div>
+    <div class="card-title">🎬 Hailuo Video Agent —— 零接触视频创作</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">Hailuo Video Agent Beta 版上线，简单输入 + 一键操作获得完整精美视频。三阶段：预建模板 → 半自定义编辑 → 完全自主的端到端视频 Agent。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/Hailuo_AI/status/1935999353325543934" target="_blank">@Hailuo_AI</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">试用 Beta 版，用创意种子（creative seeds）快速生成视频草稿。目前适合概念验证和内容原型制作。</div>
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">11</div>
+    <div class="card-title">🎯 Midjourney V8.1 更新</div>
+    <div class="score">7/10</div>
+  </div>
+  <div class="card-text">V8.1 已上线！原生 2K HD 渲染，比 V8 快 3 倍且便宜 3 倍。1K 模式比 V7 草稿还快。图片 Prompt 回归，全新 moodboards 和 srefs。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/midjourney/status/2044166948674769196" target="_blank">@midjourney</a>
+    <span class="tag tool">工具</span>
+    <span class="tag prompt">Prompt</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">升级到 V8.1，使用 <code>--sv 7</code> 体验新 sref/moodboard 系统。照片级项目加 <code>--style raw</code>。</div>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">12</div>
+    <div class="card-title">🛡️ Replit Auto-Protect —— 24/7 自动化安全防护</div>
+    <div class="score">6/10</div>
+  </div>
+  <div class="card-text">你开发的安全应用可能因为某个依赖出现漏洞而突然变得不安全。Replit 推出 Auto-Protect，像你的 24/7 安全工程师一样自动监控。</div>
+  <div class="card-meta">
+    <a class="source" href="https://x.com/amasad/status/2047038606783787300" target="_blank">@amasad</a>
+    <span class="tag tool">工具</span>
+    <span class="tag workflow">工作流</span>
+  </div>
+  <div class="tip">
+    <div class="tip-label">💡 如何应用</div>
+    <div class="tip-text">在 Replit 上部署项目时开启 Auto-Protect，自动监控依赖漏洞。减少人工安全审查负担，适合独立开发者和小型团队。</div>
+  </div>
+</div>
+
+<div class="footer">
+  日报由 AI 自动生成 · 数据来源 Twitter/X · 2026-04-23 10:00 UTC<br>
+  缓存状态：4/5 组完成（g5 尚未就绪） · 53 条原始推文 → 筛选 → Top 12
+</div>
+
+</div>
+</body>
+</html>
