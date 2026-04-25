@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-04-25</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --card-border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-purple: #bc8cff;
+    --accent-red: #f85149;
+    --accent-cyan: #39d2c0;
+    --tag-bg: #1f2937;
+    --score-bg: #238636;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .date { color: var(--text-muted); font-size: 14px; margin-top: 8px; }
+  .header .stats {
+    display: inline-flex; gap: 16px; margin-top: 12px;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 8px 16px; font-size: 13px;
+  }
+  .header .stats span { color: var(--text-muted); }
+  .header .stats strong { color: var(--accent-green); }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-rank {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-weight: 700; font-size: 14px; margin-right: 12px; flex-shrink: 0;
+  }
+  .rank-1 { background: linear-gradient(135deg, #f0c040, #e6a020); color: #000; }
+  .rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+  .rank-3 { background: linear-gradient(135deg, #cd7f32, #a0622a); color: #000; }
+  .rank-other { background: var(--tag-bg); color: var(--text-muted); }
+  .card-header { display: flex; align-items: center; margin-bottom: 12px; }
+  .card-title {
+    font-size: 17px; font-weight: 600; flex: 1;
+  }
+  .score-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--score-bg); color: #fff;
+    padding: 4px 10px; border-radius: 20px;
+    font-size: 13px; font-weight: 600; white-space: nowrap;
+  }
+  .card-text {
+    font-size: 14px; color: var(--text-muted);
+    background: var(--bg); border-left: 3px solid var(--accent);
+    padding: 12px 16px; border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .card-meta {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    margin-bottom: 12px; font-size: 13px;
+  }
+  .source { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .source:hover { text-decoration: underline; }
+  .engagement { color: var(--text-muted); }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 500;
+  }
+  .tag-tool { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .tag-tutorial { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+  .tag-prompt { background: rgba(188,140,255,0.15); color: var(--accent-purple); }
+  .tag-workflow { background: rgba(210,153,34,0.15); color: var(--accent-orange); }
+  .tag-mindset { background: rgba(57,210,192,0.15); color: var(--accent-cyan); }
+  .card-tip {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 14px;
+  }
+  .card-tip::before {
+    content: "💡 如何应用：";
+    font-weight: 600; color: var(--accent);
+  }
+  .trends {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 24px; margin-top: 24px;
+  }
+  .trends h2 {
+    font-size: 18px; margin-bottom: 16px;
+    color: var(--accent-purple);
+  }
+  .trend-item {
+    padding: 10px 0; border-bottom: 1px solid var(--card-border);
+    font-size: 14px;
+  }
+  .trend-item:last-child { border-bottom: none; }
+  .trend-item strong { color: var(--accent-green); }
+  .footer {
+    text-align: center; padding: 24px; color: var(--text-muted);
+    font-size: 12px; border-top: 1px solid var(--card-border);
+    margin-top: 30px;
+  }
+  @media (max-width: 600px) {
+    .card { padding: 16px; }
+    .header h1 { font-size: 22px; }
+    .card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🍈 AI 网红工具日报</h1>
+  <div class="date">2026-04-25 · Saturday</div>
+  <div class="stats">
+    <span>缓存组 <strong>5/5</strong></span>
+    <span>筛选条目 <strong>51</strong></span>
+    <span>入选 <strong>Top 13</strong></span>
+  </div>
+</div>
+
+<!-- #1 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-1">1</div>
+    <div class="card-title">Claude Cowork 5 分钟入门 — 非技术用户 AI Agent 快速上手</div>
+    <div class="score-badge">⭐ 9.0</div>
+  </div>
+  <div class="card-text">I just dropped my free Claude Cowork in 5 Minutes quick start for business professionals who want to use AI agents without the terminal. Point it at a folder, describe the outcome you want, and come back to finished Excel sheets, Word docs, organized files, and slide decks.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/alliekmiller/status/2046303169781883220" target="_blank">@alliekmiller</a></span>
+    <span class="engagement">37 ❤️ · 4.1K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+  </div>
+  <div class="card-tip">用 Claude Desktop 指向项目文件夹即可自动生成 Excel/Word/PPT。用 <code>/skill-creator</code> 把常用任务变成可复用技能，用 <code>/schedule</code> 设定定时执行。</div>
+</div>
+
+<!-- #2 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-2">2</div>
+    <div class="card-title">OpenAI Workspace Agents — 跨工具团队工作流</div>
+    <div class="score-badge">⭐ 9.0</div>
+  </div>
+  <div class="card-text">Introducing workspace agents in ChatGPT—shared agents that can handle complex tasks and long-running workflows across tools and teams. Pull context from docs, email, chats, code, and take approved actions.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/OpenAI/status/2047008991944069624" target="_blank">@OpenAI</a></span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+  </div>
+  <div class="card-tip">设置共享 Agent 自动从文档、邮件、聊天提取上下文，执行更新任务、创建文档、发送消息。适合跨平台内容管理流水线。</div>
+</div>
+
+<!-- #3 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-3">3</div>
+    <div class="card-title">Kimi Agent Swarm — 一键生成百页报告 + 数据集 + PPT</div>
+    <div class="score-badge">⭐ 8.5</div>
+  </div>
+  <div class="card-text">One Prompt → 100-page PDF report + cited dataset + 30-page executive PPT + 20 financial charts.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/Kimi_Moonshot/status/2047190601360347304" target="_blank">@Kimi_Moonshot</a></span>
+    <span class="engagement">8.5K ❤️ · 2.1K 🔁 · 11.5K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+  </div>
+  <div class="card-tip">输入一个 Prompt，自动生成 PDF 报告、数据集、PPT 和图表。适合快速生成深度分析内容和配套演示文稿。访问 kimi.com/agent-swarm</div>
+</div>
+
+<!-- #4 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">4</div>
+    <div class="card-title">GPT-5.5 Pro — 全栈推理优化，高难度任务实用化</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">Full-stack inference improvements enable a more capable model at faster speed. This efficiency is a game-changer for GPT-5.5 Pro — a step change in the level of difficulty and quality ChatGPT can take on.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/OpenAI/status/2046688743390916608" target="_blank">@OpenAI</a></span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+    </div>
+  </div>
+  <div class="card-tip">GPT-5.5 Pro 推理速度和质量显著提升，可处理更复杂的内容创作任务——长文分析、多步骤工作流设计、高质量代码生成。</div>
+</div>
+
+<!-- #5 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">5</div>
+    <div class="card-title">ChatGPT Agent — 全能电脑操作 Agent</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">A powerful new agent that can use a computer, browse the web, write code, use a terminal, write reports, create images, edit spreadsheets, and even create slides.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/kevinweil" target="_blank">@kevinweil</a></span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+  </div>
+  <div class="card-tip">让 Agent 代替你浏览网页、写代码、生成报告、创建图片和幻灯片。自动化研究、素材收集、内容初稿生成。</div>
+</div>
+
+<!-- #6 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">6</div>
+    <div class="card-title">Every 工程师 AI 工作流实录</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">absolute must read — Inside the AI workflows of Every's six engineers</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/danshipper/status/1982903569167868070" target="_blank">@danshipper</a></span>
+    <span class="engagement">3.2K ❤️ · 250 🔁 · 417K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-mindset">思维</span>
+    </div>
+  </div>
+  <div class="card-tip">了解 6 位工程师的真实 AI 工作流，提取适合内容创作者的实践模式：如何分配 AI 任务、保持质量控制、组合多个 AI 工具。</div>
+</div>
+
+<!-- #7 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">7</div>
+    <div class="card-title">100 条 Claude 使用技巧全面指南</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">100 tips to get the most out of Claude. A comprehensive guide covering practical techniques for maximizing Claude's capabilities, from prompt engineering to advanced workflows.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/MIT_CSAIL/status/2046257659586683241" target="_blank">@MIT_CSAIL</a></span>
+    <span class="engagement">171 ❤️ · 29 🔁 · 10K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+  </div>
+  <div class="card-tip">收藏指南按需查阅。特别适合想要系统提升 Claude 使用效率的内容创作者，从 Prompt 工程到高级工作流全覆盖。</div>
+</div>
+
+<!-- #8 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">8</div>
+    <div class="card-title">Midjourney V8.1 — 3x 更快 3x 更便宜，原生 2K HD</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">V8.1 is live! Iconic aesthetics are back w native 2K HD rendering — 3x faster and 3x cheaper vs V8. Full quality 1K mode is faster than V7 draft. Image prompts are back. New Describe is live — moodboards & srefs.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/midjourney/status/2044166948674769196" target="_blank">@midjourney</a></span>
+    <span class="engagement">5.8K ❤️ · 1.2K 🔁 · 2.1M 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+    </div>
+  </div>
+  <div class="card-tip">速度 3 倍、成本降 3 倍。用 Image Prompts 上传参考图控制风格，用 Describe 从图片生成 Prompt，用 Moodboards 管理视觉灵感。</div>
+</div>
+
+<!-- #9 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">9</div>
+    <div class="card-title">Claude Skill 生成精美幻灯片 — 代码胜过 PPT</div>
+    <div class="score-badge">⭐ 8.0</div>
+  </div>
+  <div class="card-text">I created a Claude Skill that make beautiful slides on the web. Code can create much better slides than most PPT tools. Claude interviews you about aesthetics, then generate a few directions to show not tell.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/zarazhangrui/status/1982128230133068263" target="_blank">@zarazhangrui</a></span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+  </div>
+  <div class="card-tip">用代码生成幻灯片，Claude 先采访美学偏好，生成多个方向供选择。适合需要快速制作高质量演示的内容创作者。</div>
+</div>
+
+<!-- #10 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">10</div>
+    <div class="card-title">Claude Code /schedule — 定时任务自动化</div>
+    <div class="score-badge">⭐ 7.5</div>
+  </div>
+  <div class="card-text">You can now /schedule one-time tasks from the CLI or the Routines UI. /schedule cleanup this feature flag in 1 week. /schedule give me a launch report for my feature in 2 days.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/trq212/status/2047364243310416044" target="_blank">@trq212</a></span>
+    <span class="engagement">830 ❤️ · 81.7K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+  </div>
+  <div class="card-tip">用 <code>/schedule</code> 设置定时任务。适合管理内容发布节奏和定期审查任务。</div>
+</div>
+
+<!-- #11 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">11</div>
+    <div class="card-title">20 Agent 数字员工系统 — Hub & Spoke 编排</div>
+    <div class="score-badge">⭐ 7.5</div>
+  </div>
+  <div class="card-text">Having a 20-agent system is a million times more powerful than 100 agents working in silos. Hub and spoke model is key — orchestration and documentation are the actual unlock. Gave my chief of staff an assistant for paperwork, notes, governance.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/alliekmiller/status/2046588965457711274" target="_blank">@alliekmiller</a></span>
+    <span class="engagement">130 ❤️ · 9.4K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-mindset">思维</span>
+    </div>
+  </div>
+  <div class="card-tip">采用 Hub & Spoke 模型，一个主 Agent 协调多个子 Agent。子 Agent 各司其职（笔记、报告、治理），大幅提升多任务处理效率。</div>
+</div>
+
+<!-- #12 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">12</div>
+    <div class="card-title">Gemini 3.1 TTS 音频标签 — 精细化语音控制</div>
+    <div class="score-badge">⭐ 7.5</div>
+  </div>
+  <div class="card-text">Gemini 3.1 TTS introduces audio tags — guide vocal style, pace, and delivery. Use natural language commands like [whisper], [excited], [slowly]. Combine tags for complex vocal directions.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/GoogleAI/status/2047376437221425152" target="_blank">@GoogleAI</a></span>
+    <span class="engagement">1.2K ❤️ · 350 🔁 · 850K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+  </div>
+  <div class="card-tip">在 TTS 文本中使用 <code>[whisper]</code>、<code>[excited]</code>、<code>[slowly]</code> 等标签精细控制语音。适合播客、有声内容和视频旁白制作。</div>
+</div>
+
+<!-- #13 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-rank rank-other">13</div>
+    <div class="card-title">GPT-5.5 代码质量提升 — 不再过度防御式编程</div>
+    <div class="score-badge">⭐ 7.5</div>
+  </div>
+  <div class="card-text">GPT 5.5 is definitely a step up. Improved coding quality — no more nested try/catch blocks that would only trigger for cosmic bitflips. Code is more readable and doesn't code defensively as much.</div>
+  <div class="card-meta">
+    <span>来源: <a class="source" href="https://x.com/steipete/status/2047871519762567468" target="_blank">@steipete</a></span>
+    <span class="engagement">474 ❤️ · 12 🔁 · 23.5K 👁️</span>
+    <div class="tags">
+      <span class="tag tag-mindset">思维</span>
+    </div>
+  </div>
+  <div class="card-tip">使用 GPT-5.5 生成代码时，代码更简洁可读，不需要手动移除过度防御的异常处理。提升技术内容生成效率。</div>
+</div>
+
+<!-- 趋势观察 -->
+<div class="trends">
+  <h2>📈 趋势观察</h2>
+  <div class="trend-item"><strong>Agent 编排成主流：</strong>从单一 Agent 到多 Agent 系统（Hub & Spoke），从工具连接到智能协调</div>
+  <div class="trend-item"><strong>非技术用户崛起：</strong>Claude Cowork 等工具让不懂代码的人也能使用 AI Agent</div>
+  <div class="trend-item"><strong>多模态深度整合：</strong>TTS 音频标签、图像生成 Prompt、语音+屏幕同步更新</div>
+  <div class="trend-item"><strong>速度与成本优化：</strong>Midjourney V8.1 3x 快 3x 便宜，GPT-5.5 Pro 全栈推理提速</div>
+</div>
+
+<div class="footer">
+  生成时间：2026-04-25 10:00 UTC · 数据来源：Twitter/X AI KOL 缓存 g1-g5 · 🍈 小瓜
+</div>
+
+</div>
+</body>
+</html>
