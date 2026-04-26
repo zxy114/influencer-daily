@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-04-26</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d2e;
+    --card-hover: #222640;
+    --border: #2a2d3e;
+    --text: #e4e6f0;
+    --text-dim: #8b8fa3;
+    --accent-1: #7c5cfc;
+    --accent-2: #00d4aa;
+    --accent-3: #ff6b8a;
+    --accent-4: #ffb347;
+    --tag-tool: #7c5cfc;
+    --tag-tutorial: #00d4aa;
+    --tag-prompt: #ffb347;
+    --tag-workflow: #5bc0eb;
+    --tag-mind: #ff6b8a;
+    --tag-skill: #c084fc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, 'SF Pro Display', 'Segoe UI', 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 2em;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-dim);
+    font-size: 1em;
+  }
+  .header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .header .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px 18px;
+    font-size: 0.85em;
+  }
+  .header .stat span { color: var(--accent-2); font-weight: 700; }
+
+  /* Card */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-1);
+    box-shadow: 0 8px 30px rgba(124, 92, 252, 0.12);
+  }
+  .card.fire::before { background: linear-gradient(180deg, #ff6b8a, #ff9a5c); }
+  .card.rocket::before { background: linear-gradient(180deg, var(--accent-1), #5bc0eb); }
+  .card.tool::before { background: linear-gradient(180deg, var(--accent-2), #5bc0eb); }
+  .card.idea::before { background: linear-gradient(180deg, var(--accent-4), #ff6b8a); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-rank {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95em;
+  }
+  .card.fire .card-rank { background: linear-gradient(135deg, #ff6b8a, #ff9a5c); color: #fff; }
+  .card.rocket .card-rank { background: linear-gradient(135deg, var(--accent-1), #5bc0eb); color: #fff; }
+  .card.tool .card-rank { background: linear-gradient(135deg, var(--accent-2), #5bc0eb); color: #0f1117; }
+  .card.idea .card-rank { background: linear-gradient(135deg, var(--accent-4), #ff6b8a); color: #0f1117; }
+
+  .card-title {
+    font-size: 1.15em;
+    font-weight: 700;
+    flex: 1;
+  }
+  .card-score {
+    flex-shrink: 0;
+    background: rgba(124, 92, 252, 0.15);
+    color: var(--accent-1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.85em;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .tag {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.75em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .tag-tool { background: rgba(124,92,252,0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(0,212,170,0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(255,179,71,0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(91,192,235,0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(255,107,138,0.15); color: var(--tag-mind); }
+  .tag-skill { background: rgba(192,132,252,0.15); color: var(--tag-skill); }
+
+  .card-quote {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--border);
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.92em;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .card-apply {
+    background: rgba(0, 212, 170, 0.06);
+    border: 1px solid rgba(0, 212, 170, 0.15);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 12px;
+  }
+  .card-apply .label {
+    font-size: 0.78em;
+    font-weight: 700;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .card-apply p {
+    font-size: 0.9em;
+    color: var(--text);
+  }
+
+  .card-source {
+    margin-top: 12px;
+    font-size: 0.8em;
+    color: var(--text-dim);
+  }
+  .card-source a {
+    color: var(--accent-1);
+    text-decoration: none;
+  }
+  .card-source a:hover { text-decoration: underline; }
+
+  code {
+    background: rgba(124, 92, 252, 0.12);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    color: var(--accent-2);
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-dim);
+    font-size: 0.85em;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 4 月 26 日 · 周日</div>
+    <div class="stats">
+      <div class="stat">缓存组 <span>5/5</span></div>
+      <div class="stat">原始推文 <span>30+</span></div>
+      <div class="stat">最终收录 <span>12</span></div>
+      <div class="stat">最高评分 <span>9/10</span></div>
+    </div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card fire">
+    <div class="card-header">
+      <div class="card-rank">1</div>
+      <div class="card-title">Claude Code /ultrareview — 云端 Bug 猎手舰队</div>
+      <div class="card-score">9/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">New in Claude Code: /ultrareview runs a fleet of bug-hunting agents in the cloud. Findings land in the CLI or Desktop automatically. Run it before merging critical changes—auth, data migrations, etc.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>合并关键代码前运行 <code>/ultrareview</code>，云端多 agent 并行扫描 bug。Pro/Max 用户到 5/5 前有 3 次免费额度。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/trq212/status/2046999435239133246" target="_blank">@trq212</a> · 2026-04-22</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card fire">
+    <div class="card-header">
+      <div class="card-rank">2</div>
+      <div class="card-title">Claude Cowork 5 分钟速成 — 零终端 AI 助手</div>
+      <div class="card-score">8/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="card-quote">Free Claude Cowork in 5 Minutes quick start for business professionals. Point it at a folder, describe the outcome, and come back to finished Excel sheets, Word docs, organized files, and slide decks.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>非技术人员也能用 Claude Desktop 做自动化办公：指定文件夹 → 描述需求 → 自动生成文档。内置 <code>/skill-creator</code> 和 <code>/schedule</code> 实现任务复用与定时自动化。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/alliekmiller/status/2046303169781883220" target="_blank">@alliekmiller</a> · 2026-04-20</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card rocket">
+    <div class="card-header">
+      <div class="card-rank">3</div>
+      <div class="card-title">Kimi K2.6 Agent Swarm — 一条 prompt 产出 100+ 文件</div>
+      <div class="card-score">8/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">One Prompt → 100-page PDF report + cited dataset + 30-page executive PPT + 20 financial charts. 300 parallel sub-agents × 4,000 steps per run. Outputs are real files, not chat.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>适合大规模文档产出（研究报告、尽调、竞品分析）。一条 prompt 启动 300 个并行 sub-agent，直接输出真实文件。试用：<code>kimi.com/agent-swarm</code></p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/Kimi_Moonshot/status/2047190601360347304" target="_blank">@Kimi_Moonshot</a> · 2026-04-23</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card rocket">
+    <div class="card-header">
+      <div class="card-rank">4</div>
+      <div class="card-title">Gemini 3.1 Flash TTS — 用 audio tags 控制语音风格</div>
+      <div class="card-score">8/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="card-quote">Gemini 3.1 Flash TTS with audio tags — a seamless way to guide vocal style, pace, and delivery using natural language commands embedded in the prompt.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>在 prompt 中嵌入自然语言 audio tags 控制语音输出的风格、语速。三个要点：格式正确、描述性语言、可组合标签。适合播客、有声内容、语音助手开发。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/GoogleAI/status/2047376437221425152" target="_blank">@GoogleAI</a> · 2026-04-24</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card tool">
+    <div class="card-header">
+      <div class="card-rank">5</div>
+      <div class="card-title">DeepSeek-R1 推荐设置 — 官方最佳实践</div>
+      <div class="card-score">7/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-prompt">Prompt</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="card-quote">Recommended settings for the best DeepSeek-R1 experience: No system prompt. Temperature: 0.6. Official prompts for search & file upload available.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>使用 DeepSeek-R1 时：<strong>不设 system prompt</strong>、<strong>temperature 设为 0.6</strong>。官方另有搜索和文件上传的 prompt 模板。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/deepseek_ai/status/1881318130334814301" target="_blank">@deepseek_ai</a></div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card tool">
+    <div class="card-header">
+      <div class="card-rank">6</div>
+      <div class="card-title">gpt-image-2 + 技能教学漫画 — 从 prompt 到 superpower</div>
+      <div class="card-score">7/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="card-quote">gpt-image-2 model is a step change in humanity's ability to communicate visually. Had our claude code agent design comics to teach the concept of Skills.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>用 gpt-image-2 生成教学漫画，把抽象概念可视化。4 页漫画讲清"从保存 prompt 到使用 Skill"。适合教程内容、onboarding 材料。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/danshipper/status/2047714619997946126" target="_blank">@danshipper</a> · 2026-04-25</div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card tool">
+    <div class="card-header">
+      <div class="card-rank">7</div>
+      <div class="card-title">手绘草图 → 可运行应用（Claude + Nano Banana）</div>
+      <div class="card-score">7/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="card-quote">Turn it into working software using Claude and Nano Banana. Vibe code a weather-responsive outfit selector app from a single, hand-drawn sketch. Step-by-step from sketch to deployed app.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>手绘草图 → Claude 理解意图 → Nano Banana 生成 UI → 部署。完整 vibe coding 工作流，适合快速原型设计。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/GoogleAI/status/2043765424320565248" target="_blank">@GoogleAI</a> · 2026-04-20</div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card tool">
+    <div class="card-header">
+      <div class="card-rank">8</div>
+      <div class="card-title">Nano Banana Pro — 品牌一致性工作流</div>
+      <div class="card-score">7/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">Beyond generating high-fidelity visuals — brand consistency across diverse visual outputs. Template-based design workflow that designers can adapt for their own projects.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>Nano Banana Pro 可在不同视觉输出中保持品牌一致性。配合模板化设计工作流，适合品牌视觉、社交媒体内容批量生产。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/GoogleAI/status/2046279472207548418" target="_blank">@GoogleAI</a> · 2026-04-22</div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card idea">
+    <div class="card-header">
+      <div class="card-rank">9</div>
+      <div class="card-title">Qwen Code CLI — 每日 2000 次免费运行</div>
+      <div class="card-score">6/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="card-quote">You get 2,000 free Qwen Code runs every day! Run: <code>npx @qwen-code/qwen-code@latest</code>. Now with Qwen OAuth support.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>一行命令启动，每天 2000 次免费代码运行。已支持 Qwen OAuth，适合日常编码辅助和 vibe coding。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/JustinLin610/status/1953835877555151134" target="_blank">@JustinLin610</a></div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card idea">
+    <div class="card-header">
+      <div class="card-rank">10</div>
+      <div class="card-title">MCP + Linear Agent — 工具互联新范式</div>
+      <div class="card-score">6/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">MCP support for Linear Agent. Connect tools like Granola, Notion, PostHog to pull in context for creating issues, drafting PRDs, and writing project updates.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>Linear Agent 支持 MCP 协议，可接入 Notion、PostHog 等工具，自动拉取上下文创建 issue、写 PRD。适合产品团队构建自动化工作流。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/thenanyu/status/2047353403936743883" target="_blank">@thenanyu</a> · 2026-04-23</div>
+  </div>
+
+  <!-- #11 -->
+  <div class="card idea">
+    <div class="card-header">
+      <div class="card-rank">11</div>
+      <div class="card-title">Hub & Spoke 多 Agent 编排模式</div>
+      <div class="card-score">6/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">Having a 20-agent system is a million times more powerful than 100 agents working in silos. The hub and spoke model is key but orchestration and documentation are the actual unlock.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>多 agent 系统采用 hub-and-spoke 架构远比堆数量有效。关键是把编排和文档做好——给 chief of staff 配 assistant 处理文书。适合企业级 agent 工作流。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/alliekmiller/status/2046588965457711274" target="_blank">@alliekmiller</a> · 2026-04-21</div>
+  </div>
+
+  <!-- #12 -->
+  <div class="card idea">
+    <div class="card-header">
+      <div class="card-rank">12</div>
+      <div class="card-title">用 Markdown 追踪 Agent 工作 — 长期运行的核心技巧</div>
+      <div class="card-score">6/10</div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-skill">技巧</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-quote">Telling the agent to keep track of the work in a markdown is so effective, especially once you automated the loop that it can work for hours.</div>
+    <div class="card-apply">
+      <div class="label">💡 如何应用</div>
+      <p>让 agent 用 markdown 文件记录工作进度和状态，结合自动化循环可实现数小时无人值守运行。这是 coding agent 长期稳定工作的关键技巧。</p>
+    </div>
+    <div class="card-source">来源：<a href="https://x.com/steipete/status/1941494308709990671" target="_blank">@steipete</a></div>
+  </div>
+
+  <div class="footer">
+    <p>🤖 AI 网红工具日报 · 2026-04-26</p>
+    <p>5 组缓存 · 30+ 原始推文 · 筛选 12 条</p>
+  </div>
+
+</div>
+</body>
+</html>
