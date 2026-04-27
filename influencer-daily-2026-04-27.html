@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-04-27</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2333;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-purple: #bc8cff;
+    --accent-orange: #f0883e;
+    --accent-red: #f85149;
+    --accent-yellow: #d29922;
+    --gradient-1: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+    --gradient-2: linear-gradient(135deg, #3fb950 0%, #58a6ff 100%);
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-hover: 0 8px 32px rgba(88,166,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .header {
+    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(88,166,255,0.06) 0%, transparent 70%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header .stats {
+    display: inline-flex;
+    gap: 24px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header .stat {
+    text-align: center;
+  }
+
+  .header .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .header .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(88,166,255,0.3);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .card.rank-1::before, .card.rank-2::before, .card.rank-3::before { background: var(--gradient-1); }
+  .card.rank-4::before, .card.rank-5::before, .card.rank-6::before { background: var(--gradient-2); }
+  .card.rank-7::before, .card.rank-8::before { background: linear-gradient(135deg, #f0883e, #d29922); }
+  .card.rank-9::before, .card.rank-10::before { background: linear-gradient(135deg, #bc8cff, #f85149); }
+  .card.rank-11::before, .card.rank-12::before { background: linear-gradient(135deg, #8b949e, #58a6ff); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .rank.top3 { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .rank.mid { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+  .rank.low { background: rgba(139,148,158,0.15); color: var(--text-secondary); }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-workflow { background: rgba(88,166,255,0.12); color: var(--accent); }
+  .tag-tool { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+  .tag-prompt { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+  .tag-thinking { background: rgba(240,136,62,0.12); color: var(--accent-orange); }
+
+  .card-body {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  .card-body p + p { margin-top: 10px; }
+
+  .card-body strong { color: var(--text-primary); }
+
+  .card-body ul {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
+  .card-body li { margin-bottom: 4px; }
+
+  .score-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .score-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .score-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gradient-1);
+    transition: width 0.6s ease;
+  }
+
+  .score-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  .tip-box {
+    background: rgba(88,166,255,0.06);
+    border: 1px solid rgba(88,166,255,0.15);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .tip-box .tip-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .tip-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .source {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .source a:hover { text-decoration: underline; }
+
+  .footer-section {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+
+  .footer-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .category-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .category-item .cat-count {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .category-item .cat-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  .trends { margin-top: 8px; }
+
+  .trend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .trend-item:last-child { border-bottom: none; }
+
+  .trend-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+  .footer-meta {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 40px;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🤖 AI 网红工具日报</h1>
+  <div class="date">2026 年 4 月 27 日 · 周一 · 10:00 UTC</div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">48</div>
+      <div class="stat-label">原始条目</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12</div>
+      <div class="stat-label">精选收录</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">缓存组</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <div class="rank top3">1</div>
+      <div class="card-title">Karpathy 的 LLM 辅助编码分层工作流</div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:100%"></div></div>
+      <span class="score-value">15/15</span>
+    </div>
+    <div class="card-body">
+      <p>Karpathy 分享了他日常使用 LLM 编码的分层策略——从 Tab 补全到 GPT-5 Pro 疑难调试，每一层都有明确的使用场景。</p>
+      <ul>
+        <li><strong>基础层 (~75%)</strong> — Cursor tab 自动补全，自己写代码块比文字描述更高带宽</li>
+        <li><strong>第二层</strong> — 选中代码段要求 AI 做具体修改</li>
+        <li><strong>第三层</strong> — Claude Code / Codex 处理较大功能块（不用 YOLO 模式）</li>
+        <li><strong>最终层</strong> — GPT-5 Pro 处理卡壳 10+ 分钟的隐蔽 bug</li>
+      </ul>
+      <p>他还指出 AI 代码的常见问题：过度防御、抽象过度、缺乏"品味"。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>不要依赖单一 AI 工具。建立自己的"编码分层"——日常补全用 Tab，具体修改用选中编辑，大块功能用 agent，疑难 bug 用最强模型。</p>
+    </div>
+    <div class="source">📎 @karpathy · <a href="https://x.com/karpathy/status/1959703967694545296" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <div class="rank top3">2</div>
+      <div class="card-title">Gemini 3.1 TTS 音频标签 — 用 Prompt 控制语音风格</div>
+      <div class="tags"><span class="tag tag-prompt">Prompt</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:80%"></div></div>
+      <span class="score-value">12/15</span>
+    </div>
+    <div class="card-body">
+      <p>Google 发布 Gemini 3.1 TTS 音频标签功能，通过行内标签精确控制语音风格、语速和表达方式。</p>
+      <ul>
+        <li>所有行内标签必须用方括号包裹</li>
+        <li>标签内使用描述性语言效果最佳</li>
+        <li>可组合多个标签实现复杂语音指示</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>做播客或有声内容时，用音频标签代替"请用开心的语气说"这种模糊指令，效果更精确可控。</p>
+    </div>
+    <div class="source">📎 @GoogleAI · <a href="https://x.com/GoogleAI/status/2047376437221425152" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <div class="rank top3">3</div>
+      <div class="card-title">AI Agent 架构设计：主 Agent vs 子 Agent vs 工具</div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:80%"></div></div>
+      <span class="score-value">12/15</span>
+    </div>
+    <div class="card-body">
+      <p>Bryan Johnson 拆解了 AI Agent 系统设计的三种角色及各自适用场景：</p>
+      <ul>
+        <li><strong>主 Agent</strong> — 保持工作流上下文和状态，但会遇到"上下文腐烂"</li>
+        <li><strong>子 Agent</strong> — 擅长特定知识、专用工具、工作流特定角色</li>
+        <li><strong>工具</strong> — 需要可靠执行相同操作或与外部系统交互的场景</li>
+      </ul>
+      <p>核心启发：想想人类团队如何完美完成任务，然后实现其核心要素。没有银弹，每个方案都有权衡。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>设计多 Agent 系统时，用这个框架决定什么放主 Agent、什么拆子 Agent、什么做成确定性工具调用。</p>
+    </div>
+    <div class="source">📎 @levie · <a href="https://x.com/levie/status/1985566097152885126" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card rank-4">
+    <div class="card-header">
+      <div class="rank mid">4</div>
+      <div class="card-title">零打字操作 Claude Code — 语音 + 截图 + 快捷键全流程</div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:67%"></div></div>
+      <span class="score-value">10/15</span>
+    </div>
+    <div class="card-body">
+      <p>Allie K Miller 分享了她几乎不打字使用 Claude Code 的完整设置：</p>
+      <ul>
+        <li>🗣️ <strong>语音提示</strong> — Wispr Flow + Fn 快捷键 + 独立麦克风</li>
+        <li>📸 <strong>截图审查</strong> — 建截图文件夹 → Claude Skill → 按 /ss 即可</li>
+        <li>⌨️ <strong>快捷键</strong> — Ctrl+B 后台 agent，/agents 查看，/tasks 管理</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>装 Wispr Flow + 建截图文件夹 + 记住快捷键，三步直接复制这套组合拳。</p>
+    </div>
+    <div class="source">📎 @alliekmiller · <a href="https://x.com/alliekmiller/status/2014489638195626364" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card rank-5">
+    <div class="card-header">
+      <div class="rank mid">5</div>
+      <div class="card-title">Kimi K2.6 单 Prompt 生成 100 页报告 + 数据集 + PPT</div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:47%"></div></div>
+      <span class="score-value">7/15</span>
+    </div>
+    <div class="card-body">
+      <p>一个 Prompt 输出一整套文档包：</p>
+      <ul>
+        <li>100 页 PDF 报告（含引用数据集）</li>
+        <li>30 页高管演示 PPT</li>
+        <li>20 张财务图表</li>
+      </ul>
+      <p>展示了 Agentic AI 从单个 Prompt 生成综合文档的能力。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>在 Prompt 中明确定义输出结构（报告 + 数据 + PPT），让 agent 分步生成并组合。</p>
+    </div>
+    <div class="source">📎 @Kimi_Moonshot · <a href="https://x.com/Kimi_Moonshot/status/2047189851204911104" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card rank-6">
+    <div class="card-header">
+      <div class="rank mid">6</div>
+      <div class="card-title">"像外科医生一样编码" — 同步工具 + 异步 Agent 组合</div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:47%"></div></div>
+      <span class="score-value">7/15</span>
+    </div>
+    <div class="card-body">
+      <p>Geoffrey Litt 的比喻——像外科医生一样用 AI 编码：</p>
+      <ul>
+        <li>🔪 <strong>核心工作</strong> — 用快速同步工具自己完成（手术刀）</li>
+        <li>🩺 <strong>准备和收尾</strong> — 交给慢速异步 Agent（护士）</li>
+      </ul>
+      <p>最大化 AI 编码效率的关键：区分哪些工作需要实时精准操作，哪些可以交给 Agent 后台处理。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>编码前先判断：这一步亲手做还是交给 Agent？核心逻辑自己写，样板代码让 Agent 跑。</p>
+    </div>
+    <div class="source">📎 @swyx（引用 @geoffreylitt）· <a href="https://x.com/swyx/status/1990967689544609924" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card rank-7">
+    <div class="card-header">
+      <div class="rank low">7</div>
+      <div class="card-title">用 Claude Skill 自动生成高颜值幻灯片</div>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:40%"></div></div>
+      <span class="score-value">6/15</span>
+    </div>
+    <div class="card-body">
+      <p>创建了一个 Claude Skill，可以直接生成精美的网页幻灯片。</p>
+      <p>流程：Claude 先采访你的审美偏好 → 生成几个方向让你选 → 确认后直接出成品。核心理念：代码生成的幻灯片比传统 PPT 工具效果好得多。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>下次做演示，试试让 Claude 生成 HTML 幻灯片而不是 PowerPoint——排版更灵活，效果更专业。</p>
+    </div>
+    <div class="source">📎 @petitegeek · <a href="https://x.com/petitegeek/status/1844327453678575935" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card rank-8">
+    <div class="card-header">
+      <div class="rank low">8</div>
+      <div class="card-title">2026 软件工程的两个角色：海盗 + 建筑师</div>
+      <div class="tags"><span class="tag tag-thinking">思维</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:33%"></div></div>
+      <span class="score-value">5/15</span>
+    </div>
+    <div class="card-body">
+      <p>Dan Shipper 提出 2026 年软件工程需要两种角色：</p>
+      <ul>
+        <li>🏴‍☠️ <strong>海盗</strong> — 尽可能快地编码，探索什么有价值</li>
+        <li>🏗️ <strong>建筑师</strong> — 把海盗的"烂摊子"变成精密机器</li>
+      </ul>
+      <p>在 AI 编码时代，"先跑起来再优化"比"一次做对"更重要。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>用 AI 做"海盗"快速原型验证想法，再花时间整理架构。两种模式交替使用效率最高。</p>
+    </div>
+    <div class="source">📎 @danshipper · <a href="https://x.com/danshipper/status/2043819933675450455" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card rank-9">
+    <div class="card-header">
+      <div class="rank low">9</div>
+      <div class="card-title">LLMwiki — 开源个人知识图谱工具</div>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:33%"></div></div>
+      <span class="score-value">5/15</span>
+    </div>
+    <div class="card-body">
+      <p>nikunj 开源的 LLMwiki 项目，输入 tweets、书签、iMessage/WhatsApp 和所有写作内容，AI 能生成令人惊讶的关联分析。</p>
+      <p>使用方式：把仓库丢给 Claude Code，它会一步步引导你搭建自己的知识图谱。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>如果你有大量碎片化知识，用这个工具让 AI 帮你建立连接、发现隐藏模式。</p>
+    </div>
+    <div class="source">📎 @nikunj · <a href="https://x.com/nikunj/status/2042020992969744702" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card rank-10">
+    <div class="card-header">
+      <div class="rank low">10</div>
+      <div class="card-title">TLDW — 把长 YouTube 视频变成精选片段</div>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:27%"></div></div>
+      <span class="score-value">4/15</span>
+    </div>
+    <div class="card-body">
+      <p>TLDW (Too Long; Didn't Watch) 帮你从长视频中提取 5 分钟精华：</p>
+      <ul>
+        <li>个性化高亮片段（不是通用摘要）</li>
+        <li>一键选择转录用例生成笔记</li>
+        <li>AI 解释你不懂的内容</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>看技术演讲或教程时，用 TLDW 快速定位关键段落，节省大量时间。</p>
+    </div>
+    <div class="source">📎 @zarazhangrui · <a href="https://x.com/zarazhangrui/status/1982919958423089315" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card rank-11">
+    <div class="card-header">
+      <div class="rank low">11</div>
+      <div class="card-title">从手绘草图到可用 App — Google AI 的 Vibe Code 工作流</div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:27%"></div></div>
+      <span class="score-value">4/15</span>
+    </div>
+    <div class="card-body">
+      <p>Google 展示了完整工作流：一张手绘草图 + AI + Nano Banana → 响应天气的穿搭选择器 App。</p>
+      <p>从粗糙草图到功能完整的应用，展示了"氛围编码"的潜力。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>有想法但不会设计？画个草图丢给 AI，它能帮你跑通从概念到可用产品的第一步。</p>
+    </div>
+    <div class="source">📎 @GoogleAI · <a href="https://x.com/GoogleAI/status/2043765424320565248" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card rank-12">
+    <div class="card-header">
+      <div class="rank low">12</div>
+      <div class="card-title">Karpathy：System Prompt Learning — LLM 学习的新范式</div>
+      <div class="tags"><span class="tag tag-thinking">思维</span><span class="tag tag-prompt">Prompt</span></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">实用性</span>
+      <div class="score-track"><div class="score-fill" style="width:80%"></div></div>
+      <span class="score-value">12/15</span>
+    </div>
+    <div class="card-body">
+      <p>Karpathy 提出 LLM 学习可能缺少一个关键范式——System Prompt Learning：</p>
+      <ul>
+        <li>预训练 → 知识</li>
+        <li>微调 → 习惯性行为</li>
+        <li><strong>系统提示学习</strong> → 问题解决策略</li>
+      </ul>
+      <p>大部分人类学习更像改变"系统提示"——遇到问题，想明白，然后用明确的方式"记住"下次该怎么做。LLM 就像《记忆碎片》里的主角——我们还没给他们配备"记事本"。</p>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <p>构建 AI 应用时，考虑给 LLM 一个"策略笔记"——让 AI 把解决问题的经验写成系统提示，比重新训练高效得多。</p>
+    </div>
+    <div class="source">📎 @karpathy · <a href="https://x.com/karpathy/status/1921368644069765486" target="_blank">推文链接</a></div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer-section">
+    <h2>📊 今日概览</h2>
+
+    <div class="category-grid">
+      <div class="category-item">
+        <div class="cat-count">5</div>
+        <div class="cat-name">🛠️ 工作流</div>
+      </div>
+      <div class="category-item">
+        <div class="cat-count">4</div>
+        <div class="cat-name">🔧 工具</div>
+      </div>
+      <div class="category-item">
+        <div class="cat-count">2</div>
+        <div class="cat-name">🎯 Prompt</div>
+      </div>
+      <div class="category-item">
+        <div class="cat-count">2</div>
+        <div class="cat-name">💭 思维</div>
+      </div>
+    </div>
+
+    <div class="trends">
+      <div class="trend-item">
+        <span class="trend-icon">📈</span>
+        <span><strong>编码工作流分层</strong>成为主流思路——Karpathy + swyx + levie 三条独立推文指向同一方向</span>
+      </div>
+      <div class="trend-item">
+        <span class="trend-icon">🎙️</span>
+        <span><strong>语音/多模态操作 AI</strong> 正在普及——Allie K Miller 的零打字方案代表未来交互方向</span>
+      </div>
+      <div class="trend-item">
+        <span class="trend-icon">📄</span>
+        <span><strong>单 Prompt 生成完整文档包</strong> 展示 Agentic AI 的文档能力</span>
+      </div>
+      <div class="trend-item">
+        <span class="trend-icon">🧠</span>
+        <span><strong>System Prompt Learning</strong> 可能是下一个关键技术突破</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-meta">
+    日报生成时间：2026-04-27 10:00 UTC | 数据来源：X/Twitter 5 组缓存 | 筛选条目：48 → 12
+  </div>
+</div>
+
+</body>
+</html>
