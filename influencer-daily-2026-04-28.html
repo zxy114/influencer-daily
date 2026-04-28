@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 网红工具日报 — 2026-04-28</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card-hover: #222632;
+    --border: #2a2d3a;
+    --accent: #6c5ce7;
+    --accent2: #00cec9;
+    --accent3: #fd79a8;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --gold: #f9ca24;
+    --green: #00b894;
+    --tag-bg: rgba(108,92,231,0.15);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header .date { color: var(--text-dim); font-size: 14px; }
+  .header .stats {
+    display: inline-flex; gap: 16px; margin-top: 12px;
+    font-size: 13px; color: var(--text-dim);
+  }
+  .header .stats span { 
+    background: var(--card); padding: 4px 12px; border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+  .header .stats .num { color: var(--accent2); font-weight: 600; }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 30px 0 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .emoji { font-size: 22px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+    border-radius: 4px 0 0 4px;
+  }
+  .card.gold::before { background: var(--gold); }
+  .card.green::before { background: var(--green); }
+  .card:hover { background: var(--card-hover); transform: translateY(-1px); }
+
+  .card-rank {
+    position: absolute; top: 16px; right: 20px;
+    font-size: 24px; font-weight: 800;
+    color: var(--accent); opacity: 0.3;
+  }
+  .card.gold .card-rank { color: var(--gold); }
+
+  .card h3 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 12px; padding-right: 40px;
+    line-height: 1.4;
+  }
+
+  .card .quote {
+    font-size: 13px; color: var(--text-dim);
+    border-left: 2px solid var(--border);
+    padding-left: 14px; margin: 12px 0;
+    font-style: italic;
+  }
+
+  .card .meta {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 12px 0 8px;
+  }
+  .card .tag {
+    font-size: 11px; padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .card .tag.tool { background: rgba(0,206,201,0.15); color: var(--accent2); }
+  .card .tag.tutorial { background: rgba(0,184,148,0.15); color: var(--green); }
+  .card .tag.prompt { background: rgba(253,121,168,0.15); color: var(--accent3); }
+  .card .tag.workflow { background: rgba(108,92,231,0.15); color: var(--accent); }
+  .card .tag.mindset { background: rgba(249,202,36,0.15); color: var(--gold); }
+
+  .card .source {
+    font-size: 12px; color: var(--text-dim);
+  }
+  .card .source a {
+    color: var(--accent2); text-decoration: none;
+  }
+  .card .source a:hover { text-decoration: underline; }
+
+  .card .apply {
+    margin-top: 12px; padding: 10px 14px;
+    background: rgba(108,92,231,0.08);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .card .apply strong { color: var(--accent2); }
+
+  .card .score {
+    display: inline-flex; align-items: center; gap: 2px;
+    margin-top: 8px;
+  }
+  .card .score .star { color: var(--gold); font-size: 12px; }
+  .card .score .score-num {
+    font-size: 12px; color: var(--text-dim); margin-left: 4px;
+  }
+
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+    gap: 12px; margin-top: 30px; padding: 20px;
+    background: var(--card); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .stat-item { text-align: center; }
+  .stat-item .num {
+    font-size: 22px; font-weight: 700; color: var(--accent2);
+  }
+  .stat-item .label {
+    font-size: 12px; color: var(--text-dim); margin-top: 4px;
+  }
+
+  .footer {
+    text-align: center; padding: 30px 20px;
+    color: var(--text-dim); font-size: 12px;
+    border-top: 1px solid var(--border); margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 22px; }
+    .card { padding: 18px; }
+    .stats-bar { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 4 月 28 日 · 星期二</div>
+    <div class="stats">
+      <span>缓存 <span class="num">5/5</span></span>
+      <span>推文 <span class="num">~47</span></span>
+      <span>精选 <span class="num">13</span></span>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="emoji">🥇</span> Top Picks</div>
+
+  <!-- Card 1 -->
+  <div class="card gold">
+    <div class="card-rank">#1</div>
+    <h3>Claude Design 全栈教程：16 分钟搞定视频/幻灯片/网站/App</h3>
+    <div class="score">
+      <span class="star">★★★★★</span>
+      <span class="score-num">评分 27</span>
+    </div>
+    <div class="quote">
+      "这是我的新教程，现场演示用 Claude Design 能构建的一切。16 分钟内覆盖如何制作视频、幻灯片、网站、App，甚至初步设计系统。Claude Design 超级有趣，你会很快烧完用量配额 :)"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+      <span class="tag tutorial">教程</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/petergyang/status/2045522933943238934">@petergyang</a> · 812 ❤️ · 73 🔁 · 
+      <a href="https://youtu.be/WMnk1LFBMqY">📺 观看视频</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>跟着 16 分钟视频走一遍，掌握 Claude Design 完整工作流。适合内容创作者快速产出多类型素材。</div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card gold">
+    <div class="card-rank">#2</div>
+    <h3>Idea File：AI Agent 时代的协作新范式</h3>
+    <div class="score">
+      <span class="star">★★★★★</span>
+      <span class="score-num">评分 25 · 26.5K ❤️ · 6.9M 👁️</span>
+    </div>
+    <div class="quote">
+      "在这个 LLM Agent 时代，分享具体代码/应用的意义降低了——你只需要分享想法，然后对方的 Agent 就能根据你的具体需求定制构建。"
+    </div>
+    <div class="meta">
+      <span class="tag workflow">工作流</span>
+      <span class="tag mindset">思维</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/karpathy/status/2040470801506541998">@karpathy</a> · 
+      <a href="https://gist.github.com/karpathy/442a6">📄 Idea File</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>用自然语言描述想法而非代码，让各自的 AI Agent 自动适配构建。适合团队协作与知识分享。</div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card gold">
+    <div class="card-rank">#3</div>
+    <h3>个人维基百科：用 LLM 构建专属知识库</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 12 · 8.9K ❤️</span>
+    </div>
+    <div class="quote">
+      "记忆是显式的、可导航的（Wiki 格式）。数据是你的，存在本地电脑上。通用文件格式，任何工具都能读取。BYOAI — 你可以用任何 AI 接入。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+      <span class="tag workflow">工作流</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/karpathy/status/2040572272944324650">@karpathy</a> · 参考 Farza 的 <a href="https://x.com/FarzaTV">Farzapedia</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>把日记/笔记/聊天喂给 LLM，自动生成个人 Wiki。用 Obsidian 查看，数据完全本地可控。</div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-rank">#4</div>
+    <h3>GPT-5.5 发布：面向真实工作的新一代智能</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 12 · 51.7K ❤️ · 12.4M 👁️</span>
+    </div>
+    <div class="quote">
+      "新一代智能，面向真实工作和 Agent 驱动。能够理解复杂目标、使用工具、自我检查、完成任务闭环。现已在 ChatGPT 和 Codex 上线。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/OpenAI/status/2047376561205325845">@OpenAI</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>已上线 ChatGPT 和 Codex，直接升级试用。重点关注工具调用和自我校验能力，适合复杂多步任务。</div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-rank">#5</div>
+    <h3>Claude Code 桌面端重大更新：多会话 + 侧边栏</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 5 · 912 ❤️</span>
+    </div>
+    <div class="quote">
+      "在 Cowork 和 Code 之间，我发现现在基本不需要打开其他 App（甚至终端）就能完成大部分工作。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/alexalbert__/status/2044144091395699055">@alexalbert__</a> · 
+      <a href="https://x.com/claudeai">Claude 桌面端</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>升级桌面端 Claude Code，尝试多会话并排运行 + 侧边栏管理。开发者的日常 IDE 替代。</div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card green">
+    <div class="card-rank">#6</div>
+    <h3>Hailuo AI Agent：无限画布上的多模态创作</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 8 · 首周免费</span>
+    </div>
+    <div class="quote">
+      "只需对话，就能在无限画布上看到你的想法变为现实。Agent 自动选择最佳模型、规划工作流。图像、视频、音频——全在一个平台。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/Hailuo_AI/status/1970085770833887233">@Hailuo_AI</a> · <a href="https://hailuoai.video/create">🎨 立即试用</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>免费注册，用自然语言驱动多模态创作。适合内容创作者一站式生产图文音视频素材。</div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card green">
+    <div class="card-rank">#7</div>
+    <h3>Agent Markdown 工作流：让 AI 连续工作数小时</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 8</span>
+    </div>
+    <div class="quote">
+      "让 Agent 用 Markdown 文件追踪工作进度非常有效，尤其是自动化循环后可以让它连续工作数小时。四步循环：1) 创建工作区 2) 写计划 3) 执行 4) 返回总结"
+    </div>
+    <div class="meta">
+      <span class="tag prompt">Prompt</span>
+      <span class="tag workflow">工作流</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/steipete/status/1941494308709990671">@steipete</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>给 Agent 一个 Markdown 任务文件，要求它每步更新进度。四步循环让 AI 自主持续工作。</div>
+  </div>
+
+  <div class="section-title"><span class="emoji">🥈</span> Highly Recommended</div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-rank">#8</div>
+    <h3>从涂鸦到 App：Gemini Vibe Coding 工作流</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 7</span>
+    </div>
+    <div class="quote">
+      "下一个项目有个涂鸦？用 Gemini 和 Nano Banana 把它变成能运行的软件。从手绘草图 vibe code 一个天气穿搭选择器 App——只需描述你想要的。"
+    </div>
+    <div class="meta">
+      <span class="tag tutorial">教程</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/GoogleAI/status/2043765424320565248">@GoogleAI</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>手绘草图 → 拍照上传 → 自然语言描述 → Gemini 自动生成 App。零代码原型利器。</div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-rank">#9</div>
+    <h3>软件工程 2026：海盗 + 架构师双角色框架</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 7 · 131K 👁️</span>
+    </div>
+    <div class="quote">
+      "2026 年的软件工程需要两个角色：海盗和架构师。海盗用最快的速度编码来验证什么有价值。架构师把那堆烂代码变成精密运转的机器。"
+    </div>
+    <div class="meta">
+      <span class="tag workflow">工作流</span>
+      <span class="tag mindset">思维</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/danshipper/status/2043819933675450455">@danshipper</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>先用"海盗模式"快速试错（AI 加速），再用"架构师模式"规范化。两步走提高产出质量。</div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-rank">#10</div>
+    <h3>Gemini Storybook：2 步制作个性化绘本</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 7 · 全球免费</span>
+    </div>
+    <div class="quote">
+      "只需 2 步就能创建个性化、带插图、有朗读配音的故事书。免费，全球可用。"
+    </div>
+    <div class="meta">
+      <span class="tag tutorial">教程</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/joshwoodward/status/Storybook">@joshwoodward</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>快速生成儿童绘本、品牌故事、教育内容。配合朗读功能直接产出多媒体内容。</div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-rank">#11</div>
+    <h3>Gemini 3.1 TTS：[awe] 音频标签控制语音表达</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 8</span>
+    </div>
+    <div class="quote">
+      "引入 [awe] 音频标签，引导语音风格、节奏和表达。技巧：1) 标签放在 [...] 内；2) 可叠加多个标签；3) 配合 TTS 产出更自然的输出。"
+    </div>
+    <div class="meta">
+      <span class="tag prompt">Prompt</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/GoogleAI/status/2047376437221425152">@GoogleAI</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>在文本中插入音频标签控制语音情感。适合制作播客/有声内容。</div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-rank">#12</div>
+    <h3>Midjourney V8.1 + SREF/Moodboard 更新</h3>
+    <div class="score">
+      <span class="star">★★★★</span>
+      <span class="score-num">评分 5</span>
+    </div>
+    <div class="quote">
+      "V8.1 已上线！原生 2K HD 渲染——速度比 V8 快 3 倍、成本便宜 3 倍。新 SREF/Moodboards：4 倍更快更便宜。--sv 7 是新版，--sv 6 是旧版。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+      <span class="tag prompt">Prompt</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/midjourney/status/2044166948674769196">@midjourney</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>用 --sv 7 获取新版风格参考，升级 2K HD 模式提升画质。Image prompts 回归后可用参考图驱动生成。</div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="card">
+    <div class="card-rank">#13</div>
+    <h3>通义万相：多语言文本渲染增强</h3>
+    <div class="score">
+      <span class="star">★★★</span>
+      <span class="score-num">评分 4</span>
+    </div>
+    <div class="quote">
+      "更好的字形精度、更一致的排版、更清晰的布局。混合语言场景处理也更优雅。做海报、UI mockup、广告或文字密集内容，这是有意义的进步。"
+    </div>
+    <div class="meta">
+      <span class="tag tool">工具</span>
+    </div>
+    <div class="source">
+      <a href="https://x.com/Alibaba_Qwen/status/2048024942286147822">@Alibaba_Qwen</a>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>生成中文/多语言海报、广告图、UI mockup 时效果显著提升。多语言混排场景首选。</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="num">5/5</div>
+      <div class="label">缓存组</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">~47</div>
+      <div class="label">原始推文</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">13</div>
+      <div class="label">精选收录</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">6</div>
+      <div class="label">工具类</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">3</div>
+      <div class="label">工作流</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">2</div>
+      <div class="label">教程类</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    自动生成于 2026-04-28 10:00 UTC · AI 网红日报系统
+  </div>
+</div>
+</body>
+</html>
