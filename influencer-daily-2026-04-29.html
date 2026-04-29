@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-04-29</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f0883e;
+    --accent4: #a371f7;
+    --accent5: #f778ba;
+    --tag-tool: #1f6feb;
+    --tag-workflow: #238636;
+    --tag-prompt: #8957e5;
+    --tag-thinking: #d29922;
+    --tag-tutorial: #0891b2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .date { color: var(--text-dim); font-size: 14px; }
+  .header .stats {
+    display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap;
+  }
+  .header .stat-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 16px; font-size: 13px;
+  }
+  .header .stat-item strong { color: var(--accent); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .card:hover { border-color: var(--accent); }
+
+  .card-rank {
+    position: absolute; top: -8px; left: 16px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .card-meta {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px;
+  }
+
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; color: #fff;
+  }
+  .tag-tool { background: var(--tag-tool); }
+  .tag-workflow { background: var(--tag-workflow); }
+  .tag-prompt { background: var(--tag-prompt); }
+  .tag-thinking { background: var(--tag-thinking); }
+  .tag-tutorial { background: var(--tag-tutorial); }
+
+  .score { font-size: 13px; color: var(--accent3); }
+
+  .card-quote {
+    background: #0d1117;
+    border-left: 3px solid var(--accent4);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .card-source {
+    font-size: 13px; color: var(--text-dim); margin-bottom: 12px;
+  }
+  .card-source a { color: var(--accent); text-decoration: none; }
+  .card-source a:hover { text-decoration: underline; }
+
+  .card-stats {
+    display: flex; gap: 16px; font-size: 13px; color: var(--text-dim); margin-bottom: 12px; flex-wrap: wrap;
+  }
+  .card-stats span { display: flex; align-items: center; gap: 4px; }
+
+  .card-tip {
+    background: rgba(63, 185, 80, 0.08);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--accent2);
+  }
+  .card-tip::before { content: "💡 如何应用："; font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .container { padding: 12px; }
+    .card { padding: 16px; }
+    .header h1 { font-size: 22px; }
+    .card-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🍈 AI 网红工具日报</h1>
+    <div class="date">2026 年 4 月 29 日 · 星期三</div>
+    <div class="stats">
+      <div class="stat-item">缓存组 <strong>4/5</strong></div>
+      <div class="stat-item">总推文 <strong>39</strong></div>
+      <div class="stat-item">精选 <strong>12</strong></div>
+      <div class="stat-item">最高浏览 <strong>925 万</strong></div>
+    </div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card">
+    <div class="card-rank">#1</div>
+    <div class="card-title">28 分钟学会 Codex 95% 的能力 — 7 大知识工作功能全解析</div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">🎓 教程</span>
+      <span class="score">⭐ 15 分</span>
+    </div>
+    <div class="card-quote">Learn 95% of Codex in 28 minutes. These are the 7 knowledge work capabilities inside Codex, the super-app:
+1. Full File Access
+2. Persistent Memory
+3. Plugins
+4. Skills
+5. GPT Image Access
+6. Browser and Computer Use
+7. Automations
++ Bonus: Chronicle</div>
+    <div class="card-source">📍 <a href="https://x.com/steipete/status/2049285752866107856" target="_blank">@steipete</a></div>
+    <div class="card-stats">
+      <span>❤️ 1,439</span><span>🔄 140</span><span>🔖 3,133</span><span>👁 235,732</span>
+    </div>
+    <div class="card-tip">跟着视频时间戳逐个学习 7 大功能，30 分钟内掌握 Codex 核心用法。重点关注 Plugins 和 Skills——它们能极大扩展 Codex 的能力边界。</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card">
+    <div class="card-rank">#2</div>
+    <div class="card-title">AI 原生团队运作方式与传统团队截然不同</div>
+    <div class="card-meta">
+      <span class="tag tag-thinking">🧠 思维</span>
+      <span class="score">⭐ 9 分</span>
+    </div>
+    <div class="card-quote">AI-native software engineering teams operate very differently. Great engineers now play broader roles — partly product managers, designers, sometimes marketers. Small teams in the same office can move incredibly quickly. If one PM decides what to build and one engineer builds it directly, they can execute incredibly quickly. Agentic coding isn't just changing the workflow of software engineering, it's also changing all the teams around it.</div>
+    <div class="card-source">📍 <a href="https://x.com/AndrewYNg/status/2048793852702757151" target="_blank">@AndrewYNg</a></div>
+    <div class="card-stats">
+      <span>❤️ 1,677</span><span>🔄 317</span><span>👁 306,954</span>
+    </div>
+    <div class="card-tip">引入 AI coding agent 时，让工程师同时承担产品经理角色——减少沟通瓶颈，决策即执行。小团队（1 PM + 1 工程师）在 AI 加持下可以跑得更快。</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card">
+    <div class="card-rank">#3</div>
+    <div class="card-title">clawsweeper — 50 个 Codex 并行运行，自动清理 Issue/PR</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="score">⭐ 6 分</span>
+    </div>
+    <div class="card-quote">Built clawsweeper, which runs 50 codex in parallel around the clock, scans issues/prs deep and closes what is already implemented or what makes no sense. Closed around 4000 issues today, a few thousand are in the pipeline.</div>
+    <div class="card-source">📍 <a href="https://x.com/steipete/status/2047982647264059734" target="_blank">@steipete</a> · <a href="https://github.com/openclaw/clawsweeper" target="_blank">GitHub</a></div>
+    <div class="card-stats">
+      <span>❤️ 9,333</span><span>🔄 578</span><span>🔖 7,855</span><span>👁 2,106,503</span>
+    </div>
+    <div class="card-tip">开源项目，直接部署到 GitHub 仓库。适合 Issue 积压严重的团队——并行运行多个 Codex 实例自动识别已实现的 Issue 并关闭。</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <div class="card-rank">#4</div>
+    <div class="card-title">Replit Agent 4 — AI 驱动的创意协作开发平台</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Software isn't merely technical work anymore. It's creative. Introducing Replit Agent 4. The first AI built for creative collaboration between humans and agents. Design on an infinite canvas, work with your team, run parallel agents, and ship working apps, sites, slides & more. Agent 4 made Replit into an OS of sorts — you can endlessly customize the platform with skills.</div>
+    <div class="card-source">📍 <a href="https://x.com/amasad/status/2031755113694679094" target="_blank">@amasad</a> · <a href="https://replit.com" target="_blank">Replit</a></div>
+    <div class="card-stats">
+      <span>❤️ 6,800</span><span>🔄 1,300</span><span>👁 3,000,000</span>
+    </div>
+    <div class="card-tip">适合快速原型开发——在无限画布上设计，并行运行多个 Agent，直接产出可用的 App/网站/PPT。通过 Skills 系统可无限扩展平台能力。</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <div class="card-rank">#5</div>
+    <div class="card-title">ChatGPT Workspace Agents — 跨工具跨团队的共享 Agent</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">🔄 工作流</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Introducing workspace agents in ChatGPT — shared agents that can handle complex tasks and long-running workflows across tools and teams.</div>
+    <div class="card-source">📍 <a href="https://x.com/OpenAI/status/2047008987665809771" target="_blank">@OpenAI</a></div>
+    <div class="card-tip">在 ChatGPT 中创建共享 Agent，团队成员可以复用同一个 Agent 来处理跨工具的复杂任务和长时间运行的工作流。适合需要标准化 AI 工作流的团队。</div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card">
+    <div class="card-rank">#6</div>
+    <div class="card-title">Kimi K2.6 Agent — 一个 Prompt 生成完整网站（含 WebGL/3D/后端）</div>
+    <div class="card-meta">
+      <span class="tag tag-prompt">🎨 Prompt</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Meet Kimi K2.6 agent — Video hero section, WebGL shaders, real backends. From one prompt.
+• Video hero sections (cinematic aesthetic, auto-composited)
+• WebGL shader animations (native GLSL/WGSL)
+• Motion design (GSAP + Framer Motion)
+• Backend database (auth + database + backend in one pass)
+• Website stack (React 19 + TypeScript + Vite + Tailwind + shadcn/ui)
+• 3D w/ physically-based lighting (Three.js + React Three Fiber)</div>
+    <div class="card-source">📍 <a href="https://x.com/Kimi_Moonshot/status/2046265960383033825" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="card-stats">
+      <span>❤️ 4,913</span><span>🔄 418</span><span>👁 378,208</span>
+    </div>
+    <div class="card-tip">直接用自然语言描述你想要的网站效果，Kimi K2.6 可以一次性生成含 WebGL 特效、后端数据库、用户认证的完整网站。适合快速 MVP 开发。</div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card">
+    <div class="card-rank">#7</div>
+    <div class="card-title">GPT-5.5 — 新一代智能体级 AI 模型</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Introducing GPT-5.5 — A new class of intelligence for real work and powering agents, built to understand complex goals, use tools, check its work, and carry more tasks through to completion. Now available in ChatGPT and Codex.</div>
+    <div class="card-source">📍 <a href="https://x.com/OpenAI/status/2047374439407620096" target="_blank">@OpenAI</a></div>
+    <div class="card-tip">在 ChatGPT 或 Codex 中切换到 GPT-5.5 模型，享受更强的复杂任务理解能力和工具使用能力。特别适合需要多步骤、跨工具的工作流自动化。</div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card">
+    <div class="card-rank">#8</div>
+    <div class="card-title">Gemini 3.1 TTS 音频标签 Prompt 指南</div>
+    <div class="card-meta">
+      <span class="tag tag-prompt">🎨 Prompt</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Gemini 3.1 TTS introduces [awe] audio tags — an intuitive way to guide vocal style, pace, and delivery.
+Tips:
+1. All inline tags in square brackets like [screams] or [whispers]
+2. Insert tags exactly where you want the transition
+3. Use [slow]/[fast] to control pace, [short pause]/[long pause] for drama
+4. Granular vocalizations: [cackles], [whispers]
+5. Ideal formula: [encouraging] Text [slow] "Quote" [short pause] Perfect! [laughs]</div>
+    <div class="card-source">📍 <a href="https://x.com/GoogleAI/status/2047377023656436013" target="_blank">@GoogleAI</a></div>
+    <div class="card-stats">
+      <span>❤️ 646</span><span>🔄 82</span><span>👁 52,090</span>
+    </div>
+    <div class="card-tip">用方括号标签精确控制 TTS 输出的语气、语速和情感。适合播客制作、语音教学内容创作。</div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card">
+    <div class="card-rank">#9</div>
+    <div class="card-title">Codex 每次 commit 自动回归检查</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">🔄 工作流</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">I'm now spinning up a codex instance on every commit landing on main, looking for booboos (regressions, security issues). It's live for 10 min and already found one of mine.</div>
+    <div class="card-source">📍 <a href="https://x.com/steipete/status/2049290741013262522" target="_blank">@steipete</a></div>
+    <div class="card-stats">
+      <span>❤️ 256</span><span>🔄 4</span><span>🔖 72</span><span>👁 27,554</span>
+    </div>
+    <div class="card-tip">在 CI/CD pipeline 中为每个 main 分支的 commit 启动 Codex 实例，运行 10 分钟自动检测回归和安全问题。已在真实项目中捕获了作者的 bug。</div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card">
+    <div class="card-rank">#10</div>
+    <div class="card-title">GPT-5.5 API 已上线 — 开发者用更少 Token 完成复杂任务</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="score">⭐ 2 分</span>
+    </div>
+    <div class="card-quote">GPT-5.5 is now available in the OpenAI API! The big thing for developers is that it's not just smarter, it can get complex tasks done with fewer tokens and fewer retries. Ask Codex to migrate your Responses API integration to GPT-5.5!</div>
+    <div class="card-source">📍 <a href="https://x.com/romainhuet/status/2047879972912804139" target="_blank">@romainhuet</a> (OpenAI)</div>
+    <div class="card-stats">
+      <span>👁 145,700</span>
+    </div>
+    <div class="card-tip">如果产品已接入 OpenAI API，直接切换到 gpt-5.5 模型。复杂任务需要更少的 Token 和更少的重试次数，降低 API 成本的同时提升完成率。</div>
+  </div>
+
+  <!-- #11 -->
+  <div class="card">
+    <div class="card-rank">#11</div>
+    <div class="card-title">模块化 AI：Agent 扩展的关键是恰到好处的权限控制</div>
+    <div class="card-meta">
+      <span class="tag tag-thinking">🧠 思维</span>
+      <span class="score">⭐ 5 分</span>
+    </div>
+    <div class="card-quote">Most AI initiatives don't fail because the models are weak. They fail because teams give agents too much power, or not enough. That's the real scaling problem nobody talks about. Modular AI, built like building blocks, changes the game.</div>
+    <div class="card-source">📍 <a href="https://x.com/Ronald_vanLoon/status/2049141666339017098" target="_blank">@Ronald_vanLoon</a></div>
+    <div class="card-stats">
+      <span>❤️ 18</span><span>🔄 5</span><span>👁 723</span>
+    </div>
+    <div class="card-tip">设计 AI Agent 时采用模块化架构——每个模块只拥有完成其任务所需的最小权限。避免"全给"或"全不给"的两极分化。</div>
+  </div>
+
+  <!-- #12 -->
+  <div class="card">
+    <div class="card-rank">#12</div>
+    <div class="card-title">DeepSeek-V4 发布 — 百万级上下文 + 75% 折扣</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="score">⭐ 2 分</span>
+    </div>
+    <div class="card-quote">DeepSeek-V4 Preview is officially live & open-sourced! Welcome to the era of cost-effective 1M context length.
+• DeepSeek-V4-Pro: 1.6T total / 49B active params
+• DeepSeek-V4-Flash: 284B total / 13B active params
+API integration: Claude Code set model to deepseek-v4-pro[1m] for 1M context!
+75% OFF until May 5th.</div>
+    <div class="card-source">📍 <a href="https://x.com/deepseek_ai/status/2047516922263285776" target="_blank">@deepseek_ai</a></div>
+    <div class="card-stats">
+      <span>❤️ 44,668</span><span>🔄 7,642</span><span>👁 9,259,620</span>
+    </div>
+    <div class="card-tip">在 Claude Code 中设置 deepseek-v4-pro[1m] 即可解锁 1M 上下文。5 月 5 日前 API 75% 折扣，适合大批量文档分析场景。</div>
+  </div>
+
+  <div class="footer">
+    <p>🍈 AI 网红工具日报 · 由 OpenClaw 自动生成</p>
+    <p style="margin-top:8px;">数据源：X (Twitter) AI 网红账号缓存 · Group 1-4 完成（G5 Brave API 配额耗尽）</p>
+    <p style="margin-top:4px;">生成时间：2026-04-29 10:00 UTC</p>
+  </div>
+
+</div>
+</body>
+</html>
