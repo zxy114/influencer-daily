@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-05-01</title>
+<style>
+  :root {
+    --bg-primary: #0f1117;
+    --bg-card: #1a1d2e;
+    --bg-card-hover: #222640;
+    --border: #2a2f45;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0b0;
+    --text-muted: #6b7280;
+    --accent-blue: #60a5fa;
+    --accent-purple: #a78bfa;
+    --accent-green: #34d399;
+    --accent-orange: #fb923c;
+    --accent-pink: #f472b6;
+    --accent-yellow: #fbbf24;
+    --accent-red: #f87171;
+    --tag-bg: #2a2f45;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .header .subtitle {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0 30px;
+  }
+  .stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 100px;
+  }
+  .stat-item .num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-blue);
+  }
+  .stat-item .label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+  }
+  .card.rank-1::before { background: linear-gradient(to bottom, var(--accent-yellow), var(--accent-orange)); }
+  .card.rank-2::before { background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple)); }
+  .card.rank-3::before { background: linear-gradient(to bottom, var(--accent-green), var(--accent-blue)); }
+  .card.rank-other::before { background: var(--border); }
+  .card:hover { background: var(--bg-card-hover); border-color: #3a3f55; }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+  .card-rank {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 28px;
+  }
+  .card-rank.gold { color: var(--accent-yellow); }
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+  }
+  .score-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .score-high { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); }
+  .score-mid { background: rgba(251, 191, 36, 0.15); color: var(--accent-yellow); }
+  .score-low { background: rgba(156, 163, 175, 0.15); color: var(--text-secondary); }
+  .card-quote {
+    background: rgba(96, 165, 250, 0.06);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 12px 0;
+  }
+  .source-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .source-link:hover { text-decoration: underline; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .tag-tool { background: rgba(96, 165, 250, 0.15); color: var(--accent-blue); }
+  .tag-tutorial { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); }
+  .tag-prompt { background: rgba(167, 139, 250, 0.15); color: var(--accent-purple); }
+  .tag-workflow { background: rgba(251, 146, 60, 0.15); color: var(--accent-orange); }
+  .tag-mindset { background: rgba(244, 114, 182, 0.15); color: var(--accent-pink); }
+  .tip-box {
+    background: rgba(52, 211, 153, 0.08);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+  }
+  .tip-box .tip-label {
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tip-box .tip-text { color: var(--text-secondary); }
+  .footer {
+    text-align: center;
+    padding: 30px 20px 20px;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+  .emoji-icon { font-size: 20px; margin-right: 6px; }
+  @media (max-width: 600px) {
+    .card { padding: 18px; }
+    .card-header { flex-wrap: wrap; }
+    .stats-bar { gap: 8px; }
+    .stat-item { min-width: 80px; padding: 10px 14px; }
+    .stat-item .num { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🍈 AI 网红工具日报</h1>
+    <div class="date">2026-05-01 · 周五</div>
+    <div class="subtitle">从今日 5 组缓存中精选 Top 12 条高实用度内容</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="num">5/5</div>
+      <div class="label">缓存组</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">36</div>
+      <div class="label">收录推文</div>
+    </div>
+    <div class="stat-item">
+      <div class="num">12</div>
+      <div class="label">最终精选</div>
+    </div>
+    <div class="stat-item">
+      <div class="num" style="color: var(--accent-yellow);">15</div>
+      <div class="label">最高评分</div>
+    </div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="card-rank gold">#1</span>
+      <span class="card-title"><span class="emoji-icon">📚</span>Andrew Ng: AI Prompting for Everyone — 2026 年 Prompt 技巧全面升级</span>
+      <span class="score-badge score-high">⭐ 15/15</span>
+    </div>
+    <div class="card-quote">
+      2026 年我们使用 AI Prompt 的方式与 2022 年 ChatGPT 刚发布时已经截然不同。我开设了一门新课程，帮你成为 AI 高级用户。课程涵盖：如何使用深度研究模式生成详实报告；如何给 AI 提供正确的上下文（比你想象中更多的文档和图片）；何时让 AI 花几分钟深度思考做重要决策；以及如何用 AI 生成图片、分析数据、构建游戏和网站。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/AndrewYNg/status/2049886895530967534" target="_blank">🐦 @AndrewYNg</a>
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">重点关注"让 AI 深度思考做决策"和"提供超出想象的上下文"两个技巧，立刻可以在日常工作中试用。</div>
+    </div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="card-rank gold">#2</span>
+      <span class="card-title"><span class="emoji-icon">🤖</span>Claude Code is All You Need — 不只是写代码的通用 Agent</span>
+      <span class="score-badge score-high">⭐ 12/15</span>
+    </div>
+    <div class="card-quote">
+      当我刚加入 Anthropic 时，我惊讶地发现团队大量使用 Claude Code 作为通用 Agent，而不仅仅是用来写代码。后来我也成为了忠实用户！现在我几乎所有工作都用 Claude Code 来辅助。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/trq212/status/1944877527044120655" target="_blank">🐦 @trq212</a>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">把 Claude Code 从"编程工具"升级为"通用工作 Agent"——处理文档分析、数据处理、研究辅助等非编码任务。</div>
+    </div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="card-rank gold">#3</span>
+      <span class="card-title"><span class="emoji-icon">🎓</span>AI Fast Track — 5 天免费课程：从使用 AI 到构建 AI</span>
+      <span class="score-badge score-high">⭐ 8/15</span>
+    </div>
+    <div class="card-quote">
+      使用 AI 和用 AI 构建东西是两码事。复制粘贴 ChatGPT Prompt 只能帮你走到这一步。我想帮你学会构建个人 AI 软件、自动化流程，以及真正解决你问题的工具。AI Fast Track 是一门免费的 5 天课程。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/alliekmiller" target="_blank">🐦 @alliekmiller</a>
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">适合想从"AI 消费者"转向"AI 构建者"的内容创作者。5 天课程帮你建立个人自动化工具的能力。</div>
+    </div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#4</span>
+      <span class="card-title"><span class="emoji-icon">🧠</span>把 LLM 设为你想成为的人 — 快速成长秘诀</span>
+      <span class="score-badge score-high">⭐ 8/15</span>
+    </div>
+    <div class="card-quote">
+      我发现自己反复给出的职业建议：用一个你渴望成为的人设来配置 LLM。把原始想法喂给它，让它像你的目标人设那样重新框架和批评它。时不时让它写下总结其方法的 Prompt——研究并内化这些。这是更快的成长路径。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/realmadhuguru" target="_blank">🐦 @realmadhuguru</a>
+      <span class="tag tag-prompt">Prompt</span>
+      <span class="tag tag-mindset">思维</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">在 System Prompt 中设定行业领袖 persona，把创意发给它获取反馈。让它自己总结方法论，你再学习内化。</div>
+    </div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#5</span>
+      <span class="card-title"><span class="emoji-icon">🔭</span>Qwen-Scope — 开源稀疏自编码器工具套件</span>
+      <span class="score-badge score-high">⭐ 7/15</span>
+    </div>
+    <div class="card-quote">
+      发布 Qwen-Scope 🔭，面向 Qwen 模型家族的开源稀疏自编码器套件。🎯 推理 — 直接操控内部特征引导输出，无需 Prompt 工程；📂 数据 — 用最少种子样本分类和合成定向数据；🏋️ 训练 — 追踪代码切换和重复生成的根源；📊 评估 — 分析特征激活模式选择更智能的基准。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/Alibaba_Qwen/status/2049861145574690992" target="_blank">🐦 @Alibaba_Qwen</a>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">用 SAE 特征直接操控模型输出（无需 Prompt 工程），适合需要精确控制生成内容的场景。数据合成功能可提升长尾表现。</div>
+    </div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#6</span>
+      <span class="card-title"><span class="emoji-icon">🏢</span>Anthropic 内部如何用 Claude Code — 从工程到法务</span>
+      <span class="score-badge score-high">⭐ 7/15</span>
+    </div>
+    <div class="card-quote">
+      因为 Claude Code 最初是作为内部工具构建的，我们听到了很多关于我们团队在 Anthropic 如何使用它的问题。以下是我们团队——从产品工程到增长营销再到法务部门——使用 Claude Code 的内幕。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/_catwu/status/1930703532715626587" target="_blank">🐦 @_catwu</a>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">参考 Anthropic 多部门使用模式，在你的团队中推广非技术部门（营销、法务、运营）使用 AI 工具。</div>
+    </div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#7</span>
+      <span class="card-title"><span class="emoji-icon">🚀</span>nanochat — 4 小时训练你自己的 ChatGPT 克隆</span>
+      <span class="score-badge score-mid">⭐ 5/15</span>
+    </div>
+    <div class="card-quote">
+      发布新仓库 nanochat！从零开始的全栈训练/推理管道，实现简单 ChatGPT 克隆。启动云端 GPU，运行一个脚本，最快 4 小时后就能和自己的 LLM 对话。约 8000 行代码，$100 云 GPU 成本即可训练。约 12 小时训练可超越 GPT-2 核心指标。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/karpathy/status/1977755427569111362" target="_blank">🐦 @karpathy</a>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">开发者可直接 fork 仓库，$100 云 GPU 训练自己的轻量 LLM。适合想理解 LLM 全流程或做领域定制模型。
+</div>
+    </div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#8</span>
+      <span class="card-title"><span class="emoji-icon">💭</span>Claude Code Extended Thinking — 让 AI 想清楚再回答</span>
+      <span class="score-badge score-mid">⭐ 5/15</span>
+    </div>
+    <div class="card-quote">
+      我们刚刚在 Claude Code 中上线了新功能：extended thinking。只需要让 Claude "思考"、"再想想"或"深入思考"，它就会展示扩展的思考过程。由 Claude 3.7 Sonnet 混合推理模型驱动。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/_catwu" target="_blank">🐦 @_catwu</a>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">处理复杂任务时加上"think harder"，让 Claude 展示完整思考链，有助于理解复杂问题的解决方案。</div>
+    </div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#9</span>
+      <span class="card-title"><span class="emoji-icon">🧩</span>复合工程 — AI 时代的人类工程师定位</span>
+      <span class="score-badge score-mid">⭐ 5/15</span>
+    </div>
+    <div class="card-quote">
+      LLM 写的代码比大多数人类工程师都好。如果代码搞定了，我们还剩下什么？理论：人类是面包——在每一个流程的开头和结尾都不可或缺。开头设定框架，结尾做最终润色。复合工程四步：计划、工作、审查、复合。最后一步——把经验教训反馈回仓库让 Agent 不重复犯错——让一个工程师像五个人一样产出。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/danshipper/status/2047027507397005367" target="_blank">🐦 @danshipper</a>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-mindset">思维</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">人类专注"两头"——开头定框架和目标，结尾做质量把控。关键：建立"复合"机制，把每次经验教训反馈给 Agent。</div>
+    </div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#10</span>
+      <span class="card-title"><span class="emoji-icon">🎬</span>TLDW — 从长 YouTube 视频中高效学习</span>
+      <span class="score-badge score-mid">⭐ 4/15</span>
+    </div>
+    <div class="card-quote">
+      介绍 TLDW（Too long; didn't watch）：帮助人们从长 YouTube 视频中学习。选中 transcript 片段一键转笔记，或让 AI 解释不懂的部分。灵感来自从视频内容学习时的痛点。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/zarazhangrui/status/1982919958423089315" target="_blank">🐦 @zarazhangrui</a>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">用 TLDW 高效学习长视频内容——选中 transcript 片段一键转笔记，适合内容创作者快速消化行业视频。</div>
+    </div>
+  </div>
+
+  <!-- #11 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#11</span>
+      <span class="card-title"><span class="emoji-icon">🤖</span>PM/Designer → Issue → 自动分配 Coding Agent</span>
+      <span class="score-badge score-low">⭐ 4/15</span>
+    </div>
+    <div class="card-quote">
+      我最近很喜欢这个工作流。当 PM 或设计师发现需要做一个小改动时，直接创建 Issue 并分配给 coding agent。以前要放进工作队列、等工程师抽出时间——现在省事多了。
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/thenanyu" target="_blank">🐦 @thenanyu</a>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">建立"发现改动 → 创建 Issue → 自动派给 coding agent"流程，绕过工程师排队等待，加速小改动交付。</div>
+    </div>
+  </div>
+
+  <!-- #12 -->
+  <div class="card rank-other">
+    <div class="card-header">
+      <span class="card-rank">#12</span>
+      <span class="card-title"><span class="emoji-icon">🎨</span>Google Labs 五大产品速览 — 设计/营销/3D/视频/综合</span>
+      <span class="score-badge score-low">⭐ 2/15</span>
+    </div>
+    <div class="card-quote">
+      OpenAI vs. Anthropic 吸引了所有注意力，但 Google Labs 正在悄悄发布最有趣的 AI 产品。5 个产品：1. Pomelli（营销）2. Stitch（设计）3. Genie（3D 世界）4. Flow（视频）5. NotebookLM（综合）
+    </div>
+    <div class="card-meta">
+      <a class="source-link" href="https://x.com/petergyang/status/2049496467581341861" target="_blank">🐦 @petergyang</a>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 如何应用</div>
+      <div class="tip-text">内容创作者可试用 Stitch 做设计、Pomelli 做营销素材、NotebookLM 做研究综合。16 分钟视频快速了解。</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    🍈 AI 网红工具日报 v2.0 · Generated at 2026-05-01T10:00:00Z
+  </div>
+
+</div>
+</body>
+</html>
