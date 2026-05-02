@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-05-02</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card-hover: #222632;
+    --border: #2a2e3a;
+    --text: #e4e6ed;
+    --text-dim: #8b8fa3;
+    --accent: #7c6aff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #6bc5ff;
+    --gradient: linear-gradient(135deg, #7c6aff, #00d4aa);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 28px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .date { color: var(--text-dim); font-size: 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .rank {
+    font-size: 32px;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .rank.gold { background: linear-gradient(135deg, #ffd700, #ffaa00); -webkit-background-clip: text; background-clip: text; }
+  .rank.silver { background: linear-gradient(135deg, #c0c0c0, #e8e8e8); -webkit-background-clip: text; background-clip: text; }
+  .rank.bronze { background: linear-gradient(135deg, #cd7f32, #e8a862); -webkit-background-clip: text; background-clip: text; }
+  .score {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent2);
+    background: rgba(0,212,170,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .tags { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+  .tag-tool { background: rgba(124,106,255,0.15); color: var(--accent); }
+  .tag-workflow { background: rgba(0,212,170,0.15); color: var(--accent2); }
+  .tag-tutorial { background: rgba(255,217,61,0.15); color: var(--accent4); }
+  .tag-mindset { background: rgba(255,107,107,0.15); color: var(--accent3); }
+  .tweet-text {
+    font-size: 14px;
+    color: var(--text);
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+  .source {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+  .source a {
+    color: var(--accent5);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    font-size: 13px;
+    color: var(--text-dim);
+    background: rgba(124,106,255,0.08);
+    padding: 10px 14px;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+  .apply strong { color: var(--accent); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-val {
+    font-size: 24px;
+    font-weight: 800;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 5 月 2 日 · 周六 · Top 13 精选</div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank gold">#1</span>
+      <span class="score">9.2 / 10</span>
+    </div>
+    <div class="title">Claude Code 作为通用 Agent 工作流</div>
+    <div class="tags"><span class="tag tag-workflow">#工作流</span></div>
+    <div class="tweet-text">当初加入 Anthropic 时，我很惊讶地发现团队把 Claude Code 当作通用 Agent 使用，而不仅仅是写代码。现在我自己也成了忠实用户——几乎所有工作都用它来帮忙。</div>
+    <div class="source">@trq212 · <a href="https://x.com/trq212/status/1975629532511281636">推文</a> · ❤️ 5,572 · 🔄 259</div>
+    <div class="apply"><strong>如何应用：</strong>把 Claude Code 当作万能助手——不仅是代码，文档处理、数据分析、日常任务都可以交给它。关键是当 Agent 用，而非简单问答。</div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank silver">#2</span>
+      <span class="score">8.8 / 10</span>
+    </div>
+    <div class="title">Anthropic 团队如何使用 Claude Code</div>
+    <div class="tags"><span class="tag tag-workflow">#工作流</span></div>
+    <div class="tweet-text">自从把 Claude Code 作为内部工具以来，收到了很多关于团队如何使用它的问题。以下是从产品工程到增长营销再到法务的内部使用视角。</div>
+    <div class="source">@_catwu · <a href="https://x.com/_catwu/status/1930703532715626587">推文</a> · ❤️ 4,395 · 🔄 432</div>
+    <div class="apply"><strong>如何应用：</strong>参考 Anthropic 多部门用例，把 AI coding agent 扩展到非技术团队，打破"AI 只能工程师用"的思维局限。</div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank bronze">#3</span>
+      <span class="score">8.5 / 10</span>
+    </div>
+    <div class="title">用 LLM Persona 进行自我导师训练</div>
+    <div class="tags"><span class="tag tag-mindset">#思维</span></div>
+    <div class="tweet-text">我经常给出的职业建议：设置一个 LLM，赋予你向往的人物角色。把原始想法喂给它，让它像你的目标角色一样重构和批判。时不时让它写出总结其方法的 prompt——研究并内化。</div>
+    <div class="source">@realmadhuguru · <a href="https://x.com/realmadhuguru/status/recent">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>用 system prompt 创建"导师角色"AI，定期请教并接受批评。让 AI 生成自己的思考框架 prompt，相当于低成本高管教练。</div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#4</span>
+      <span class="score">8.3 / 10</span>
+    </div>
+    <div class="title">Claude Code 8 项新功能盘点</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">Claude Code 本周大放送！我们发布了 8 项激动人心的新功能，帮助开发者更快更聪明地构建。</div>
+    <div class="source">@_catwu · <a href="https://x.com/_catwu/status/1903130881205977320">推文</a> · ❤️ 5,503 · 🔄 476 · 👁️ 1M+</div>
+    <div class="apply"><strong>如何应用：</strong>Claude Code 用户必读。逐一试用新功能，能显著提升日常开发效率。</div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#5</span>
+      <span class="score">7.5 / 10</span>
+    </div>
+    <div class="title">AI Fast Track 免费课程</div>
+    <div class="tags"><span class="tag tag-tutorial">#教程</span></div>
+    <div class="tweet-text">使用 AI 和用 AI 构建东西之间有本质区别。复制粘贴 ChatGPT prompt 只能走这么远。AI Fast Track 是一个免费 5 天课程，帮你学会构建个人 AI 软件、自动化工具。</div>
+    <div class="source">@alliekmiller · <a href="https://x.com/alliekmiller/status/recent">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>如果还在"复制粘贴 prompt"阶段，这个 5 天免费课程帮你跨过从使用者到构建者的门槛。</div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#6</span>
+      <span class="score">7.5 / 10</span>
+    </div>
+    <div class="title">AI Prompting for Everyone —— Andrew Ng 新课程</div>
+    <div class="tags"><span class="tag tag-tutorial">#教程</span></div>
+    <div class="tweet-text">2026 年我们 prompt AI 的方式与 2022 年 ChatGPT 刚出来时已大不相同。新课程帮助任何人成为 AI 高级用户，涵盖 ChatGPT、Gemini、Claude 等。</div>
+    <div class="source">@AndrewYNg · <a href="https://x.com/AndrewYNg/status/recent">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>2026 年的 prompt 技巧已完全不同。适合想系统升级 prompt 技能、从基础向进阶过渡的用户。</div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#7</span>
+      <span class="score">7.0 / 10</span>
+    </div>
+    <div class="title">Google Labs 5 款被低估的 AI 产品</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">OpenAI vs Anthropic 吸引了所有注意力，但 Google Labs 正在悄悄发布最有趣的 AI 产品：Pomelli（营销）、Stitch（设计）、Genie（3D）、Flow（视频）、NotebookLM（综合）。</div>
+    <div class="source">@petergyang · <a href="https://x.com/petergyang/status/2049496467581341861">推文</a> · ❤️ 381 · 🔄 37</div>
+    <div class="apply"><strong>如何应用：</strong>这 5 款产品覆盖营销、设计、3D、视频、知识整合。值得逐一试用，尤其 NotebookLM 已非常成熟。</div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#8</span>
+      <span class="score">6.8 / 10</span>
+    </div>
+    <div class="title">Claude Code 新功能：Microcompact / Subagents / PDF</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">Microcompact — 清除旧工具调用以延长会话长度；Subagents — @-mention 支持 + Agent 模型选择；PDF 支持 — 直接从文件系统读取 PDF。</div>
+    <div class="source">@_catwu · <a href="https://x.com/_catwu/status/1952488684579873195">推文</a> · ❤️ 3,007 · 🔄 216</div>
+    <div class="apply"><strong>如何应用：</strong>三项功能解决核心痛点：长会话管理、多 Agent 协作、文档处理。立即启用，大幅扩展使用场景。</div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#9</span>
+      <span class="score">6.5 / 10</span>
+    </div>
+    <div class="title">小改动直接分给 Coding Agent 的工作流</div>
+    <div class="tags"><span class="tag tag-workflow">#工作流</span></div>
+    <div class="tweet-text">PM 或设计师发现需要小改动时，直接创建 issue 并分配给 coding agent。如果放进工作队列等工程师来处理，会麻烦得多。</div>
+    <div class="source">@thenanyu · <a href="https://x.com/thenanyu/status/1976119079086800950">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>建立"小改动 → 直接分给 AI agent"流程，跳过传统工单队列。适合 UI 微调、文案修改、简单 bug 修复。</div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#10</span>
+      <span class="score">6.2 / 10</span>
+    </div>
+    <div class="title">Agent 用 Markdown 追踪工作 —— 超长会话技巧</div>
+    <div class="tags"><span class="tag tag-workflow">#工作流</span></div>
+    <div class="tweet-text">让 Agent 用 Markdown 文件追踪工作进度非常有效，尤其在你自动化了循环之后——它就能连续工作数小时。</div>
+    <div class="source">@steipete · <a href="https://x.com/steipete/status/1941494308709990671">推文</a> · 👁️ 378,400</div>
+    <div class="apply"><strong>如何应用：</strong>给 agent 一个 TODO.md，每次操作后更新进度。长会话不丢失上下文，是实现"无人值守开发"的核心技巧。</div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#11</span>
+      <span class="score">6.0 / 10</span>
+    </div>
+    <div class="title">Midjourney V8.1 —— 2K HD + 3 倍速度</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">V8.1 正式上线！原生 2K HD 渲染，速度提升 3 倍，成本降低 3 倍。Image prompt 回归！新版 Describe 上线，还有新的 moodboards 和 srefs。</div>
+    <div class="source">@midjourney · <a href="https://x.com/midjourney/status/2044166948674769196">推文</a> · ❤️ 2,100 · 🔄 800</div>
+    <div class="apply"><strong>如何应用：</strong>性能提升是实质性的。Image prompt 回归意味着可用已有图片作为风格参考，工作流更灵活。</div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#12</span>
+      <span class="score">5.8 / 10</span>
+    </div>
+    <div class="title">Claude Code 多目录支持 —— /add-dir</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">Claude Code 现在可以在单个会话中跨多个目录工作。输入 /add-dir &lt;path&gt; 添加工作目录。</div>
+    <div class="source">@_catwu · <a href="https://x.com/_catwu/status/1950287975268712448">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>在 monorepo 或多项目场景下非常实用——一个会话同时操作多个目录，无需反复切换。</div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="card">
+    <div class="card-top">
+      <span class="rank">#13</span>
+      <span class="score">5.5 / 10</span>
+    </div>
+    <div class="title">OpenAI Codex 支持导入工作流配置</div>
+    <div class="tags"><span class="tag tag-tool">#工具</span></div>
+    <div class="tweet-text">只需几次点击就能把现有工作流导入 Codex。导入设置、插件、Agent、项目配置等，让你少中断、多干活。</div>
+    <div class="source">@OpenAI · <a href="https://x.com/OpenAI/status/2050290321016438784">推文</a></div>
+    <div class="apply"><strong>如何应用：</strong>从其他 AI coding 工具迁移到 Codex 时，一键导入功能大幅降低迁移成本——把习惯设置直接搬过来。</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-val">5</div>
+      <div class="stat-label">缓存组数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">21</div>
+      <div class="stat-label">原始推文</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">13</div>
+      <div class="stat-label">收录条目</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">9.2</div>
+      <div class="stat-label">最高评分</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    生成时间：2026-05-02 10:00 UTC · AI 网红工具日报 v2.0 · 🍈
+  </div>
+</div>
+</body>
+</html>
