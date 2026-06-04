@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-06-04</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0f1117;
+    color: #e1e4e8;
+    line-height: 1.6;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+  header {
+    text-align: center;
+    padding: 40px 0 30px;
+    border-bottom: 1px solid #21262d;
+    margin-bottom: 30px;
+  }
+  header h1 {
+    font-size: 2em;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    color: #8b949e;
+    font-size: 0.95em;
+  }
+  header .date {
+    color: #6e7681;
+    font-size: 0.85em;
+    margin-top: 6px;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-index {
+    background: linear-gradient(135deg, #238636, #2ea043);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85em;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-index.hot {
+    background: linear-gradient(135deg, #da3633, #f85149);
+  }
+  .card-title {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #f0f3f6;
+  }
+  .tweet-text {
+    background: #0d1117;
+    border-left: 3px solid #58a6ff;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.93em;
+    color: #c9d1d9;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 12px 0;
+  }
+  .tag {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    font-weight: 500;
+  }
+  .tag-tool { background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb44; }
+  .tag-tutorial { background: #8957e522; color: #bc8cff; border: 1px solid #8957e544; }
+  .tag-prompt { background: #23863622; color: #3fb950; border: 1px solid #23863644; }
+  .tag-workflow { background: #d2992222; color: #d29922; border: 1px solid #d2992244; }
+  .tag-thinking { background: #f0883e22; color: #f0883e; border: 1px solid #f0883e44; }
+  .source {
+    color: #8b949e;
+    font-size: 0.85em;
+  }
+  .source a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .stars {
+    color: #e3b341;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+  }
+  .apply {
+    background: #1a2332;
+    border: 1px solid #264056;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 0.9em;
+  }
+  .apply strong {
+    color: #58a6ff;
+  }
+  footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #484f58;
+    font-size: 0.85em;
+    border-top: 1px solid #21262d;
+    margin-top: 20px;
+  }
+  footer a { color: #58a6ff; text-decoration: none; }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5em; }
+    .card { padding: 18px; }
+    .card-title { font-size: 1em; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>🤖 AI 网红工具日报</h1>
+  <p class="subtitle">每日精选 AI 工具、教程与实战技巧，内容创作者看完就能用</p>
+  <p class="date">📅 2026 年 6 月 4 日 · 星期四</p>
+</header>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">1</div>
+    <div class="card-title">🔥 Codex 插件系统升级：一键变专家</div>
+  </div>
+  <div class="tweet-text">OpenAI 扩展 Codex 插件系统，超越单一工具，Codex 现在可以通过单个安装变成特定领域的专家，无需编码。支持 62 个热门应用和 110 种技能，覆盖销售、数据等工作流。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/OpenAI/status/2061887650391625870" target="_blank">@OpenAI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>内容创作者可以用销售插件快速准备客户提案，用数据插件分析内容表现数据，无需写代码即可将 Codex 变成专属助手。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">2</div>
+    <div class="card-title">🛠️ 理解新代码库的高效工作流</div>
+  </div>
+  <div class="tweet-text">"要理解新代码库，我的流程：1. 用 repo2txt 把仓库转成 Markdown 2. 把 Markdown 喂给 Google AI Studio。完全免费，比让 Claude 跑遍整个仓库吃 token 快 200%。"</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-prompt">Prompt</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1937818189443776640" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>接到新项目时，先用 repo2txt.simplebasedomain.com 转成 Markdown，再扔进免费的 Gemini AI Studio（100万上下文），快速掌握代码全貌。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">3</div>
+    <div class="card-title">🤖 Codex 自动化修复 6000+ 代码问题的实战技巧</div>
+  </div>
+  <div class="tweet-text">"我给 Codex 一个 Markdown 文件追踪进度，让它整夜修复大规模 linter 技术债，修了约 6000 个 linter/类型问题。我的 prompt 包括让它自己 Google 查资料的部分。"</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1986799989775810955" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>让 AI 代码助手批量修复技术债时，用一个 Markdown 文件作为进度追踪器，设置"continue"循环让它持续工作，效率翻倍。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">4</div>
+    <div class="card-title">📋 Agent 工作追踪 Markdown 模板</div>
+  </div>
+  <div class="tweet-text">"告诉 Agent 在 Markdown 中记录工作进展，效果惊人——一旦你自动化了这个循环，它就能连续工作数小时。"</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1941494308709990671" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>在 Agent 的 system prompt 中加入"维护一个 work_log.md 记录每一步"的指令，配合自动化循环，实现无人值守的长时间 AI 编码会话。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">5</div>
+    <div class="card-title">💻 纯语音对话驱动开发：无代码 Agentic 工程</div>
+  </div>
+  <div class="tweet-text">Peter Steinberger 分享了他 100% 语音驱动开发的工作流："Just Talk To It"——不写一行代码，全靠对话完成整个项目。</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1978174075110322199" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>内容创作者可以尝试用自然语言描述需求，让 AI 完成原型搭建，大幅降低技术门槛。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">6</div>
+    <div class="card-title">🎬 Hailuo 视频起始/结束帧控制：精准控制视频运动</div>
+  </div>
+  <div class="tweet-text">MiniMax Hailuo AI 推出起始/结束帧功能："从你选择的地方开始，到你想结束的地方停止。流畅运动、电影级镜头、复杂 prompt 也能轻松处理。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-prompt">Prompt</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1961075684241191067" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>短视频创作者可以用起始帧设定角色初始位置，用结束帧控制最终构图，实现精确的镜头编排和转场效果。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">7</div>
+    <div class="card-title">🎵 Hailuo 02 解锁：无限免费生成 + Click-to-Video 时代</div>
+  </div>
+  <div class="tweet-text">MiniMax Hailuo AI 现已解锁——无限免费生成，零 prompt。合作伙伴 Higgsfield AI 带来 7000+ 预设，点击即创建。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1950885969978421555" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>内容创作者可以直接使用 Hailuo 02 免费生成高质量视频，配合 Higgsfield 的 7000+ 预设模板，无需编写 prompt 即可产出专业级视频内容。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">8</div>
+    <div class="card-title">🗣️ MiniMax 音频生成：任意语音、任意情感、多语言</div>
+  </div>
+  <div class="tweet-text">MiniMax Audio 突破：任意 prompt、任意声音、任意情感，完全可定制且支持多语言。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1936112730450412012" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>播客/短视频创作者可以一键生成多语言配音，自定义声音风格和情感表达，大幅提升内容本地化效率。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">9</div>
+    <div class="card-title">🏗️ Hailuo Agent 模板升级：可编辑故事板</div>
+  </div>
+  <div class="tweet-text">Hailuo Agent 模板重大升级——可编辑故事板上线。重写场景、替换视觉，一个模板，无限可能。新增 6s 和 10s 图生视频（512p），1 分钟内生成，便宜 25%。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1951593960373367202" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>用故事板模式规划视频叙事结构，随时修改单个场景而不影响整体，大幅提升视频内容迭代效率。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index hot">10</div>
+    <div class="card-title">🤖 Hailuo AI Agent：新一代创意工作流</div>
+  </div>
+  <div class="tweet-text">Hailuo AI Agent 免费一周体验。只需对话，你的创意就能在无限画布上实现。Agent 自动选择最佳模型、规划工作流，图像、视频、音频一站式完成。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1970086888951394483" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>内容创作者只需用自然语言描述想要的内容，Agent 自动编排模型选择和工作流，一站式生成多媒体内容。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">11</div>
+    <div class="card-title">🎨 Higgsfield 画稿转视频：告别 prompt 编程</div>
+  </div>
+  <div class="tweet-text">Higgsfield 推出画稿转视频功能。把你的草图变成电影级视频。支持 MiniMax、Veo 3 和 Seedance Pro 等所有视频模型。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/1956267048298013186" target="_blank">@Hailuo_AI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>不需要写复杂的 prompt，在画布上简单画几笔，AI 自动理解意图并生成对应视频，特别适合创意概念的快速原型。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">12</div>
+    <div class="card-title">🧠 Qwen3.7-Plus 发布：多模态 Agent 模型</div>
+  </div>
+  <div class="tweet-text">Qwen3.7-Plus——一个多模态 Agent 模型，将视觉和语言统一到一个通用的 Agent 基座中。多功能编码 Agent 和生产力助手。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2061506641120641494" target="_blank">@Alibaba_Qwen</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>开发者可以用 Qwen3.7-Plus 构建同时理解图像和文本的智能 Agent，用于自动化内容审核、视觉问答等场景。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">13</div>
+    <div class="card-title">🎯 Codex 自动化 Agent 脚本开源</div>
+  </div>
+  <div class="tweet-text">"我开源了一些让 Codex 保持可控的工具：runner（自动超时终端命令，长任务放入 tmux）、committer（无状态简单提交，防止多个 Agent 冲突）。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1986994088013361378" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>使用 agent-scripts 为你的 AI 编码助手添加超时控制和安全提交机制，防止 Agent 失控。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">14</div>
+    <div class="card-title">🌍 Google Omni 多语言语音 + 唇形同步</div>
+  </div>
+  <div class="tweet-text">Google Omni 展示多语言能力：一个 prompt 解锁翻译 → 语音克隆 → Avatar 唇形同步全链路。过去需要串联多个模型，现在一个 prompt 搞定。</div>
+  <div class="meta">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/GoogleAI/status/2060156788742205736" target="_blank">@GoogleAI</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>内容创作者可以用 Google Omni 一个 prompt 实现多语言视频配音+唇形同步，彻底简化本地化视频制作流程。</div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-index">15</div>
+    <div class="card-title">📝 "Just Talk To It" Agentic 工程完整指南</div>
+  </div>
+  <div class="tweet-text">Peter Steinberger 深度分享无代码 Agentic 工程实践："Just Talk To It"工作流，23分钟长文详解如何纯靠对话完成复杂项目。</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">⭐⭐⭐⭐</span>
+  </div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/1978174075110322199" target="_blank">@steipete</a></div>
+  <div class="apply"><strong>💡 如何应用：</strong>学习 Agentic 工程的核心方法论：如何用自然语言驱动 AI 完成复杂项目，适合想提升 AI 协作效率的创作者。</div>
+</div>
+
+<footer>
+  <p>📅 日报生成时间：2026-06-04 10:00 UTC</p>
+  <p>🌐 在线版：<a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-06-04.html" target="_blank">zxy114.github.io/influencer-daily</a></p>
+</footer>
+</div>
+</body>
+</html>
