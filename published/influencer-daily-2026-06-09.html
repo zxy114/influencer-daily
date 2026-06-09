@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 - 2026-06-09</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --gold: #f0c040;
+    --green: #3fb950;
+    --orange: #d29922;
+    --tag-bg: #1f6feb33;
+    --tag-border: #1f6feb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  header h1 span { color: var(--accent); }
+  header .date {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  header .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  header .stat strong {
+    color: var(--text);
+    font-size: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card .rank {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+    border-radius: 6px;
+    padding: 2px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .card .rank.gold { background: #f0c04033; border-color: var(--gold); color: var(--gold); }
+  .card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .card .tweet-text {
+    color: var(--muted);
+    font-size: 14px;
+    font-style: italic;
+    border-left: 3px solid var(--border);
+    padding-left: 12px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .meta .source {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .meta .source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .meta .source a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag.tutorial { --tag-bg: #3fb95033; --tag-border: #3fb950; color: var(--green); }
+  .tag.thinking { --tag-bg: #d2992233; --tag-border: #d29922; color: var(--orange); }
+  .score {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .engagement {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .apply {
+    background: #1c2333;
+    border: 1px solid #253047;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .apply strong { color: var(--accent); }
+  footer {
+    text-align: center;
+    padding: 32px 0 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 12px 8px 32px; }
+    .card { padding: 16px 14px; }
+    header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📡 <span>AI 网红工具日报</span></h1>
+    <div class="date">2026 年 6 月 9 日 · 星期二</div>
+    <div class="stats">
+      <div class="stat"><strong>3</strong>/5 缓存组</div>
+      <div class="stat"><strong>52</strong> 原始推文</div>
+      <div class="stat"><strong>10</strong> 精选收录</div>
+    </div>
+  </header>
+
+  <div class="card">
+    <span class="rank gold">🏆 #1</span>
+    <h2>Codex 插件系统 — 一行安装，秒变专家</h2>
+    <div class="tweet-text">"We're making Codex more useful for your work by expanding plugins beyond individual tools. These plugins turn Codex into a specialist for a specific role with a single install, no coding required."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/OpenAI/status/2061887650391625870" target="_blank">@OpenAI</a></span>
+      <span class="tag">工具</span>
+      <span class="tag">工作流</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">4.7K 👍 · 600 🔄 · 554K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>在 ChatGPT/Codex 插件市场搜索你的角色（销售、数据分析等），一键安装即可获得针对特定工作流的专家级能力，无需编程。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank gold">🥈 #2</span>
+    <h2>Codex Sites — 用 Codex 把想法变成可分享的 App</h2>
+    <div class="tweet-text">"Building apps has never been easier. With Sites, Codex can turn your work, ideas, and plans into an interactive website or app your team can explore, use, and share with a URL."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/OpenAI/status/2061845949170045346" target="_blank">@OpenAI</a></span>
+      <span class="tag">工具</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">19K 👍 · 3.1K 🔄 · 9.4M 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>在 Codex 描述你想做的工具或仪表盘，自动生成可交互网站并分享 URL。适合快速原型和内部工具搭建。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank gold">🥉 #3</span>
+    <h2>ChatGPT 记忆系统升级 — 跨对话自动记忆，2 倍容量</h2>
+    <div class="tweet-text">"We've been researching new ways for ChatGPT memory to carry context across conversations and keep it useful over time."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/OpenAI/status/2062567556524003631" target="_blank">@OpenAI</a></span>
+      <span class="tag">工具</span>
+      <span class="tag">工作流</span>
+      <span class="score">⭐⭐⭐</span>
+      <span class="engagement">9.5K 👍 · 1.4K 🔄 · 2.5M 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>Plus/Pro 用户可在设置里管理记忆摘要，跨对话保持上下文。建议定期回顾记忆摘要，避免积累无用信息。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#4</span>
+    <h2>Kimi Code — 一行命令安装的开源 Coding Agent</h2>
+    <div class="tweet-text">"Kimi Code, our open-source coding agent, just got a major upgrade! One-line CLI install, zero setup, fast startup. Drag in videos as coding context."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/Kimi_Moonshot/status/2063981516708024369" target="_blank">@Kimi_Moonshot</a></span>
+      <span class="tag">工具</span>
+      <span class="tag tutorial">教程</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">2.3K 👍 · 254 🔄 · 153K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>一条命令安装 Kimi Code，支持拖入视频作为编码上下文（屏幕录制→代码生成等）。适合快速搭建 AI 辅助开发流程。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#5</span>
+    <h2>MiniMax M3 性价比炸裂 — $0.07 vs $3.39，同等发现 13/17 个 Bug</h2>
+    <div class="tweet-text">"$0.07 for M3, $3.39 for Opus. Both caught 13 of 17 bugs. Really interesting breakdown from @kilocode"</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/MiniMax_AI/status/2063397618034844135" target="_blank">@MiniMax_AI</a></span>
+      <span class="tag thinking">思维</span>
+      <span class="tag">工具</span>
+      <span class="score">⭐⭐⭐⭐⭐</span>
+      <span class="engagement">1.7K 👍 · 118 🔄 · 135K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>用 MiniMax M3 替代高价模型做代码审计/Code Review，成本仅为 Claude Opus 的 2%，效果相同。直接省 98%。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#6</span>
+    <h2>Kimi Work — 本地桌面 AI Agent，300 个子 Agent 并行</h2>
+    <div class="tweet-text">"Meet Kimi Work - a local AI agent on your desktop that does the work for you. Native agent swarm: Up to 300 AI agents running in parallel on your local machine."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/Kimi_Moonshot/status/2063990409903112344" target="_blank">@Kimi_Moonshot</a></span>
+      <span class="tag">工具</span>
+      <span class="tag">工作流</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">2.1K 👍 · 316 🔄 · 294K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>下载 Kimi Work 桌面端 + WebBridge 浏览器扩展。300 个子 Agent 并行处理任务，自动浏览器操作，输出 PPTX/Word/PDF/Excel。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#7</span>
+    <h2>前 Meta L8 工程师：用 AI Agent 每天发 40 个 PR</h2>
+    <div class="tweet-text">"If you're still manually reviewing every line of code, you're the bottleneck. Here's my new episode with @kunchenguid, an ex-Meta L8 engineer who now ships up to 40 PRs a day with AI agents."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/petergyang/status/2063625779079184478" target="_blank">@petergyang</a></span>
+      <span class="tag tutorial">教程</span>
+      <span class="tag thinking">思维</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">71 👍 · 11 🔄 · 81K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>观看 YouTube 完整视频，学习 Agentic Engineering System。让 AI Agent 自动创建/测试/Review PR，人类只做最终审核。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#8</span>
+    <h2>Gemma 4 12B — 高性能本地模型，Apache 2.0 开源，笔记本可跑</h2>
+    <div class="tweet-text">"Meet Gemma 4 12B! A unified, encoder-free multimodal model designed to bring high-performance intelligence directly to your laptop, and released under an Apache 2.0 license."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/GoogleDeepMind/status/2062202706882883696" target="_blank">@GoogleDeepMind</a></span>
+      <span class="tag">工具</span>
+      <span class="score">⭐⭐⭐⭐</span>
+      <span class="engagement">12K 👍 · 2.3K 🔄 · 3.1M 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>Apache 2.0 开源多模态模型，可在普通笔记本运行。适合离线 AI 工具搭建、边缘部署、隐私敏感场景。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#9</span>
+    <h2>AI 编码模型性价比决策框架 — 如何选对模型</h2>
+    <div class="tweet-text">"Routing to models is genuinely hard. It means mapping each task to the right model - which requires benchmarking models against your product's specific tasks and dialing in the quality/cost trade-off."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/realmadhuguru/status/2063342268472574268" target="_blank">@realmadhuguru</a></span>
+      <span class="tag thinking">思维</span>
+      <span class="score">⭐⭐⭐</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>建立"任务→模型"映射表，针对具体任务基准测试各模型，找到质量/成本最佳平衡点，避免盲目追求最强模型。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">#10</span>
+    <h2>Anthropic AI 网络攻击全景图 — 832 个恶意账户分析</h2>
+    <div class="tweet-text">"How well do the security community's techniques hold up against AI-enabled cyberattacks? We examined 832 malicious accounts and mapped their activity onto a longstanding database of tactics and techniques."</div>
+    <div class="meta">
+      <span class="source">来源: <a href="https://x.com/AnthropicAI/status/2062243425580367905" target="_blank">@AnthropicAI</a></span>
+      <span class="tag thinking">思维</span>
+      <span class="tag">工具</span>
+      <span class="score">⭐⭐⭐</span>
+      <span class="engagement">1.1K 👍 · 217 🔄 · 151K 👀</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你是 AI 安全负责人，用这份 832 个恶意账户的战术映射分析，评估你的 AI 应用面对 AI 驱动网络攻击时的防御能力。</div>
+  </div>
+
+  <footer>
+    AI 网红工具日报 · 每日自动抓取 · 实用主义筛选<br>
+    <a href="https://zxy114.github.io/influencer-daily/" target="_blank">GitHub Pages</a> · Powered by OpenClaw
+  </footer>
+</div>
+</body>
+</html>
