@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-10</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    border-bottom: 1px solid #30363d;
+    margin-bottom: 24px;
+  }
+  .header h1 { color: #58a6ff; font-size: 1.8em; margin-bottom: 6px; }
+  .header .date { color: #8b949e; font-size: 0.95em; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+  .card .rank {
+    display: inline-block;
+    background: #238636;
+    color: #fff;
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.85em;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .card .rank.top3 { background: #f0883e; }
+  .card h2 {
+    display: inline;
+    font-size: 1.1em;
+    color: #f0f6fc;
+    vertical-align: middle;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .tag-tool { background: #1f6feb33; color: #58a6ff; }
+  .tag-tutorial { background: #a371f733; color: #bc8cff; }
+  .tag-thinking { background: #23863633; color: #3fb950; }
+  .score { float: right; color: #f0883e; font-weight: bold; font-size: 0.95em; }
+  .tweet {
+    background: #0d1117;
+    border-left: 3px solid #30363d;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #c9d1d9;
+  }
+  .source {
+    color: #8b949e;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+  }
+  .source a { color: #58a6ff; text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    background: #1c2333;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #7ee787;
+  }
+  .apply strong { color: #3fb950; }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: #484f58;
+    font-size: 0.85em;
+    border-top: 1px solid #30363d;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 10 日 · 星期二 · 北京时间 18:00</div>
+  </div>
+
+  <div class="card">
+    <span class="rank top3">1</span>
+    <h2>MiniMax M3 vs Claude Opus 4.8 代码审计实战对比</h2>
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="score">⭐ 8/10</span>
+    <div class="tweet">给同一代码库做审计，Claude Opus 4.8 和 MiniMax M3 都发现了 17 个预植 bug 中的 13 个。但 MiniMax M3 只花了 $0.07，而最便宜的 Claude 方案要 $1.30。</div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2063397618034844135" target="_blank">@MiniMax_AI · @kilocode</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>日常代码审查可以直接用 MiniMax M3，成本仅为 Claude 的 1/20，适合批量代码审计场景。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank top3">2</span>
+    <h2>Claude 模型训练速度提升 52 倍</h2>
+    <span class="tag tag-thinking">💡 思维</span>
+    <span class="score">⭐ 7/10</span>
+    <div class="tweet">每次发版我们都会跑同一个测试：给模型一段训练小 AI 模型的代码，让它加速。熟练人类需要 4-8 小时才能达到 4 倍加速。2024 年 5 月 Claude Opus 4 平均约 3 倍加速，而今年 4 月 Mythos Preview 达到了约 52 倍。</div>
+    <div class="source">来源：<a href="https://x.com/AnthropicAI/status/2062568869240476050" target="_blank">@AnthropicAI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>理解 AI 模型自我优化的速度曲线，为自动化代码优化工作流提供预期基准。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank top3">3</span>
+    <h2>Gemini 3.5 Live Translate — 70+ 语言实时语音翻译</h2>
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="score">⭐ 7/10</span>
+    <div class="tweet">全新 Gemini 3.5 Live Translate 音频模型，支持 70+ 语言的实时语音到语音翻译。边听边翻译，保持语调、语速和音调，让跨语言对话更自然。</div>
+    <div class="source">来源：<a href="https://x.com/GoogleAI/status/2064366504112505266" target="_blank">@GoogleAI · @GoogleDeepMind</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>做多语言内容的创作者可直接用 API 搭建实时翻译工作流，或集成到视频/播客制作管线中。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">4</span>
+    <h2>Kimi Work — 本地桌面 AI Agent 集群</h2>
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="score">⭐ 6/10</span>
+    <div class="tweet">Kimi Work 是你桌面上的本地 AI Agent，可自动为你工作。支持最多 300 个 AI Agent 并行运行，配合 WebBridge 浏览器扩展，自动生成 PPTX、Word、PDF、Excel。</div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2063990409903112344" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>知识工作者可用它自动化日常文档处理、信息收集和报告生成，替代繁琐的手动操作。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">5</span>
+    <h2>Gemini 本周发布汇总 — Nano Banana 2 GA + Co-Scientist</h2>
+    <span class="tag tag-thinking">💡 思维</span>
+    <span class="score">⭐ 5/10</span>
+    <div class="tweet">本周发布汇总：Nano Banana 2 和 Nano Banana Pro 已正式 GA，可通过 Gemini Enterprise Agent Platform、Gemini API 和 Google AI Studio 使用。Co-Scientist 是全新的多 Agent 系统。</div>
+    <div class="source">来源：<a href="https://x.com/GoogleAI/status/2062942864288387430" target="_blank">@GoogleAI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>关注 Gemini Enterprise 平台更新，评估是否适合集成到企业级 AI 工作流中。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">6</span>
+    <h2>Midjourney Weekly Office Hours — 6/3</h2>
+    <span class="tag tag-tutorial">📝 教程</span>
+    <span class="score">⭐ 5/10</span>
+    <div class="tweet">Midjourney 每周办公时间 — 6 月 3 日版本。社区问答、技巧分享、新功能预告。</div>
+    <div class="source">来源：<a href="https://x.com/midjourney/status/2062256120203514016" target="_blank">@midjourney</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>用 Midjourney 做内容创作的可以关注每周 Office Hours 获取最新提示技巧和参数优化方案。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">7</span>
+    <h2>Claude 变身化学家 — NMR 波谱分析超越专业软件</h2>
+    <span class="tag tag-tutorial">📝 教程</span>
+    <span class="score">⭐ 5/10</span>
+    <div class="tweet">Anthropic 科学博客：让 Claude 当化学家。化学家操作分子前需要先理解其结构，主要工具是 NMR 波谱分析。我们发现 Opus 4.7 在某些任务上匹配甚至超越了专用 NMR 软件。</div>
+    <div class="source">来源：<a href="https://x.com/AnthropicAI/status/2062979607448682731" target="_blank">@AnthropicAI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>科研内容创作者可以探索用 Claude 做科学数据分析，降低专业软件门槛。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">8</span>
+    <h2>Claude Fable 5 — 新一代 Mythos 级模型发布</h2>
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="score">⭐ 5/10</span>
+    <div class="tweet">介绍 Claude Fable 5：一个我们已确保可安全用于通用场景的 Mythos 级模型。其能力超越了我们以往公开发布的所有模型。</div>
+    <div class="source">来源：<a href="https://x.com/AnthropicAI/status/2064394146916229443" target="_blank">@claudeai</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>当前最强 Claude 模型，内容创作者可测试其在长文本生成、代码、创意写作方面的表现。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">9</span>
+    <h2>Kimi Code — 开源编码 Agent 重大升级</h2>
+    <span class="tag tag-tutorial">📝 教程</span>
+    <span class="score">⭐ 5/10</span>
+    <div class="tweet">Kimi Code 重大升级：一行 CLI 安装、零配置、快速启动。支持拖入视频作为编码上下文。支持股票、财务报告、学术插件。</div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2063981516708024369" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>视频创作者可用"视频到代码"功能，把屏幕录制直接转化为可执行的自动化脚本。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">10</span>
+    <h2>小型 AI Agent 以 1% 成本超越大模型</h2>
+    <span class="tag tag-thinking">💡 思维</span>
+    <span class="score">⭐ 4/10</span>
+    <div class="tweet">MIT CSAIL 的"协作战舰"游戏揭示：AI Agent 更擅长回答问题而非提出问题。通过蒙特卡洛推理策略，小型 Agent 以约 1% 的成本超越了最大模型。</div>
+    <div class="source">来源：<a href="https://x.com/MIT_CSAIL/status/2062565619640189309" target="_blank">@MIT_CSAIL</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>设计 Agent 系统时考虑"提问"能力，利用推理策略让小模型实现高性价比输出。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">11</span>
+    <h2>MiniMax M3 运行 Hermes 成本降低 100 倍</h2>
+    <span class="tag tag-tutorial">📝 教程</span>
+    <span class="score">⭐ 4/10</span>
+    <div class="tweet">你可以用 MiniMax M3 以 100 倍更低的成本运行 Hermes。但大多数人还不知道如何设置。这个 20 分钟视频展示了完整设置流程。</div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2064279608191582424" target="_blank">@MiniMax_AI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>想低成本部署 Hermes 模型的创作者，跟随 20 分钟教程完成 M3 配置。</div>
+  </div>
+
+  <div class="card">
+    <span class="rank">12</span>
+    <h2>AI 研究中的"下一步决策"方法论</h2>
+    <span class="tag tag-thinking">💡 思维</span>
+    <span class="score">⭐ 4/10</span>
+    <div class="tweet">AI 研究是一系列"下一步决策"。我们把人类研究者走错方向的会话展示给 Claude 并让它建议下一步。Mythos Preview 在 64% 的情况下比人类做得更好。</div>
+    <div class="source">来源：<a href="https://x.com/AnthropicAI/status/2062568870872003021" target="_blank">@AnthropicAI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>复杂项目中可用 AI 作为"决策检查点"，在关键分支处让模型评估方向，减少走弯路。</div>
+  </div>
+
+  <div class="footer">
+    日报生成时间：2026-06-10 18:00 (北京时间) · 缓存：g1✅ g2✅ g3✅ g4✅ g5✅
+  </div>
+</div>
+</body>
+</html>
