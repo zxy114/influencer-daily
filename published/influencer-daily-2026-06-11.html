@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-06-11</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0d1117;color:#e6edf3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6}
+  .container{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+  .header{text-align:center;padding:32px 0 24px;border-bottom:1px solid #30363d;margin-bottom:32px}
+  .header h1{font-size:28px;font-weight:700;background:linear-gradient(135deg,#58a6ff,#bc8cff,#f778ba);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+  .header .subtitle{color:#8b949e;font-size:14px}
+  .header .date{color:#58a6ff;font-weight:600}
+  .card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px 24px;margin-bottom:16px;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(88,166,255,.12)}
+  .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+  .card-title{font-size:17px;font-weight:600;color:#58a6ff}
+  .card-rank{font-size:12px;font-weight:700;color:#8b949e;background:#21262d;padding:3px 10px;border-radius:20px}
+  .card-tags{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+  .tag{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:600}
+  .tag-tool{background:#1f3a5f;color:#58a6ff}
+  .tag-tutorial{background:#1a3d2e;color:#3fb950}
+  .tag-prompt{background:#3b2551;color:#bc8cff}
+  .tag-workflow{background:#3d2b1f;color:#d29922}
+  .tag-thinking{background:#3d1f2b;color:#f778ba}
+  .score{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+  .score-label{font-size:12px;color:#8b949e}
+  .score-bar{width:100px;height:6px;background:#21262d;border-radius:3px;overflow:hidden}
+  .score-fill{height:100%;border-radius:3px}
+  .score-text{font-size:12px;font-weight:600;color:#e6edf3}
+  .card-tweet{background:#0d1117;border-left:3px solid #30363d;padding:12px 16px;margin:10px 0;font-size:14px;color:#c9d1d9;white-space:pre-wrap}
+  .card-source{font-size:12px;color:#8b949e;margin-top:8px}
+  .card-source a{color:#58a6ff;text-decoration:none}
+  .card-source a:hover{text-decoration:underline}
+  .card-apply{background:#1c2333;border-left:3px solid #58a6ff;padding:10px 14px;margin-top:10px;font-size:13px;color:#c9d1d9}
+  .card-apply-label{font-size:11px;font-weight:700;color:#58a6ff;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:32px 0}
+  .stat-card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;text-align:center}
+  .stat-value{font-size:24px;font-weight:700;color:#58a6ff}
+  .stat-label{font-size:12px;color:#8b949e;margin-top:4px}
+  .footer{text-align:center;padding:32px 0 16px;border-top:1px solid #30363d;color:#484f58;font-size:12px}
+  .footer a{color:#58a6ff;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle"><span class="date">2026-06-11（周四）</span> · 精选 20+ KOL 推文</div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Codex 通宵修 6000 个 Linter 问题 — 自动化代码清理工作流</div>
+      <div class="card-rank">#1</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-workflow">工作流</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:90%;background:linear-gradient(90deg,#3fb950,#58a6ff)"></div></div><span class="score-text">4.5/5</span></div>
+    <div class="card-tweet">"我给了 Codex 一个 Markdown 文件来跟踪进度，让它在海量 linter 债务上持续工作，它跑了一整晚修复了约 6000 个 linter/类型问题。（它会停下来，但我排队了大量 continue 指令让它继续工作）"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1986799989775810955" target="_blank">@steipete</a> · 44.8w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>给 AI 代码代理写一个 progress.md 文件跟踪任务，用 "continue" 指令链让它不间断工作。适合大项目技术债务清理。</div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Agent 工程工作流终极指南 — "Just Talk To It"</div>
+      <div class="card-rank">#2</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-workflow">工作流</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:90%;background:linear-gradient(90deg,#3fb950,#58a6ff)"></div></div><span class="score-text">4.5/5</span></div>
+    <div class="card-tweet">"关于我的工作流的更新。这是一篇 23 分钟的深度阅读。Just Talk To It — 不废话的 Agentic 工程方式。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1978174075110322199" target="_blank">@steipete</a> · 51.2w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>用自然语言指令驱动 AI 代理完成复杂编码任务，减少结构化 prompt 的过度工程。读完可直接改造你的 AI 编码流程。</div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">让 AI 跟踪进度的 Markdown 工作法</div>
+      <div class="card-rank">#3</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-workflow">工作流</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:90%;background:linear-gradient(90deg,#3fb950,#58a6ff)"></div></div><span class="score-text">4.5/5</span></div>
+    <div class="card-tweet">"让代理用 Markdown 文件跟踪工作进度，效果非常好——尤其是当你自动化了循环之后，它可以连续工作数小时。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1941494308709990671" target="_blank">@steipete</a> · 37.9w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>创建 PROGRESS.md 让 AI 代理每步完成后更新它。代理有了"记忆锚点"，不会在长任务中迷失方向。</div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">AI 自主构建 AI — 递归自我改进时代？</div>
+      <div class="card-rank">#4</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-thinking">思维</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:80%;background:linear-gradient(90deg,#58a6ff,#bc8cff)"></div></div><span class="score-text">4.0/5</span></div>
+    <div class="card-tweet">"Claude Opus 4 平均加速 ~3x，而 Mythos Preview 已达到 ~52x。AI 正在加速 AI 开发——这可能通向递归自我改进。"</div>
+    <div class="card-source">📌 <a href="https://x.com/AnthropicAI/status/2062568862479208923" target="_blank">@AnthropicAI</a> · 1839w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>理解 AI 自我优化速度曲线，判断当前 AI 编码工具的成熟度。Mythos Preview 在 AI 自我优化任务上从 22% 提升到 64% 改进率。</div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">ast-grep + AI 自动添加代码守护规则</div>
+      <div class="card-rank">#5</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-tool">工具</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:80%;background:linear-gradient(90deg,#58a6ff,#bc8cff)"></div></div><span class="score-text">4.0/5</span></div>
+    <div class="card-tweet">"自从在代码库中引入 ast-grep，GPT-5 超级喜欢它，每次重构都会自动添加新规则。守护规则的数量减少了。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1965576585609642094" target="_blank">@steipete</a> · 10.4w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>ast-grep 是基于 AST 的代码搜索/替换工具，比正则更精准。集成到项目后 AI 代理能自动理解和应用代码结构规则。</div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">React useEffect 重构指南 — 141 个一天搞定</div>
+      <div class="card-rank">#6</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-tutorial">教程</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:80%;background:linear-gradient(90deg,#58a6ff,#bc8cff)"></div></div><span class="score-text">4.0/5</span></div>
+    <div class="card-tweet">"今天重构了 141 个 useEffect 调用，在喂给我的代理这份指南之后。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1982011815069634878" target="_blank">@steipete</a> · 16.2w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>把 React 官方 "You Might Not Need an Effect" 文档作为 prompt 上下文喂给 AI，批量审查和重构 useEffect。</div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Mythos Preview 研究决策力超越人类</div>
+      <div class="card-rank">#7</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-thinking">思维</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:70%;background:linear-gradient(90deg,#bc8cff,#f778ba)"></div></div><span class="score-text">3.5/5</span></div>
+    <div class="card-tweet">"把人类研究者走错弯的会话展示给 Claude，问它接下来怎么做。Mythos Preview 在 64% 的情况下改进了人类。"</div>
+    <div class="card-source">📌 <a href="https://x.com/AnthropicAI/status/2062568870872003021" target="_blank">@AnthropicAI</a> · 38.6w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>把当前项目状态 + "走到这一步哪里错了？接下来怎么做？" 发给 AI 做下一步决策分析。适合科研、架构设计。</div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Hailuo AI Agent — 对话式创意工作流</div>
+      <div class="card-rank">#8</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-tool">工具</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:70%;background:linear-gradient(90deg,#bc8cff,#f778ba)"></div></div><span class="score-text">3.5/5</span></div>
+    <div class="card-tweet">"介绍 Hailuo AI Agent：只需对话，看着你的想法在无限画布上变为现实。Agent 选择最佳模型、规划工作流、让你的愿景成真。"</div>
+    <div class="card-source">📌 <a href="https://x.com/Hailuo_AI/status/1970086888951394483" target="_blank">@Hailuo_AI</a> · 61.8w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>多模态创意平台，自然语言描述即可自动生成图片/视频/音频。内容创作者可快速生成多媒体素材，省去工具切换。</div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Qwen Code 每日 2000 次免费调用</div>
+      <div class="card-rank">#9</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-tool">工具</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:70%;background:linear-gradient(90deg,#bc8cff,#f778ba)"></div></div><span class="score-text">3.5/5</span></div>
+    <div class="card-tweet">"一行命令 npx @qwen-code/qwen-code@latest 即可安装，每天 2000 次免费调用！"</div>
+    <div class="card-source">📌 <a href="https://x.com/JustinLin610/status/1953836466997801401" target="_blank">@JustinLin610</a> · 15.5w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>一行命令安装 Qwen Code 编码助手，每天 2000 次免费调用，适合快速 prototyping、代码审查和日常编码辅助。</div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">别用太多 MCP — 精简你的 AI 工具链</div>
+      <div class="card-rank">#10</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-thinking">思维</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:60%;background:linear-gradient(90deg,#f778ba,#d29922)"></div></div><span class="score-text">3.0/5</span></div>
+    <div class="card-tweet">"也许现在人们会明白为什么你不想要太多 MCP 了。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1958679613489524952" target="_blank">@steipete</a> · 14.8w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>MCP 工具越多上下文噪声越大。精简到 2-3 个核心 MCP，反而让 AI 代理更专注高效。</div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Bun 文档默认返回 Markdown — Token 降 10 倍</div>
+      <div class="card-rank">#11</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-tool">工具</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:60%;background:linear-gradient(90deg,#f778ba,#d29922)"></div></div><span class="score-text">3.0/5</span></div>
+    <div class="card-tweet">"当 Claude Code 获取 Bun 文档时，Bun 文档默认发送 Markdown 而不是 HTML，这让文档的 token 用量缩减了约 10 倍。"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1972039355775832345" target="_blank">@steipete</a> · 32.3w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>AI 编码工具查询文档时优先选 Markdown 格式。用 --strip-mode js,ui 让浏览器返回纯文本而非 HTML，大幅节省 token。</div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">Claude 审查 Codex 代码 — Git reset --hard 惨案</div>
+      <div class="card-rank">#12</div>
+    </div>
+    <div class="card-tags"><span class="tag tag-thinking">思维</span></div>
+    <div class="score"><span class="score-label">实用性</span><div class="score-bar"><div class="score-fill" style="width:60%;background:linear-gradient(90deg,#f778ba,#d29922)"></div></div><span class="score-text">3.0/5</span></div>
+    <div class="card-tweet">"用 Codex 做了一整晚的复杂重构，让 Claude 审查它，Claude 吓得直接 git reset --hard 了 ☠️"</div>
+    <div class="card-source">📌 <a href="https://x.com/steipete/status/1987764540918894843" target="_blank">@steipete</a> · 13.3w 浏览</div>
+    <div class="card-apply"><div class="card-apply-label">💡 如何应用</div>审查前确保 git commit 已保存所有工作，或让审查代理只给建议而不直接执行 git 操作。</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="stat-value">20+</div><div class="stat-label">覆盖 KOL 数</div></div>
+    <div class="stat-card"><div class="stat-value">~80</div><div class="stat-label">今日推文</div></div>
+    <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">最终入选</div></div>
+    <div class="stat-card"><div class="stat-value">4.5</div><div class="stat-label">最高评分</div></div>
+  </div>
+
+  <div class="footer">
+    报告由 AI 网红工具日报自动生成 · <a href="https://zxy114.github.io/influencer-daily/" target="_blank">GitHub Pages</a>
+  </div>
+</div>
+</body>
+</html>
