@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-12</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;padding:20px}
+.container{max-width:800px;margin:0 auto}
+header{text-align:center;padding:40px 0 30px;border-bottom:1px solid #21262d;margin-bottom:30px}
+header h1{font-size:1.8rem;color:#58a6ff;margin-bottom:8px}
+header .date{color:#8b949e;font-size:.95rem}
+header .tag{display:inline-block;background:#1a2332;color:#58a6ff;padding:2px 10px;border-radius:12px;font-size:.8rem;margin-top:10px}
+.section-title{font-size:1.25rem;color:#f0f6fc;margin:30px 0 16px;padding-left:10px;border-left:3px solid #58a6ff}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:20px;margin-bottom:16px;transition:border-color .2s}
+.card:hover{border-color:#58a6ff}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.card-num{background:#1a2332;color:#58a6ff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0}
+.card-badge{font-size:.75rem;padding:2px 10px;border-radius:10px;font-weight:600}
+.badge-tutorial{background:#122d1a;color:#3fb950}
+.badge-tool{background:#1a2332;color:#58a6ff}
+.badge-workflow{background:#2d1a1a;color:#f0883e}
+.badge-thinking{background:#2d1a2d;color:#bc8cff}
+.card-quote{font-size:.95rem;color:#c9d1d9;margin-bottom:14px;border-left:2px solid #30363d;padding-left:12px;font-style:italic}
+.card-source{font-size:.8rem;color:#8b949e;margin-bottom:10px}
+.card-source a{color:#58a6ff;text-decoration:none}
+.card-source a:hover{text-decoration:underline}
+.card-stars{color:#f0883e;font-size:.85rem;margin-bottom:10px}
+.card-apply{background:#0d1117;border-radius:6px;padding:12px;font-size:.88rem;color:#c9d1d9}
+.card-apply strong{color:#3fb950}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.85rem}
+th{text-align:left;padding:8px 10px;border-bottom:2px solid #30363d;color:#8b949e;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #21262d;color:#c9d1d9}
+tr:hover td{background:#161b22}
+.footer{text-align:center;padding:30px 0;color:#484f58;font-size:.8rem;border-top:1px solid #21262d;margin-top:40px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🤖 AI 网红工具日报</h1>
+<div class="date">2026 年 6 月 12 日 · 星期五</div>
+<div class="tag">12 条精选 · 5 组缓存来源</div>
+</header>
+
+<!-- SECTION: 教程 -->
+<h2 class="section-title">📚 教程 & 课程</h2>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">1</span><strong>AI Prompting for Everyone — Andrew Ng 新课</strong></div>
+<span class="card-badge badge-tutorial">教程</span>
+</div>
+<div class="card-quote">"How we prompt AI is very different in 2026 than 2022 when ChatGPT came out. I'm teaching a new course, AI Prompting for Everyone, to help you become an AI power user — whatever your current skill level."</div>
+<div class="card-source">来源：<a href="https://x.com/AndrewYNg/status/2049886895530967534" target="_blank">@AndrewYNg</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>不管你现在用哪个 AI 模型，这门课教的 Prompt 技能通用于 ChatGPT、Gemini、Claude，适合系统性提升 Prompt 水平。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">2</span><strong>The AI Fast Track — Allie K. Miller 免费 5 天课程</strong></div>
+<span class="card-badge badge-tutorial">教程</span>
+</div>
+<div class="card-quote">"There's a difference between using AI and building with it. Copy-pasting ChatGPT prompts will only get you so far. The AI Fast Track is a free 5-day course."</div>
+<div class="card-source">来源：<a href="https://x.com/alliekmiller/status/1985834763677286606" target="_blank">@alliekmiller</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>免费 5 天邮件课程，从基础到实战，适合想从"用 AI"进阶到"用 AI 构建工具"的非技术背景创作者。</div>
+</div>
+
+<!-- SECTION: 工具推荐 -->
+<h2 class="section-title">🛠️ 工具推荐</h2>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">3</span><strong>Claude Code SDK 自定义工具 + Hooks</strong></div>
+<span class="card-badge badge-tool">工具</span>
+</div>
+<div class="card-quote">"The Claude Code SDK now supports custom tools and hooks directly in code. Additionally, we've refreshed all our docs with complete references and 10 new guides."</div>
+<div class="card-source">来源：<a href="https://x.com/trq212/status/1966586970458542297" target="_blank">@trq212</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>在 Claude Agent 中注册自定义工具（如调 API、查数据库）和生命周期 Hooks，让 Agent 拥有专属能力，不再受限于内置工具集。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">4</span><strong>Kimi Work — 桌面端 AI Agent 工作站（300 并行）</strong></div>
+<span class="card-badge badge-tool">工具</span>
+</div>
+<div class="card-quote">"Meet Kimi Work - a local AI agent on your desktop. Native agent swarm: Up to 300 AI agents running in parallel on your local machine. Browser use: Paired with WebBridge extension."</div>
+<div class="card-source">来源：<a href="https://x.com/Kimi_Moonshot/status/2063990409903112344" target="_blank">@Kimi_Moonshot</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>在本地运行最多 300 个并行 Agent，配合 WebBridge 浏览器扩展自动完成网页搜索、填表、下载等重复任务，适合内容运营、数据调研。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">5</span><strong>Linear 自驱型 SaaS — AI 主动推进工作</strong></div>
+<span class="card-badge badge-tool">工具</span>
+</div>
+<div class="card-quote">"Most AI tools are chatbots layered on top of old workflows. But the real change comes when AI proactively moves work forward. Welcome to the era of self-driving SaaS."</div>
+<div class="card-source">来源：<a href="https://x.com/thenanyu/status/1981052786398687615" target="_blank">@thenanyu</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>Linear 的 AI 能自动创建 issue、分配任务、推进工作流，适合需要高效项目管理的创作者团队。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">6</span><strong>Gemini 3.5 Live Translate — 70+ 语言实时语音翻译</strong></div>
+<span class="card-badge badge-tool">工具</span>
+</div>
+<div class="card-quote">"Today, we released Gemini 3.5 Live Translate, our latest audio model for live speech-to-speech translation. It supports over 70 languages and starts translating as soon as you start talking."</div>
+<div class="card-source">来源：<a href="https://x.com/GoogleAI/status/2064366504112505266" target="_blank">@GoogleAI</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>做多语言内容的创作者可以用它做实时口播翻译、跨国直播、采访翻译，延迟极低且保持语气语调。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">7</span><strong>Midjourney V8.1 成为默认模型</strong></div>
+<span class="card-badge badge-tool">工具</span>
+</div>
+<div class="card-quote">"We've made V8.1 the new default model. V8.1: Our iconic aesthetics are back w native 2K HD rendering - 3x faster and 3x cheaper vs V8. Image prompts are back. New 'Describe' is live."</div>
+<div class="card-source">来源：<a href="https://x.com/midjourney/status/2064921117618557292" target="_blank">@midjourney</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>出图速度和质量全面升级，2K 原生渲染比 V8 快 3 倍、便宜 3 倍。用新 "Describe" 功能可以反向拆解任意图片的 Prompt。</div>
+</div>
+
+<!-- SECTION: 工作流 & 思维 -->
+<h2 class="section-title">💡 工作流 & 思维</h2>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">8</span><strong>非编码 Agent 也要多用 Bash 工具</strong></div>
+<span class="card-badge badge-workflow">工作流</span>
+</div>
+<div class="card-quote">"I've done dozens of calls with companies making general agents over the past few weeks and my advice generally boils down to: 'use the bash tool more.'"</div>
+<div class="card-source">来源：<a href="https://x.com/trq212/status/1982869394482139206" target="_blank">@trq212</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>给 Agent 开放 bash 工具，让它执行 grep、sed、curl、jq 等命令处理文件和 API，大幅提升非编程类 Agent 的实用性。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">9</span><strong>用 Hooks 让 Agent 过夜运行 6-8 小时</strong></div>
+<span class="card-badge badge-workflow">工作流</span>
+</div>
+<div class="card-quote">"Daisy's tip for getting Sonnet 4.5 to run for 6-8 hours overnight: use hooks. She adds hooks for linting & testing to make sure that Claude runs the tests and prompts it to not stop until they pass."</div>
+<div class="card-source">来源：<a href="https://x.com/trq212/status/1976369909132370190" target="_blank">@trq212</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>在 Claude Code 中配置 Lint/Test Hook，让 Agent 在代码出错时自动修复并重试，实现真正的无人值守过夜开发。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">10</span><strong>Agent 应该使用文件系统表示状态</strong></div>
+<span class="card-badge badge-thinking">思维</span>
+</div>
+<div class="card-quote">"Your Agent should use a File System. This is a hill I will die on. The file system is an elegant way of representing state that your agent could read into context & allowing it to verify its work."</div>
+<div class="card-source">来源：<a href="https://x.com/trq212/status/1970243253061783669" target="_blank">@trq212</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>让 Agent 把中间结果写入文件而非全塞进上下文，既节省 token 又方便验证，适合长流程自动化任务。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">11</span><strong>如何让 Agent 自主决策并派生子 Agent</strong></div>
+<span class="card-badge badge-thinking">思维</span>
+</div>
+<div class="card-quote">"An agent should be able to be given tools and decide what to do itself, including spinning off subagents, like Claude Code."</div>
+<div class="card-source">来源：<a href="https://x.com/trq212/status/1975002404837056763" target="_blank">@trq212</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>设计 Agent 时赋予工具自主选择权，让它根据任务复杂度决定是否启动子 Agent 并行处理，而非写死线性工作流。</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div style="display:flex;align-items:center;gap:10px"><span class="card-num">12</span><strong>如何构建不是"壳"的 AI 产品</strong></div>
+<span class="card-badge badge-thinking">思维</span>
+</div>
+<div class="card-quote">"Some quick thoughts on how to build AI products that are not wrappers: 1. Study user workflows deeply: tools, data sources, hacks, manual activities. 2. Identify the challenges."</div>
+<div class="card-source">来源：<a href="https://x.com/realmadhuguru/status/1958348930774908998" target="_blank">@realmadhuguru</a></div>
+<div class="card-stars">实用性：⭐⭐⭐⭐⭐</div>
+<div class="card-apply"><strong>如何应用：</strong>深入调研用户的真实工作流，找出 AI 能切入的痛点，而不是简单地在现有产品上套一层 ChatGPT。</div>
+</div>
+
+<!-- TABLE -->
+<h2 class="section-title">📊 汇总</h2>
+<table>
+<tr><th>#</th><th>分类</th><th>核心内容</th><th>评分</th></tr>
+<tr><td>1</td><td>📚 教程</td><td>Andrew Ng: AI Prompting for Everyone</td><td>⭐5</td></tr>
+<tr><td>2</td><td>📚 教程</td><td>Allie K. Miller: AI Fast Track 5天免费课</td><td>⭐5</td></tr>
+<tr><td>3</td><td>🛠 工具</td><td>Claude Code SDK 自定义工具 + Hooks</td><td>⭐5</td></tr>
+<tr><td>4</td><td>🛠 工具</td><td>Kimi Work 桌面Agent工作站 (300并行)</td><td>⭐4</td></tr>
+<tr><td>5</td><td>🛠 工具</td><td>Linear 自驱型 SaaS</td><td>⭐4</td></tr>
+<tr><td>6</td><td>🛠 工具</td><td>Gemini 3.5 Live Translate 70+语言</td><td>⭐4</td></tr>
+<tr><td>7</td><td>🛠 工具</td><td>Midjourney V8.1 默认模型</td><td>⭐4</td></tr>
+<tr><td>8</td><td>💡 工作流</td><td>非编码 Agent 多用 Bash 工具</td><td>⭐5</td></tr>
+<tr><td>9</td><td>💡 工作流</td><td>Hooks 让 Agent 过夜运行 6-8h</td><td>⭐4</td></tr>
+<tr><td>10</td><td>💡 思维</td><td>Agent 用文件系统表示状态</td><td>⭐4</td></tr>
+<tr><td>11</td><td>💡 思维</td><td>Agent 自主决策 + 派生子 Agent</td><td>⭐4</td></tr>
+<tr><td>12</td><td>💡 思维</td><td>构建非"壳"AI 产品的方法论</td><td>⭐5</td></tr>
+</table>
+
+<div class="footer">
+本期从 5 组缓存（g1-g5）共 70+ 条推文中筛选而出<br>
+来源覆盖 OpenAI、Anthropic、Google、Kimi、MiniMax、Midjourney、Linear 等
+</div>
+</div>
+</body>
+</html>
