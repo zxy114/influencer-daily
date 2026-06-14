@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-14</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-purple: #bc8cff;
+    --accent-red: #f85149;
+    --tag-tool: #1f6feb;
+    --tag-workflow: #238636;
+    --tag-prompt: #8957e5;
+    --tag-tutorial: #d29922;
+    --tag-thinking: #f778ba;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 0 30px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header h1 span { color: var(--accent); }
+  .header .date { color: var(--text-secondary); font-size: 14px; }
+  .header .subtitle { color: var(--text-secondary); font-size: 13px; margin-top: 6px; }
+
+  .section-title {
+    font-size: 18px;
+    margin: 30px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title.top-pick { border-bottom-color: var(--accent-orange); color: var(--accent-orange); }
+  .section-title.recommend { border-bottom-color: var(--accent-green); color: var(--accent-green); }
+  .section-title.worthy { border-bottom-color: var(--accent-purple); color: var(--accent-purple); }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .card-translation {
+    background: rgba(88,166,255,0.06);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag.tool { background: var(--tag-tool); color: #fff; }
+  .tag.workflow { background: var(--tag-workflow); color: #fff; }
+  .tag.prompt { background: var(--tag-prompt); color: #fff; }
+  .tag.tutorial { background: var(--tag-tutorial); color: #000; }
+  .tag.thinking { background: var(--tag-thinking); color: #000; }
+  .score {
+    color: var(--accent-orange);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .source {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(63,185,80,0.06);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--accent-green);
+  }
+  .apply strong { color: var(--accent-green); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-card .value { font-size: 24px; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+  .footer {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI <span>网红工具日报</span></h1>
+    <div class="date">2026 年 6 月 14 日 · 周日</div>
+    <div class="subtitle">精选今日 AI 圈最值得关注的工具、教程与实用技巧，内容创作者看完就能上手</div>
+  </div>
+
+  <!-- Top Pick -->
+  <div class="section-title top-pick">🥇 Top Pick</div>
+  <div class="card">
+    <div class="card-title">Kimi Desktop — 300 个智能体并行 + 金融数据源工具调用</div>
+    <div class="card-translation">专为金融场景打造，Kimi Desktop 搭配智能体群（agent swarm）和数据工具调用功能，300 个专业智能体并行工作，每个智能体都能接入工具：Yahoo Finance 获取市场数据、世界银行获取经济研究、Binance 进行加密货币分析等。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="tag workflow">🔄 工作流</span>
+      <span class="score">⭐⭐⭐⭐⭐ (5/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2063990417885212840" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>做财经内容创作者可以直接用 Kimi Desktop 并行抓取多源数据，自动生成带数据支撑的研报或视频脚本。安装一行命令即可。</div>
+  </div>
+
+  <!-- Strongly Recommend -->
+  <div class="section-title recommend">🥈 强烈推荐</div>
+
+  <div class="card">
+    <div class="card-title">MiniMax M3 — 开源多模态大模型，100 万 token 上下文窗口</div>
+    <div class="card-translation">仅约 428B 参数、~23B 激活参数，M3 就能处理前沿编程 + 长程智能体 + 原生多模态（文本、图像、视频），100 万 token 上下文窗口。权重已开放，支持 GGUF 格式本地部署。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐⭐⭐ (5/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2065503852820881746" target="_blank">@MiniMax_AI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>本地跑 M3 需要 138GB RAM/VRAM（2-bit GGUF），适合有 GPU 服务器的创作者做本地 AI 工作流，完全离线、无隐私泄露风险。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MiniMax Hermes Agent — 自学 TouchDesigner 做艺术创作</div>
+    <div class="card-translation">AI 智能体从零开始自学 TouchDesigner：在桌面上导航（电脑操作）→ 学会连接 TouchDesigner → 读取参考图片 → 在自学习循环中迭代艺术创作 → 最后保存作品。</div>
+    <div class="meta">
+      <span class="tag workflow">🔄 工作流</span>
+      <span class="tag thinking">💡 思维</span>
+      <span class="score">⭐⭐⭐⭐⭐ (5/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2065861769776738349" target="_blank">@MiniMax_AI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>视频创作者可以让 AI 自动学习并操作视觉设计工具，大幅降低创作门槛。展示了 AI 智能体自主控制桌面 + 学习新软件的完整工作流。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Kimi Code — 开源编程智能体大升级</div>
+    <div class="card-translation">一行 CLI 安装，零配置，快速启动。支持拖入视频作为编程上下文：参考到 LUT、长视频转短视频、录屏转代码等。支持金融数据、学术报告等插件。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="tag tutorial">📝 教程</span>
+      <span class="score">⭐⭐⭐⭐ (4/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2063981516708024369" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>把录屏拖进去就能自动转代码——非常适合开发者教程类创作者。命令行一行安装，开箱即用。</div>
+  </div>
+
+  <!-- Worth Watching -->
+  <div class="section-title worthy">🥉 值得关注</div>
+
+  <div class="card">
+    <div class="card-title">Midjourney V8.1 — 现已成为默认模型</div>
+    <div class="card-translation">已将 V8.1 设为所有用户的默认模型。V8 将在 2 周后弃用。V8.2 即将开始测试。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐⭐ (4/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/midjourney/status/2064921117618557292" target="_blank">@midjourney</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>AI 绘画创作者注意：默认模型已升级为 V8.1，画质和速度都有提升。V8 用户尽快迁移。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Gemini 3.5 Live Translate — 70+ 语言实时语音翻译</div>
+    <div class="card-translation">最新音频模型，支持超过 70 种语言的实时语音到语音翻译。你一开口就开始翻译，边听边输出，没有尴尬的停顿或卡顿。保持语调、节奏和音色不变。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐⭐ (4/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/GoogleAI/status/2064366504112505266" target="_blank">@GoogleAI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>做跨语言内容（如中文→英文播客/视频）的创作者可以用它做实时翻译配音，语调自然不生硬。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">MiniMax Hub — 本地 AI 创意工作站</div>
+    <div class="card-translation">智能体范式正在转变：从编码到创作！研究 → 脚本 → 图像 → 音乐 → 最终剪辑，智能体处理繁琐工作，你来做决策。专为精英工作流打造。</div>
+    <div class="meta">
+      <span class="tag workflow">🔄 工作流</span>
+      <span class="score">⭐⭐⭐⭐ (4/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">@Hailuo_AI</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>从调研到成片，AI 智能体串联全流程。视频/图文创作者可以用它搭建从选题→脚本→素材→剪辑的端到端流水线。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">DiffusionGemma — 文本生成加速 4 倍</div>
+    <div class="card-translation">全新实验性开源模型，在专用 GPU 上输出速度提升最高 4 倍。不是逐字预测，而是同时生成整段文本。让模型能实时自我纠正并格式化复杂 Markdown。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐⭐ (4/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/GoogleDeepMind/status/2064741061352636762" target="_blank">@GoogleDeepMind</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>做批量内容生成的创作者可以用 DiffusionGemma 加速文章/帖子产出，速度快 4 倍且能自动格式化 Markdown 排版。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Kimi K2.7-Code — 编程专用智能体模型开源</div>
+    <div class="card-translation">编程和智能体性能大幅提升：Kimi Code Bench v2 +21.8%，Program Bench +11.0%，MLS Bench Lite +31.5%。推理效率更高，少想 30% 的 token。1T 参数 MoE 架构，256K token 上下文窗口。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐ (3/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2065377579130142937" target="_blank">@Kimi_Moonshot</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>技术博主可以用 K2.7-Code 自动生成代码示例和教程，思考 token 减少 30% 意味着 API 成本更低。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Project Genie — Google AI 助手扩展开放</div>
+    <div class="card-translation">Project Genie 访问范围进一步扩大！全球 Google AI Ultra 5X 订阅用户现在都可以使用。</div>
+    <div class="meta">
+      <span class="tag tool">🔧 工具</span>
+      <span class="score">⭐⭐⭐ (3/5)</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/GoogleDeepMind/status/2064801929339752527" target="_blank">@GoogleDeepMind</a></div>
+    <div class="apply"><strong>💡 如何应用：</strong>Google AI Ultra 5X 订阅用户可直接体验 Project Genie，适合日常内容创作辅助和工作流整合。</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="value">5/5</div><div class="label">缓存组覆盖</div></div>
+    <div class="stat-card"><div class="value">10</div><div class="label">收录条目</div></div>
+    <div class="stat-card"><div class="value">7</div><div class="label">工具推荐</div></div>
+    <div class="stat-card"><div class="value">2</div><div class="label">工作流优化</div></div>
+    <div class="stat-card"><div class="value">~55</div><div class="label">排除条目</div></div>
+    <div class="stat-card"><div class="value">⭐5</div><div class="label">最高评分</div></div>
+  </div>
+
+  <div class="footer">
+    AI 网红工具日报 · 每日精选 · <a href="https://zxy114.github.io/influencer-daily/" target="_blank">GitHub Pages</a>
+  </div>
+</div>
+</body>
+</html>
