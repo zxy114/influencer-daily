@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 2026-06-16</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d28;
+    --border: #2a2d3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --text: #e2e4ed;
+    --text2: #9ca0b0;
+    --tag-tool: #6c63ff;
+    --tag-tutorial: #ff6b9d;
+    --tag-prompt: #ffc857;
+    --tag-workflow: #00d4aa;
+    --tag-thinking: #a78bfa;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.7; }
+  .container { max-width:900px; margin:0 auto; padding:24px 16px; }
+  header { text-align:center; padding:40px 0 32px; }
+  header h1 { font-size:1.8rem; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+  header .date { color:var(--text2); font-size:0.95rem; }
+  .grid { display:grid; gap:20px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px; box-shadow:var(--shadow); transition:transform 0.2s; }
+  .card:hover { transform:translateY(-2px); }
+  .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+  .card-num { background:var(--accent); color:#fff; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; flex-shrink:0; }
+  .card-score { color:var(--accent2); font-weight:700; font-size:0.95rem; white-space:nowrap; }
+  .card-title { font-size:1.15rem; font-weight:600; margin-bottom:10px; }
+  .card-quote { background:rgba(108,99,255,0.08); border-left:3px solid var(--accent); padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:0.92rem; color:var(--text2); }
+  .card-source { color:var(--text2); font-size:0.85rem; margin-bottom:10px; }
+  .card-source a { color:var(--accent); text-decoration:none; }
+  .card-source a:hover { text-decoration:underline; }
+  .tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .tag { font-size:0.75rem; padding:3px 10px; border-radius:20px; font-weight:600; color:#fff; }
+  .tag-tool { background:var(--tag-tool); }
+  .tag-tutorial { background:var(--tag-tutorial); }
+  .tag-prompt { background:var(--tag-prompt); }
+  .tag-workflow { background:var(--tag-workflow); }
+  .tag-thinking { background:var(--tag-thinking); }
+  .card-apply { background:rgba(0,212,170,0.08); border-radius:8px; padding:12px 16px; font-size:0.88rem; }
+  .card-apply strong { color:var(--accent2); }
+  footer { text-align:center; padding:40px 0 24px; color:var(--text2); font-size:0.8rem; }
+  @media(max-width:600px) {
+    .container { padding:16px 10px; }
+    header h1 { font-size:1.4rem; }
+    .card { padding:18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 16 日 · 周二 · 数据来源 Twitter/X</div>
+  </header>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">1</div>
+        <div class="card-score">⭐ 5.0</div>
+      </div>
+      <div class="card-title">MiniMax M3 本地运行指南（GGUF 量化版）</div>
+      <div class="card-quote">MiniMax M3 can now be run locally! 🔥 428B (23B active) open model with 1M context that performs on par with Gemini 3.1 Pro. Run Dynamic 2-bit GGUF on 138GB RAM/VRAM or 3-bit on 165GB.</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2065503852820881746" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>有大内存 Mac/PC 的创作者可以直接本地跑 M3——100 万 token 上下文，做长文档分析、代码生成、多模态推理都不用担心隐私。GGUF 兼容 llama.cpp 全家桶。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">2</div>
+        <div class="card-score">⭐ 5.0</div>
+      </div>
+      <div class="card-title">Command Code 终端集成 MiniMax M3（免费至 6/17）</div>
+      <div class="card-quote">MiniMax M3 is now FREE in Command Code! One of the best open models. LIVE NOW. HOW: npm i -g command-code → cmd /model MiniMax M3 (FREE)</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2066610915517387067" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-prompt">Prompt</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>两条命令就能在终端用上前沿开源模型，免费窗口到 6 月 17 日。适合快速测试、日常 coding 助手、自动化脚本生成。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">3</div>
+        <div class="card-score">⭐ 4.5</div>
+      </div>
+      <div class="card-title">Kimi K2.7 Code 开源 + 高速模式（6× 提速）</div>
+      <div class="card-quote">🌘 Kimi-K2.7-Code, our latest coding model, is now open-sourced! +21.8% on Kimi Code Bench v2. HighSpeed mode — up to 6× faster, 180 tok/s on coding tasks.</div>
+      <div class="card-source">来源: @Kimi_Moonshot · <a href="https://x.com/Kimi_Moonshot/status/2066467110960959833" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>编程场景直接切 HighSpeed 模式，速度最高 6 倍提升。开源权重可集成到 coding agent 或 CI/CD pipeline。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">4</div>
+        <div class="card-score">⭐ 4.0</div>
+      </div>
+      <div class="card-title">MiniMax MSA 稀疏注意力架构详解</div>
+      <div class="card-quote">At the heart of M3 is MSA, a new sparse attention architecture: dynamically selects the most relevant tokens — dramatically reducing compute while keeping quality.</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2065445059039031799" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-thinking">思维</span><span class="tag tag-workflow">工作流</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>理解 MSA 原理后，在长文本处理 pipeline 中借鉴——动态选择关键 token 既省算力又保质量，适合 RAG 和长文档总结。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">5</div>
+        <div class="card-score">⭐ 4.0</div>
+      </div>
+      <div class="card-title">MiniMax M3 在 0G Private Computer 免费 3 天</div>
+      <div class="card-quote">MiniMax M3 is now 100% free on 0G Private Computer. The #1 open-weight model, zero cost for the next 3 days.</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2066592449578115284" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>没有大内存机器的用户可以云端免费体验 M3 的全部能力——多模态、100 万 token 上下文。三天窗口跑长任务正好。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">6</div>
+        <div class="card-score">⭐ 4.0</div>
+      </div>
+      <div class="card-title">Hermes Agent 自学 TouchDesigner 创作</div>
+      <div class="card-quote">Hermes agent learned TouchDesigner from scratch — navigated desktop, connected to TD, read reference images, iterated on art with me in a self-learning loop.</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2065861769776738349" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-thinking">思维</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>让 AI agent 先自行探索不熟悉的设计/视频/音频软件，再在迭代中协作。降低学习新工具的时间成本。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">7</div>
+        <div class="card-score">⭐ 4.0</div>
+      </div>
+      <div class="card-title">MiniMax Hub — Agent 创意工作站</div>
+      <div class="card-quote">MiniMax Hub Official Launch — Your Local AI Agent Creative Workstation! Research → Script → Image → Music → Final Cut. Agents handle the grind. You call the shots.</div>
+      <div class="card-source">来源: @Hailuo_AI · <a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>把内容创作全流程串成 Agent 工作流，适合视频创作者、自媒体运营搭建自动化内容生产线。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">8</div>
+        <div class="card-score">⭐ 4.0</div>
+      </div>
+      <div class="card-title">Gemini 3.5 Live Translate — 70+ 语言实时语音翻译</div>
+      <div class="card-quote">Say hello, hola, 你好 to Gemini 3.5 Live Translate. Supports over 70 languages, starts translating as soon as you start talking, streaming while listening.</div>
+      <div class="card-source">来源: @GoogleDeepMind · <a href="https://x.com/GoogleDeepMind/status/2064366504745828689" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>跨国创作者、播客、直播可以用它做实时翻译。边听边翻，无尴尬停顿。API 已在 Google AI Studio 开放。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">9</div>
+        <div class="card-score">⭐ 3.5</div>
+      </div>
+      <div class="card-title">NotebookLM 重大升级 — 新增 Agent 能力</div>
+      <div class="card-quote">NotebookLM got a major upgrade including agentic capabilities in chat, more advanced reasoning, and a suite of new output formats.</div>
+      <div class="card-source">来源: @GoogleAI · <a href="https://x.com/GoogleAI/status/2065478191247130703" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>上传资料让 AI 主动提问、推理、生成多种格式输出。适合研究者、学生、内容策划做知识管理。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">10</div>
+        <div class="card-score">⭐ 3.5</div>
+      </div>
+      <div class="card-title">MiniMax M3 MLX-VLM 本地推理优化</div>
+      <div class="card-quote">Made improvements on the decode path for MiniMax M3 on MLX-VLM. Faster decode, slightly lighter footprint. PR: github.com/Blaizzy/mlx-vlm/pull/1374</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2065885350656921900" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">教程</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>Mac 用户跑 M3 可通过此 PR 获得更快解码和更低内存。合并后直接 pip install --upgrade mlx-vlm 即可。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">11</div>
+        <div class="card-score">⭐ 3.0</div>
+      </div>
+      <div class="card-title">MiniMax M3 参数效率分析（MoE 架构）</div>
+      <div class="card-quote">There are very few <500bn parameter models that can tackle coding, agentic workloads, and multimodal all with a 1M-token context window. ~428B params, ~23B activated.</div>
+      <div class="card-source">来源: @MiniMax_AI · <a href="https://x.com/MiniMax_AI/status/2065529390486999448" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-thinking">思维</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>MoE 架构思路对选模型有参考价值——兼顾多模态+长上下文+推理能力时，M3 的参数效率比全激活模型更经济。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-num">12</div>
+        <div class="card-score">⭐ 3.0</div>
+      </div>
+      <div class="card-title">Gemini 3.5 Live Translate API 集成指南</div>
+      <div class="card-quote">Fluid, natural voice translation. Supports over 70 languages, keeps tone, pace and pitch intact — allowing for more natural conversations.</div>
+      <div class="card-source">来源: @GoogleAI · <a href="https://x.com/GoogleAI/status/2064366505630802081" target="_blank">推文链接</a></div>
+      <div class="tags"><span class="tag tag-tutorial">教程</span><span class="tag tag-tool">工具</span></div>
+      <div class="card-apply"><strong>如何应用：</strong>开发者可为应用添加实时语音翻译——保持语调和节奏，比传统 TTS 翻译自然得多。适合跨国客服、教育、直播。</div>
+    </div>
+
+  </div>
+  <footer>
+    AI 网红工具日报 · 2026-06-16 · 由 AI 自动生成 · 数据来源 Twitter/X
+  </footer>
+</div>
+</body>
+</html>
