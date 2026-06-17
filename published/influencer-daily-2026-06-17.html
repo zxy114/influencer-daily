@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI 网红工具日报 — 2026年6月17日</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card-bg: #1a1d2e;
+  --card-border: #2a2d3e;
+  --accent: #6c5ce7;
+  --accent-light: #a29bfe;
+  --text: #e0e0e0;
+  --text-dim: #8888a0;
+  --tag-tool: #00b894;
+  --tag-tutorial: #0984e3;
+  --tag-prompt: #e17055;
+  --tag-workflow: #fdcb6e;
+  --tag-mindset: #6c5ce7;
+  --stars: #fdcb6e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}
+.container { max-width: 800px; margin: 0 auto; }
+.header {
+  text-align: center;
+  padding: 40px 0 30px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 30px;
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header p { color: var(--text-dim); margin-top: 8px; font-size: 0.95em; }
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.rank {
+  background: var(--accent);
+  color: #fff;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9em; flex-shrink: 0;
+}
+.score {
+  margin-left: auto;
+  color: var(--stars);
+  font-weight: 600;
+  font-size: 0.85em;
+}
+.card h3 { font-size: 1.1em; margin-bottom: 10px; color: #fff; }
+.tweet-text {
+  background: #12141f;
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+  font-size: 0.95em;
+  color: var(--text);
+  line-height: 1.7;
+}
+.meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 0.85em; }
+.tag {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #fff;
+}
+.tag-tool { background: var(--tag-tool); }
+.tag-tutorial { background: var(--tag-tutorial); }
+.tag-prompt { background: var(--tag-prompt); }
+.tag-workflow { background: var(--tag-workflow); color: #333; }
+.tag-mindset { background: var(--tag-mindset); }
+.source { color: var(--text-dim); margin-left: auto; }
+.source a { color: var(--accent-light); text-decoration: none; }
+.source a:hover { text-decoration: underline; }
+.how-to {
+  background: #15172a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 0.9em;
+  color: var(--accent-light);
+}
+.how-to strong { color: #fff; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-card .num { font-size: 1.8em; font-weight: 700; color: var(--accent-light); }
+.stat-card .label { font-size: 0.85em; color: var(--text-dim); margin-top: 4px; }
+.trends { margin-top: 30px; }
+.trends h2 { font-size: 1.3em; margin-bottom: 16px; color: var(--accent-light); }
+.trends ul { list-style: none; }
+.trends li {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.trends li strong { color: var(--accent-light); }
+.footer {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8em;
+  padding: 30px 0;
+  border-top: 1px solid var(--card-border);
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🤖 AI 网红工具日报</h1>
+  <p>2026年6月17日 · 每日精选 AI 工具、教程、Prompt 模板与工作流技巧</p>
+</div>
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">1</div>
+    <div class="score">⭐ 9/10</div>
+  </div>
+  <h3>MiniMax M3 + Clicky：AI 自动审查并修复网站设计</h3>
+  <div class="tweet-text">"我把 Clicky 改造成一个 Mac 菜单栏小工具，它能审查我的网站设计、跟我对话，还能自己改代码。流程：'这有什么问题？' → M3 读取屏幕并指出薄弱部分 → '修复它' → 它直接编辑磁盘上的文件。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="tag tag-workflow">🔄 工作流</span>
+    <span class="source"><a href="https://x.com/VictorSuOrtiz/status/2066949934684024905">@VictorSuOrtiz</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>设计师可以在 Mac 上搭建类似的"审查→反馈→自动修复"循环，用 MiniMax M3 + Together Compute 实现网站设计的 AI 辅助迭代。</div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">2</div>
+    <div class="score">⭐ 9/10</div>
+  </div>
+  <h3>MiniMax Hub：AI Agent 创意工作站正式上线</h3>
+  <div class="tweet-text">"你的本地 AI Agent 创意工作站已上线！Agent 范式正在转变：从编码到创作！研究→脚本→图片→音乐→最终剪辑，Agent 处理繁琐工作，你掌控全局。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="tag tag-mindset">🧠 思维</span>
+    <span class="source"><a href="https://x.com/Hailuo_AI/status/2065277558992851201">@Hailuo_AI</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>内容创作者可以用 MiniMax Hub 搭建从研究到最终成品的自动化流水线，把重复性工作交给 Agent 处理。</div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">3</div>
+    <div class="score">⭐ 7/10</div>
+  </div>
+  <h3>非技术创始人的开源生存指南</h3>
+  <div class="tweet-text">"我不是工程师，但我 somehow 能交付有价值的产品——这太疯狂、太奇怪了，仍然让我惊叹。" 为非技术创始人，为 100+ 开源项目做出贡献，获得 44K+ GitHub Stars。</div>
+  <div class="meta">
+    <span class="tag tag-mindset">🧠 思维</span>
+    <span class="tag tag-tutorial">📚 教程</span>
+    <span class="source"><a href="https://x.com/petergyang/status/2066162582273273924">@petergyang</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>非技术背景的内容创作者可以借鉴他的方法论——通过参与开源项目积累技能，用 AI 工具弥补技术短板。</div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">4</div>
+    <div class="score">⭐ 8/10</div>
+  </div>
+  <h3>MiniMax M3 免费登陆 Command Code 终端</h3>
+  <div class="tweet-text">"MiniMax M3 现在 Command Code 中免费使用！最好的开源模型之一。安装：npm i -g command-code → cmd /model MiniMax M3 (FREE)"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="tag tag-tutorial">📚 教程</span>
+    <span class="source"><a href="https://x.com/CommandCodeAI/status/2066577317762326634">@CommandCodeAI</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>开发者只需一个 npm 命令即可在终端调用 MiniMax M3，适合快速原型开发和日常编码辅助。限时免费（6月15-17日），抓紧使用。</div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">5</div>
+    <div class="score">⭐ 7/10</div>
+  </div>
+  <h3>DiffusionGemma：4倍速度的实时 Markdown 生成</h3>
+  <div class="tweet-text">"DiffusionGemma 是我们全新的实验性开放模型，在专用 GPU 上输出速度快达 4 倍。它不是逐字预测，而是同时生成整块文本。这让模型能自我修正并实时格式化复杂 Markdown。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="source"><a href="https://x.com/GoogleDeepMind/status/2064741061352636762">@GoogleDeepMind</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>需要批量生成结构化 Markdown 内容（文档、博客、README）的创作者可以尝试 DiffusionGemma 的并行生成能力，速度比传统自回归模型快 4 倍。</div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">6</div>
+    <div class="score">⭐ 7/10</div>
+  </div>
+  <h3>OpenAI Codex 额度重置：保存并在需要时使用</h3>
+  <div class="tweet-text">"你们希望按自己的时间安排使用 Codex 额度重置。从今天开始，我们推出保存额度重置功能，稍后使用。Go、Plus、Pro 和 Business 用户可免费获得一次重置。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="tag tag-workflow">🔄 工作流</span>
+    <span class="source"><a href="https://x.com/OpenAI/status/2065225362544726371">@OpenAI</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>如果你平时用 Codex 不多但偶尔需要大量编程，可以把重置存起来在关键时刻使用，避免浪费。</div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">7</div>
+    <div class="score">⭐ 6/10</div>
+  </div>
+  <h3>Gemini 引导式学习：学生用 AI 理解概念而非找答案</h3>
+  <div class="tweet-text">"我们评估 AI 影响时不仅看测试分数，还关注行为变化。八周实验表明，学生用 AI 来理解概念而非仅找答案——关于'如何解决问题'的 Gemini 查询从 68% 上升到 90%。"</div>
+  <div class="meta">
+    <span class="tag tag-tutorial">📚 教程</span>
+    <span class="tag tag-mindset">🧠 思维</span>
+    <span class="source"><a href="https://x.com/GoogleDeepMind/status/2064785577593995272">@GoogleDeepMind</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>教育工作者可以参考此方法设计 AI 辅助教学——引导学生用 AI 理解"为什么"而不是"答案是什么"。</div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">8</div>
+    <div class="score">⭐ 7/10</div>
+  </div>
+  <h3>MiniMax M3 本地运行：在 Mac 上填写海关申报表</h3>
+  <div class="tweet-text">"开源 MiniMax M3 从驾照照片填写了美国海关申报表。我们使用 MLX-VLM 在 Mac Studio M3 Ultra 512GB 上部署了 M3 Q4 模型。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="tag tag-tutorial">📚 教程</span>
+    <span class="source"><a href="https://x.com/atomic_chat_hq/status/2066545009923363162">@atomic_chat_hq</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>展示了 M3 在本地设备上处理 OCR + 表单填写的完整流程，适合搭建离线文档处理工具。</div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">9</div>
+    <div class="score">⭐ 6/10</div>
+  </div>
+  <h3>Kimi Code Beta：提前体验最新编码模型</h3>
+  <div class="tweet-text">"我们同时推出 Kimi Code Beta 计划！现在就申请，在公开发布前试用即将推出的模型和功能。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="source"><a href="https://x.com/Kimi_Moonshot/status/2065377583290814828">@Kimi_Moonshot</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>开发者可以申请 Kimi Code Beta 计划，提前试用 K2.7 系列的最新编码能力。</div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="card-header">
+    <div class="rank">10</div>
+    <div class="score">⭐ 5/10</div>
+  </div>
+  <h3>Google Project Genie：AI Ultra 5X 订阅者可用</h3>
+  <div class="tweet-text">"Project Genie 访问权限扩大！从今天起，全球 Google AI Ultra 5X 订阅者（最新等级）都可以使用 Project Genie。"</div>
+  <div class="meta">
+    <span class="tag tag-tool">🛠️ 工具</span>
+    <span class="source"><a href="https://x.com/GoogleLabs/status/2064801929339752527">@GoogleLabs</a></span>
+  </div>
+  <div class="how-to"><strong>💡 如何应用：</strong>如果你是 Google AI Ultra 5X 订阅者，现在可以尝试 Project Genie——探索最新 AI 实验功能。</div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat-card"><div class="num">10</div><div class="label">扫描账号</div></div>
+  <div class="stat-card"><div class="num">57</div><div class="label">扫描推文</div></div>
+  <div class="stat-card"><div class="num">10</div><div class="label">精选收录</div></div>
+  <div class="stat-card"><div class="num">47</div><div class="label">已排除</div></div>
+</div>
+
+<!-- Trends -->
+<div class="trends">
+  <h2>🔥 今日趋势</h2>
+  <ul>
+    <li><strong>1. AI Agent 创意工作流</strong> — MiniMax Hub 和 Clicky 展示了 Agent 从编码走向内容创作的范式转移</li>
+    <li><strong>2. 本地化部署</strong> — MiniMax M3 在 Mac 上的出色表现证明端侧 AI 越来越实用</li>
+    <li><strong>3. 免费窗口</strong> — 多个模型（MiniMax M3、Kimi Code）提供限时免费试用，是上手好时机</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Generated by AI Influencer Digest Engine · 2026-06-17
+</div>
+
+</div>
+</body>
+</html>
