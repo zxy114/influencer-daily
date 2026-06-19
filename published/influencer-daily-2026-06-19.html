@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 2026-06-19</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 2px solid #30363d;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    font-size: 2em;
+    color: #58a6ff;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    font-size: 1em;
+    color: #8b949e;
+  }
+  .header .subtitle {
+    font-size: 0.9em;
+    color: #8b949e;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+  .card .rank {
+    display: inline-block;
+    background: #238636;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.85em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .card .rank.top { background: #da3633; }
+  .card h2 {
+    font-size: 1.2em;
+    color: #f0f6fc;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 0.85em;
+  }
+  .card .meta span {
+    background: #21262d;
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: #8b949e;
+  }
+  .card .meta .tag-tool { color: #58a6ff; border: 1px solid #1f6feb33; }
+  .card .meta .tag-tutorial { color: #3fb950; border: 1px solid #23863633; }
+  .card .meta .tag-prompt { color: #bc8cff; border: 1px solid #8957e533; }
+  .card .meta .tag-workflow { color: #d29922; border: 1px solid #bb800933; }
+  .card .meta .tag-thinking { color: #f778ba; border: 1px solid #bf408033; }
+  .card .meta .score { color: #58a6ff; font-weight: bold; }
+  .card .source a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .card .source a:hover { text-decoration: underline; }
+  .card .body-text {
+    color: #c9d1d9;
+    font-size: 0.95em;
+    margin-bottom: 14px;
+  }
+  .card .body-text ol, .card .body-text ul {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+  .card .body-text li { margin-bottom: 4px; }
+  .card .apply {
+    background: #1c2333;
+    border-left: 3px solid #58a6ff;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9em;
+    color: #8b949e;
+  }
+  .card .apply strong { color: #58a6ff; }
+  .stats {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 30px;
+  }
+  .stats h3 { color: #f0f6fc; margin-bottom: 16px; font-size: 1.1em; }
+  .stats table { width: 100%; border-collapse: collapse; }
+  .stats td { padding: 8px 12px; border-bottom: 1px solid #21262d; }
+  .stats td:first-child { color: #8b949e; }
+  .stats td:last-child { color: #c9d1d9; text-align: right; }
+  .footer {
+    text-align: center;
+    color: #484f58;
+    font-size: 0.8em;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #21262d;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026-06-19（周五）</div>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板与工作流优化 — 内容创作者看完立刻能用</div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card">
+    <span class="rank top">🏆 TOP 1</span>
+    <h2>Applied AI 企业级 playbook — 五大组件深度拆解</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/levie/status/2067455756795039957" target="_blank">@levie · 推文</a></span>
+      <span class="tag-thinking">思维</span>
+      <span class="tag-workflow">工作流</span>
+      <span class="score">实用性：10/10</span>
+    </div>
+    <div class="body-text">
+      <p>Box CEO Aaron Levie 深度总结了企业级 Applied AI 的五层 playbook：</p>
+      <ol>
+        <li><strong>构建桥接功能</strong> — 在智能与工作流之间搭建专属界面，捕获 Agent 所需的上下文数据</li>
+        <li><strong>模型路由器</strong> — 平衡前沿模型与低成本模型，不同任务不同路由</li>
+        <li><strong>落地实施支持</strong> — FDE 帮助企业完成数据清洗、流程重构、评估和 SLA</li>
+        <li><strong>领域专属 GTM</strong> — 每个行业有不同的话术、合规、安全要求和系统集成伙伴</li>
+        <li><strong>领域专长护城河</strong> — 越深入某一领域，越能讲客户听得懂的语言</li>
+      </ol>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>如果你在做企业级 AI 产品或服务，这五层框架可以直接作为产品规划清单。即使个人创作者，也能借鉴「模型路由器」思路——用最强模型做规划审查，用便宜模型跑批量任务。</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card">
+    <span class="rank">🎯 #2</span>
+    <h2>5步搭建 AI 人生导师 — 用 Codex/Claude Code 做个人顾问</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/petergyang/status/2067261255984017577" target="_blank">@petergyang · 推文</a></span>
+      <span class="tag-tutorial">教程</span>
+      <span class="score">实用性：8/10</span>
+    </div>
+    <div class="body-text">
+      <p>5步教程将 Codex 或 Claude Code 变成个人人生/职业导师，需要 4 个配置文件：</p>
+      <ul>
+        <li><code>SKILL.md</code> — 导师角色定义和行为规范</li>
+        <li><code>plan.md</code> — 你的目标、原则、精力管理</li>
+        <li><code>learnings.md</code> — 历史对话中提炼的洞察</li>
+        <li><code>eval.md</code> — AI 给建议前必须跑的检查清单</li>
+      </ul>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>直接在 Claude Code 中创建 <code>/advisor</code> skill，把以上4个文件放进 skill 目录。每聊一次，learnings 会自动积累。适合做周复盘、职业决策、目标跟踪。</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card">
+    <span class="rank">#3</span>
+    <h2>模型路由策略 — 为什么能路由到最佳 AI 模型的层会越来越值钱</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/levie/status/2065989559905812973" target="_blank">@levie · 推文</a></span>
+      <span class="tag-thinking">思维</span>
+      <span class="score">实用性：6/10</span>
+    </div>
+    <div class="body-text">
+      <p>三大原因支撑模型路由的价值增长：</p>
+      <ul>
+        <li><strong>成本优化</strong> — 同一任务中，规划用前沿模型，执行用便宜模型</li>
+        <li><strong>能力最大化</strong> — 不同模型擅长不同领域（工具调用、编程、知识工作）</li>
+        <li><strong>风险对冲</strong> — Fable 出口管制事件提醒：不要依赖单一模型提供商</li>
+      </ul>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>在你的 coding harness 中配置多模型策略：GPT 做规划 → Claude 做执行 → 开源模型做批量处理。Cursor/Claude Code 都支持这种模式。</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <span class="rank">#4</span>
+    <h2>Claude Fable 5 清晰表达 Prompt 模板</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/alexalbert__/status/2065493229760565758" target="_blank">@alexalbert__ · 推文</a></span>
+      <span class="tag-prompt">Prompt</span>
+      <span class="score">实用性：4/10</span>
+    </div>
+    <div class="body-text">
+      <p>Fable 在长对话中超强，但容易写得过于学术和术语密集。用这个 prompt snippet 让它说人话——要求清晰表达、去掉行话。</p>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>在任何 Fable 对话开头加入这个 prompt 片段。特别适合需要 Fable 帮你生成面向非技术读者的内容（博客、邮件、汇报材料）。完整指南见 <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5" target="_blank">Anthropic 官方文档</a>。</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <span class="rank">#5</span>
+    <h2>设计师 × AI 工作流 — 用 Coding Harness 替代 Figma 的实战</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/petergyang/status/2067351624834781277" target="_blank">@petergyang · 推文</a></span>
+      <span class="tag-workflow">工作流</span>
+      <span class="score">实用性：3/10</span>
+    </div>
+    <div class="body-text">
+      <p>一位顶级设计师现在 95%+ 的工作在 coding harness 和终端中完成：</p>
+      <ol>
+        <li>让 AI 先创建 <code>design.md</code></li>
+        <li>让 AI 生成组件代码</li>
+        <li>给 AI 反馈直到感觉对了（品味！）</li>
+      </ol>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>做前端/UI 设计的试试这个流程：先在 Cursor/Claude Code 中写 design spec，然后让 AI 直接出组件，用你的设计品味做最终把关。Figma 用于概念阶段，coding harness 用于落地。</div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card">
+    <span class="rank">#6</span>
+    <h2>Codex Record &amp; Replay — 演示一次，变技能</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/OpenAIDevs/status/2067681320281723113" target="_blank">@OpenAIDevs · 推文</a></span>
+      <span class="tag-tool">工具</span>
+      <span class="score">实用性：2/10</span>
+    </div>
+    <div class="body-text">
+      <p>给 Codex 演示一次重复性任务（比如报销、请假日志），它自动把演示变成可检查、可编辑的技能。你可以控制录制开始和停止。</p>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>把你日常重复做的 5-10 分钟流程录一遍 Codex，以后一键复用。适合：费用报销、周报模板、数据格式化等重复性行政工作。</div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card">
+    <span class="rank">#7</span>
+    <h2>MiniMax M3 设计审查 Loop — 屏幕阅读 + 指弱点 + 直接改代码</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/MiniMax_AI/status/2066954409662443625" target="_blank">@MiniMax_AI · 推文</a></span>
+      <span class="tag-workflow">工作流</span>
+      <span class="score">实用性：2/10</span>
+    </div>
+    <div class="body-text">
+      <p>把 clicky 改造成 Mac 菜单栏小工具，配合 MiniMax M3 做设计审查循环：</p>
+      <ol>
+        <li>「这个设计哪里不好？」→ M3 读屏幕 + 指出弱处</li>
+        <li>「修一下」→ 直接编辑磁盘上的文件</li>
+      </ol>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>适合快速迭代网页/产品页面设计。用 MiniMax M3（开源、免费）替代 Claude/GPT 做视觉审查，成本为零。</div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card">
+    <span class="rank">#8</span>
+    <h2>MiniMax M3 开源模型 — #1 开放权重，限时免费</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/MiniMax_AI/status/2067278971364860338" target="_blank">@MiniMax_AI · 推文</a></span>
+      <span class="tag-tool">工具</span>
+      <span class="score">实用性：2/10</span>
+    </div>
+    <div class="body-text">
+      <p>MiniMax M3 在多个平台限时免费：</p>
+      <ul>
+        <li>0G Private Computer 免费 3 天</li>
+        <li>Command Code 所有订阅者 $1 可用</li>
+        <li>Mac Studio M3 Ultra 本地部署（MLX-VLM Q4）</li>
+      </ul>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>趁免费期快速测试 M3 在你的场景中的表现。适合做本地部署的视觉理解任务（OCR、表单填写、设计审查）。</div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card">
+    <span class="rank">#9</span>
+    <h2>Hailuo MiniMax Hub — AI 创意工作站正式上线</h2>
+    <div class="meta">
+      <span class="source">来源：<a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">@Hailuo_AI · 推文</a></span>
+      <span class="tag-tool">工具</span>
+      <span class="score">实用性：2/10</span>
+    </div>
+    <div class="body-text">
+      <p>从编码到创作的 Agent 范式转变：</p>
+      <p style="text-align:center; color:#58a6ff; font-weight:bold; margin: 10px 0;">研究 → 脚本 → 图像 → 音乐 → 最终剪辑</p>
+      <p>Agent 处理重复劳动，你掌控全局。</p>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>适合内容创作者的完整工作流——用 AI 做研究、写脚本、生成配图/视频、配乐，最后人工剪辑。大幅降低视频/图文内容生产门槛。</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <h3>📊 今日统计</h3>
+    <table>
+      <tr><td>收录推文</td><td>9 条</td></tr>
+      <tr><td>最高评分</td><td>10/10（Applied AI playbook）</td></tr>
+      <tr><td>最多分类</td><td>工具（3条）、工作流（3条）</td></tr>
+      <tr><td>热门人物</td><td>levie（2条）、petergyang（2条）</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">
+    AI 网红工具日报 · 每日自动抓取 + 精选<br>
+    数据时间窗口：2026-06-19 北京时间
+  </div>
+</div>
+</body>
+</html>
