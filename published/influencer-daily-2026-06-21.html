@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-06-21</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid #30363d;
+    margin-bottom: 30px;
+  }
+  .header h1 {
+    color: #58a6ff;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    color: #8b949e;
+    font-size: 14px;
+  }
+  .header .data-sources {
+    color: #6e7681;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .card-number {
+    background: #58a6ff;
+    color: #0d1117;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    color: #f0f6fc;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .card-body p { margin-bottom: 12px; font-size: 14px; }
+  .card-body .text-content { color: #c9d1d9; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #21262d;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta-label {
+    color: #8b949e;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .meta-value {
+    color: #c9d1d9;
+    font-size: 13px;
+  }
+  .meta-value a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+  .meta-value a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block;
+    background: #238636;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 6px;
+  }
+  .tag.purple { background: #8957e5; }
+  .tag.blue { background: #1f6feb; }
+  .tag.orange { background: #bd5a00; }
+  .score {
+    color: #f0883e;
+    font-size: 16px;
+  }
+  .apply-box {
+    background: #0d1117;
+    border-left: 3px solid #58a6ff;
+    padding: 12px 16px;
+    margin-top: 12px;
+    border-radius: 0 8px 8px 0;
+  }
+  .apply-box .label {
+    color: #58a6ff;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .apply-box .text {
+    color: #c9d1d9;
+    font-size: 13px;
+  }
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid #30363d;
+    margin-top: 40px;
+    color: #6e7681;
+    font-size: 12px;
+  }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .summary-table th, .summary-table td {
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid #21262d;
+  }
+  .summary-table th {
+    color: #8b949e;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .summary-table td { color: #c9d1d9; font-size: 14px; }
+  .trend-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 20px;
+  }
+  .trend-box h3 {
+    color: #58a6ff;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  .trend-box p {
+    color: #c9d1d9;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📢 AI 网红工具日报</h1>
+  <div class="subtitle">2026-06-21（周日）· 北京时间 18:00</div>
+  <div class="data-sources">数据来源：@OpenAI @AnthropicAI @petergyang @Kimi_Moonshot @MiniMax_AI @Hailuo_AI @midjourney @Alibaba_Qwen</div>
+</div>
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">1</div>
+    <div class="card-title">🔧 用 Codex/Claude Code 搭建 AI 人生顾问</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">Peter Yang 分享教程：如何将 Codex 或 Claude Code 变成人生和职业决策的 AI 顾问。需要设置 4 个文件：<code>SKILL.md</code>（顾问行为定义）、<code>plan.md</code>（你的目标/原则/精力分配）、<code>learnings.md</code>（经验教训记录）、<code>journal.md</code>（日常反思日志）。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">用 Claude Code 或 Codex 的 skill 功能，创建这 4 个文件就能跑起来。适合做每周复盘、职业规划、决策辅助。关键是 plan.md 要写得具体——越清晰，AI 给的建议越靠谱。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/petergyang/status/2067261242088337853" target="_blank">@petergyang · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag">教程</span><span class="tag purple">工作流</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐⭐ 4/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">2</div>
+    <div class="card-title">🤖 Kimi Work Goal Mode — 24/7 长任务自动执行</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">Kimi 推出 Goal Mode，桌面代理可以 7×24 小时持续运行直到任务完成，专为长周期任务和复杂多步骤工作流设计。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">适合需要长时间运行的任务——数据爬取、批量内容生成、多轮调研。设置目标后就不用盯着了，代理自己跑完。对内容创作者来说，可以把「搜集素材 → 写稿 → 排版」串成一个自动流水线。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/Kimi_Moonshot/status/2067574786965061677" target="_blank">@Kimi_Moonshot · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag">工具</span><span class="tag purple">工作流</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐⭐⭐ 5/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">3</div>
+    <div class="card-title">🎨 截图 → 可交互模拟器：MiniMax M3 视觉转代码工作流</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">把黑洞模拟器的截图直接丢进 Kilo Code，切换到 MiniMax M3，prompt 它「把这张截图动画化为可运行的黑洞模拟器」。M3 的视觉理解直接转成可工作的代码。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">看到任何交互界面截图，都可以尝试「截图 → M3 → 可运行原型」这个链路。适合快速做 demo、原型验证、教学演示。关键 prompt：「把这张截图做成一个能交互的 [X]，保留视觉风格」。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/MiniMax_AI/status/2067261248375537696" target="_blank">@MiniMax_AI · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag blue">Prompt</span><span class="tag purple">工作流</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">4</div>
+    <div class="card-title">🎬 MiniMax Hub — AI 创意全流程代理工作站</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">MiniMax Hub 正式发布——从研究 → 脚本 → 图片 → 音乐 → 最终剪辑，代理帮你干苦活，你只负责拍板。专为精英工作流设计。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">内容创作者可以搭一条完整的内容生产链：Agent 1 做选题调研 → Agent 2 写脚本 → Agent 3 生成配图 → Agent 4 配乐 → 人工终审。大幅减少重复劳动。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">@Hailuo_AI · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag">工具</span><span class="tag purple">工作流</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐⭐ 4/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">5</div>
+    <div class="card-title">🧪 MiniMax M3 多平台免费/降价接入汇总</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">MiniMax M3 目前在多个平台有优惠：Venice 全私密部署、OpenCode 3 倍限额延长到月底、0G Private Computer 55 折优惠、B.AI 限时免费。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">M3 是开源权重榜第一的模型，编码、Agent 工作流、复杂推理都很强。趁各平台免费/优惠期，可以大规模测试你的工作流适合哪个平台。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI · 多条推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag">工具</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">6</div>
+    <div class="card-title">🎨 Midjourney V8.1 大批量草稿模式</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">Midjourney 发布 V8.1 新的大批量草稿模式——一次生成 24 张低分辨率图片，价格只有标准 4 张图的一半。看到喜欢的图按「Vary」即可出高清版。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">适合需要大量创意方向的场景——社交媒体配图、品牌 Mood Board、A/B 测试素材。先草稿出 24 个方向，选 2-3 个再升高清，成本比传统方式低 75%。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/midjourney/status/2067292710063800483" target="_blank">@midjourney · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag">工具</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">7</div>
+    <div class="card-title">🏥 GPT-5.5 Instant 健康场景能力升级</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">GPT-5.5 Instant 在健康相关问题上已匹敌前端 Thinking 模型。每周超过 2.3 亿人用 ChatGPT 问健康养生问题，新版能更好地识别何时需要紧急就医、追问关键信息。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">健康科普赛道创作者可以用 GPT-5.5 Instant 做事实核查和风险评估。它的「知道什么时候该说去看医生」能力，对科普内容合规性很有帮助。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/OpenAI/status/2067672740539306261" target="_blank">@OpenAI · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag orange">思维</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">8</div>
+    <div class="card-title">📐 Qwen-Robot Suite — 从聊天到物理行动的机器人模型套件</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">阿里通义发布 Qwen-Robot 三件套：RobotNav（导航）、RobotManip（操作）、RobotWorld（世界模型），用自然语言作为通用动作界面，打通从聊天到物理世界的闭环。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">「自然语言作为动作界面」这个思路可以直接借鉴到内容工作流——用自然语言指挥多 Agent 协作完成内容生产。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/Alibaba_Qwen/status/2066870197122899980" target="_blank">@Alibaba_Qwen · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag orange">思维</span><span class="tag">工具</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-number">9</div>
+    <div class="card-title">🎯 AI 内容创作者工作坊（6/23 旧金山）</div>
+  </div>
+  <div class="card-body">
+    <p class="text-content">MiniMax 联合 BytedanceTalk 和 CreaoAI 在旧金山举办「从 0 到内容创作者」3 小时实操工作坊，直接向造 AI 工具的人学习，而不是看教程。</p>
+    <div class="apply-box">
+      <div class="label">💡 如何应用</div>
+      <div class="text">在旧金山的可以关注。不在现场的话，关注 @BytedanceTalk 和 @CreaoAI 后续是否会放出录播或资料。</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">来源</span>
+      <span class="meta-value"><a href="https://x.com/MiniMax_AI/status/2068027417458069731" target="_blank">@MiniMax_AI · 推文</a></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">分类</span>
+      <span class="meta-value"><span class="tag purple">教程（线下）</span></span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">实用性</span>
+      <span class="meta-value score">⭐⭐⭐ 3/5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="trend-box">
+  <h3>📊 今日总结</h3>
+  <table class="summary-table">
+    <tr><th>分类</th><th>数量</th></tr>
+    <tr><td>🛠️ 工具</td><td>4</td></tr>
+    <tr><td>🎯 教程 / 工作流</td><td>3</td></tr>
+    <tr><td>💡 Prompt / 思维</td><td>2</td></tr>
+  </table>
+  <h3 style="margin-top: 20px;">🔥 最值得关注的趋势</h3>
+  <p>AI Agent 正在从「聊天助手」走向「自主执行者」——Kimi Goal Mode 7×24 运行、MiniMax Hub 全流程代理、Codex 人生顾问教程，都指向同一个方向：把重复劳动交给 AI，人类专注创意和决策。</p>
+</div>
+
+<div class="footer">
+  AI 网红工具日报 · 2026-06-21 · Generated by OpenClaw
+</div>
+
+</div>
+</body>
+</html>
