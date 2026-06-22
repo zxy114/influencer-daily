@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-22</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --gold: #f0c000;
+    --silver: #a0a0a0;
+    --bronze: #cd7f32;
+    --tag-bg: #1f2a38;
+    --tag-text: #79c0ff;
+    --score-bg: #238636;
+    --link: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+    padding: 24px 16px 60px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent), #a371f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  header .stats {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  header .stats span { color: var(--accent); font-weight: 600; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .card.rank-1 { border-left: 4px solid var(--gold); }
+  .card.rank-2 { border-left: 4px solid var(--silver); }
+  .card.rank-3 { border-left: 4px solid var(--bronze); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .rank-badge {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .rank-1 .rank-badge { background: linear-gradient(135deg, #f0c000, #d4a017); color: #000; }
+  .rank-2 .rank-badge { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #000; }
+  .rank-3 .rank-badge { background: linear-gradient(135deg, #cd7f32, #a0622a); color: #fff; }
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    flex: 1;
+  }
+  .score-badge {
+    background: var(--score-bg);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tweet-text {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d2d8df;
+    border-left: 3px solid var(--accent);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .source {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .source a {
+    color: var(--link);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    background: rgba(88,166,255,0.08);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #b0c4de;
+    border-left: 3px solid var(--accent);
+  }
+  .apply strong { color: var(--accent); }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 600px) {
+    .card { padding: 16px; }
+    header h1 { font-size: 22px; }
+    .card-title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="subtitle">2026 年 6 月 22 日 · 周一</div>
+    <div class="stats">
+      <div>筛选来源 <span>5 组 KOL 缓存</span></div>
+      <div>原始推文 <span>60+</span></div>
+      <div>精选收录 <span>12 条</span></div>
+    </div>
+  </header>
+
+  <!-- #1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <div class="rank-badge">1</div>
+      <div class="card-title">用 HeyGen + Claude Code 做专业级发布视频</div>
+      <div class="score-badge">⭐ 8.5</div>
+    </div>
+    <div class="tweet-text">
+      "我花了 $30K 拍了一条发布视频，现在你可以用代码搞定。" 和 @liu8in、@JakeFromHeyGen 的新播客里，他们分享了 5 步工作流：用 HyperFrames 在 Codex 和 Claude Code 中制作专业发布视频。
+    </div>
+    <div class="meta">
+      <span class="tag">🎬 工作流</span>
+      <span class="tag">📝 教程</span>
+    </div>
+    <div class="source">📎 @petergyang · <a href="https://x.com/petergyang/status/2068699310821405056" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>内容创作者可以用 Claude Code + HeyGen HyperFrames 替代昂贵的视频制作团队。从素材收集到脚本生成，用 AI 编码工具驱动视频生产管线，成本从 $30K 降到几乎零。
+    </div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <div class="rank-badge">2</div>
+      <div class="card-title">Midjourney V8.1 批量草稿模式</div>
+      <div class="score-badge">⭐ 8.0</div>
+    </div>
+    <div class="tweet-text">
+      发布了 V8.1 的新批量草稿模式，一次生成 24 张低分辨率图片，价格仅为标准 4 张图的一半。喜欢的图片点 "Vary" 即可获得全分辨率新版本。
+    </div>
+    <div class="meta">
+      <span class="tag">🖼️ 工具</span>
+      <span class="tag">🔄 工作流</span>
+    </div>
+    <div class="source">📎 @midjourney · <a href="https://x.com/midjourney/status/2067292710063800483" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>做 AI 绘画的内容创作者可以用这个模式大幅降低成本——先用 24 张草稿快速筛选构图和风格，再对满意的图升分辨率。批量出图效率提升 6 倍，成本减半。
+    </div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <div class="rank-badge">3</div>
+      <div class="card-title">Kimi Work Goal Mode — 24/7 桌面代理</div>
+      <div class="score-badge">⭐ 7.5</div>
+    </div>
+    <div class="tweet-text">
+      Kimi Work 推出 Goal Mode：让你的桌面代理 24/7 持续运行直到任务完成，专为长周期任务和复杂多步骤工作流设计。
+    </div>
+    <div class="meta">
+      <span class="tag">🤖 工具</span>
+      <span class="tag">🔄 工作流</span>
+    </div>
+    <div class="source">📎 @Kimi_Moonshot · <a href="https://x.com/Kimi_Moonshot/status/2067574786965061677" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>内容创作者可以用它跑长时间的研究、数据整理或内容生产任务——比如 overnight 自动收集素材、批量生成文案草稿，第二天醒来直接验收。
+    </div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">4</div>
+      <div class="card-title">MiniMax M3 — 图片输入直接生成可运行代码（黑洞模拟器案例）</div>
+      <div class="score-badge">⭐ 7.0</div>
+    </div>
+    <div class="tweet-text">
+      前沿不再只是 Anthropic 和 OpenAI。我把黑洞模拟器的截图直接丢进 Kilo Code，切换到 MiniMax M3，输入"把这张截图变成一个可运行的黑洞模拟器"。M3 的视觉理解能力直接生成了完整代码。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+      <span class="tag">💬 Prompt</span>
+    </div>
+    <div class="source">📎 @coldopn · <a href="https://x.com/coldopn/status/2067372622212473030" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>截图/设计稿 → 丢给 M3 → 直接生成可运行代码。教育类博主可以用这个方法快速把教科书插图、概念图变成互动演示，做技术教程内容效率翻倍。
+    </div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">5</div>
+      <div class="card-title">Fork Clicky — Mac 顶栏 App 自动审查网站设计并改代码</div>
+      <div class="score-badge">⭐ 7.0</div>
+    </div>
+    <div class="tweet-text">
+      把 Clicky 改成了一个 Mac 顶栏小工具，自动审查我的网站设计、给出反馈、并直接修改代码。循环流程："这个设计哪里不好？"→ M3 读屏幕 + 指出薄弱点 → "修好它"→ 直接编辑磁盘上的文件。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+      <span class="tag">🔄 工作流</span>
+    </div>
+    <div class="source">📎 @VictorSuOrtiz · <a href="https://x.com/VictorSuOrtiz/status/2066949934684024905" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>做独立站/landing page 的内容创作者可以用这个"审屏-反馈-自动改代码"的闭环，不需要自己懂前端就能持续优化网站转化率。
+    </div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">6</div>
+      <div class="card-title">Kimi K2.7 Code HighSpeed — 编码速度 6 倍提升</div>
+      <div class="score-badge">⭐ 6.5</div>
+    </div>
+    <div class="tweet-text">
+      Kimi K2.7 Code HighSpeed 上线！编码任务约 180 tok/s，短上下文最高 260 tok/s，比之前快 6 倍。已推送至 Kimi Code Beta。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+    </div>
+    <div class="source">📎 @Kimi_Moonshot · <a href="https://x.com/Kimi_Moonshot/status/2066467110960959833" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>做 AI 编程教程/工具测评的博主可以直接用这个做素材——速度对比视频本身就是好内容。同时自己写脚本/做自动化时也能感受到明显提速。
+    </div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">7</div>
+      <div class="card-title">CyOps Arena — 用 AI Prompt 构建项目参赛 ($5,000 奖金池)</div>
+      <div class="score-badge">⭐ 6.0</div>
+    </div>
+    <div class="tweet-text">
+      CyOps Arena 与 MiniMax AI 联合举办，还有最后一天提交项目，争夺 $5,000 奖金池。Prompt. Build. Iterate. Ship.
+    </div>
+    <div class="meta">
+      <span class="tag">🏆 工作流</span>
+    </div>
+    <div class="source">📎 @cysic_xyz · <a href="https://x.com/cysic_xyz/status/2067261248375537696" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>这个比赛的工作流（Prompt → Build → Iterate → Ship）本身就是 AI 内容生产的标准方法论，可以直接套用到日常内容制作中。
+    </div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">8</div>
+      <div class="card-title">MiniMax M3 在 Venice 上完全隐私部署</div>
+      <div class="score-badge">⭐ 5.5</div>
+    </div>
+    <div class="tweet-text">
+      MiniMax M3 现已在 Venice 上完全私密可用。适用于编码、代理工作流和复杂推理。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+    </div>
+    <div class="source">📎 @AskVenice · <a href="https://x.com/AskVenice/status/2067303260717740445" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>如果你的内容涉及敏感数据（商业机密、用户隐私），用 Venice 跑 M3 可以确保数据不外泄。适合做企业级 AI 工具测评的博主。
+    </div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">9</div>
+      <div class="card-title">MiniMax M3 + Unreal Engine 5.8 MCP 交互实验</div>
+      <div class="score-badge">⭐ 5.0</div>
+    </div>
+    <div class="tweet-text">
+      Hermes Agent 0.17 和 MiniMax M3 用 Unreal Engine 5.8 MCP 玩了 45 分钟（浓缩成 1 分钟视频），花了 1000 万 token。添加了文字和一个球体——虽然没成功创建和应用纹理，但方向是对的。
+    </div>
+    <div class="meta">
+      <span class="tag">🎮 工具</span>
+      <span class="tag">🧪 实验</span>
+    </div>
+    <div class="source">📎 @ivanfioravanti · <a href="https://x.com/ivanfioravanti/status/2068367288546345310" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>用 AI 代理控制 UE5 做 3D 场景还处在早期阶段，但展示了方向——未来游戏/3D 内容创作者可能用自然语言直接编辑场景。值得关注这个领域。
+    </div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">10</div>
+      <div class="card-title">MiniMax Hub — 本地 AI Agent 创意工作站</div>
+      <div class="score-badge">⭐ 5.0</div>
+    </div>
+    <div class="tweet-text">
+      MiniMax Hub 正式上线！你的本地 AI Agent 创意工作站。Agent 范式正在转变：从编码到创作！研究 → 脚本 → 图片 → 音乐 → 最终剪辑，Agent 处理繁琐工作，你掌控全局。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+      <span class="tag">🔄 工作流</span>
+    </div>
+    <div class="source">📎 @Hailuo_AI · <a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>从研究到剪辑的全流程 Agent 管线——内容创作者可以搭建自己的本地工作站，让 AI 代理自动完成素材收集、脚本起草、图片生成、配乐等环节。
+    </div>
+  </div>
+
+  <!-- #11 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">11</div>
+      <div class="card-title">MiniMax M3 多平台免费/限时优惠中</div>
+      <div class="score-badge">⭐ 4.5</div>
+    </div>
+    <div class="tweet-text">
+      MiniMax M3 现已在 B.AI 限时免费 7 天。同时在 0G Private Computer 上以 55% 折扣持续提供。OpenCode 也延长了 3 倍限制到月底。
+    </div>
+    <div class="meta">
+      <span class="tag">🛠️ 工具</span>
+    </div>
+    <div class="source">📎 @BAI_AGI + @0G_labs + @opencode · <a href="https://x.com/BAI_AGI/status/2067502690603778513" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>现在是用 MiniMax M3 做内容实验的好时机——多个平台同时有优惠。建议趁免费期批量跑内容生成工作流，对比各平台效果再决定长期使用。
+    </div>
+  </div>
+
+  <!-- #12 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="rank-badge">12</div>
+      <div class="card-title">OpenAI GPT-5.5 Instant 健康智能升级</div>
+      <div class="score-badge">⭐ 4.0</div>
+    </div>
+    <div class="tweet-text">
+      GPT-5.5 Instant 在健康问题上已追平前沿 Thinking 模型。每周超过 2.3 亿人用 ChatGPT 咨询健康问题，能更好地识别是否需要紧急护理、主动追问关键症状细节。
+    </div>
+    <div class="meta">
+      <span class="tag">💡 思维</span>
+    </div>
+    <div class="source">📎 @OpenAI · <a href="https://x.com/OpenAI/status/2067672740539306261" target="_blank">推文链接</a></div>
+    <div class="apply">
+      <strong>💡 如何应用：</strong>健康/医疗类内容创作者可以用 GPT-5.5 Instant 做初步研究——它能更好地识别信息缺口并追问细节，比之前版本更适合做健康内容的素材收集。
+    </div>
+  </div>
+
+  <div class="footer">
+    日报由 AI 自动生成 · 筛选自 5 组 KOL 推文缓存 · 共 60+ 条原始推文<br>
+    生成时间：2026-06-22 18:00 (北京时间)
+  </div>
+</div>
+</body>
+</html>
