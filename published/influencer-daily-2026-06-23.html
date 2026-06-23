@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 | 2026-06-23</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-bottom: 1px solid #30363d;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .subtitle { color: #8b949e; font-size: 14px; }
+  .header .date { color: #58a6ff; font-size: 13px; margin-top: 6px; }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #58a6ff; }
+
+  .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card-num {
+    background: #238636;
+    color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .card-title { font-size: 18px; font-weight: 600; flex: 1; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    background: #1f6feb33;
+    color: #58a6ff;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 10px; border-radius: 12px;
+  }
+  .tag.tutorial { background: #a371f733; color: #bc8cff; }
+  .tag.prompt { background: #d2992233; color: #d29922; }
+  .tag.workflow { background: #3fb95033; color: #3fb950; }
+  .tag.mindset { background: #f8514933; color: #f85149; }
+
+  .card-quote {
+    background: #0d1117;
+    border-left: 3px solid #58a6ff;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #c9d1d9;
+    border-radius: 0 6px 6px 0;
+  }
+  .card-source {
+    font-size: 12px; color: #8b949e; margin: 8px 0 12px;
+  }
+  .card-source a { color: #58a6ff; text-decoration: none; }
+  .card-source a:hover { text-decoration: underline; }
+
+  .score {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #23863633;
+    color: #3fb950;
+    font-size: 13px; font-weight: 600;
+    padding: 3px 10px; border-radius: 8px;
+    margin: 4px 0 10px;
+  }
+
+  .apply {
+    background: #1f6feb22;
+    border: 1px solid #1f6feb44;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #e6edf3;
+  }
+  .apply strong { color: #58a6ff; }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid #30363d;
+    margin-top: 20px;
+    color: #8b949e;
+    font-size: 13px;
+  }
+  .footer a { color: #58a6ff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板和工作流技巧</div>
+    <div class="date">📅 2026-06-23 · 北京时间 18:00</div>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-title">Midjourney V8.1 草稿模式：一次生成 24 张图，成本减半</div>
+      <div class="card-tags"><span class="tag">工具</span></div>
+    </div>
+    <div class="card-quote">"We've released a new big-batch draft mode for V8.1. This new mode lets you generate 24 lower resolution images at half the price. Press Vary to get full-resolution versions."</div>
+    <div class="card-source">来源：<a href="https://x.com/midjourney/status/2067292710063800483">@midjourney</a> · 194,890 views</div>
+    <div class="score">⭐ 实用性 9/10</div>
+    <div class="apply"><strong>如何应用：</strong>点击 Create 页面的 ⚡ 按钮开启草稿模式，批量生成 24 张低分辨率图快速筛选创意，满意后按 "Vary" 渲染全分辨率版。GPU 消耗仅为 SD 模式一半，适合社交媒体配图构思和情绪板制作。</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-title">Kimi Work Goal Mode：桌面 AI 代理 24/7 自动执行长任务</div>
+      <div class="card-tags"><span class="tag">工具</span><span class="tag workflow">工作流</span></div>
+    </div>
+    <div class="card-quote">"Introducing Goal Mode in Kimi Work. Goal lets your desktop agent run 24/7 until the task is done, built for long-horizon tasks and complex multi-step workflows."</div>
+    <div class="card-source">来源：<a href="https://x.com/Kimi_Moonshot/status/2067574786965061677">@Kimi_Moonshot</a> · 194,890 views</div>
+    <div class="score">⭐ 实用性 9/10</div>
+    <div class="apply"><strong>如何应用：</strong>安装 Kimi Work（macOS/Windows），用自然语言输入目标即可自动操作文件和浏览器。支持飞书、钉钉、WPS、Notion 插件，适合长周期内容策划和批量数据处理。</div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-title">HeyGen HyperFrames 教程：用 AI 代理免费制作专业发布视频</div>
+      <div class="card-tags"><span class="tag tutorial">教程</span><span class="tag workflow">工作流</span></div>
+    </div>
+    <div class="card-quote">"I've spent $30K on a launch video, now you can make one with code." 5 步流程：收集素材 → 创建 storyboard → 拉取动画 → 生成静态帧 → 构建视频并精修。</div>
+    <div class="card-source">来源：<a href="https://x.com/petergyang/status/2068699310821405056">@petergyang</a> × <a href="https://x.com/liu8in">@liu8in</a> × <a href="https://x.com/JakeFromHeyGen">@JakeFromHeyGen</a> · <a href="https://www.youtube.com/watch?v=iqb5Rd6KKr8">完整教程</a></div>
+    <div class="score">⭐ 实用性 9/10</div>
+    <div class="apply"><strong>如何应用：</strong>运行 <code>npx hyperframes</code> 安装开源框架，在 Codex/Claude Code 中输入"/website-to-video [URL]"，AI 自动抓取网站、提取品牌风格、编写脚本分镜、生成配音并输出视频。零成本替代数千美元的视频制作。</div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div class="card-title">50 个 AI 内容创意 Prompt 模板：5 分钟批量生成灵感</div>
+      <div class="card-tags"><span class="tag prompt">Prompt</span></div>
+    </div>
+    <div class="card-quote">"Write a LinkedIn post for senior marketers: 'If we had to rebuild our social presence from 0 followers in 90 days, here's exactly what we'd do.' Include a 5-step plan and a call to comment."</div>
+    <div class="card-source">来源：<a href="https://skedsocial.com/blog/steal-this-50-ai-content-prompts-that-generate-ideas-in-under-5-minutes-2026">SkedSocial 完整指南</a></div>
+    <div class="score">⭐ 实用性 8/10</div>
+    <div class="apply"><strong>如何应用：</strong>直接复制模板到 ChatGPT/Gemini，填入品牌和产品信息即可。搭配可视化日历使用，从"没内容规划"到"一个月灵感"不到一小时。</div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div class="card-title">OpenAI Codex Security 插件：AI 自动扫描和修复代码漏洞</div>
+      <div class="card-tags"><span class="tag">工具</span></div>
+    </div>
+    <div class="card-quote">"We're expanding OpenAI Daybreak to help democratize patching vulnerable software at machine speed: Codex Security plugin — find, validate, and fix vulnerabilities right inside Codex."</div>
+    <div class="card-source">来源：<a href="https://x.com/OpenAI/status/2069104283824640023">@OpenAI</a> · <a href="https://developers.openai.com/codex/security">官方文档</a> · 660,393 views</div>
+    <div class="score">⭐ 实用性 8/10</div>
+    <div class="apply"><strong>如何应用：</strong>在 Codex 线程中安装 Security 插件，自动扫描安全入口和风险组件。支持 Diff 扫描（提交前拦截回归）、深度审计和智能修复，自动化 DevSecOps 流程。</div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <div class="card-title">Kimi Work 本地桌面代理：300 子代理集群，操控真实浏览器和文件系统</div>
+      <div class="card-tags"><span class="tag">工具</span><span class="tag mindset">思维</span></div>
+    </div>
+    <div class="card-quote">Moonshot AI 发布 Kimi Work——运行在本地的 AI 代理，基于 Kimi K2.6 模型，使用 300 个子代理集群。可直接读写本地文件、操控真实浏览器、执行定时任务。</div>
+    <div class="card-source">来源：<a href="https://www.marktechpost.com/2026/06/12/moonshot-ai-launches-kimi-work-a-local-desktop-agent-reportedly-running-on-kimi-k2-6-with-a-300-sub-agent-agent-swarm/">MarkTechPost 报道</a></div>
+    <div class="score">⭐ 实用性 7/10</div>
+    <div class="apply"><strong>如何应用：</strong>本地运行直接访问文件系统和浏览器会话，适合批量研究、自动整理素材库、定时发布等隐私敏感场景。安装后输入目标即可。</div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <div class="card-title">OpenAI Codex 初学者完整教程：从安装到自动化</div>
+      <div class="card-tags"><span class="tag tutorial">教程</span></div>
+    </div>
+    <div class="card-quote">完整教程涵盖：下载安装、连接器设置、落地页创建、自动化流程、营销计划、以及用 HyperFrames 制作营销视频。</div>
+    <div class="card-source">来源：<a href="https://www.youtube.com/watch?v=0TitiOk7hbI">YouTube 完整教程</a></div>
+    <div class="score">⭐ 实用性 7/10</div>
+    <div class="apply"><strong>如何应用：</strong>按步骤 5 分钟创建落地页，10 分钟搭建自动化工作流。适合快速搭建产品页面、自动化内容发布流程。</div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">8</div>
+      <div class="card-title">AI 内容创作完整工作流指南：2026 年创作者必备工具链</div>
+      <div class="card-tags"><span class="tag workflow">工作流</span><span class="tag mindset">思维</span></div>
+    </div>
+    <div class="card-quote">82% 营销人已将 AI 集成到日常工作流。核心框架：ChatGPT/Claude 生成初稿 → Descript/Synthesia 视频编辑 → Zapier 自动化串联。创作者实际只用 2-4 个核心工具。</div>
+    <div class="card-source">来源：<a href="https://techyape.com/ai-for-content-creation-ready-to-use-templates">Techyape 指南</a> · <a href="https://www.impactplus.com/learn/ai-tools-for-content-creation">IMPACT 评测</a></div>
+    <div class="score">⭐ 实用性 7/10</div>
+    <div class="apply"><strong>如何应用：</strong>建立 3 层工具链：ChatGPT 生成大纲初稿（省 40% 时间）→ Descript 文本级视频编辑 → Zapier 自动发布多平台。推荐 ChatGPT + CapCut + Midjourney 核心组合。</div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">9</div>
+      <div class="card-title">Midjourney --preview 参数：抢先体验未发布模型</div>
+      <div class="card-tags"><span class="tag">工具</span><span class="tag prompt">Prompt</span></div>
+    </div>
+    <div class="card-quote">"Use --preview in your prompt to test the latest. Images might be unpolished and jobs are not guaranteed to run consistently."</div>
+    <div class="card-source">来源：<a href="https://updates.midjourney.com/draft-mode-for-v8-1-and-new-feature-previews">Midjourney 更新公告</a></div>
+    <div class="score">⭐ 实用性 6/10</div>
+    <div class="apply"><strong>如何应用：</strong>在 prompt 末尾加 <code>--preview</code> 即可测试最新实验性模型，适合创意探索和品牌视觉测试。注意输出不保证版本间一致性。</div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">10</div>
+      <div class="card-title">Kimi Goal Mode 办公自动化实战：连接飞书、钉钉、WPS、Notion</div>
+      <div class="card-tags"><span class="tag workflow">工作流</span></div>
+    </div>
+    <div class="card-quote">"Goal mode 将代理运行时间延长至 24 小时，让代理完成完整的工作流程并保持插件访问权限，而不是每次回复后重置。"</div>
+    <div class="card-source">来源：<a href="https://www.remio.ai/post/kimi-work-goal-mode-pushes-office-agents-from-chat-to-long-running-execution">Remio 深度分析</a></div>
+    <div class="score">⭐ 实用性 8/10</div>
+    <div class="apply"><strong>如何应用：</strong>设定复合目标（如"分析 Notion 数据 → WPS 生成报表 → 飞书发送总结"），代理按顺序调用插件保持上下文，替代零散 AI 聊天建议。</div>
+  </div>
+
+  <div class="footer">
+    📅 2026-06-23 | 数据来源：X/Twitter、YouTube、官方博客<br>
+    <a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-06-23.html">🔗 在线版链接</a>
+  </div>
+
+</div>
+</body>
+</html>
