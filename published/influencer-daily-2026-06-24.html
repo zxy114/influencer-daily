@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-24</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --tag-bg: rgba(88,166,255,0.12);
+    --tag-text: #58a6ff;
+    --star: #f0c040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  .header .date { color: var(--text-secondary); font-size: .95rem; }
+  .header .subtitle { color: var(--text-secondary); font-size: .85rem; margin-top: .3rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background .2s, border-color .2s;
+  }
+  .card:hover { background: var(--card-hover); border-color: #444c56; }
+  .card.top-1 { border-left: 4px solid var(--star); }
+  .card.top-2 { border-left: 4px solid #c0c0c0; }
+  .card.top-3 { border-left: 4px solid #cd7f32; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+  }
+  .rank {
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-width: 2.5rem;
+    color: var(--text-secondary);
+  }
+  .card.top-1 .rank { color: var(--star); }
+  .card.top-2 .rank { color: #c0c0c0; }
+  .card.top-3 .rank { color: #cd7f32; }
+
+  .title { font-size: 1.1rem; font-weight: 600; flex: 1; }
+
+  .tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .tag {
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 500;
+  }
+  .tag.workflow { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+  .tag.tutorial { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+  .tag.thinking { background: rgba(210,153,34,0.12); color: var(--accent-orange); }
+
+  .tweet-text {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: .8rem;
+    color: var(--text-secondary);
+    margin-bottom: .6rem;
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  .stars { color: var(--star); font-size: .9rem; }
+
+  .apply {
+    background: rgba(63,185,80,0.06);
+    border: 1px solid rgba(63,185,80,0.15);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-size: .85rem;
+    color: var(--accent-green);
+    line-height: 1.6;
+  }
+  .apply strong { font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 24 日 · 星期三</div>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板、工作流优化与 AI 使用技巧</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="num">10</div><div class="label">收录推文</div></div>
+    <div class="stat-card"><div class="num">5/5</div><div class="label">数据组就绪</div></div>
+    <div class="stat-card"><div class="num">9/10</div><div class="label">最高评分</div></div>
+    <div class="stat-card"><div class="num">16</div><div class="label">排除条目</div></div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card top-1">
+    <div class="card-header">
+      <span class="rank">🥇 #1</span>
+      <span class="title">用 HyperFrames + Codex/Claude Code 制作专业级发布视频</span>
+    </div>
+    <div class="tags">
+      <span class="tag tutorial">教程</span>
+      <span class="tag workflow">工作流</span>
+    </div>
+    <div class="tweet-text">
+      "我花了 3 万美元制作发布视频，现在用代码就能搞定。"这是和团队的新剧集，分享了用 HyperFrames 在 Codex 和 Claude Code 中制作专业级发布视频的 5 步方法：1. 收集视频素材…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/petergyang" target="_blank">@petergyang</a></span>
+      <span>🔗 <a href="https://x.com/petergyang/status/2068699310821405056" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 9/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容创作者或创业者可直接复用这个 5 步工作流，用 AI 编码工具替代昂贵的视频制作，大幅降低发布视频成本。</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card top-2">
+    <div class="card-header">
+      <span class="rank">🥈 #2</span>
+      <span class="title">MiniMax Hub 正式发布 — AI Agent 创意工作站</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+    </div>
+    <div class="tweet-text">
+      🐙 MiniMax Hub 官方发布！你的本地 AI Agent 创意工作站现已上线！Agent 范式正在转变：从编码到创作！研究 ➡️ 脚本 ➡️ 图片 ➡️ 音乐 ➡️ 最终剪辑，Agent 处理繁琐工作，你来掌控方向。🔥 为精英工作流打造 💡
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/Hailuo_AI" target="_blank">@Hailuo_AI</a></span>
+      <span>🔗 <a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容创作者可尝试这个端到端 AI Agent 工作流，从调研到最终剪辑全链路自动化，释放创意时间。</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card top-3">
+    <div class="card-header">
+      <span class="rank">🥉 #3</span>
+      <span class="title">Tera — 零 Token 浏览器自动化 RL 环境</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      Tera — 零 token 浏览器使用：一次解决，永久复用。一个浏览器 RL 环境，从过去的轨迹中学习，然后以 0 LLM token 重播匹配的工作流。在 YC 黑客松中获得 #3。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2069502267343163647" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你做浏览器自动化或 RPA 工作流，Tera 的思路值得借鉴：将重复任务的学习成果缓存复用，大幅降低 LLM 调用成本。</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#4</span>
+      <span class="title">产品经理的 AI 身份危机：SWE Agent 时代的角色进化</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      产品经理角色也面临身份危机。工程团队已经找到了 AI 原生接口 — SWE Agent 大幅提升个人效率。公司要求 PM 使用 AI，但还没有进化这个角色。所以现在有两派：老派 PM 和 AI 原生 PM…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/realmadhuguru" target="_blank">@realmadhuguru</a></span>
+      <span>🔗 <a href="https://x.com/realmadhuguru/status/2068350509027876876" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你是 PM 或产品创作者，思考如何从"写 PRD"转向"设计 Agent 工作流"，这是 AI 时代 PM 的核心竞争力转变。</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#5</span>
+      <span class="title">AI 自动化悖论：自动化越多，人工工作反而越多</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      我们用 AI Agent 自动化了一切能自动化的事情。但人类要做的工作反而更多了。自从 GPT-3 以来，我们从 4 人团队增长到 30 人。我写了一份报告解释结构性原因：AI 让专家能力变得廉价，反而推高了需求…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/danshipper" target="_blank">@danshipper</a></span>
+      <span>🔗 <a href="https://x.com/danshipper/status/2057514494960513272" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>创业者可用这个视角理解 AI 对商业的影响 — 自动化不是裁员工具，而是扩张引擎。可制作"AI 如何让团队规模翻倍"的讨论内容。</div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#6</span>
+      <span class="title">Google DeepMind × A24 合作：让创作者塑造未来 AI 工具</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      Google DeepMind 🤝 A24 我们正在与 A24 启动研究合作，确保未来的工具由使用它们的创作者来塑造。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2069066675895337405" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>关注 DeepMind 与影视创作者的合作方向，可能催生新一代 AI 视频/影像创作工具，提前布局相关内容。</div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#7</span>
+      <span class="title">Project Genie 面向 Google AI Ultra 5X 订阅者开放</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+    </div>
+    <div class="tweet-text">
+      Project Genie 访问范围进一步扩大！从今天起，Google AI Ultra 5X 订阅者（最新层级）全球用户均可使用 Project Genie。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2067188693694136664" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你是 Google AI Ultra 订阅者，立即试用 Project Genie 的创意生成能力，探索 AI 辅助内容创作新可能。</div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#8</span>
+      <span class="title">AI 正在向边缘计算迁移：低延迟决策的关键</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      AI 失败不是因为缺乏智能。很多时候，它受限于延迟和决策发生的位置。对于时间敏感的环境，这是一个关键约束。这就是为什么 AI 正在向边缘迁移，以及它能释放什么…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/Ronald_vanLoon" target="_blank">@Ronald_vanLoon</a></span>
+      <span>🔗 <a href="https://x.com/Ronald_vanLoon/status/2069435477250171296" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 5/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你做实时 AI 应用（直播、互动内容），了解边缘 AI 趋势有助于优化延迟敏感的内容场景。</div>
+  </div>
+
+  <!-- #9 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#9</span>
+      <span class="title">Google DeepMind AI 控制路线图：多 Agent 系统安全框架</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      与其假设 AI 总会按我们的意图行事，我们问：如果不会呢？这就是我们开发 AI 控制路线图的原因：一个在 Google 内部构建和管理高级 AI 的框架。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2067594863785173257" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 5/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>随着多 Agent 工作流普及，了解 AI 安全框架有助于设计更可靠的自动化系统，减少 Agent 误操作风险。</div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#10</span>
+      <span class="title">MiniMax M3 成为 B.AI 最受欢迎模型</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+    </div>
+    <div class="tweet-text">
+      👑 MiniMax M3 现在是 B.AI 上 #1 最受欢迎的模型。从登顶开源排名到引领我们的榜单，MiniMax M3 正在赢得用户青睐 — 目前在 B.AI 上免费使用。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2067913044752044159" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 5/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>创作者可以免费试用 MiniMax M3，对比 GPT/Claude 在内容创作场景中的表现，找到最适合自己的模型。</div>
+  </div>
+
+  <div class="footer">
+    <p>生成时间：2026-06-24 10:00 UTC · 数据来源：X/Twitter · 5 组推文缓存</p>
+    <p style="margin-top:.5rem;"><a href="https://zxy114.github.io/influencer-daily/" style="color:var(--accent);text-decoration:none;">查看往期日报 →</a></p>
+  </div>
+</div>
+</body>
+</html>
