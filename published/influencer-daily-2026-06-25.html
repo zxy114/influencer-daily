@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-25</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --tag-bg: rgba(88,166,255,0.12);
+    --tag-text: #58a6ff;
+    --star: #f0c040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  .header .date { color: var(--text-secondary); font-size: .95rem; }
+  .header .subtitle { color: var(--text-secondary); font-size: .85rem; margin-top: .3rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background .2s, border-color .2s;
+  }
+  .card:hover { background: var(--card-hover); border-color: #444c56; }
+  .card.top-1 { border-left: 4px solid var(--star); }
+  .card.top-2 { border-left: 4px solid #c0c0c0; }
+  .card.top-3 { border-left: 4px solid #cd7f32; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+  }
+  .rank {
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-width: 2.5rem;
+    color: var(--text-secondary);
+  }
+  .card.top-1 .rank { color: var(--star); }
+  .card.top-2 .rank { color: #c0c0c0; }
+  .card.top-3 .rank { color: #cd7f32; }
+
+  .title { font-size: 1.1rem; font-weight: 600; flex: 1; }
+
+  .tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .tag {
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 500;
+  }
+  .tag.workflow { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+  .tag.tutorial { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+  .tag.thinking { background: rgba(210,153,34,0.12); color: var(--accent-orange); }
+
+  .tweet-text {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: .8rem;
+    color: var(--text-secondary);
+    margin-bottom: .6rem;
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  .stars { color: var(--star); font-size: .9rem; }
+
+  .apply {
+    background: rgba(63,185,80,0.06);
+    border: 1px solid rgba(63,185,80,0.15);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-size: .85rem;
+    color: var(--accent-green);
+    line-height: 1.6;
+  }
+  .apply strong { font-weight: 600; }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 25 日 · 星期四</div>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板、工作流优化与 AI 使用技巧</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="num">8</div><div class="label">收录推文</div></div>
+    <div class="stat-card"><div class="num">5/5</div><div class="label">数据组就绪</div></div>
+    <div class="stat-card"><div class="num">9/10</div><div class="label">最高评分</div></div>
+    <div class="stat-card"><div class="num">19</div><div class="label">排除条目</div></div>
+  </div>
+
+  <!-- #1 -->
+  <div class="card top-1">
+    <div class="card-header">
+      <span class="rank">🥇 #1</span>
+      <span class="title">Hermes 45 分钟课程 — 搭建你的 7×24 AI 幕僚长</span>
+    </div>
+    <div class="tags">
+      <span class="tag tutorial">教程</span>
+      <span class="tag">工具</span>
+    </div>
+    <div class="tweet-text">
+      "我热爱用 Hermes 作为 7×24 小时的 AI 幕僚长，因为它可靠、免费、开源。" 这是 Peter 的新课程，45 分钟免费教你：→ 安全安装 Hermes → 连接 Telegram、语音、Google Workspace 等 → 创建例程…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/petergyang" target="_blank">@petergyang</a></span>
+      <span>🔗 <a href="https://x.com/petergyang/status/2069805257513980158" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 9/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容创作者可立即按这套 45 分钟教程部署一个免费的 AI 私人助理，把每天 1-2 小时的零碎工作（查资料、订日程、回消息）全部交给 AI 自动化。</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card top-2">
+    <div class="card-header">
+      <span class="rank">🥈 #2</span>
+      <span class="title">Tera — 零 Token 浏览器自动化，YC 黑客松 #3</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      Tera — 零 token 浏览器使用：一次解决，永久复用。一个浏览器 RL 环境，从过去的轨迹中学习，然后以 0 LLM token 重播匹配的工作流。在 YC × HUD Frontier RL 黑客松获 #3。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2069502267343163647" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>反复运行的浏览器任务（数据抓取、表单填写、监控告警）可先让 AI 跑一遍学习轨迹，后续用 0 token 重播，把 LLM API 成本压到接近 0。</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card top-3">
+    <div class="card-header">
+      <span class="rank">🥉 #3</span>
+      <span class="title">PM 身份危机 — 写 PRD 的人 vs 设计 Agent 工作流的人</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      产品经理角色也面临身份危机。工程团队找到了 AI 原生接口 — SWE Agent 大幅放大个人杠杆。公司让 PM 用 AI，但角色没进化。所以现在有两派：老派 PM 和 AI 原生 PM…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/realmadhuguru" target="_blank">@realmadhuguru</a></span>
+      <span>🔗 <a href="https://x.com/realmadhuguru/status/2068350509027876876" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你是 PM 或内容产品负责人，思考从"写 PRD/排需求"转向"设计 Agent 工作流 + 编排人机协作"，这是 AI 时代 PM 的核心定位转变。</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#4</span>
+      <span class="title">Google DeepMind × A24：让创作者塑造未来 AI 工具</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      Google DeepMind 🤝 A24 我们正在与 A24 启动研究合作，确保未来的工具由使用它们的创作者来塑造。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2069066675895337405" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>关注 DeepMind × A24 后续发布的影视创作工具，提前布局 AI 视频/影像内容赛道；可作为内容选题："巨头如何与导演/编剧共创 AI 工具"。</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#5</span>
+      <span class="title">Hermes Agent + MiniMax M3 + UE5.8 MCP：游戏/3D 创作的 Agent 尝试</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag workflow">工作流</span>
+    </div>
+    <div class="tweet-text">
+      Hermes Agent 0.17 与 MiniMax M3 玩 Unreal Engine 5.8 MCP 45 分钟（浓缩到 1 分钟），消耗 1000 万 token。事情在变好，我们加了 Text 和一个球！🤣 但创建并应用纹理这一步还是失败了…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2068930887509807441" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>游戏/3D 创作者可关注 UE5.8 + MCP + Hermes 这条链路，把引擎操作交给 Agent 自然语言驱动，未来 1-2 个版本可能成熟。</div>
+  </div>
+
+  <!-- #6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#6</span>
+      <span class="title">AI Compute 2026：neocloud、数据中心与 GPU 的真实护城河</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      AI 计算 2026 现状：与 Lambda 的 Stephen Balaban 聊 neocloud 繁荣、数据中心、GPU 与未来。00:00 开场 01:21 为何 GPU 计算从来不是大宗商品 02:45 H100 价格指数与它的误读 04:02 真正的护城河…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/mattturck" target="_blank">@mattturck</a></span>
+      <span>🔗 <a href="https://x.com/mattturck/status/2067646198140358854" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>创作者可把这期对谈拆成"AI 算力到底有多贵"、"普通人是否需要关心 GPU 价格"等选题，给观众讲清楚 AI 算力市场的结构性变化。</div>
+  </div>
+
+  <!-- #7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#7</span>
+      <span class="title">模型对齐新方向：让有益特质"遗传"到新场景</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      这是迈向更稳健有益、对齐模型的早期一步：训练模型把有益特质带入新场景，让 AI 在变得更强大的同时，也更可靠、透明、对人更有用。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/OpenAI" target="_blank">@OpenAI</a></span>
+      <span>🔗 <a href="https://x.com/OpenAI/status/2067722688165232654" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容角度："为什么 AI 越来越聪明反而越来越值得信任" — 解释 alignment 与可迁移特质，化解普通人对 AI 的"变强就变坏"焦虑。</div>
+  </div>
+
+  <!-- #8 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#8</span>
+      <span class="title">ChatGPT × 全球医生网络：60 国、49 语言、26 专科</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      为改进模型，我们与全球 60 个国家、49 种语言、26 个专科的数百名医生合作。他们的反馈帮我们识别哪些回答缺失关键上下文、过度自信、需要更清晰的步骤…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/OpenAI" target="_blank">@OpenAI</a></span>
+      <span>🔗 <a href="https://x.com/OpenAI/status/2067672740539306261" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 5/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>健康/医疗内容创作者可参考 ChatGPT 医疗能力的边界（仍需专业医生把关），并把它作为"AI + 垂直专业知识"协作的范本，套到教育、法律等垂类。</div>
+  </div>
+
+  <div class="footer">
+    <p>生成时间：2026-06-25 10:00 UTC · 数据来源：X/Twitter · 5 组推文缓存</p>
+    <p style="margin-top:.5rem;"><a href="https://zxy114.github.io/influencer-daily/" style="color:var(--accent);text-decoration:none;">查看往期日报 →</a></p>
+  </div>
+</div>
+</body>
+</html>
