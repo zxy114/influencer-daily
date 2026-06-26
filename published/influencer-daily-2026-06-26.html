@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-26</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --tag-bg: rgba(88,166,255,0.12);
+    --tag-text: #58a6ff;
+    --star: #f0c040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  .header .date { color: var(--text-secondary); font-size: .95rem; }
+  .header .subtitle { color: var(--text-secondary); font-size: .85rem; margin-top: .3rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+  .stat-card .num.warn { color: var(--accent-orange); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background .2s, border-color .2s;
+  }
+  .card:hover { background: var(--card-hover); border-color: #444c56; }
+  .card.top-1 { border-left: 4px solid var(--star); }
+  .card.top-2 { border-left: 4px solid #c0c0c0; }
+  .card.top-3 { border-left: 4px solid #cd7f32; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+  }
+  .rank {
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-width: 2.5rem;
+    color: var(--text-secondary);
+  }
+  .card.top-1 .rank { color: var(--star); }
+  .card.top-2 .rank { color: #c0c0c0; }
+  .card.top-3 .rank { color: #cd7f32; }
+
+  .title { font-size: 1.1rem; font-weight: 600; flex: 1; }
+
+  .tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .tag {
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 500;
+  }
+  .tag.workflow { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+  .tag.tutorial { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+  .tag.thinking { background: rgba(210,153,34,0.12); color: var(--accent-orange); }
+
+  .tweet-text {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: .8rem;
+    color: var(--text-secondary);
+    margin-bottom: .6rem;
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+
+  .stars { color: var(--star); font-size: .9rem; }
+
+  .apply {
+    background: rgba(63,185,80,0.06);
+    border: 1px solid rgba(63,185,80,0.15);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    font-size: .85rem;
+    color: var(--accent-green);
+    line-height: 1.6;
+  }
+  .apply strong { font-weight: 600; }
+
+  .note {
+    background: rgba(210,153,34,0.06);
+    border: 1px solid rgba(210,153,34,0.2);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-size: .85rem;
+    color: var(--accent-orange);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 26 日 · 星期五</div>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板、工作流优化与 AI 使用技巧</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="num">5</div><div class="label">收录推文</div></div>
+    <div class="stat-card"><div class="num warn">4/5</div><div class="label">数据组就绪</div></div>
+    <div class="stat-card"><div class="num">8/10</div><div class="label">最高评分</div></div>
+    <div class="stat-card"><div class="num">19</div><div class="label">排除条目</div></div>
+  </div>
+
+  <div class="note">
+    <strong>⚠️ 今日数据稀薄说明：</strong>g1（karpathy / OpenAI / Anthropic / sama 等 10 个大号）今日缓存缺失，g5 在 7 天窗口内为空；今日精选基于 g2/g3/g4 三组共 25 条推文筛出 5 条高质量条目。Top 1 PM 身份危机内容来自 g2 缓存，发布于 6-20。
+  </div>
+
+  <!-- #1 -->
+  <div class="card top-1">
+    <div class="card-header">
+      <span class="rank">🥇 #1</span>
+      <span class="title">PM 身份危机 — 写 PRD 的人 vs 设计 Agent 工作流的人</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      产品经理角色也面临身份危机。工程团队找到了 AI 原生接口 — SWE Agent 大幅放大个人杠杆。公司让 PM 用 AI，但角色没进化。所以现在有两派：老派 PM 和 AI 原生 PM…
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/realmadhuguru" target="_blank">@realmadhuguru</a></span>
+      <span>🔗 <a href="https://x.com/realmadhuguru/status/2068350509027876876" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>如果你是内容产品负责人或独立创作者运营自己的内容流水线，立即盘点"自己每周花在找选题/写脚本/排发布上的工时"，把超过 1 小时的环节列出来，尝试用 Agent（Claude / GPT / Manus 等）接管至少一个 — 这是 2026 下半年最被低估的杠杆点。</div>
+  </div>
+
+  <!-- #2 -->
+  <div class="card top-2">
+    <div class="card-header">
+      <span class="rank">🥈 #2</span>
+      <span class="title">Gemini 3.5 Flash 原生 Computer Use — 自带浏览器/桌面/手机操控能力</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag workflow">工作流</span>
+    </div>
+    <div class="tweet-text">
+      Gemini 3.5 Flash 现已支持原生 computer use。这个内置工具让开发者能构建自定义 Agent，能"看见"并在浏览器、移动端、桌面端界面执行操作。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2070180509523546481" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容创作者无需等第三方 RPA 工具，可直接用 Gemini 3.5 Flash + computer use 跑"自动登录、跨平台搬运、抓取需要 JS 渲染的页面"等任务；适合低频但不可替代的人工操作（申请表单、跨平台数据汇总）。</div>
+  </div>
+
+  <!-- #3 -->
+  <div class="card top-3">
+    <div class="card-header">
+      <span class="rank">🥉 #3</span>
+      <span class="title">Tera — 零 Token 浏览器自动化，YC 黑客松 #3</span>
+    </div>
+    <div class="tags">
+      <span class="tag">工具</span>
+      <span class="tag thinking">思维</span>
+    </div>
+    <div class="tweet-text">
+      Tera — 零 token 浏览器使用：一次解决，永久复用。一个浏览器 RL 环境，从过去的轨迹中学习，然后以 0 LLM token 重播匹配的工作流。在 YC × HUD Frontier RL 黑客松获 #3。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2069502267343163647" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>反复运行的浏览器任务（每日仪表盘截图、固定网站监控、跨平台表单填写）用传统 Computer Use 每月烧几百刀 token 费，迁移到这种"录一次、重放零成本"的范式能把月度运营成本压到接近 0；本周可关注开源仓库进度。</div>
+  </div>
+
+  <!-- #4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#4</span>
+      <span class="title">DeepMind × A24：让创作者塑造未来 AI 工具</span>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">思维</span>
+      <span class="tag">工具</span>
+    </div>
+    <div class="tweet-text">
+      Google DeepMind 🤝 A24 我们正在与 A24 启动研究合作，确保未来的工具由使用它们的创作者来塑造。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a></span>
+      <span>🔗 <a href="https://x.com/GoogleDeepMind/status/2069066675895337405" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>关注 DeepMind 后续发布给电影/影像创作者的 AI 工具集，提前布局"AI 视频/影像内容"赛道；可作为内容选题方向："巨头如何与导演/编剧共创 AI 工具"。</div>
+  </div>
+
+  <!-- #5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank">#5</span>
+      <span class="title">research → synthesize → build：用 M3 + OpenCode 学新领域</span>
+    </div>
+    <div class="tags">
+      <span class="tag workflow">工作流</span>
+      <span class="tag tutorial">教程</span>
+    </div>
+    <div class="tweet-text">
+      研究 → 综合 → 构建。一个有趣的使用 M3 和 OpenCode 学习新领域的例子 — 不用读 20 个标签页了。
+    </div>
+    <div class="meta">
+      <span>👤 <a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a></span>
+      <span>🔗 <a href="https://x.com/MiniMax_AI/status/2069651048156012806" target="_blank">推文链接</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>💡 如何应用：</strong>内容创作者研究新选题/新行业时，传统路径是开 20 个标签页 → 慢慢吸收。换成这个三步法：用 AI 扫一遍资料生成结构化摘要（research）→ 提炼出"我应该讲什么"的骨架（synthesize）→ 立即开写或搭 MVP（build），把 4 小时的资料调研压到 1 小时。</div>
+  </div>
+
+  <div class="footer">
+    <p>生成时间：2026-06-26 10:00 UTC · 数据来源：X/Twitter · g2/g3/g4/g5 共 4 组推文缓存（g1 缺失）</p>
+    <p style="margin-top:.5rem;"><a href="https://zxy114.github.io/influencer-daily/" style="color:var(--accent);text-decoration:none;">查看往期日报 →</a></p>
+  </div>
+</div>
+</body>
+</html>
