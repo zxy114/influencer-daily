@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-06-28</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card-hover: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --accent-purple: #bc8cff;
+    --tag-bg: rgba(88,166,255,0.12);
+    --tag-text: #58a6ff;
+    --star: #f0c040;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    text-align: center;
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+  }
+  .header .date { color: var(--text-secondary); font-size: .95rem; }
+  .header .subtitle { color: var(--text-secondary); font-size: .85rem; margin-top: .3rem; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: .8rem; color: var(--text-secondary); margin-top: .2rem; }
+  .stat-card .num.warn { color: var(--accent-orange); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background .2s, border-color .2s;
+  }
+  .card:hover { background: var(--card-hover); border-color: #444c56; }
+  .card.top-1 { border-left: 4px solid var(--star); }
+  .card.top-2 { border-left: 4px solid #c0c0c0; }
+  .card.top-3 { border-left: 4px solid #cd7f32; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .75rem;
+  }
+  .rank {
+    font-size: 1.3rem;
+    font-weight: 700;
+    min-width: 2.5rem;
+    color: var(--text-secondary);
+  }
+  .card.top-1 .rank { color: var(--star); }
+  .card.top-2 .rank { color: #c0c0c0; }
+  .card.top-3 .rank { color: #cd7f32; }
+
+  .title { font-size: 1.1rem; font-weight: 600; flex: 1; }
+
+  .tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+  .tag {
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 500;
+  }
+  .tag.workflow { background: rgba(63,185,80,0.12); color: var(--accent-green); }
+  .tag.tutorial { background: rgba(188,140,255,0.12); color: var(--accent-purple); }
+  .tag.thinking { background: rgba(210,153,34,0.12); color: var(--accent-orange); }
+
+  .tweet-text {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: .75rem;
+    font-size: .92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    font-size: .85rem;
+    color: var(--text-secondary);
+    margin-bottom: .5rem;
+  }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .handle { color: var(--accent); font-weight: 500; }
+  .stars { color: var(--star); font-weight: 600; }
+
+  .apply {
+    background: rgba(63,185,80,0.06);
+    border-left: 3px solid var(--accent-green);
+    padding: .75rem 1rem;
+    border-radius: 6px;
+    font-size: .9rem;
+    margin-top: .5rem;
+  }
+  .apply strong { color: var(--accent-green); }
+
+  .takeaway {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .takeaway h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  .takeaway table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+  }
+  .takeaway th, .takeaway td {
+    text-align: left;
+    padding: .6rem .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .takeaway th { color: var(--text-secondary); font-weight: 500; font-size: .8rem; }
+  .takeaway td:first-child { color: var(--accent); font-weight: 500; width: 80px; }
+
+  .footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026-06-28 · 周日</div>
+    <div class="subtitle">每日精选 AI 工具、教程、Prompt 模板、工作流优化与使用技巧</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num">49</div>
+      <div class="label">原始推文</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10</div>
+      <div class="label">精选条目</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">5/5</div>
+      <div class="label">缓存组完成</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">⭐ 9</div>
+      <div class="label">最高评分</div>
+    </div>
+  </div>
+
+  <div class="card top-1">
+    <div class="card-header">
+      <div class="rank">🥇 #1</div>
+      <div class="title">Hermes 45 分钟免费课 — 把 AI 装成你的 7×24 首席幕僚</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+      <span class="tag tutorial">🛠️ 教程</span>
+    </div>
+    <div class="tweet-text">我超爱用 Hermes 当 7×24 AI 首席幕僚 — 可靠、免费、开源。这是我的 45 分钟免费新课，覆盖：怎么安全安装 Hermes → 接入 Telegram、语音、Google Workspace 等 → 创建例行任务，让你 24/7 自动跑。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@petergyang</span> · <a href="https://x.com/petergyang/status/2069805257513980158" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 9/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>独立创作者最大的痛点不是"不会用 AI"，而是 AI 用着用着就忘、断网就断联。Hermes + Telegram + Google Workspace 这套自托管 stack 等于把"个人数字幕僚"压在本地跑；本周末 45 分钟就能搭好，把"日程提醒、邮件草拟、每日选题播报"这类重复任务全部外包给它。</div>
+  </div>
+
+  <div class="card top-2">
+    <div class="card-header">
+      <div class="rank">🥈 #2</div>
+      <div class="title">Midjourney 两条隐藏指令 — <code>--preview</code> + <code>--sref random</code> 批抽快 24 倍</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+    </div>
+    <div class="tweet-text">图像世界两条快速更新：在 prompt 里加 <code>--preview</code> 可提前看 V8.2 的美学与个性化效果。同时把大批量草稿模式更新成支持 <code>--sref random</code>，这样你探索风格空间比以前快 24 倍。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@midjourney</span> · <a href="https://x.com/midjourney/status/2070223272072065228" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>创作者做封面、缩略图、风格探索时，加 <code>--preview</code> 少走 1-2 轮废稿；做"风格海选"时把 <code>--sref random</code> 塞进批模式，10 分钟内能拿到 200 张风格迥异的候选，比手动调 <code>--sref</code> 编号快一个数量级。</div>
+  </div>
+
+  <div class="card top-3">
+    <div class="card-header">
+      <div class="rank">🥉 #3</div>
+      <div class="title">Gemini 3.5 Flash 原生 Computer Use — 自带浏览器/桌面/手机操控</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+      <span class="tag workflow">🛠️ 工作流</span>
+    </div>
+    <div class="tweet-text">Gemini 3.5 Flash 现已支持原生 computer use。这个内置工具让开发者能构建自定义 Agent，能"看见"并在浏览器、移动端、桌面端界面执行操作。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@GoogleDeepMind</span> · <a href="https://x.com/GoogleDeepMind/status/2070180509523546481" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>内容创作者无需再等第三方 RPA 工具，可直接用 Gemini 3.5 Flash + computer use 跑"自动登录、跨平台搬运、抓取需 JS 渲染的页面"等任务；特别适合低频但不可替代的人工操作（申请表单、跨平台数据汇总）。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#4</div>
+      <div class="title">Qwen-AgentWorld — 一个模型模拟 7 种 Agent 环境（开源 35B MoE）</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+      <span class="tag thinking">💡 思维</span>
+    </div>
+    <div class="tweet-text">📣📣 见面 Qwen-AgentWorld — 一个原生语言世界模型，单模型模拟 7 种 Agent 环境（MCP、搜索、终端、SWE、Web、OS、Android）。环境建模从一开始就是训练目标，不是后置适配。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@Alibaba_Qwen</span> · <a href="https://x.com/Alibaba_Qwen/status/2069720365442719867" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>想法是"让模型在脑内预演浏览器/终端/操作系统"。对内容创作者的最大价值是：用它做"工具选择"的沙盒 — 在写出实际工作流前，先在 AgentWorld 里跑一遍 MCP/搜索/终端/网页，看哪个组合最稳，比直接砸 API 调真实环境的成本低 1-2 个数量级。已开源 35B MoE + AgentWorldBench。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#5</div>
+      <div class="title">Claude Tag — 在 Slack 里把 Claude 当"团队成员" @ 一下就派活</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+      <span class="tag workflow">🛠️ 工作流</span>
+    </div>
+    <div class="tweet-text">推出 Claude Tag，团队跟 Claude 协作的新方式。在 Slack 里，Claude 作为"团队成员"加入，能访问你选定的频道和工具。@ 它一下就能委派任务，你可以专注别的工作。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@AnthropicAI</span> · <a href="https://x.com/AnthropicAI/status/2069468693017268244" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 8/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>创作者小型团队/社群运营的"协作 AI"终于来了。在你现有的 Slack workspace 里把 Claude tag 进来，给它配几个频道（#选题脑暴、#评论回复、#数据复盘），以后 @Claude + 一句话指令（"基于今早推文生成 5 个下周选题"）就能分流掉 30% 的脑力负荷。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#6</div>
+      <div class="title">research → synthesize → build：用 M3 + OpenCode 学新领域</div>
+    </div>
+    <div class="tags">
+      <span class="tag workflow">🛠️ 工作流</span>
+      <span class="tag tutorial">🛠️ 教程</span>
+    </div>
+    <div class="tweet-text">研究 → 综合 → 构建。一个有趣的使用 M3 和 OpenCode 学习新领域的例子 — 不用读 20 个标签页了。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@MiniMax_AI</span> · <a href="https://x.com/MiniMax_AI/status/2069651048156012806" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>内容创作者研究新选题/新行业时，传统路径是开 20 个标签页 → 慢慢吸收。换成这个三步法：用 AI 扫一遍资料生成结构化摘要（research）→ 提炼出"我应该讲什么"的骨架（synthesize）→ 立即开写或搭 MVP（build），把 4 小时的资料调研压到 1 小时。OpenCode 是开源客户端，本地+云端都能跑。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#7</div>
+      <div class="title">Tera — 零 Token 浏览器自动化，YC 黑客松 #3</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+      <span class="tag thinking">💡 思维</span>
+    </div>
+    <div class="tweet-text">Tera — 零 token 浏览器使用：一次解决，永久复用。一个浏览器 RL 环境，从过去的轨迹中学习，然后以 0 LLM token 重播匹配的工作流。在 YC × HUD Frontier RL 黑客松获 #3。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@MiniMax_AI</span> · <a href="https://x.com/MiniMax_AI/status/2069502267343163647" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>反复运行的浏览器任务（每日仪表盘截图、固定网站监控、跨平台表单填写）用传统 Computer Use 每月烧几百刀 token 费，迁移到这种"录一次、重放零成本"的范式能把月度运营成本压到接近 0；本周可关注开源仓库进度。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#8</div>
+      <div class="title">"AI 全自动后，人类工作反而翻倍" — @every 从 4 人到 30 人的结构原因</div>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">💡 思维</span>
+    </div>
+    <div class="tweet-text">我们用 AI Agent 自动化了 @every 所有能自动的事。但人类要做的工作比以往任何时候都多。我们从 GPT-3 时代的 4 人涨到了 30 人。我写了一份报告，讲结构原因：AI 让专家能力变便宜，为什么反而推高了需求…</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@danshipper</span> · <a href="https://x.com/danshipper/status/2057514494960513272" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 7/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>这条对所有"一个人公司"/"AI native 团队"是定心丸：自动化堆得越厚，能撬动的业务规模越大，需要的人类判断/关系/创意工时也越值钱。如果你正犹豫要不要把工作流再压一压，结论是"压 — 但把省下来的时间投到需要人的差异化环节"。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#9</div>
+      <div class="title">Qwen 范式 II — Agent Foundation Model：从世界模型到 Agent 能力</div>
+    </div>
+    <div class="tags">
+      <span class="tag thinking">💡 思维</span>
+      <span class="tag">🧩 工具</span>
+    </div>
+    <div class="tweet-text">🧠 范式 II — Agent Foundation Model：世界建模即 Agent 能力。单轮、非 Agentic 的环境预测 → 直接在多轮、工具调用 Agent 任务上测试。无需 Agentic RL，无需任务特定调优。跨 7 个 benchmark 全面提升。</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@Alibaba_Qwen</span> · <a href="https://x.com/Alibaba_Qwen/status/2069720397747220493" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>含义是"让模型先在脑内预演完整工作流，再上手真实环境"，对内容创作者的实际意义是：未来 6 个月内，Agent 类工具（写脚本、批量生成、自动分发）会出现一波"零样本可用"的爆发 — 不用反复调 prompt、不用 RLHF 微调，开箱就能跑通你的工作流。本周可关注 Qwen-AgentWorld 后续 release。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="rank">#10</div>
+      <div class="title">Browser Use 云端 Agent — 一句话生成海报/排版页面（明早开放）</div>
+    </div>
+    <div class="tags">
+      <span class="tag">🧩 工具</span>
+    </div>
+    <div class="tweet-text">期待看到 builder 们明天试。很好奇什么模型在驱动它，@browser_use Alexander Yue。Browser Use 新云端 Agent（明天上线）能生成海报了！看到有排版的信息比纯文本好太多了。能做的远不止海报，之后再细说…</div>
+    <div class="meta">
+      <span>来源: <span class="handle">@MiniMax_AI</span> · <a href="https://x.com/MiniMax_AI/status/2070679110180073484" target="_blank" rel="noopener">推文链接 →</a></span>
+      <span class="stars">⭐ 6/10</span>
+    </div>
+    <div class="apply"><strong>如何应用：</strong>给"一人公司"做小红书封面、推文配图、活动海报又多了一条捷径。Browser Use 把"一句话指令 → 网页/海报成品"压成云端 API，等于你请了个免费设计师；明早开放后可拿现有 prompt 试跑 5 分钟，对比 Midjourney + 手工排版的产出时间差。</div>
+  </div>
+
+  <div class="takeaway">
+    <h2>📌 今日核心 takeaway</h2>
+    <table>
+      <thead>
+        <tr><th>维度</th><th>今日信号</th><th>行动建议</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>工具</td>
+          <td>Hermes 课程、Midjourney 隐藏指令、Claude Tag、Browser Use 云端 Agent</td>
+          <td>本周末挑 1 个"本地能搭"的工具跑通 30 分钟</td>
+        </tr>
+        <tr>
+          <td>教程</td>
+          <td>45 分钟 Hermes 课、research→synthesize→build 三步法</td>
+          <td>选一条录屏/写 SOP 分享给社群（你的内容选题）</td>
+        </tr>
+        <tr>
+          <td>工作流</td>
+          <td>Claude Tag 接管 Slack、Computer Use 接管跨平台、Qwen-AgentWorld 沙盒化测试</td>
+          <td>把每日重复任务挑 1 个外包给 AI Agent</td>
+        </tr>
+        <tr>
+          <td>思维</td>
+          <td>"AI 自动后人类工作翻倍"、"世界模型 = Agent 能力"</td>
+          <td>重新评估自己最有杠杆的 1 小时（人的判断/关系/创意）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    生成时间: 2026-06-28 18:00 (UTC+8) · 缓存 5 组（g1-g5）共 49 条 → 筛选后 10 条 · 部署于 GitHub Pages
+  </div>
+
+</div>
+</body>
+</html>
