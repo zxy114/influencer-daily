@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-06-30</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong { color: var(--text); margin-left: 4px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot { color: var(--text-faint); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 6 月 30 日 · 星期二</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>200+</strong></div>
+      <div class="stat">✅ 精选收录 <strong>13</strong></div>
+      <div class="stat">📊 数据源 <strong>g1-g5</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工作流 · 6</span>
+      <span class="summary-tag">工具 · 3</span>
+      <span class="summary-tag">思维 · 4</span>
+      <span class="summary-tag">Prompt · 0（今日缺失）</span>
+    </div>
+  </header>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">5 个 Anthropic 产品经理都在用的 Agent 工作流</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 29 · 5h 前</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "我们给 agent 派过夜任务，第二天醒来积压已解决、bug 被清掉。"
+    </div>
+    <div class="card-body">
+      Anthropic 产品负责人 Jess 演示如何从零搭建一个长跑 Claude agent。PM 实际在用的 5 个流程：理解代码库（直接看 PR/部署/架构图）、汇总客户反馈（Agent 监控 Slack 频道）、会前简报、API 决策压力测试、临时 agent 干脏活（清理 4000+ 候补名单）。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">挑一个你每周花 2 小时以上的"脏活"（清理候补名单、汇总 Slack 反馈），先用一个临时 Claude agent 跑一遍；不要等"完美方案"，先做 dirty version 看 ROI。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2071690793899974773" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">Paper.app 的 YouTube 缩略图功能被严重低估</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 27</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "我之前没怎么用 @paper 做 YouTube 缩略图，@rileybrown 给我打开了新世界。'选几张图然后生成更多变体'这个功能超好用。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">下次做 YouTube 缩略图时不要从 0 开始——先在 Paper.app 里上传参考图让 AI 生成 5-10 个变体，从中选最优再做精修。批量变体是当前 AI 视觉工具最被低估的能力。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2070897929863454723" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">Karpathy 解读 Claude "同事" UI 范式</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@karpathy</span>
+      <span class="dot">·</span>
+      <span>Jun 23</span>
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "这是 LLM UI/UX 的第三次重大重设计：第一次是网站，第二次是 App，这次是<strong>自包含、持久、异步的实体</strong>，与人类团队一起工作。"
+    </div>
+    <div class="card-body">
+      Karpathy 深度解读 Claude 作为"组织级同事"的全新交互范式：跨工具、跨集成、跨计算环境、跨记忆、跨安全——一旦底层工程到位，Claude 就无缝加入团队。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">把自己跟 AI 的协作模式从"打开网站提问"升级到"给 AI 配一个独立 workspace + 工具 + 记忆"。Notion + Claude MCP，或者 Hermes 这类长跑 agent 是入门入口。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/karpathy/status/2069547676849557725" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">写文章用 Claude 网页版，Codex/Claude Code 不行</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 29 · 3h 前</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "写东西、改稿——纯 Claude 网页版还是最顶（对比 Codex 和 Claude Code）。我猜是 coding agent 的 system prompt 让它们写东西变菜了。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">写文案/视频脚本/Newsletter 时直接用 claude.ai 网页版，不要为了"统一"塞进 Claude Code 或 Cursor。写作跟写代码的 system prompt 不一样，混用会牺牲质量。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2071731343390851519" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">5</span>
+      <div class="card-title">Midjourney V8.2 抢先体验 + 风格探索 24x 加速</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@midjourney</span>
+      <span class="dot">·</span>
+      <span>Jun 25</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "① 在 prompt 里加 <code>--preview</code> 提前体验 V8.2 美学和个性化；② 大批量草稿模式现在支持 <code>--sref random</code>，风格空间探索速度提升 24 倍。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">批量做品牌视觉/封面/插画时，第一轮直接用 <code>--sref random</code> 跑 50 张探风格空间，筛出方向后再精调，比从头指定风格快 24 倍。<code>--preview</code> 让你提前看 V8.2 效果。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/midjourney/status/2070223272072065228" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">6</span>
+      <div class="card-title">Hermes 周六自动健康报告</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 27</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="card-body">
+      每个周六 Hermes 自动发健康检查邮件，整合一周的体重、脂肪、运动数据。数据源：Withings 智能秤 API、Fitbit、Google Health + 一个 vibe code 出来的 MCP server 追踪 workout。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">用 Hermes（或 Cron + Claude）每周自动汇总你的数据（Notion、Fitbit、Strava、Pocket），周末推一份报告。关键不是工具多，是"周报节奏"——比日报更能驱动长期改变。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2070906940352520477" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">7</span>
+      <div class="card-title">"管理一个团队" vs "用一个工具"——AI 工作流范式转移</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@alexalbert__</span>
+      <span class="dot">·</span>
+      <span>Jun 23</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "这彻底改变了我跟 Claude 协作的方式。不像在用一个工具，<strong>更像在管理一个团队</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">下次启动 Claude 项目时，不要写"帮我做 X"——而是写"你的角色是 [岗位名]，目标是 [目标]，约束是 [规则]，你的团队是 [其他 agent 名]，现在开始执行第一步"。心态从"提问"切到"派活"。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/alexalbert__/status/2069470389391241314" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">8</span>
+      <div class="card-title">Claude 共享 Agent = 团队成员（Box 集成案例）</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@levie</span>
+      <span class="dot">·</span>
+      <span>Jun 24</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="card-body">
+      Claude Tag + Box 集成后，Claude 以"独立用户"身份在系统里运作，可访问企业的销售材料、品牌指南、产品路线图、合同。销售对话时直接调出 RFP 素材，营销做活动时拉取品牌指南。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">把"AI 给你开个人访问"升级到"AI 作为一个独立 workspace 成员，配独立 token 和数据权限"。Notion、Slack、Google Drive 都能这样配，团队里多一个永远在线的 agent 同事。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/levie/status/2069975251476422664" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">9</span>
+      <div class="card-title">PM 角色的身份危机 + 两派分化</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@realmadhuguru</span>
+      <span class="dot">·</span>
+      <span>Jun 20</span>
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "产品经理角色正在经历身份危机。工程团队有了 AI-native 接口（SWE agent 让个人杠杆暴涨），但 PM 还在原地。"
+    </div>
+    <div class="card-body">
+      公司要 PM 用 AI，但 PM 角色没进化。结果分两派：<strong>老派 PM 只在演示里用 AI</strong>，<strong>新派 PM 重新定义 PM 工作流</strong>——自己跑数据、写 spec、验证假设。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">如果你做内容/产品/运营，列出你 5 个核心交付物（选题、脚本、数据报告、用户访谈纪要、封面文案），每个都用 AI agent 重做一遍，看哪个"AI 自己做 + 你审核"比"你自己做"快 3 倍以上。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/realmadhuguru/status/2068350509027876876" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">10</span>
+      <div class="card-title">长期 agent 的承诺："我们睡觉时它在干活"</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 28</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "我们给 agent 派过夜任务，第二天醒来 backlog 解决、bug 清掉。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">今晚睡前给 Claude Code（或 Hermes、Cline）派一个"明天早上能验证"的任务：扫一遍项目找 5 个潜在 bug、重写 3 个最差的标题、给 100 个客户邮件分类。一周下来 ROI 直接可见。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2071235979369972033" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">11</span>
+      <div class="card-title">AI 自动化一切后，人力需求反而暴涨——@every 从 4 人到 30 人</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@danshipper</span>
+      <span class="dot">·</span>
+      <span>May 21</span>
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "我们用 AI agent 自动化了所有能在 @every 自动化的东西。<strong>然而人力工作比以往任何时候都多</strong>。GPT-3 以来我们从 4 人涨到 30 人。"
+    </div>
+    <div class="card-body">
+      核心机制：AI 让"专家能力"变便宜，需求被释放，供需两端同时增长。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">不要把"AI 自动化"理解成"裁员"——正确思路是"用 AI 把单点能力变成产品，撬动更大的市场"。你之前做不了的客户、做不出的服务、够不到的人，现在都够得到了。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/danshipper/status/2057514494960513272" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">12</span>
+      <div class="card-title">长跑 cloud agent 才是答案，别再纠结 local 模型</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jun 28</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "① Cloud agent 是趋势，应该用 VPS 而不是笔记本；② 每个人应该买硬件跑本地模型——<strong>这两件事是矛盾的</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">做选择——你是要"AI 替你跑 8 小时"（cloud agent / VPS），还是"AI 永远不离线"（local / 边缘）？99% 的内容创作者应该选 cloud agent。Local 模型等 M3/M4 这种真·消费级硬件再说。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2071235961208578393" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">13</span>
+      <div class="card-title">优化 token 成本 = 理解业务工作流</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@levie</span>
+      <span class="dot">·</span>
+      <span>Jun 27</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "AI token 成本优化的最佳实践，都有一个前提：<strong>深度理解底层工作</strong>。这意味着工作与 AI 之间需要一层'中间件'，深刻理解你的 workflow、context、业务流程。"
+    </div>
+    <div class="card-body">
+      单独公司自己干这层是低效的——所以这本质上是当下所有 applied AI 公司的剧本。真正的护城河是对创作者工作流的深度理解 + 围绕这个 workflow 调优的 AI 体验。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">做内容创作工具/SaaS 的创业者，不要只做"AI wrapper"。Cursor 不是因为 Claude 强，是因为它理解程序员工作流。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/levie/status/2070937863806751154" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>📊 数据源：<code>/skills/ai-influence-digest/cache/2026-06-30/</code> (g1-g5)</p>
+    <p>✅ 收录：工具推荐 / 教程 / Prompt 模板 / 工作流优化 / AI 使用技巧</p>
+    <p>❌ 排除：硬件、融资、纯基准对比、学术论文</p>
+    <p style="margin-top: 12px;">Generated by <a href="#">AI 网红工具日报</a> · OpenClaw</p>
+  </footer>
+
+</div>
+</body>
+</html>
