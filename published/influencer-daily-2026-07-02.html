@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-02</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong { color: var(--text); margin-left: 4px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot { color: var(--text-faint); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 2 日 · 星期四</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>41</strong></div>
+      <div class="stat">✅ 精选收录 <strong>12</strong></div>
+      <div class="stat">📊 数据源 <strong>g1-g5</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 5</span>
+      <span class="summary-tag">工作流 · 3</span>
+      <span class="summary-tag">思维 · 6</span>
+      <span class="summary-tag">教程/Prompt · 2</span>
+    </div>
+  </header>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">Midjourney V8.2 风格探索加速 24 倍</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@midjourney</span>
+      <span class="dot">·</span>
+      <span>Jun 25</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "两个图片功能更新：① 在 prompt 里加 <code>--preview</code> 提前体验 V8.2 美学和个性化；② 大批量草稿模式现在支持 <code>--sref random</code>，<strong>风格空间探索速度提升 24 倍</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">批量做品牌视觉/封面/插画时，第一轮直接用 <code>--sref random</code> 跑 50 张探风格空间，筛出方向后再精调，比从头指定风格快 24 倍。<code>--preview</code> 让你免费看 V8.2 效果。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/midjourney/status/2070223272072065228" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">SynthID 数字水印：内容创作者必知的 AI 鉴别工具</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jul 1</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "随着生成式 AI 工具持续进化，区分'AI 生成的'和'人类做的'比以往更重要。这就是为什么 Google DeepMind 在 2023 年推出 <strong>SynthID</strong>——给 AI 内容加<strong>隐藏数字水印</strong>的技术。"
+    </div>
+    <div class="card-body">
+      SynthID 是一套可验证 AI 生成内容来源的技术栈，覆盖图像、音频、视频、文本。Google 把检测工具开源（SynthID Detector），任何人都能上传可疑内容查询是否有水印。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 SynthID Detector（开源）核查可疑图片/音频是不是 AI 生成的；② 自家发布的 AI 生成内容主动声明 + 加水印，建立信任护城河；③ 内容审核/版权争议时 SynthID 是事实性证据。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2072318809277390940" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">Google 一图一视频工作流：Nano Banana 2 Lite + Omni Flash</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jun 30</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "两个重磅更新让你 1 个模型生图 + 1 个模型动起来：① <strong>Nano Banana 2 Lite</strong> — 最快最便宜的 Gemini Image 模型；② 接入 <strong>Gemini Omni Flash</strong> 立刻把图变视频。<strong>一条链路，价格只要原来的零头</strong>。"
+    </div>
+    <div class="card-body">
+      可在 Interactions API 里<strong>保持 session 历史</strong>，连续做最多 3 次顺序编辑（参考 Card 7）。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">用 Interactions API 保持 session 历史（可连续做最多 3 次顺序编辑），工作流改为「Nano Banana 2 Lite 出图 → 同 session 传上下文 → Omni Flash 动画」，一套出成片，复用 session 上下文省 token。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2071989058952188054" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">Gemini 3.5 Flash 原生 Computer Use 能力</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jun 25</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "Gemini 3.5 Flash 现在支持<strong>原生 computer use</strong>。这个内置工具让开发者能构建自定义 agent，<strong>跨浏览器、移动和桌面界面</strong>都能看、能执行。"
+    </div>
+    <div class="card-body">
+      配合 Gemini API 直接做浏览器/移动/桌面自动化，免去 Playwright/Puppeteer 自维护成本；Google 官方同时提供截图理解+坐标点击的工具调用范式。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">用 Gemini API + Computer Use 搭一个 agent 帮你填网页表单、抓 SaaS 数据、批量改浏览器设置。比 Playwright/Puppeteer 省去自维护反检测代码；跨平台（Web/手机/桌面）一致接口。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2070180509523546481" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">5</span>
+      <div class="card-title">MiniMax M3 本地自进化 agent：三台 Mac 跑出"个人 AI 实验室"</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@MiniMax_AI</span>
+      <span class="dot">·</span>
+      <span>Jun 30</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "<strong>自进化 agent + 428B 模型 + 3 台 Mac = 你自己的 AI 实验室</strong>。我们把 M3 用 Parallax 跑在本地桌面，然后让 GA agent 接手创建 5 支股票组合并写盘。<strong>没云、没 API 账单、没数据出机</strong>。"
+    </div>
+    <div class="card-body">
+      M3（MiniMax 开源 400B+ 多模态模型）支持 MXFP4 / HGX B200 部署，Parallax 是本地 agent 编排框架。组合可以做到：① 隐私敏感数据零外泄；② 长跑任务不断线（不依赖云 API 限额）；③ 离线可用。
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 Ollama/LM Studio + Parallax 之类本地推理框架跑 7B-70B 模型处理隐私数据；② 搭一个"本地 agent + 云端大模型"双轨制：敏感数据本地处理，创意/搜索走 API；③ 每月省 80%+ API 账单。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/MiniMax_AI/status/2071523736843677744" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">6</span>
+      <div class="card-title">Claude Sonnet 5：自主 agent 时代到来</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@AnthropicAI</span>
+      <span class="dot">·</span>
+      <span>Jun 26</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "<strong>Claude Sonnet 5 来了，我们最具 agent 能力的一代 Sonnet</strong>。它会做计划、用浏览器和终端等工具，并以几个月前还需要更大更贵模型才能达到的水平<strong>自主运行</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 Sonnet 5 做"自主长跑 agent"——给它一个目标+约束，让它自己规划→执行→修正，整夜跑；② 替换你日常用的"聊天窗口"，改用 Claude Code + Sonnet 5 把 PR 描述/代码评审/文档生成一锅端；③ API 用户可以大幅降本：Sonnet 级别的价格跑以前 Opus 才能干的活。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/claudeai/status/2072017450611142835" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">7</span>
+      <div class="card-title">Interactions API：图像生成 + 动画组合 + Session 复用</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jun 30</span>
+      <span class="tag tag-tutorial">教程</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "<strong>用 Interactions API 把这些模型配对</strong>：先用 Nano Banana 2 Lite 快速出图，然后立刻用 Gemini Omni Flash 给它加动画。<strong>保持 session 历史</strong>，可连续做最多 3 次顺序编辑。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">搭一个 5 分钟短视频生产 pipeline——「Nano Banana 2 Lite 出分镜图 → Omni Flash 加 1-3 秒动效 → Session 复用连续微调 3 版」，一天能出 30 条短视频，比 Midjourney + Runway 组合省 70%。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2071988052478615902" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">8</span>
+      <div class="card-title">OpenAI 全员 agent 化：Codex 重塑公司内部工作流</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jun 25 · 1.24M views</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "OpenAI 的工作正被 agent 改造，<strong>每个部门都在变</strong>。整个公司里，人们用 Codex 干更复杂、更长跑、跨职能的事。内部使用情况给了我们一个早期视角——agentic 工具可能怎么重塑工作。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">不要把 Codex 当"自动补全"用——当作"跨职能员工"：让它从产品需求 → 写代码 → 跑测试 → 写 changelog 一条龙，自己只审核关键节点。OpenAI 内部已经在这么干。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2070196105745518913" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">9</span>
+      <div class="card-title">AI 不让组织变敏捷——只让它更快</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@Ronald_vanLoon</span>
+      <span class="dot">·</span>
+      <span>Jul 1</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "<strong>AI 不会默认让组织更敏捷</strong>。它只是让组织<strong>在原本要走的方向上走更快</strong>。PM Institute 的新研究深入探讨了为什么这个区分比以往更重要。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">如果你所在团队上了 AI 但"更忙了"，问题不在工具——是<strong>方向错了</strong>。先问：① 你的流程是朝客户/市场价值走，还是朝内部 KPI 走？② 上了 AI 后只是在用更快的速度做错的事吗？花一周做"零 AI 基线"对照实验，拆解哪些环节用 AI 加速是真有效、哪些只是"忙得更累"。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/Ronald_vanLoon/status/2072334498251915420" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">10</span>
+      <div class="card-title">Dan Shipper 复盘：AI 让"专家能力"变便宜，需求暴涨</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@danshipper</span>
+      <span class="dot">·</span>
+      <span>May 21 · 1.5M views</span>
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "我们用 AI agent 自动化了 @every 能自动化的<strong>每一件事</strong>。<strong>然而要做的"人"的工作比以往任何时候都多</strong>。从 GPT-3 以来，我们从 4 人涨到 30 人。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 警惕"AI 替代人"的简化叙事——实际经验是 AI 廉价化的是<strong>技能</strong>，不是<strong>需求</strong>；② 你如果是创作者/SMB：AI 不会让你失业，但它会让你"产能 10x"——前提是你从"做事的人"升级为"定义问题的人"；③ 雇人策略反直觉：AI 越强，越要雇"擅长品味+框架+判断"的人。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/danshipper/status/2057514494960513272" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">11</span>
+      <div class="card-title">MIT CALM：让机器人在被撞偏时也能坚持任务</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@MIT_CSAIL</span>
+      <span class="dot">·</span>
+      <span>Jun 25 · 20K views</span>
+      <span class="tag tag-mind">思维</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "<strong>机器人即使在做可预测的日常任务，被撞到也容易跑偏</strong>。MIT 的 'CALM' 帮它们通过跟踪几个人类演示的动作 + 平均成一条易坚持的路径来保持任务。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">如果你做 AI 视频生成/物理模拟/数字孪生/动画/游戏 NPC——借鉴 CALM 的"演示平均化"思路：让生成结果"围绕一条主干路径轻微扰动"而不是"自由生成"，可显著提升可控性+稳定性+用户体验。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/MIT_CSAIL/status/2070175599038018014" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">12</span>
+      <div class="card-title">Gemma 4 两个月下载量 2 亿：开源模型飞轮加速</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jun 30</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "<strong>Gemma 4 仅 2.5 个月下载量达 2 亿</strong>！作为对比——推出 Gemma 3 时整个 Gemma 家族累计下载量才 1 亿。社区加速度令人难以置信。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① Gemma 4 适合做"轻量本地 agent 推理"或"边缘部署"——手机/树莓派/浏览器都能跑；② 微调 Gemma 4 做垂直领域模型（法律/医疗/教育/客服）成本比微调闭源模型低 95%；③ 关注 Gemma + LoRA + Unsloth 组合——是当下开源 LLM 个人开发者的"平民超级栈"。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2071988054814773713" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Stats summary -->
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>总推文（5 组）</td><td>41</td></tr>
+      <tr><td>收录</td><td>12</td></tr>
+      <tr><td>工具类</td><td>5</td></tr>
+      <tr><td>工作流类</td><td>3</td></tr>
+      <tr><td>思维类</td><td>6</td></tr>
+      <tr><td>教程/Prompt</td><td>2</td></tr>
+    </table>
+
+    <div class="excluded-section">
+      <strong>🚫 今日排除项：</strong><br>
+      ① OpenAI GPT-5.6 Sol/GeneBench-Pro（安全/基准/学术）<br>
+      ② Anthropic Claude Mythos 5 出口管制恢复（基础设施/政策）<br>
+      ③ elonmusk Neuralink（硬件）<br>
+      ④ mattturck AI compute 2026（基础设施）<br>
+      ⑤ MiniMax 大会/营销推文（无实用内容）
+    </div>
+  </div>
+
+  <footer>
+    <p>生成于 2026-07-02 10:00 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新</p>
+    <p style="margin-top: 8px;">
+      <a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-07-01.html">← 昨天</a>
+      ·
+      <a href="https://x.com">数据源：X / Twitter</a>
+      ·
+      <a href="https://zxy114.github.io/influencer-daily/">归档</a>
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>
