@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-07</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong { color: var(--text); margin-left: 4px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot { color: var(--text-faint); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  .note-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 181, 71, 0.05);
+    border: 1px solid rgba(255, 181, 71, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .note-section strong { color: var(--text); }
+
+  .fresh-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(78, 201, 176, 0.15);
+    color: var(--tag-tool);
+    letter-spacing: 0.3px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 7 日 · 星期二</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>30</strong></div>
+      <div class="stat">✅ 精选收录 <strong>12</strong></div>
+      <div class="stat">📊 数据源 <strong>g1, g3, g4, g5</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 7</span>
+      <span class="summary-tag">工作流 · 5</span>
+      <span class="summary-tag">思维 · 4</span>
+      <span class="summary-tag">教程/Prompt · 4</span>
+    </div>
+  </header>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">Anthropic J-space：读懂 Claude "在想什么"的可解释性工具</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@AnthropicAI</span>
+      <span class="dot">·</span>
+      <span>8h 前</span>
+      <span class="fresh-tag">🔥 24h 内</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "<strong>J-space 让我们能读取、审计、塑造 Claude 正在思考的内容</strong>——随着模型能力变强，这是保持模型可信赖的有用工具。而且它揭示了语言模型和我们大脑之间惊人的相似性。读完整论文。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 Neuronpedia 互动 demo 试调自己的 prompt，看 Claude 的"思维过程"——调试 prompt 不再是黑盒；② 内容创作者可写"J-space 视角下的 AI 意识"科普稿——这是 2026 年可解释性最大进展，比纯模型发布有更深讨论价值；③ 关注 Anthropic 这条线（mechanistic interpretability）会持续产出新发现，是值得关注的研究员动态。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/AnthropicAI/status/2074185387577094398" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">Neuronpedia × Anthropic：开源模型可交互 Jacobian Lens</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@AnthropicAI</span>
+      <span class="dot">·</span>
+      <span>8h 前</span>
+      <span class="fresh-tag">🔥 24h 内</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "我们还跟 Neuronpedia 合作，在开源权重模型上<strong>做了一个方法论的交互式 demo</strong>。点这里试。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 在 Neuronpedia 上用 Jacobian Lens 直接观察开源模型（Llama、Mistral 等）的内部表征——这是给 prompt 工程师的"X 光机"；② 写内容时拿这个 demo 当视觉素材，把"AI 思考"做成可视化图表，受众接受度远高于纯文本；③ 教 AI 课程时用 demo 做现场演示，比"我说一下原理"强 10 倍。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/AnthropicAI/status/2074337393432293789" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">Codex 当 everything app：OpenAI PM 深度访谈精华</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jul 5</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      "<strong>你在 OpenAI 里从 A 点走到 B 点，每一步都听到 Codex 被提起</strong>。这是我跟（Codex PM）的新一期，他怎么把 Codex 当 everything app：用它 → Image Gen 原型设计 → 把重复工作变成自动化 → 把项目..."
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 不要把 Codex/GPT 当代码补全工具——OpenAI 内部用法是"设计 → 自动化 → 项目交付"一条龙；② 把任何重复性高的事（内容日历、客户提案模板、设计稿筛选）都塞进 Codex 当 routine 跑；③ 听播客时关注「工程师如何把 AI 用成超级助理」的元方法，而不仅是工具评测。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2073772723550220478" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">@useblacksmith：给 agent 一台自己的电脑做端到端测试</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 6 · 696 赞 / 21.7 万阅读</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "<strong>@steipete 提到 @useblacksmith 做 agent sandbox 沙盒</strong>——对这种 workflow 非常看好。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 Blacksmith 这类 sandbox 服务给 AI agent 配独立运行环境——CI/CD、自动化浏览器测试、跨平台验证都能交给 agent；② 做"AI 内容工厂"时，<strong>每个 agent 一个隔离 sandbox</strong> 防止相互污染状态，是必备基建；③ 内容创作者可以让 agent 在 sandbox 里反复调试网页/APP 截图，生成对比图集。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2074002223500255438" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">5</span>
+      <div class="card-title">Codex 帮你取消订阅：手机端 agent 实操示范</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 3 · 1.8 万阅读</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "今天在路上，<strong>手机收到通知说某个忘了的 SaaS 自动扣款了</strong>——我掏出 Codex：'能帮我取消这个订阅吗？'它打开浏览器、跳过各种菜单、忽略折扣弹窗、取消订阅。done。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 把手机端 Codex 接到邮件/通知，做"自动管家"——账单、退订、表单填写、App 内购买确认都能代劳；② 内容选题"<strong>AI 帮你干掉最烦人的家务</strong>"流量稳定，本期可做视频版教程；③ 复用这个模式：把任何"在网页/App 里点 5 次以上才能完成的任务"丢给 Codex。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2072899761737478234" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">6</span>
+      <div class="card-title">Codex 做设计：让 imagegen 重新设计再实现</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 4 · 5.6 万阅读</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "<strong>如果你觉得 Codex 设计丑，试试 '用 imagegen 重新想象这个设计然后实现它'</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 当 Codex/Claude Code 写代码时，加一句"先用 ChatGPT imagegen 出设计图再实现"——质量肉眼可见提升；② 这个 prompt 适合做"两步法"工作流：imagegen 定风格 → 代码实现，绕过 LLM 直接做 UI 的设计短板；③ 内容创作者可拍"AI 写代码前先画设计稿"对比视频，bypass 工程师+设计师分工。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2073277317464682723" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">7</span>
+      <div class="card-title">codex.bar：追踪 token 续费窗口的 valuemaxxing 工具</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 4 · 2412 赞 / 75.9 万阅读</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "<strong>下一个版本的 codex.bar——精确看到你的 reset 何时过期</strong>，这样你就能 up 你的 valuemaxxing 游戏。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 用 codex.bar 监控 Codex/ChatGPT/Claude 的 5h/周 reset 时间窗，规划高峰时段使用；② 如果你自己做 SaaS，可以借鉴这个 dashboard 模式——<strong>把"用户使用窗口"做成可视化</strong>是高留存设计；③ 内容选题"<strong>AI 订阅 5h 窗口怎么用最值</strong>"是高频刚需，复刻+本地化就能出爆款。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2073482942513565713" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">8</span>
+      <div class="card-title">Fable 使用最大化指南：steipete 的实战手册</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 4 · 2738 赞 / 21.3 万阅读</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "<strong>刚整理完这份 Fable 使用最大化指南</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 直接对照 steipete 的 guide 复盘你的 Fable/Claude Code 用法——找高 ROI 的 pattern；② 写"AI 工具深度使用指南"系列时，把 steipete 这种 KOL 实战贴当模板（场景化 + 具体步骤）；③ 关注 steipete 的 AGENTS.md/CLAUDE.md 配置——他公开了自己的 prompt 工程实践。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2073312248710496421" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">9</span>
+      <div class="card-title">Claude Code autoreview skill：让 AI 自我审稿的工作流</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@steipete</span>
+      <span class="dot">·</span>
+      <span>Jul 4 · 87 赞 / 2.4 万阅读</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="quote">
+      "<strong>让 Fable 用 @steipete 的 <code>autoreview</code> skill 在每次迭代后自我审稿</strong>，感觉像开外挂（已加到我的 AGENTS/CLAUDE.md）。<strong>虽然费 token，但 OpenAI 订阅很慷慨</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 在 Claude Code/Codex 的 CLAUDE.md 里加 autoreview 指令——每次代码改完后让 AI 自我 review，捕获明显 bug；② 这是"AI 质量门"模式：把"自我审稿"做成显式 skill，比默认行为强 30%；③ 做内容时套这个模式——每篇稿子写完让 AI 跑一遍"读者视角 + 编辑视角"双审，再发。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/steipete/status/2073435199526895940" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">10</span>
+      <div class="card-title">MIT "Masked IRL"：让 LLM 帮机器人理解模糊指令</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@MIT_CSAIL</span>
+      <span class="dot">·</span>
+      <span>Jul 3 · 1.2 万阅读</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "<strong>机器人怎么在指令模糊时学会做任务？</strong>MIT 的 'Masked IRL' 用 LLM 帮机器人理解含糊家务请求、聚焦关键细节。一个模型澄清用户 prompt，另一个忽略无关信息。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 关注"<strong>LLM-as-clarifier</strong>"模式——你给 AI 写复杂任务时，先用一个 LLM 澄清模糊指令再交给主 agent，准确率提升明显；② 做智能客服/AI 助手时套这个"两阶段 LLM 架构"——第一阶段改写 prompt，第二阶段执行；③ 内容选题"<strong>AI 教 AI 听人话</strong>"对普通读者有强解释力。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/MIT_CSAIL/status/2073074461696213238" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">11</span>
+      <div class="card-title">Google 一图一视频工作流：Nano Banana 2 Lite + Omni Flash</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jun 30</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "两个重磅更新让你 1 个模型生图 + 1 个模型动起来：① <strong>Nano Banana 2 Lite</strong> — 最快最便宜的 Gemini Image 模型；② 接入 <strong>Gemini Omni Flash</strong> 立刻把图变视频。<strong>一条链路，价格只要原来的零头</strong>。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">用 Interactions API 保持 session 历史（可连续做最多 3 次顺序编辑），工作流改为「Nano Banana 2 Lite 出图 → 同 session 传上下文 → Omni Flash 动画」，一套出成片，复用 session 上下文省 token。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2071989058952184054" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">12</span>
+      <div class="card-title">Hailuo AI 病毒视频模板：上传照片生成 ESB 求婚视频</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@Hailuo_AI</span>
+      <span class="dot">·</span>
+      <span>Jul 6</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "<strong>点击下方链接创建你的专属视频 ⬇️</strong> hailuoai.video/generate/ai-v…"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 直接用 Hailuo AI 的"照片 → 病毒视频"模板——上传两张照片，AI 帮你合成 ESB 求婚、追车、跨国拥抱等爆款剧情；② 借鉴"<strong>模板化病毒视频</strong>"的思路——做内容时把"流行剧情+AI 一键复刻"做成模板站；③ 跨境运营：把英文流行模板本地化到中文/小语种市场，平台流量倾斜明显。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/Hailuo_AI/status/2074102300625531341" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Stats section -->
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>📦 缓存推文（5 组总计）</td><td>30</td></tr>
+      <tr><td>✅ 精选收录</td><td>12</td></tr>
+      <tr><td>🛠 工具类</td><td>7</td></tr>
+      <tr><td>⚙️ 工作流类</td><td>5</td></tr>
+      <tr><td>🧠 思维类</td><td>4</td></tr>
+      <tr><td>📚 教程 / Prompt 类</td><td>4</td></tr>
+      <tr><td>🔥 24h 内新鲜</td><td>3</td></tr>
+      <tr><td>📅 7 天内</td><td>10</td></tr>
+      <tr><td>💬 高互动 (1万+赞/阅读)</td><td>6</td></tr>
+    </table>
+  </div>
+
+  <div class="note-section">
+    <strong>🎯 主题分布：</strong>今天是「<strong>Anthropic 可解释性突破 + steipete 的 Codex/Fable 实操</strong>」双主线。Anthropic J-space + Neuronpedia demo 是 2026 年可解释性最强进展，给 prompt 工程师和 AI 科普创作者都提供了新的素材库；steipete 一人贡献了 6 条高价值技巧（agent sandbox、codex 取消订阅、imagegen 设计、token 追踪、Fable 指南、autoreview skill），是 OpenAI 生态最值得 follow 的实操 KOL；Codex 当 everything app（Peterg Yang）和 Masked IRL（MIT CSAIL）作为方法论补充。
+  </div>
+
+  <div class="note-section">
+    <strong>💡 今日实操建议：</strong>① 立即打开 Neuronpedia 试调 Jacobian Lens，把"AI 思考可视化"做成科普视频——这是 2026 年下半年的流量金矿；② 把 steipete 的 autoreview skill 抄进你的 CLAUDE.md，体验"AI 自我审稿"的工作流提升；③ 用 Hailuo AI 病毒视频模板做"AI + 名场面"系列，门槛低、起号快、平台愿意推；④ 关注 @useblacksmith 这类 agent sandbox 服务——给 AI agent 独立运行空间是 2026 下半年的明确趋势。
+  </div>
+
+  <div class="note-section">
+    <strong>⚠️ 今日采集异常：</strong>g2 完全缺失（无 g2.json/g2.done 文件），g5 仅 1 条（mattturck Nemotron 介绍，无直接创作者价值），g3 主条是官方公告/营销。因此今日主菜集中在 <strong>g1（Anthropic 8h 前最新动态）</strong> 和 <strong>g4（steipete 实操技巧 + MIT CSAIL 研究）</strong>。g4 128 条总量虽大，但有效工具/教程/工作流内容集中在 steipete + MIT_CSAIL 两个账号，其他多为 memes / 评论 / 政策。
+  </div>
+
+  <div class="excluded-section">
+    <strong>🚫 排除项（共 12 类）：</strong>① AnthropicAI Claude Fable 5 redeploy + export controls lifted（政策/合规）② OpenAI GeneBench-Pro（基准测试）③ AnthropicAI "Global workspace" 论文本身（学术论文，链接已在 #1 收纳）④ GoogleDeepMind Apptronik 机器人合作（硬件/基础设施）⑤ MiniMax_AI 6 条 RAISE 巴黎活动 + Worlds Fair + CyOps（无工具纯营销）⑥ midjourney 工程师视频（vague 无具体内容）⑦ GoogleAI 食品/能源创新视频（与 AI 创作无关）⑧ elonmusk 宗教/政治贴（不在范围）⑨ IBMData / ESYudkowsky 0 推文（账号未抓取到）⑩ 14 条 GaryMarcus 学术争议 + 美股内幕交易 + 古巴电网（与创作者工具无关）⑪ Ronald_vanLoon 30+ 条机器人/无人机/农业视频（基础设施/硬件）⑫ 5 条 tunguz 财经/体育 memes（偏离主轴）。
+  </div>
+
+  <footer>
+    生成于 2026-07-07 10:00 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新<br>
+    <a href="https://zxy114.github.io/influencer-daily/">→ 回到日报主页</a>
+  </footer>
+</div>
+</body>
+</html>
