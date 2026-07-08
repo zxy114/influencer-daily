@@ -1,394 +1,540 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI网红工具日报 2026-07-08</title>
-    <style>
-        :root {
-            --bg-color: #0f1117;
-            --card-bg: #1a1d24;
-            --card-border: #2a2e38;
-            --text-primary: #e0e6ed;
-            --text-secondary: #a0a7b3;
-            --accent-orange: #f97316;
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --accent-purple: #8b5cf6;
-            --rating-gold: #fbbf24;
-            --tag-bg: #2d3748;
-            --tag-text: #e2e8f0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-08</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.7;
-            padding: 20px;
-        }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+  .container { max-width: 920px; margin: 0 auto; }
 
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--accent-orange);
-            padding-bottom: 30px;
-        }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
 
-        .header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-orange);
-            margin-bottom: 10px;
-        }
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-        .header .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-        .header .meta {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            background: var(--card-bg);
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-        }
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
 
-        /* Filter Notes */
-        .filter-notes {
-            background: var(--card-bg);
-            border-left: 4px solid var(--accent-blue);
-            padding: 15px 20px;
-            margin-bottom: 30px;
-            border-radius: 0 8px 8px 0;
-        }
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
 
-        .filter-notes h3 {
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
 
-        .filter-notes ul {
-            list-style: none;
-            padding-left: 0;
-        }
+  .stat strong { color: var(--text); margin-left: 4px; }
 
-        .filter-notes li {
-            margin-bottom: 5px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
 
-        /* Card */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            border-color: var(--accent-orange);
-        }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
 
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-            line-height: 1.4;
-        }
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
 
-        .card-category {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
 
-        .tag {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
 
-        .tag[data-category="工具"] { border-left: 3px solid var(--accent-blue); }
-        .tag[data-category="教程"] { border-left: 3px solid var(--accent-orange); }
-        .tag[data-category="工作流"] { border-left: 3px solid var(--accent-green); }
-        .tag[data-category="思维"] { border-left: 3px solid var(--accent-purple); }
-        .tag[data-category="Prompt"] { border-left: 3px solid #ec4899; }
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
 
-        .rating {
-            color: var(--rating-gold);
-            font-weight: 600;
-        }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
 
-        .source-link {
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
 
-        .source-link:hover {
-            color: var(--accent-orange);
-        }
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
 
-        .card-content {
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
+  .dot { color: var(--text-faint); }
 
-        .card-content p {
-            margin-bottom: 12px;
-        }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
 
-        .card-content h3 {
-            color: var(--accent-green);
-            margin: 15px 0 8px;
-            font-size: 1.1rem;
-        }
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
 
-        .how-to-use {
-            background: rgba(16, 185, 129, 0.1);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border-left: 3px solid var(--accent-green);
-        }
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
 
-        .how-to-use h4 {
-            color: var(--accent-green);
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
+  .quote blockquote { font-style: normal; }
 
-        .card-source {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
 
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
+  .card-body strong { color: var(--text); }
 
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-        }
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
 
-        .stat-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--accent-orange);
-        }
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
+  .stars-empty { color: var(--text-faint); }
 
-        /* Observation */
-        .observation {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 30px;
-            border-left: 4px solid var(--accent-purple);
-        }
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
 
-        .observation h2 {
-            color: var(--accent-purple);
-            margin-bottom: 15px;
-        }
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
 
-        .observation ol, .observation ul {
-            padding-left: 20px;
-        }
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
 
-        .observation li {
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid var(--card-border);
-            margin-top: 40px;
-        }
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
 
-        .footer p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2rem; }
-            .card { padding: 20px; }
-            .card-header { flex-direction: column; }
-        }
-    </style>
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  .note-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 181, 71, 0.05);
+    border: 1px solid rgba(255, 181, 71, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .note-section strong { color: var(--text); }
+
+  .fresh-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(78, 201, 176, 0.15);
+    color: var(--tag-tool);
+    letter-spacing: 0.3px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
 </head>
 <body>
 <div class="container">
-    <!-- Header -->
-    <div class="header">
-        <h1>🤖 AI网红工具日报</h1>
-        <div class="subtitle">2026年7月8日 · 每日精选工具推荐、教程、Prompt模板、工作流优化与AI技巧</div>
-        <div class="meta">📅 生成时间：2026-07-08 10:00 UTC</div>
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 8 日 · 星期三</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>27</strong></div>
+      <div class="stat">✅ 精选收录 <strong>4</strong></div>
+      <div class="stat">📊 数据源 <strong>g1, g2, g3, g4, g5</strong></div>
     </div>
-
-    <!-- Filter Notes -->
-    <div class="filter-notes">
-        <h3>📊 筛选说明</h3>
-        <ul>
-            <li>✅ 收录标准：工具推荐 / 教程 / Prompt模板 / 工作流优化 / AI使用技巧</li>
-            <li>❌ 排除内容：硬件/基础设施 / 融资/收入 / 纯基准对比 / 学术论文 / 政治观点 / 营销宣传</li>
-            <li>🎯 质量门槛：内容创作者看完能立即上手用（评分 ≥ 5）</li>
-            <li>📝 数据状态：今日 5 组缓存已合并，由于 X 平台反爬收紧，符合收录标准的内容偏少，本期精选 2 条高质量条目</li>
-        </ul>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 4</span>
+      <span class="summary-tag">工作流 · 3</span>
+      <span class="summary-tag">思维 · 1</span>
+      <span class="summary-tag">教程/Prompt · 1</span>
     </div>
+  </header>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-value">22</div>
-            <div class="stat-label">抓取总推文</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">5</div>
-            <div class="stat-label">抓取组数</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">6</div>
-            <div class="stat-label">通过初筛</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value">2</div>
-            <div class="stat-label">最终收录</div>
-        </div>
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">Codex 当 everything app：OpenAI PM 深度访谈精华</div>
     </div>
-
-    <!-- Content -->
-    <div id="content">
-
-        <!-- Item 1 -->
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h2 class="card-title">1️⃣ OpenAI Codex PM 实战：把 Codex 当成"万能 App"用</h2>
-                    <div class="card-category">
-                        <span class="tag" data-category="工具">🛠️ 工具</span>
-                        <span class="tag" data-category="工作流">⚙️ 工作流</span>
-                        <span class="rating">⭐ 8/10</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card-content">
-                <h3>推文原文（中文翻译）</h3>
-                <p>"在 OpenAI 内部，从 A 点走到 B 点的路上，你都不可避免地听到 Codex 这个名字。" 这期新播客我邀请了 Codex 的产品经理，聊聊他如何把 Codex 当成万能 App 来用：</p>
-                <p>→ 用图像生成做设计原型<br>
-                → 把重复性工作变成自动化<br>
-                → 把项目…（Show more）</p>
-
-                <div class="how-to-use">
-                    <h4>💡 如何应用</h4>
-                    <p>1. <strong>重新定位 Codex</strong>：把它视为"通用助理"而非"代码补全工具"，让 PM/设计/运营都能开箱即用</p>
-                    <p>2. <strong>建立"重复性工作 → Codex 自动化"的心智</strong>：每次做重复劳动先问"这个能不能让 Codex 写个脚本/工作流"</p>
-                    <p>3. <strong>拓展到非编码场景</strong>：图像生成、文档草拟、数据分析，让 Codex 跨任务复用上下文</p>
-                </div>
-
-                <span class="card-source">来源：<a href="https://x.com/petergyang/status/2073772723550220478" target="_blank" class="source-link">@petergyang</a> · <a href="https://x.com/petergyang/status/2073772723550220478" target="_blank" class="source-link">查看推文</a></span>
-            </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h2 class="card-title">2️⃣ MiniMax Hub：本地 AI Agent 创意工作站</h2>
-                    <div class="card-category">
-                        <span class="tag" data-category="工具">🛠️ 工具</span>
-                        <span class="tag" data-category="工作流">⚙️ 工作流</span>
-                        <span class="rating">⭐ 7/10</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card-content">
-                <h3>推文原文（中文翻译）</h3>
-                <p>🐙 MiniMax Hub 正式上线，你的本地 AI Agent 创意工作站现已开放！Agent 范式正在转变：从编码到创作！研究 ➡️ 脚本 ➡️ 图像 ➡️ 音乐 ➡️ 成片，Agent 负责苦活，你来定调。🔥 为精英工作流而生，规模化不再有门槛。</p>
-
-                <div class="how-to-use">
-                    <h4>💡 如何应用</h4>
-                    <p>1. <strong>端到端流水线</strong>：把"研究→脚本→视觉→剪辑"串成一个 Agent 流水线，适合独立创作者/小团队做一站式视频生产</p>
-                    <p>2. <strong>本地化保护</strong>：本地工作站保护素材版权与隐私（不必把 prompt 全投到云端），适合敏感商业内容</p>
-                    <p>3. <strong>角色重新分配</strong>：用"Agent 干活、人类定调"的方式，把精力集中在选题与方向，把执行批量交给 Agent</p>
-                </div>
-
-                <span class="card-source">来源：<a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank" class="source-link">@Hailuo_AI</a> · <a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank" class="source-link">查看推文</a></span>
-            </div>
-        </div>
-
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jul 5</span>
+      <span class="tag tag-workflow">工作流</span>
+      <span class="tag tag-tool">工具</span>
     </div>
-
-    <!-- Observation -->
-    <div class="observation">
-        <h2>💡 今日观察</h2>
-        <ol>
-            <li><strong>Agent 工作流是主线</strong>：本期入选的两条都和"AI Agent 改变创作方式"有关 — Codex PM 把 Codex 当万能 App，MiniMax Hub 把研究→成片全流程 Agent 化</li>
-            <li><strong>范式正在迁移</strong>：从"AI 帮我写一段" → "AI Agent 帮我跑完一整条流水线"，创作者的定位从执行者转向"定调者/审核者"</li>
-            <li><strong>本地化是趋势</strong>：MiniMax Hub 强调"本地工作站"，反映创作者对数据主权和成本可控的诉求</li>
-        </ol>
+    <div class="quote">
+      "<strong>你在 OpenAI 里从 A 点走到 B 点，每一步都听到 Codex 被提起</strong>。这是我跟（Codex PM）的新一期，他怎么把 Codex 当 everything app：用它 → Image Gen 原型设计 → 把重复工作变成自动化 → 把项目..."
     </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>本日报由 AI 网红观察系统自动生成 · 关注 @petergyang @Hailuo_AI 等一线 AI 网红账号，每日精选</p>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 不要把 Codex/GPT 当代码补全工具——OpenAI 内部用法是"设计 → 自动化 → 项目交付"一条龙；② 把任何重复性高的事（内容日历、客户提案模板、设计稿筛选）都塞进 Codex 当 routine 跑；③ 听播客时关注「工程师如何把 AI 用成超级助理」的元方法，而不仅是工具评测。</span>
     </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★ <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2073772723550220478" target="_blank">查看推文 →</a>
+    </div>
+  </div>
 
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">Google DeepMind Antigravity × Predicting the Past：自然语言研究古希腊/拉丁文献</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jul 7 · 5.5 万阅读</span>
+      <span class="fresh-tag">🔥 24h 内</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      "<strong>🏛️ 我们推出了一种跟古代世界对话的新方式</strong>。把 Gemini 直接接到我们的专家模型 Aeneas 和 Ithaca 上，我们 Google Antigravity 里的 Predicting the Past Skill 让历史学家用纯英语研究希腊语和拉丁文本。🧵"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 借鉴 <strong>「专家模型 + Gemini 推理」混合架构</strong> —— 自己的研究/写作流水线可拆成"领域专家小模型 + 大模型调度"两层，准确率比纯大模型高；② <strong>Antigravity Skills</strong> 这种"自然语言驱动专业工具"的模式，是 2026 年 AI 工具的主流形态——历史/法律/医学/财务都会出现同款 skill；③ 做内容选题"<strong>AI 让小众学科大众化</strong>"（古文献、考古、天文）——门槛低、独特性强，比纯工具评测流量更稳。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2074513661750546762" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">GoogleAI SynthID：识别 AI 生成内容的"水印雷达"</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jul 1 · 6.5 万阅读</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      "<strong>随着生成式 AI 工具持续进化，区分 AI 生成和真实内容比以往任何时候都重要</strong>。这就是为什么 @GoogleDeepMind 在 2023 年推出 SynthID——一种给 AI 内容加隐形数字水印的技术。这是 SynthID 的现状摘要。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 创作者自查——如果你的图/视频被平台标注"AI 生成"流量降权，用 SynthID 验证水印是否还在，<strong>平台检测逻辑跟 SynthID 高度相关</strong>；② 做内容选题"<strong>AI 内容怎么打水印、怎么检测</strong>"——平台合规收紧后，watermark 是 2026 下半年的硬知识；③ 企业用户用 SynthID 检查外包 AI 素材是否带水印，避免被平台处罚或品牌方拒收。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★☆ <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2072318809277390940" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">Hailuo AI MiniMax Hub：本地 Agent 创意工作站（研究→脚本→图像→音乐→成片）</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@Hailuo_AI</span>
+      <span class="dot">·</span>
+      <span>Jun 12 · 持续推广</span>
+      <span class="tag tag-tool">工具</span>
+      <span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      "<strong>🐙 MiniMax Hub 正式上线，你的本地 AI Agent 创意工作站</strong>！Agent 范式正在转变：从编码到创作！研究 ➡️ 脚本 ➡️ 图像 ➡️ 音乐 ➡️ 成片，Agent 负责苦活，你来定调。🔥 为精英工作流而生，规模化不再有门槛。"
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① 借鉴"<strong>研究→脚本→图像→音乐→成片</strong>"全链路 Agent 化思路——独立创作者/小团队可搭建一站式中视频生产链；② "<strong>本地工作站</strong>"是创作者对数据主权和成本可控的诉求，<strong>敏感商业内容/版权素材优先选本地</strong>；③ "<strong>Agent 干活、人类定调</strong>"的角色分配——把精力集中在选题、方向、审核，执行批量交给 Agent。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★☆☆ <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Stats section -->
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>📦 缓存推文（5 组总计）</td><td>27</td></tr>
+      <tr><td>✅ 精选收录</td><td>4</td></tr>
+      <tr><td>🛠 工具类</td><td>4</td></tr>
+      <tr><td>⚙️ 工作流类</td><td>3</td></tr>
+      <tr><td>🧠 思维类</td><td>1</td></tr>
+      <tr><td>📚 教程 / Prompt 类</td><td>1</td></tr>
+      <tr><td>🔥 24h 内新鲜</td><td>1（g3 Antigravity 7-7）</td></tr>
+      <tr><td>📅 7 天内</td><td>4</td></tr>
+      <tr><td>💬 高互动 (1万+阅读)</td><td>2</td></tr>
+    </table>
+  </div>
+
+  <div class="note-section">
+    <strong>🎯 主题分布：</strong>今天是个<strong>轻量日</strong>——<strong>Codex everything app</strong>（petergyang，2 天内热度）依旧是最强方法论素材；<strong>Google DeepMind Antigravity + Predicting the Past</strong> 是本周新发布（Jul 7），给"专家模型 + 大模型推理"的混合架构打了个样；<strong>GoogleAI SynthID</strong> 是平台合规时代的硬知识；<strong>Hailuo AI MiniMax Hub</strong> 持续推本地 Agent 工作站，反映"全链路 Agent 化"的创作者需求。
+  </div>
+
+  <div class="note-section">
+    <strong>💡 今日实操建议：</strong>① 立即打开 Antigravity 试调 Predicting the Past Skill——"自然语言驱动专业模型"是 2026 年 AI 工具的主流形态，先体验后写科普；② 关注 SynthID 现状——平台对 AI 内容的水印检测在 2026 下半年会进一步收紧，watermark 知识是创作者必修；③ 借鉴 Codex everything app 心智，把任何重复性高的事塞进 Codex 当 routine 跑；④ 关注 MiniMax Hub 这类本地 Agent 工作站——数据主权和成本可控是创作者长期痛点。
+  </div>
+
+  <div class="note-section">
+    <strong>⚠️ 今日采集异常：</strong>g2 仅 1 条（elonmusk 宗教/政治贴，已剔除）；g3 大部分是 MiniMax_AI 巴黎 RAISE Week 活动宣传（剔除 6 条）+ GoogleAI / GoogleDeepMind 工具发布（保留 4 条）+ midjourney 公司内容（剔除）；g4/g5 主条为 Ronald_vanLoon 5G/Starlink 基础设施视频、mattturck Nemotron 战略采访（剔除）。X 平台反爬收紧（云 IP 段风控 + Lightpanda 抓取命中率下降），g1 部分账号返回登录墙。
+  </div>
+
+  <div class="excluded-section">
+    <strong>🚫 排除项（共 8 类）：</strong>① AnthropicAI "Global workspace" 论文 + J-space + Neuronpedia demo（学术论文，<strong>昨日已收录</strong>）② AnthropicAI Claude Fable 5 redeploy + export controls lifted（政策/合规）③ GoogleDeepMind Apptronik 机器人合作（硬件/基础设施）④ MiniMax_AI 6 条 RAISE 巴黎活动 + Worlds Fair + CyOps（无工具纯营销）⑤ midjourney 硬件工程师视频（vague 无具体内容）⑥ elonmusk 宗教/政治贴（不在范围）⑦ Ronald_vanLoon 30+ 条机器人/无人机/农业视频（基础设施/硬件）⑧ mattturck Nemotron NVIDIA 研究战略采访（研究战略，无可上手工具）。
+  </div>
+
+  <footer>
+    生成于 2026-07-08 10:08 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新<br>
+    <a href="https://zxy114.github.io/influencer-daily/">→ 回到日报主页</a>
+  </footer>
 </div>
 </body>
 </html>
