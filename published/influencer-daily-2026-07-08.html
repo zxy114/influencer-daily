@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-07-08</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        /* Filter Notes */
+        .filter-notes {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .filter-notes h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .filter-notes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .filter-notes li {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-orange);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .card-category {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag[data-category="工具"] { border-left: 3px solid var(--accent-blue); }
+        .tag[data-category="教程"] { border-left: 3px solid var(--accent-orange); }
+        .tag[data-category="工作流"] { border-left: 3px solid var(--accent-green); }
+        .tag[data-category="思维"] { border-left: 3px solid var(--accent-purple); }
+        .tag[data-category="Prompt"] { border-left: 3px solid #ec4899; }
+
+        .rating {
+            color: var(--rating-gold);
+            font-weight: 600;
+        }
+
+        .source-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .source-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .card-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+        }
+
+        .card-content h3 {
+            color: var(--accent-green);
+            margin: 15px 0 8px;
+            font-size: 1.1rem;
+        }
+
+        .how-to-use {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .how-to-use h4 {
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .card-source {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Observation */
+        .observation {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid var(--accent-purple);
+        }
+
+        .observation h2 {
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+        }
+
+        .observation ol, .observation ul {
+            padding-left: 20px;
+        }
+
+        .observation li {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .card { padding: 20px; }
+            .card-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>🤖 AI网红工具日报</h1>
+        <div class="subtitle">2026年7月8日 · 每日精选工具推荐、教程、Prompt模板、工作流优化与AI技巧</div>
+        <div class="meta">📅 生成时间：2026-07-08 10:00 UTC</div>
+    </div>
+
+    <!-- Filter Notes -->
+    <div class="filter-notes">
+        <h3>📊 筛选说明</h3>
+        <ul>
+            <li>✅ 收录标准：工具推荐 / 教程 / Prompt模板 / 工作流优化 / AI使用技巧</li>
+            <li>❌ 排除内容：硬件/基础设施 / 融资/收入 / 纯基准对比 / 学术论文 / 政治观点 / 营销宣传</li>
+            <li>🎯 质量门槛：内容创作者看完能立即上手用（评分 ≥ 5）</li>
+            <li>📝 数据状态：今日 5 组缓存已合并，由于 X 平台反爬收紧，符合收录标准的内容偏少，本期精选 2 条高质量条目</li>
+        </ul>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">22</div>
+            <div class="stat-label">抓取总推文</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">5</div>
+            <div class="stat-label">抓取组数</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">6</div>
+            <div class="stat-label">通过初筛</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">2</div>
+            <div class="stat-label">最终收录</div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Item 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣ OpenAI Codex PM 实战：把 Codex 当成"万能 App"用</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="tag" data-category="工作流">⚙️ 工作流</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>"在 OpenAI 内部，从 A 点走到 B 点的路上，你都不可避免地听到 Codex 这个名字。" 这期新播客我邀请了 Codex 的产品经理，聊聊他如何把 Codex 当成万能 App 来用：</p>
+                <p>→ 用图像生成做设计原型<br>
+                → 把重复性工作变成自动化<br>
+                → 把项目…（Show more）</p>
+
+                <div class="how-to-use">
+                    <h4>💡 如何应用</h4>
+                    <p>1. <strong>重新定位 Codex</strong>：把它视为"通用助理"而非"代码补全工具"，让 PM/设计/运营都能开箱即用</p>
+                    <p>2. <strong>建立"重复性工作 → Codex 自动化"的心智</strong>：每次做重复劳动先问"这个能不能让 Codex 写个脚本/工作流"</p>
+                    <p>3. <strong>拓展到非编码场景</strong>：图像生成、文档草拟、数据分析，让 Codex 跨任务复用上下文</p>
+                </div>
+
+                <span class="card-source">来源：<a href="https://x.com/petergyang/status/2073772723550220478" target="_blank" class="source-link">@petergyang</a> · <a href="https://x.com/petergyang/status/2073772723550220478" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">2️⃣ MiniMax Hub：本地 AI Agent 创意工作站</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="tag" data-category="工作流">⚙️ 工作流</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>🐙 MiniMax Hub 正式上线，你的本地 AI Agent 创意工作站现已开放！Agent 范式正在转变：从编码到创作！研究 ➡️ 脚本 ➡️ 图像 ➡️ 音乐 ➡️ 成片，Agent 负责苦活，你来定调。🔥 为精英工作流而生，规模化不再有门槛。</p>
+
+                <div class="how-to-use">
+                    <h4>💡 如何应用</h4>
+                    <p>1. <strong>端到端流水线</strong>：把"研究→脚本→视觉→剪辑"串成一个 Agent 流水线，适合独立创作者/小团队做一站式视频生产</p>
+                    <p>2. <strong>本地化保护</strong>：本地工作站保护素材版权与隐私（不必把 prompt 全投到云端），适合敏感商业内容</p>
+                    <p>3. <strong>角色重新分配</strong>：用"Agent 干活、人类定调"的方式，把精力集中在选题与方向，把执行批量交给 Agent</p>
+                </div>
+
+                <span class="card-source">来源：<a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank" class="source-link">@Hailuo_AI</a> · <a href="https://x.com/Hailuo_AI/status/2065277558992851201" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Observation -->
+    <div class="observation">
+        <h2>💡 今日观察</h2>
+        <ol>
+            <li><strong>Agent 工作流是主线</strong>：本期入选的两条都和"AI Agent 改变创作方式"有关 — Codex PM 把 Codex 当万能 App，MiniMax Hub 把研究→成片全流程 Agent 化</li>
+            <li><strong>范式正在迁移</strong>：从"AI 帮我写一段" → "AI Agent 帮我跑完一整条流水线"，创作者的定位从执行者转向"定调者/审核者"</li>
+            <li><strong>本地化是趋势</strong>：MiniMax Hub 强调"本地工作站"，反映创作者对数据主权和成本可控的诉求</li>
+        </ol>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>本日报由 AI 网红观察系统自动生成 · 关注 @petergyang @Hailuo_AI 等一线 AI 网红账号，每日精选</p>
+    </div>
+
+</div>
+</body>
+</html>
