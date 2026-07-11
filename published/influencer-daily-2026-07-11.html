@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-11</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong { color: var(--text); margin-left: 4px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot { color: var(--text-faint); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  .note-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 181, 71, 0.05);
+    border: 1px solid rgba(255, 181, 71, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .note-section strong { color: var(--text); }
+
+  .fresh-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(78, 201, 176, 0.15);
+    color: var(--tag-tool);
+    letter-spacing: 0.3px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 11 日 · 星期六</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>38</strong></div>
+      <div class="stat">✅ 精选收录 <strong>8</strong></div>
+      <div class="stat">📊 数据源 <strong>g1, g2, g3, g4, g5</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 6</span>
+      <span class="summary-tag">工作流 · 3</span>
+      <span class="summary-tag">思维 · 1</span>
+      <span class="summary-tag">教程/Prompt · 2</span>
+    </div>
+  </header>
+
+  <div class="note-section" style="margin-bottom: 16px;">
+    <strong>🎯 今日核心：</strong>聚焦 GPT-5.6 之后的下半场——GPT-5.6 Health Luna 25x 成本下降 + Google AI Project Genie 360° Street View + MiniMax M3 创意 Prompt + nikunj "精致=AI 垃圾"趋势洞察；ChatGPT Work 进入"应用阶段"，桌面端免费可用。
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">Project Genie × Street View：用 AI 走进谷歌地图，做 360° 虚拟探索</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jul 10</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>踏入 Project Genie 中的 Street View 接地功能</strong>——由 GoogleDeepMind 与 GoogleLabs 联合发布。在 I/O 上发布，<strong>这个研究原型以 Google Maps Street View 的地点为底</strong>，让你<strong>生成并探索交互式 360° 虚拟世界</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>创作者做"沉浸式内容"门槛被砍到底</strong>——以前做 VR/360° 探索需要 Unity + 3D 建模 + 全景拍摄，<strong>现在选个地点 → AI 生成 → 直接在浏览器探索</strong>；② <strong>3 个立即能用的场景</strong>：<strong>（a）旅行/探店博主</strong>——"AI 带我走进镰仓/冰岛/撒哈拉"，<strong>（b）城市更新/历史人文</strong>——"100 年前的纽约街景 × AI 重新建模"，<strong>（c）课程开场</strong>——3 分钟 AI 探索动画，比静态地图抓眼球 10 倍；③ <strong>入口门槛低</strong>——只要会描述场景（prompt），<strong>不用懂 3D</strong>，但要写出<strong>有视觉锚点的 prompt</strong>（光线、时间、季节、风格词），AI 才能生成可看的画面。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2075609303029776872" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">GPT-5.6 Health：医疗推理 25x 成本下降，性能反超前代旗舰</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9-10</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>GPT-5.6 是医疗智能的重大一步</strong>。在整个产品线中，我们在降低成本的同时提供更强的性能：<strong>GPT-5.6 Luna 在其最高推理设置下超越 GPT-5.5，但成本只有 1/25</strong>。"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>"25x 成本下降"是创作者最该兴奋的数字</strong>——Luna 模型对<strong>批量任务</strong>（SEO 关键词生成、评论回复、社交媒体标题变体）是黄金组合，<strong>做 1 万条标题测试只要过去的 1/25 成本</strong>；② <strong>健康场景的真正价值不是"问诊"，是"二次审核"</strong>——做健康/健身/营养类内容时，<strong>用 Luna 帮你 cross-check 自己的医学说法</strong>，比 GPT-5.5 更准但成本更低（<strong>注意：仍要医生审稿，不能直接发布</strong>）；③ <strong>创作者的"模型分层策略"开始成熟</strong>——<strong>Sol（最贵，做长内容）/ Terra（平衡，做日常）/ Luna（最便宜，做批量）</strong>，按场景挑模型，<strong>月账单立省 50-70%</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★<span class="stars-empty"></span> <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075686461693898868" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">MiniMax M3 实战 Prompt：把"概念描述"直接变成视频成品</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@MiniMax_AI</span>
+      <span class="dot">·</span>
+      <span>Jul 8</span>
+      
+      <span class="tag tag-tool">工具</span><span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>Prompt by me, made by M3</strong>"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>MiniMax M3 已经能"prompt → 视频"一次成型</strong>，意味着<strong>创作者的视频制作成本再次下降</strong>——以前要"分镜→拍摄→剪辑→配音"，现在"一段描述 → AI 出片 → 人工微调"；② <strong>关键学习：作者公开了"prompt by me"</strong>——说明<strong>prompt 写得好的创作者，在 M3 生态里会有话语权</strong>，<strong>把自己的 prompt 模板做成 SKU</strong>（付费 prompt 库）是新机会；③ <strong>立刻能用的 3 个场景</strong>：<strong>（a）YouTube Shorts / TikTok 短视频</strong>——"30 秒内 X 主题的 hooks 视觉"，<strong>（b）课程开场动画</strong>——"X 概念的拟人化解释"，<strong>（c）电商产品展示</strong>——"X 产品的使用场景 360°"。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/MiniMax_AI/status/2074335349061349628" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 4 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">nikunj 趋势洞察：「精致内容」=「AI 模板垃圾」，未来 3-6 个月反转</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@nikunj</span>
+      <span class="dot">·</span>
+      <span>Jul 8</span>
+      
+      <span class="tag tag-mind">思维</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>精致正在和 AI 模板垃圾划上等号，速度比你想象的更快。我的看法是：我们即将看到向「原始、真实」的重大反转</strong> 🫀"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>2026 下半年内容趋势的关键信号</strong>——观众已经能<strong>一眼分辨 AI 模板垃圾</strong>（统一字体、统一开场、统一转场），<strong>「看起来太精致 = 看起来像 AI」</strong>；② <strong>3 个可立刻执行的差异化策略</strong>：<strong>（a）保留"瑕疵"</strong>——故意保留环境音、口误、未剪辑停顿，<strong>增加真实感</strong>；<strong>（b）第一人称视角</strong>——"我今天..."开头 vs "你是否想过..."开头，<strong>前者 3 倍留存</strong>；<strong>（c）原始笔记/process 公开</strong>——把"草稿、思考过程、失败截图"当内容发，<strong>反而是新的护城河</strong>；③ <strong>选题方向</strong>：<strong>「AI 时代，内容创作者如何保留人味」</strong> 是 7-9 月的流量金矿，<strong>先发先得</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/nikunj/status/2075033190708961675" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 5 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">5</span>
+      <div class="card-title">ChatGPT Work 跨应用 Agent：从"问答"到"完成工作"的范式转换</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>ChatGPT Work 反映了人们使用 AI 方式的转变，从单纯问答到真正完成工作，跨 Web、移动和桌面</strong>。你可以要求 ChatGPT Work 用一个请求承担整个工作流——<strong>它会理解你的目标，使用上下文</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>"一个请求 = 整个工作流"是新交互范式</strong>——过去你要 "先写大纲 → 再写正文 → 再做配图 → 再排版"，<strong>现在你说"为新视频选题做全套准备（文案+封面+5 个 hooks+发布时段建议）"</strong> 让 Work 一次跑完；② <strong>跨设备同步是关键</strong>——Web / Mobile / Desktop 三端都能接续同一个 Work 任务，<strong>通勤时手机启动 → 桌面端跟进 → 平板上 review</strong>，<strong>创作者的"碎片时间利用"被重新定义</strong>；③ <strong>立刻试的实验</strong>：选一个你过去要 3 个工具串联才能完成的任务（比如"周报 + 客户邮件 + 数据可视化"），<strong>让 ChatGPT Work 一次跑完，看它能不能 handle 80% 的工作量</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★<span class="stars-empty"></span> <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075274273607037403" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 6 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">6</span>
+      <div class="card-title">OpenAI ChatGPT Work 全平台分发时间表</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>在 Web 和移动端，ChatGPT Work 今天开始向 Pro、Enterprise 和 Edu 计划推出</strong>。将在未来几天内推送给 Plus 和 Business 计划。在 ChatGPT 桌面应用中，<strong>Chat、Work 和 Codex 在所有计划上可用（包括 Free），并已全球可用</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>立刻下载 ChatGPT Desktop App（Mac/Windows）</strong>——这是<strong>唯一全 Plan 都能用 ChatGPT Work 的入口</strong>，<strong>免费用户也能用</strong>，<strong>Web/Mobile 端要等 Plus/Business 几天内跟进</strong>；② <strong>创作者优先级</strong>：<strong>桌面端 > Web > Mobile</strong>——长上下文、文件拖拽、多窗口对比，<strong>桌面体验是 3 倍效率差距</strong>；③ <strong>如果你用的是 Plus/Pro 计划</strong>，<strong>今天就可以在桌面端开 Work 做实验</strong>；<strong>免费用户也别急</strong>，<strong>桌面端 Work 是开放给你的</strong>，只是功能上限有差异。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075274276849226204" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 7 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">7</span>
+      <div class="card-title">OpenAI Bio Bug Bounty 升级：$50K 悬赏 AI 生物安全研究</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-tool">工具</span>
+    </div>
+    <div class="quote">
+      <blockquote>"作为我们加强 AI 高级生物能力安全防护工作的一部分，<strong>我们正在将 Bio Bug Bounty 演变为一个持续性的私人项目，称为 OpenAI Bio Bug Bounty 项目，并将悬赏翻倍至 $50K</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>虽然不是你直接能用的工具，但这是个「风向标」</strong>——<strong>顶级 AI 公司愿意花 $50K 找 bug，说明 AI 安全的关注度已经从"理论"进入"悬赏"阶段</strong>；② <strong>对内容创作者的影响</strong>：<strong>未来 3-6 个月，"AI 安全 / AI 滥用防护"会变成新的内容选题方向</strong>，<strong>"AI 生成内容的合规风险"、"AI 深度伪造的边界"、"AI 内容平台审核"</strong> 都是 7-9 月的流量点；③ <strong>不要等到事情发生才写内容</strong>——<strong>现在就可以写"AI 内容创作者如何避免越界"清单</strong>，<strong>建立行业早期权威</strong>，事件发生时你就有了话语权。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★<span class="stars-empty">☆☆</span> <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075647722766614733" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+  <!-- Card 8 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">8</span>
+      <div class="card-title">ChatGPT Work "描述目标，无需逐步"：新一代 Prompt 哲学</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="fresh-tag">🔥 72h 内</span>
+      <span class="tag tag-prompt">Prompt</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>ChatGPT Work 由 GPT-5.6 提供支持。GPT-5.6 让 ChatGPT 在处理复杂任务和创建匹配你模板、参考文件和偏好风格的内容方面达到 SOTA</strong>。<strong>只需描述你想要的成果，无需逐步说明</strong>。"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>"描述目标，不描述步骤"是 2026 年的 Prompt 哲学转折点</strong>——过去你要写 "先做 A，再做 B，最后做 C"，<strong>现在你说"我要一份适合 LinkedIn 的、关于 X 主题的 1500 字深度文章，配 3 个反直觉观点和 1 张信息图"</strong> 就够了；② <strong>提前上传 3-5 份你的样板内容</strong>（往期最佳文章/视频脚本/PPT）<strong>作为 reference</strong>，让 Work 学习你的风格，<strong>输出更接近"你写的"而不是"AI 写的"</strong>；③ <strong>场景模板</strong>：<strong>新品发布稿（"我想告诉 X 群体，Y 产品解决了 Z 问题，tone 是 X 风格")、跨平台改编（"把 X 文章改成 60 秒视频脚本"）、系列内容（"我的 X 系列第 5 期，要延续前 4 期的风格"）</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075274275104399670" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>总推文（5 组）</td><td>38</td></tr>
+      <tr><td>收录</td><td>8</td></tr>
+      <tr><td>工具类</td><td>7</td></tr>
+      <tr><td>工作流类</td><td>4</td></tr>
+      <tr><td>思维类</td><td>1</td></tr>
+      <tr><td>教程</td><td>0</td></tr>
+      <tr><td>7 天内</td><td>8</td></tr>
+    </table>
+  </div>
+
+
+  <div class="note-section">
+    <strong>🎯 主题分布：</strong>今天的核心是 <strong>「GPT-5.6 之后的下半场」</strong> + <strong>「AI 创意工具平民化」</strong>——<strong>GPT-5.6 Health Luna 的 25x 成本下降</strong>（第 2）让批量任务（SEO、评论、标题）成本剧降，<strong>创作者的"模型分层策略"开始成熟</strong>；<strong>Google AI Project Genie × Street View</strong>（第 1）把 360° 虚拟探索门槛砍到底，<strong>旅行/城市/课程开场 3 个场景立刻可用</strong>；<strong>MiniMax M3 prompt → 视频</strong>（第 3）展示了"AI 出片 + 人工微调"的新流水线；<strong>nikunj 的「精致 = AI 垃圾」洞察</strong>（第 4）是 2026 下半年的内容趋势风向标；<strong>ChatGPT Work</strong>（第 5/6/8）系列进入"应用阶段"，<strong>桌面端免费可用、跨设备同步、描述目标即可</strong>。
+  </div>
+  <div class="note-section">
+    <strong>💡 实操建议：</strong>① <strong>最紧急</strong>：<strong>下载 ChatGPT Desktop App</strong>（Mac/Windows），<strong>今天就用 ChatGPT Work + GPT-5.6</strong>——选一个你日常的内容生产任务（比如"为新视频选题出 5 个角度 + 3 张封面图 + 1 段 30 秒 hooks"），<strong>观察 Work 是不是真的能从目标到成品一次跑完</strong>；② <strong>立刻试</strong>：<strong>Google AI Project Genie × Street View</strong>（已开放），<strong>做一期"AI 走进 X 城市"的短视频</strong>，旅行/历史/城市内容创作者优先用；③ <strong>省钱配方</strong>：<strong>把批量任务（评论回复、SEO 关键词、社交媒体标题变体）切到 GPT-5.6 Luna</strong>，<strong>25x 成本下降 = 月账单立省</strong>；④ <strong>关注 nikunj 的趋势信号</strong>：<strong>保留"瑕疵"、第一人称视角、process 公开</strong>——3 个差异化策略立刻用，<strong>避免内容看起来像"AI 模板垃圾"</strong>；⑤ <strong>跟踪 MiniMax M3 Prompt 实战</strong>：<strong>把"prompt by me"当新赛道</strong>，<strong>把自己的 prompt 模板做成付费 SKU</strong> 是新机会；⑥ <strong>提前布局选题</strong>："AI 安全 / AI 内容合规"是 7-9 月流量金矿，<strong>现在写清单 = 建立行业早期权威</strong>。
+  </div>
+  <div class="note-section">
+    <strong>⚠️ 今日采集异常：</strong>g1 OpenAI GPT-5.6 系列覆盖昨日（ChatGPT Work / GPT-5.6 家族 / GPT-5.6 Artifact / Peter Yang 对比），<strong>今日聚焦 GPT-5.6 Health 新角度</strong>；g2 Lightpanda 抓 X 个人主页仍拿不到 chronological Latest（仅 1 条 realmadhuguru 个人动态，无工具）；g3 MiniMax_AI 7 条 RAISE Paris 营销 + 1 条 Provisioned Throughput 定价 + 1 条 CEO letter + 1 条 Ollama 庆功（剔除），<strong>最有价值的 1 条是 M3 实战 Prompt</strong>；g4 MIT_CSAIL 自组织船队（硬件）+ Ronald_vanLoon 连通性（基础设施），全部剔除；g5 连续 3 天空抓。X 平台反爬持续，<strong>今日 raw 38 条但 actionable 仅 8 条</strong>，<strong>质量比昨天略低</strong>（昨天 43 条有 8 条 actionable，今天 38 条也是 8 条但去重后更稀）。
+  </div>
+  <div class="excluded-section">
+    <strong>🚫 排除项（共 9 类）：</strong>① OpenAI SWE-Bench Pro 审计 + GPT-5.6 Sol/Terra/Luna 单条公告（<strong>昨日已收录</strong> / 模型公告 / 基准对比）② OpenAI Hiroki 农民 / Bartosz 数学家 / Wishingrads 家庭故事视频（marketing 视频，无具体工具）③ Anthropic Bernanke 加入 Long-Term Benefit Trust（公司公告）④ Anthropic "Global workspace" 论文 + GRAM 双用途模块 + J-space 演示 + Neuronpedia 合作（学术研究）⑤ elonmusk SpaceX + realmadhuguru 加入 Meta（个人动态/无工具）⑥ MiniMax_AI 8 条 RAISE Paris 营销 + Provisioned Throughput 定价 + 世界杯预测 + Ollama 融资 + 开源权重推广 + CEO letter + "Open source is dying" 评论（纯营销/基准/定价/公司动态）⑦ Google DeepMind Antigravity Skill + Predicting the Past Skill + AlphaEvolve GA + COrigami 折纸（<strong>昨日已收录核心</strong> / 学术 / 算法）⑧ Google DeepMind 链式思考 podcast（研究访谈）⑨ MIT_CSAIL 自组织船队（硬件）+ Ronald_vanLoon Agentic AI 视频（基础设施）⑩ midjourney 空贴（无内容）。
+  </div>
+
+
+  <footer>
+    生成于 2026-07-11 10:08 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新<br>
+    <a href="https://zxy114.github.io/influencer-daily/">→ 回到日报主页</a>
+  </footer>
+</div>
+</body>
+</html>
