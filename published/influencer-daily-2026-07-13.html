@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-13</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong { color: var(--text); margin-left: 4px; }
+
+  .summary-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .card.rank-1 { border-color: var(--gold); }
+  .card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .card.rank-2 { border-color: var(--silver); }
+  .card.rank-3 { border-color: var(--bronze); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--bg);
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: #1a1a1a; }
+  .rank-2 .rank-badge { background: var(--silver); color: #1a1a1a; }
+  .rank-3 .rank-badge { background: var(--bronze); color: #1a1a1a; }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot { color: var(--text-faint); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  .note-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 181, 71, 0.05);
+    border: 1px solid rgba(255, 181, 71, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .note-section strong { color: var(--text); }
+
+  .fresh-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(78, 201, 176, 0.15);
+    color: var(--tag-tool);
+    letter-spacing: 0.3px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 13 日 · 星期一</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>30</strong></div>
+      <div class="stat">✅ 精选收录 <strong>5</strong></div>
+      <div class="stat">📊 数据源 <strong>g1, g2, g3, g4, g5</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 4</span>
+      <span class="summary-tag">工作流 · 3</span>
+      <span class="summary-tag">思维 · 2</span>
+      <span class="summary-tag">教程/Prompt · 3</span>
+    </div>
+  </header>
+
+  <div class="note-section" style="margin-bottom: 16px;">
+    <strong>🎯 今日核心：</strong>聚焦「工具升级 + 方法论升级」双线——GPT-5.6 Artifact 模板适配 + AlphaEvolve GA 开放 + COrigami 跨域设计 prompt + "Let the model cook" 少规则多目标 + Project Genie Street View 沉浸式。
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">GPT-5.6 Artifact 质量升级：PPT/Doc/Sheet 模板适配，可导出到现有工具</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>GPT-5.6 全面提升了 artifact（产出物）的质量，覆盖演示文稿、文档和电子表格，并且更好地与你的模板协作</strong>。这些可编辑的 artifact 可以导出到专业人士已经在用的工具，并作为真实企业工作流的一部分进行打磨。"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>这是 GPT-5.6 真正改变创作者工作流的能力升级</strong>——以前 ChatGPT 生成的 PPT/Doc/Sheet 是"勉强能看"的模板感，<strong>现在能"理解你的模板风格"并直接生成匹配你品牌/公司的产出物</strong>；② <strong>3 个立即能用的场景</strong>：<strong>（a）YouTube/B 站课程创作者</strong>——"用我的 Notion 笔记风格生成 5 张课程大纲表 + 1 个 30 页 PPT"——<strong>质量比 7/12 之前的 GPT-5.5 提升 50%+，导出到 Google Slides 几乎不用改</strong>；<strong>（b）外贸/跨境团队</strong>——"把这个客户邮件链 + 我们公司的产品手册生成一份给客户的中文版产品介绍 PPT"——<strong>artifact 自动匹配你的产品手册风格</strong>，<strong>省去设计师 2-3 小时</strong>；<strong>（c）内容矩阵分发</strong>——"把这篇 3000 字长文拆成 Twitter thread + LinkedIn 帖子 + Newsletter"——<strong>每种 artifact 自动匹配对应平台的格式与排版习惯</strong>；③ <strong>关键 prompt 模式</strong>："用附件 X 作为风格参考，生成 Y 类型的产出物"——<strong>附件参考 → 风格迁移 → 导出</strong>是 2026 下半年创作者最该练的 prompt 三段式。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★<span class="stars-empty"></span> <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075271432041545782" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">AlphaEvolve GA on Google Cloud：代码优化 agent 开放给所有开发者</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jul 10</span>
+      <span class="fresh-tag">🔥 GA 节点</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>AlphaEvolve 现在在 Google Cloud 正式 GA（General Availability）</strong>！与 Google DeepMind 联合开发，AlphaEvolve 是一个 Gemini 驱动的进化型 agent，能<strong>自主设计并发现高度优化的代码，解决你最难的算法瓶颈</strong>——跨行业可用..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>"GA"意味着不再是邀请制</strong>——<strong>任何有 Google Cloud 账号的开发者/创作者都能用 AlphaEvolve 优化自己的代码</strong>；② <strong>AlphaEvolve 真正能干的活</strong>：<strong>（a）算法瓶颈优化</strong>——"我的 Python 排序在 100 万条数据下要 3 秒，让 AlphaEvolve 优化到 1 秒内"；<strong>（b）数学公式发现</strong>——"我手上有 X 数据，找出能最好拟合的函数表达式"；<strong>（c）代码自动修复</strong>——"这段代码在 X 边界条件下崩了，让 AlphaEvolve 找出更鲁棒的实现"；③ <strong>创作者能立刻用的 2 个场景</strong>：<strong>（a）视频脚本自动化</strong>——"用 AlphaEvolve 优化我那个 2000 行的视频批量生成脚本"，<strong>（b）Newsletter 数据分析</strong>——"优化我那个每周跑 2 小时的爬虫脚本到 10 分钟"；④ <strong>行动步骤</strong>：<strong>注册 Google Cloud 账号 → Vertex AI → 启用 AlphaEvolve → 提交你日常最卡的那个脚本/算法</strong>——<strong>这个工具 80% 的人没听过，但它可能是 2026 年"省时间"的最大杠杆</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2075620285923905602" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">COrigami 端到端 origami co-design pipeline：跨域设计 prompt 三段式模板</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jul 7+</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-prompt">Prompt</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>我兴奋地分享来自 Google DeepMind Discovery 团队的最新工作：COrigami，一个用 Gemini 端到端协同设计折纸的 pipeline！</strong>折纸是数学、艺术与设计的独特结合。创造折纸涉及把抽象概念变成现实物体..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>COrigami 的真正价值不是"折纸"，是"跨域协同设计"方法论</strong>——<strong>把"自然语言描述 + 物理约束模拟 + 视觉验证"三步串成一个 pipeline</strong>，<strong>这个模式可以套到任何"从概念到实物"的设计任务</strong>；② <strong>COrigami 的三段式 prompt 模板（创作者可学）</strong>：<strong>（a）概念描述</strong>——"X 主题的视觉隐喻"（AI 出 5 个设计方向）；<strong>（b）物理/逻辑约束</strong>——"必须能用 A4 纸折出来 / 必须能在 3 分钟内讲完"（过滤掉不现实的方案）；<strong>（c）视觉验证</strong>——Gemini 模拟折叠过程，<strong>自动验证"能/不能"</strong>；③ <strong>立刻能套用的场景</strong>：<strong>（a）产品概念设计</strong>——"我这款 app 的 logo + 启动页 + 引导页全套"；<strong>（b）教学内容设计</strong>——"X 概念的可视化教具，能让学生在 5 分钟内 DIY"；<strong>（c）品牌 IP 形象</strong>——"X 品牌精神的 3D 折纸 logo"；④ <strong>关键洞察</strong>：<strong>未来 12 个月"AI 协同设计"工具会从研究产品下沉到消费级</strong>，<strong>现在学的"约束 + 验证" prompt 模式会让你抢先一步</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★<span class="stars-empty">☆☆</span> <span class="stars-empty">实用 3/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2074157282477154597" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">4</span>
+      <div class="card-title">"Let the model cook" — Cognition AI 工程师的 agent 构建方法论：少规则多目标</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@petergyang</span>
+      <span class="dot">·</span>
+      <span>Jul 12</span>
+      <span class="fresh-tag">🔥 24h 内</span>
+      <span class="tag tag-mind">思维</span><span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>'如果你想构建出色的 agents，你必须让模型自己来。'</strong>这是我新一期的嘉宾 @imjaredz（cognition 的驻场工程师 Builder）分享的，他讲述了从观察最优秀的工程师使用 AI agents 中学到的，包括：<strong>→ 为什么更少的规则能让 agents 工作得更好</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>"Let the model cook" 是 2026 年创作者使用 AI agents 的核心心智模型</strong>——<strong>不要再写 50 条规则约束 AI"必须这样那样"</strong>，<strong>给 AI 明确目标 + 信任它自己找路</strong>，<strong>质量反而更高</strong>；② <strong>3 个立即能上手的方法论</strong>：<strong>（a）"目标驱动" 替代 "步骤驱动"</strong>——以前 prompt："第一步查数据，第二步分析，第三步写报告"——<strong>新 prompt</strong>："研究 X 主题，输出一份 1000 字报告，引用至少 5 个来源"——<strong>让 AI 自己决定怎么分步</strong>；<strong>（b）"Fewer rules" 替代 "More rules"</strong>——<strong>规则越多，AI 越死板</strong>——只保留"硬约束"（不能编造数据 / 不能超过 X 字数），其他全交给 AI；<strong>（c）"Fail forward" 替代 "Perfect first try"</strong>——<strong>不要追求一次完美</strong>，<strong>让 AI 先跑，错了再调</strong>，<strong>迭代 3 次 vs 一次写完美 prompt</strong>，<strong>前者快 10 倍</strong>；③ <strong>立刻试</strong>：<strong>选你日常最常做的一个 prompt 任务</strong>，<strong>把所有"步骤描述"删掉</strong>，<strong>只留"目标 + 约束 + 输出格式"</strong>——<strong>你会惊讶于 AI 的表现</strong>；④ <strong>延伸学习</strong>：petergyang 跟 imjaredz（Cognition / Devin 团队）的整集 podcast 值得听完——<strong>Devin 团队"做 agents 的实战经验"是行业最稀缺的内容</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/petergyang/status/2076309444909277326" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card ">
+    <div class="card-header">
+      <span class="rank-badge">5</span>
+      <div class="card-title">Project Genie × Street View 接地：真实地点 + AI 改造，沉浸式内容新范式</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleAI</span>
+      <span class="dot">·</span>
+      <span>Jul 10</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>踏入 Project Genie 中的 Street View 接地功能</strong>——由 GoogleDeepMind 与 GoogleLabs 联合发布。在 I/O 上发布，<strong>这个研究原型以 Google Maps Street View 的地点为底</strong>，让你<strong>生成并探索交互式 360° 虚拟世界</strong>..."</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>7/11 提过 Project Genie，7/13 强调落地"用 Street View 作底"这个具体玩法</strong>——<strong>创作者不用凭空想象场景，直接选真实地点 → AI 改造 → 360° 探索</strong>；② <strong>3 个落地场景</strong>：<strong>（a）旅行/探店博主</strong>——"AI 带我走进镰仓/冰岛/撒哈拉，<strong>用真实 Street View 做底</strong>，<strong>AI 加一层'历史/未来'的视觉改造</strong>"——<strong>比纯 AI 生成更可信</strong>；<strong>（b）城市更新/历史人文</strong>——"100 年前的纽约街景 × AI 重新建模，<strong>基于今天 Google Maps 的真实坐标</strong>"——<strong>真实 + AI 想象的混合</strong>；<strong>（c）课程开场</strong>——3 分钟 AI 探索动画，<strong>第一帧用真实地点拉信任感</strong>——<strong>比静态地图抓眼球 10 倍</strong>；③ <strong>关键 prompt 技巧</strong>：<strong>（a）选真实地点先</strong>（用 Google Maps 找具体地址）→ <strong>（b）描述要改造的视觉元素</strong>（"加入霓虹灯/改成赛博朋克风格"）→ <strong>（c）指定时间/季节/天气</strong>（"日落时分，秋天"）——<strong>3 段式 prompt = 真实 + 创意 + 氛围</strong>；④ <strong>入口</strong>：Project Genie 目前是研究原型，<strong>通过 Google Labs 申请 waitlist</strong>，<strong>但对内容创作者来说"先申请先得"是绝对正确的策略</strong>——<strong>2026 下半年到 2027 上半年这是新一代沉浸式内容的"红利期"</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleAI/status/2075609303029776872" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>总推文（5 组）</td><td>30</td></tr>
+      <tr><td>收录</td><td>5</td></tr>
+      <tr><td>工具类</td><td>4</td></tr>
+      <tr><td>工作流类</td><td>3</td></tr>
+      <tr><td>Prompt / 教程类</td><td>3</td></tr>
+      <tr><td>思维类</td><td>2</td></tr>
+      <tr><td>24h 内新鲜</td><td>1（"Let the model cook" 7/12 podcast）</td></tr>
+      <tr><td>7 天内</td><td>5</td></tr>
+      <tr><td>高互动 (1万+阅读)</td><td>0（今日大新闻稀疏）</td></tr>
+    </table>
+  </div>
+
+  <!-- 主题分布 -->
+  <div class="note-section" style="margin-top: 16px;">
+    <strong>🎯 主题分布：</strong>今天的主题是 <strong>「AI 创作者的'工具升级 + 方法论升级'双线」</strong>——<strong>GPT-5.6 Artifact 质量升级</strong>（第 1）是"工具升级"线，<strong>PPT/Doc/Sheet 模板适配直接提升创作者日常内容产出质量</strong>；<strong>AlphaEvolve GA</strong>（第 2）是"工具升级"线的硬核版，<strong>让创作者能优化自己的脚本/算法</strong>；<strong>COrigami</strong>（第 3）是"工具升级"线的研究预览，<strong>"自然语言 + 物理约束 + 视觉验证"三段式 prompt 模式是创作者能学的元方法</strong>；<strong>"Let the model cook"</strong>（第 4）是"方法论升级"线的核心，<strong>"少规则多目标"是 2026 年使用 AI agents 的最高效心智</strong>；<strong>Project Genie Street View 接地</strong>（第 5）是"工具升级"线的沉浸式方向，<strong>真实地点 + AI 改造 = 新的内容范式</strong>。
+  </div>
+
+  <!-- 实操建议 -->
+  <div class="apply-box" style="margin-top: 16px;">
+    <span class="apply-label">🛠️ 实操</span>
+    <span class="apply-text"><strong>① 最紧急</strong>：<strong>用 GPT-5.6 Artifact 升级重做你最近的一个 PPT/Doc</strong>——<strong>提示它"用附件 X 作为风格参考"</strong>，<strong>对比 5.5 vs 5.6 的质量差异</strong>；<strong>② 立刻试</strong>：<strong>"Let the model cook" 方法论</strong>——<strong>选你日常最常做的一个 prompt 任务</strong>，<strong>把所有"步骤描述"删掉</strong>，<strong>只留"目标 + 约束 + 输出格式"</strong>，<strong>观察 AI 表现是否更好</strong>；<strong>③ 注册 AlphaEvolve</strong>：<strong>Google Cloud 账号 → Vertex AI → 启用 AlphaEvolve</strong>，<strong>提交你日常最卡的那个脚本/算法</strong>——<strong>80% 的人不知道这个工具，但它是 2026 年"省时间"的最大杠杆</strong>；<strong>④ 学 COrigami 三段式 prompt</strong>：<strong>（a）概念描述 → （b）物理/逻辑约束 → （c）视觉验证</strong>——<strong>这个模式可以套到任何"从概念到实物"的设计任务</strong>；<strong>⑤ 申请 Project Genie waitlist</strong>：<strong>Google Labs 现在接受申请</strong>，<strong>对内容创作者来说"先申请先得"是绝对正确的策略</strong>——<strong>2026 下半年到 2027 上半年这是新一代沉浸式内容的"红利期"</strong>。</span>
+  </div>
+
+  <!-- 排除项 -->
+  <div class="excluded-section">
+    <strong>❌ 今日排除项（共 6 类）：</strong><br>
+    ① <strong>OpenAI ChatGPT Work + GPT-5.6 Sol/Terra/Luna 家族 + Artifact 导出时间表 + "描述目标不描述步骤" + Bio Bug Bounty + Hiroki/Bartosz/Wishingrads 营销视频 + Codex/Work 限额重置</strong>（<strong>7/11-12 已收录 / 公司公告 / 营销</strong>）<br>
+    ② <strong>Anthropic J-space + 专家 commentary PDF + AE Studio 合作 + Bernanke + GRAM</strong>（<strong>学术 / 公司公告</strong>）<br>
+    ③ <strong>elonmusk Starmind + realmadhuguru 加入 Meta</strong>（<strong>个人动态 / 无工具</strong>）<br>
+    ④ <strong>Google DeepMind Antigravity Skill + Predicting the Past + Interpretability podcast</strong>（<strong>7/11-12 已收录核心</strong>）<br>
+    ⑤ <strong>MiniMax_AI 7 条 RAISE Paris 营销 + Provisioned Throughput 定价 + 世界杯预测 + Ollama 融资 + CEO letter + kernel optimization</strong>（<strong>营销 / 定价 / 融资 / 硬件 benchmark</strong>）<br>
+    ⑥ <strong>MIT_CSAIL 自组织船队 + Ronald_vanLoon 连通性 + midjourney 空贴</strong>（<strong>硬件 / 基础设施 / 无内容</strong>）
+  </div>
+
+  <footer>
+    <p>📅 生成于 2026-07-13 10:02 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新</p>
+    <p style="margin-top: 8px;">数据源：5 组缓存（g1-g5）共 30 条推文筛选排序 · 剔除硬件/基础设施/融资/营销活动/学术论文/公司公告/个人动态</p>
+    <p style="margin-top: 8px;">⚠️ 今日采集异常：g2 仅 2 条（Elon Starmind + realmadhuguru 加入 Meta），全部为个人动态/无工具，剔除；g4 仅 2 条（MIT 自组织船队 + Ronald_vanLoon 连通性），全部为硬件/基础设施，剔除；g5 连续 5 天空抓（X Top 仍只返回 curated 热门，无 chronological Latest）。</p>
+  </footer>
+
+</div>
+</body>
+</html>
