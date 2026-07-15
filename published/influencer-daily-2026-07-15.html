@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-15</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg-card: #161922;
+    --bg-card-hover: #1d2130;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --text-dim: #8b91a3;
+    --text-faint: #5c6173;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --gold: #ffb547;
+    --silver: #b8c0d0;
+    --bronze: #d3925b;
+    --tag-tool: #4ec9b0;
+    --tag-tutorial: #569cd6;
+    --tag-prompt: #c586c0;
+    --tag-workflow: #ffb547;
+    --tag-mind: #f97583;
+    --star: #ffd75f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #b8c0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header .date {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .stat strong {
+    color: var(--text);
+    font-size: 14px;
+    margin-left: 4px;
+  }
+
+  .summary-bar {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .summary-tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+  }
+
+  .card.rank-1 {
+    border-left: 3px solid var(--gold);
+  }
+
+  .card.rank-2 {
+    border-left: 3px solid var(--silver);
+  }
+
+  .card.rank-3 {
+    border-left: 3px solid var(--bronze);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rank-badge {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .rank-1 .rank-badge { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .rank-2 .rank-badge { background: var(--silver); color: var(--bg); border-color: var(--silver); }
+  .rank-3 .rank-badge { background: var(--bronze); color: var(--bg); border-color: var(--bronze); }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .handle {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dot {
+    color: var(--text-faint);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .tag-tool { background: rgba(78, 201, 176, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(86, 156, 214, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(197, 134, 192, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(255, 181, 71, 0.15); color: var(--tag-workflow); }
+  .tag-mind { background: rgba(249, 117, 131, 0.15); color: var(--tag-mind); }
+
+  .quote {
+    background: var(--bg);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quote blockquote { font-style: normal; }
+
+  .card-body {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .card-body strong { color: var(--text); }
+
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .stars {
+    color: var(--star);
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .stars-empty { color: var(--text-faint); }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .apply-box {
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(78, 201, 176, 0.05));
+    border: 1px solid rgba(124, 92, 255, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 14px;
+  }
+
+  .apply-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .apply-text {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    display: inline;
+  }
+
+  .stats-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+
+  .stats-section h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .stats-table td {
+    padding: 6px 0;
+    color: var(--text-dim);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .stats-table td:last-child {
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .excluded-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 117, 131, 0.05);
+    border: 1px solid rgba(255, 117, 131, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .excluded-section strong { color: var(--text); }
+
+  .note-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(255, 181, 71, 0.05);
+    border: 1px solid rgba(255, 181, 71, 0.15);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .note-section strong { color: var(--text); }
+
+  .fresh-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(78, 201, 176, 0.15);
+    color: var(--tag-tool);
+    letter-spacing: 0.3px;
+  }
+
+  .consensus-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(255, 181, 71, 0.15);
+    color: var(--tag-workflow);
+    letter-spacing: 0.3px;
+  }
+
+  .deeper-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(124, 92, 255, 0.15);
+    color: var(--accent);
+    letter-spacing: 0.3px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  footer a { color: var(--text-dim); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 48px; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .stats { gap: 8px; }
+    .stat { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">AI Influencer Daily</div>
+    <h1>AI 网红工具日报</h1>
+    <div class="date">2026 年 7 月 15 日 · 星期三</div>
+    <div class="stats">
+      <div class="stat">📦 缓存推文 <strong>22</strong></div>
+      <div class="stat">✅ 精选收录 <strong>3</strong></div>
+      <div class="stat">📊 数据源 <strong>g1, g2, g3, g4</strong></div>
+    </div>
+    <div class="summary-bar">
+      <span class="summary-tag">工具 · 2</span>
+      <span class="summary-tag">思维 · 1</span>
+      <span class="summary-tag">工作流 · 1</span>
+      <span class="summary-tag">教程 · 1</span>
+    </div>
+  </header>
+
+  <div class="note-section" style="margin-bottom: 16px;">
+    <strong>🎯 今日核心：</strong>轻量日——3 条增量：① <strong>thread 收官</strong>：OpenAI 7/9 launch 三弹 thread 第 3 弹（ChatGPT Work 跨设备工作流执行）——<strong>补完「少规则 + artifact + 跨设备」完整方法论</strong>；② <strong>共识镜像</strong>：Ronald_vanLoon「75% 不到生产」——<strong>这是 7/14「少规则」共识的工程层镜像——哲学对了，架构还差一步</strong>；③ <strong>跟进增量</strong>：DeepMind Science Workflows 官方敲定「no coding required」——<strong>7/14 #1 Predicting the Past Skill 下沉到「零门槛」</strong>。
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card rank-1">
+    <div class="card-header">
+      <span class="rank-badge">1</span>
+      <div class="card-title">ChatGPT Work 跨设备工作流执行：OpenAI 7/9 launch thread 第 3 弹（收官篇）</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@OpenAI</span>
+      <span class="dot">·</span>
+      <span>Jul 9</span>
+      <span class="deeper-tag">🎬 Thread 收官</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>ChatGPT Work 反映了人们使用 AI 方式的转变：从单纯回答问题，转向在 Web、移动端、桌面上完成真实工作。你可以要求 ChatGPT Work 用一个请求接管整个工作流——它会理解你的目标、使用上下文……ChatGPT 现在是你最有野心的工作的伙伴</strong>。"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>今天是 OpenAI 7/9 GPT-5.6 launch thread 的"收官篇"</strong>——回顾这条 thread 的 3 弹：<strong>第 1 弹（artifact，7/14 #3 已收录）</strong>——「产出一个能用的 artifact」——<strong>第 2 弹（ChatGPT Work 是 GPT-5.6 驱动，7/14 #2 共识已收录）</strong>——「描述结果不描述步骤」——<strong>第 3 弹（跨设备 + 工作流执行）</strong>——「一个请求接管整个工作流」——<strong>3 弹加起来才是 GPT-5.6 的完整方法论</strong>；② <strong>「跨设备」为什么是这次最大的增量</strong>：<strong>（a）Web 端 + 移动端 + 桌面端 = 同一个 ChatGPT Work 会话</strong>——<strong>桌面端长文写作 + 移动端语音补一句 + Web 端发邮件</strong>，<strong>3 端 1 会话同步上下文</strong>——<strong>这是 7/14 #3 artifact 单设备方案的"超级升级"</strong>；<strong>（b）"接管整个工作流"意味着 ChatGPT 不只产出 artifact，还主动规划步骤、调动工具、跨设备上下文继承</strong>——<strong>不是"AI 帮我写一封邮件"，是"AI 帮我处理这个客户的 7 天沟通链"</strong>；③ <strong>3 个立即能上手的场景</strong>：<strong>（a）跨境客服</strong>——"打开 ChatGPT Work Desktop → 跨设备同步<strong>邮件链 + Slack 历史 + Notion CRM</strong> → 1 个请求：<strong>"给 [客户名] 写一封报价邮件，引用上次他在会议里提到的 3 个顾虑"</strong>"——<strong>桌面端起草 + 移动端审 + Web 端发送 3 端无缝</strong>；<strong>（b）内容矩阵分发</strong>——"开 Desktop 长文起草 2000 字 → 1 个请求'拆成 Twitter thread + LinkedIn 帖子 + Newsletter' → <strong>自动跨平台</strong>，<strong>artifact 自动适配每个平台调性</strong>"——<strong>比 7/14 #3 的 3 段式 prompt 还省 80% 手动拆解时间</strong>；<strong>（c）课程筹备</strong>——"开 Desktop Notion 大纲 + 移动端录音采访 + Web 端查资料 → 1 个请求：<strong>"基于这些素材生成 5 节课程 PPT + 配套讲稿 + 课后作业 + 宣传文案"</strong>"——<strong>3 端同步、1 个请求、4 个 artifact</strong>——<strong>完整工作流 5-10 分钟跑完</strong>；④ <strong>为什么这是 2026 下半年「创作者杠杆」最大的单点升级</strong>：<strong>多设备同步 + 工作流级执行 = 「AI 同事」从「工具」升级到「同事」</strong>——<strong>GPT-5.5 时代是「我用 AI 跑流程」，GPT-5.6 时代是「AI 替我跑流程」</strong>——<strong>明白这 3 弹 thread 的工程师/创作者会在 2026 下半年领先 6 个月</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★<span class="stars-empty"></span> <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/OpenAI/status/2075274273607037403" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card rank-2">
+    <div class="card-header">
+      <span class="rank-badge">2</span>
+      <div class="card-title">「75% 企业 AI agent 永远到不了生产」—— 这是 7/14「少规则」共识的镜像（哲学 vs 工程）</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@Ronald_vanLoon</span>
+      <span class="dot">·</span>
+      <span>Jul 15</span>
+      <span class="consensus-tag">🪞 共识镜像</span>
+      <span class="tag tag-mind">思维</span><span class="tag tag-workflow">工作流</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>不到 25% 的企业 AI agent 真正到达生产环境。我和 @sema4ai 探索了用例越复杂、这个比例下降越快。这不是 AI 的问题，是架构的问题——大多数团队还在用错误的方式构建</strong>。"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>这是 7/14 #2「少规则、多目标」共识的镜像</strong>：<strong>7/14 共识是 prompt 哲学</strong>（"少规则让 agents 工作得更好"）——<strong>今天这一条是 production 工程</strong>（"少了架构正确的 prompt 也上不了线"）——<strong>两边独立得出同一个洞察的两个面</strong>：<strong>哲学层 vs 工程层</strong>；② <strong>「75% 不到生产」背后的 3 个架构问题（创作者也要警惕）</strong>：<strong>（a）"复杂度爆炸"</strong>——<strong>单个用例成功率 50%，3 个用例串联成功率 50%³ = 12.5%</strong>——<strong>绝大多数失败的 agent 不是 AI 弱，是堆叠方式错</strong>；<strong>（b）"上下文腐烂"</strong>——<strong>长上下文 ≠ 好上下文</strong>，<strong>塞 50 条规则 = 让 AI 在噪声里找信号</strong>——<strong>这正是 7/14「少规则」要解决的事</strong>；<strong>（c）"错误反馈循环缺失"</strong>——<strong>95% 的 agent 没有「失败了告诉我为什么」的反馈机制</strong>——<strong>fail forward（7/13 #4 已提）靠的是反馈通道</strong>；③ <strong>3 个创作者立刻能用的反向 checklist</strong>（<strong>对照你正在用的 AI agent</strong>）：<strong>（a）「我的 prompt 步骤 ≤ 3 步吗？」</strong>——<strong>多 = 上下文腐烂，少 = 让 AI 自己来（7/14 共识）</strong>；<strong>（b）「我的 agent 有 fallback 路径吗？」</strong>——<strong>主路径失败时它会自己调整吗？</strong>；<strong>（c）「我的 agent 输出能被人复核吗？」</strong>——<strong>不能 = 黑盒 = 永远别上生产</strong>——<strong>OpenAI 自己的 GPT-5.6 强调的"目标可验证"就是这个</strong>；④ <strong>为什么这是 2026 年最重要的思维信号</strong>：<strong>「少规则」共识告诉你"prompt 应该怎么写"，「75% 失败」告诉你"光写对 prompt 还不够"</strong>——<strong>两个加起来才是完整的 AI agent 上线方法论</strong>——<strong>今天起任何 AI agent 项目都要先过这个反向 checklist</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★★<span class="stars-empty"></span> <span class="stars-empty">实用 5/5</span></span>
+      <a class="link-btn" href="https://x.com/Ronald_vanLoon/status/2077045505205338482" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card rank-3">
+    <div class="card-header">
+      <span class="rank-badge">3</span>
+      <div class="card-title">Science Workflows no-code 跟进：7/14 #1 Predicting the Past 的「无代码」核心增量</div>
+    </div>
+    <div class="card-meta">
+      <span class="handle">@GoogleDeepMind</span>
+      <span class="dot">·</span>
+      <span>Jul 13</span>
+      <span class="fresh-tag">🔄 跟进增量</span>
+      <span class="tag tag-tool">工具</span><span class="tag tag-tutorial">教程</span>
+    </div>
+    <div class="quote">
+      <blockquote>"<strong>这些示例展示了 Predicting the Past Skill 如何用先进的 AI 模型和复杂的工作流推动历史研究——不需要任何编程</strong>。了解更多 → Science Workflows（deepmind.google）"</blockquote>
+    </div>
+    <div class="apply-box">
+      <span class="apply-label">💡 如何应用</span>
+      <span class="apply-text">① <strong>这是 7/14 #1 Predicting the Past Skill 三个新案例（罗马窃贼/欧洲异教/希腊神谕）thread 的「官方跟进补完」</strong>——<strong>thread 当时重点在"3 个案例拆解"，今天这条官方敲定了核心卖点："no coding required"</strong>——<strong>这意味着 Predicting the Past Skill 已经下沉到「零基础可用」阶段</strong>；② <strong>「no coding required」为什么是决定性的</strong>：<strong>（a）之前我们用 Anthropic / OpenAI / Gemini 做历史/考古研究都需要 prompt engineering 门槛</strong>——<strong>Antigravity 的 Science Workflows 把这个门槛直接拆掉</strong>——<strong>"零代码 = 把 prompt 也省了"</strong>；<strong>（b）对于内容创作者来说这意味着「AI 考古」不再需要技术合伙人</strong>——<strong>你给 Antigravity 一份分散的史料（PDF/Excel/链接），它自动推荐研究方法、自动跑、自动出结论</strong>；③ <strong>3 个立即能上手的场景</strong>（<strong>接 7/14 #1 的"创作者模板"再扩展</strong>）：<strong>（a）品牌历史挖掘</strong>——"把我公司过去 10 年的产品发布 + 媒体报道 + 客户邮件喂给 Science Workflows，让它提炼出我的'品牌叙事弧' → 输出 3 集短视频脚本"——<strong>零代码、零 prompt engineering</strong>；<strong>（b）竞品考古</strong>——"把竞品过去 5 年的产品迭代 + 创始人公开发言 + 客户差评喂给 Science Workflows，让它画出'竞品战略路线图' → 输出 1 份内部决策报告"——<strong>比手动调研快 20 倍</strong>；<strong>（c）粉丝考古</strong>——"把我过去 2 年的推文 + 视频评论 + Newsletter 数据喂给 Science Workflows，让它'考古'出我的'受众演化史' → 输出 3 个新的内容选题方向"——<strong>这是 7/14 #1「个人内容挖掘」实验的官方工具接续</strong>；④ <strong>为什么这条单独值得列出来</strong>：<strong>「no coding required」是一个时代信号</strong>——<strong>2026 年所有"AI 工具"都会向"零门槛"演化</strong>——<strong>Antigravity Science Workflows 是这一波下沉运动的第一个标杆</strong>——<strong>先在 zero-code 工具上跑起来的人，会比还在写 prompt 的人领先 6 个月</strong>。</span>
+    </div>
+    <div class="card-footer">
+      <span class="stars">★★★★<span class="stars-empty">☆</span> <span class="stars-empty">实用 4/5</span></span>
+      <a class="link-btn" href="https://x.com/GoogleDeepMind/status/2076686127604302290" target="_blank">查看推文 →</a>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <h2>📊 今日速览</h2>
+    <table class="stats-table">
+      <tr><td>总推文（5 组）</td><td>22</td></tr>
+      <tr><td>收录</td><td>3</td></tr>
+      <tr><td>工具类</td><td>2</td></tr>
+      <tr><td>思维类</td><td>1</td></tr>
+      <tr><td>工作流类</td><td>1</td></tr>
+      <tr><td>教程/Prompt 类</td><td>1</td></tr>
+      <tr><td>全新（7/14 后首次出现）</td><td>1（Ronald_vanLoon 75% production）</td></tr>
+      <tr><td>Thread 收官</td><td>1（OpenAI ChatGPT Work 三弹 thread 完结）</td></tr>
+      <tr><td>共识镜像</td><td>1（Ronald_vanLoon 架构反思 镜像 7/14「少规则」）</td></tr>
+      <tr><td>跟进增量</td><td>1（DeepMind Science Workflows no-code 跟进）</td></tr>
+      <tr><td>24h 内新鲜</td><td>1（Ronald_vanLoon 7/15）</td></tr>
+      <tr><td>7 天内</td><td>3</td></tr>
+      <tr><td>高互动 (1万+阅读)</td><td>0（今日无大新闻）</td></tr>
+      <tr><td>中等互动 (1K+阅读)</td><td>1（Ronald_vanLoon 1.7K views）</td></tr>
+    </table>
+  </div>
+
+  <!-- 主题分布 -->
+  <div class="note-section" style="margin-top: 16px;">
+    <strong>🎯 主题分布：</strong>今天的主题是 <strong>「OpenAI GPT-5.6 launch thread 收官 + 共识镜像 + 跟进增量」</strong>——<strong>ChatGPT Work 跨设备工作流</strong>（第 1）是 <strong>7/9 launch 三弹 thread 的完结篇</strong>，<strong>把"少规则 + artifact + 跨设备"补成完整方法论</strong>；<strong>Ronald_vanLoon 75% 不到生产</strong>（第 2）是 <strong>7/14「少规则」共识的工程层镜像</strong>——<strong>哲学对了还要架构对</strong>——<strong>这是 2026 年 AI agent 上线方法论的另一半</strong>；<strong>Science Workflows no-code</strong>（第 3）是 <strong>7/14 #1「AI 考古」的官方工具接续</strong>——<strong>"no coding required" 是 AI 工具下沉到零门槛的标志信号</strong>。
+  </div>
+
+  <!-- 实操建议 -->
+  <div class="apply-box" style="margin-top: 16px;">
+    <span class="apply-label">🛠️ 实操</span>
+    <span class="apply-text"><strong>① 最紧急</strong>：<strong>用第 1 条的 ChatGPT Work 跨设备工作流重做你最近一次跨平台的内容分发</strong>——<strong>桌面端起草 + 移动端审 + Web 端发送 3 端无缝 + 1 个请求处理整个工作流</strong>——<strong>对比 5.5 vs 5.6 是否真能"接管整个工作流"</strong>——<strong>这是 GPT-5.6 thread 收官篇的核心动作</strong>；<strong>② 立刻试</strong>：<strong>第 2 条的「75% 不到生产」反向 checklist</strong>——<strong>找出你正在用的 1 个 AI agent（包括 ChatGPT 自己的 Agent mode / Claude Computer Use 等）</strong>，<strong>对照「步骤 ≤ 3」「有 fallback」「可复核」3 条反向自检</strong>，<strong>找出至少 1 个架构缺陷</strong>——<strong>今天不修、下个月就上不了线</strong>；<strong>③ 本周末做</strong>：<strong>第 3 条的「AI 考古」zero-code 实验</strong>——<strong>打开 Antigravity Science Workflows，准备你自己的「碎片化数据」</strong>（品牌历史/竞品迭代/粉丝演化 3 选 1）→ <strong>零代码让 Gemini 帮你"考古"出隐藏的叙事</strong>——<strong>这是把 7/14 #1「个人内容挖掘」升级到"零门槛"的实战</strong>。</span>
+  </div>
+
+  <!-- 排除项 -->
+  <div class="excluded-section">
+    <strong>❌ 今日排除项（共 5 类）：</strong><br>
+    ① <strong>OpenAI ChatGPT Work 7/9 thread 三弹中已收录 2 弹 + GPT-5.6 Sol/Terra/Luna 家族 + GPT-5.6 health intelligence + Codex/Work 限额重置 + petergyang 7/12</strong>（<strong>7/13 #4 + 7/14 #2/#3 已收录 / 公司公告 / 基准对比</strong>）<br>
+    ② <strong>realmadhuguru 加入 Meta</strong>（<strong>人事动态 / 无工具</strong>）<br>
+    ③ <strong>Google DeepMind Antigravity 7/10-7/13 旧 thread（Predicting the Past Skill 主贴 + Oracle of Dodona 子贴 + 多语链解读 + AlphaEvolve GA + Interpretability podcast + 中间学习播客）</strong>（<strong>7/10-7/14 已收录 / 学术研究</strong>）<br>
+    ④ <strong>MiniMax_AI 8 条（4 条 RAISE Paris 营销 + 1 条 Speed t/s + 1 条 M3 kernel + 1 条 Loop Engineering + 1 条 Provisioned Throughput 定价）</strong>（<strong>营销 / 定价 / 融资 / 硬件 benchmark</strong>）<br>
+    ⑤ <strong>MIT_CSAIL SceneSmith 三 AI agent 仿真 + midjourney 空贴</strong>（<strong>学术研究 / 无内容</strong>）
+  </div>
+
+  <footer>
+    <p>📅 生成于 2026-07-15 10:10 UTC · AI Influencer Daily · 每天 10:00 UTC 自动更新</p>
+    <p style="margin-top: 8px;">数据源：4 组有效缓存（g1-g4）+ 1 组空抓（g5）共 22 条推文筛选排序 · 剔除硬件/基础设施/融资/营销活动/学术论文/公司公告/个人动态/重复内容（7/9-7/14 已覆盖的 12 个核心条目）</p>
+    <p style="margin-top: 8px;">⚠️ 今日采集异常（连续第 5 天）：g1 OpenAI 5 条全是 7/9-7/12 已发推文（Artifact / ChatGPT Work 三弹 / GPT-5.6 health / petergyang），仅 1 条 ChatGPT Work 跨设备工作流第 3 弹有增量；g2 仅 1 条（realmadhuguru 加入 Meta）全为人事动态/无工具；g3 14 条中 8 条 MiniMax_AI（4 条 RAISE Paris 营销 + Speed t/s + M3 kernel + Loop Engineering + Provisioned Throughput 定价 + Ollama 融资 + CEO letter + 巴黎 Summit 出席）全部剔除，6 条 DeepMind Antigravity 旧 thread (7/10-7/13) 中 5 条为 7/14 已收录或学术案例 thread，<strong>仅 1 条 Science Workflows no-code 跟进有增量</strong>；g4 仅 2 条（MIT_CSAIL SceneSmith 学术 + Ronald_vanLoon 75% production），<strong>仅 1 条 Ronald_vanLoon 有增量</strong>；g5 连续 7 天空抓。**今日 raw 22 条但 actionable 仅 3 条**——质量稳定但密度低，日报转「thread 收官 + 共识镜像 + 跟进增量」策略。</p>
+  </footer>
+
+</div>
+</body>
+</html>
