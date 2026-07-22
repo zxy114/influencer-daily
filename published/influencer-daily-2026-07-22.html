@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-22</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  color: #e0e6f0;
+  line-height: 1.7;
+  padding: 24px 16px;
+  min-height: 100vh;
+}
+.container { max-width: 920px; margin: 0 auto; }
+header {
+  text-align: center;
+  padding: 32px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 32px;
+}
+header h1 {
+  font-size: 30px;
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.subtitle { color: #94a3b8; font-size: 14px; }
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.meta-pill {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+  padding: 4px 12px;
+  border-radius: 16px;
+}
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+}
+.card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(245, 158, 11, 0.3);
+  transform: translateY(-2px);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f5f9;
+  flex: 1;
+  min-width: 280px;
+}
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { color: #f59e0b; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.tag-工具 { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+.tag-教程 { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+.tag-工作流 { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
+.tag-Prompt { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+.tag-思维 { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+.tag-应用 { background: rgba(20,184,166,0.15); color: #2dd4bf; border: 1px solid rgba(20,184,166,0.3); }
+.source {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+.source a { color: #60a5fa; text-decoration: none; }
+.source a:hover { text-decoration: underline; }
+.original {
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid rgba(245,158,11,0.5);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+.translation {
+  background: rgba(255,255,255,0.02);
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  border-radius: 6px;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+.rating-label { color: #94a3b8; }
+.apply {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px dashed rgba(245, 158, 11, 0.3);
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fde68a;
+}
+.apply strong { color: #f59e0b; }
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.summary-table th, .summary-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+}
+.summary-table th {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  font-weight: 600;
+}
+.summary-table td { color: #cbd5e1; }
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  color: #64748b;
+  font-size: 13px;
+}
+.star { color: #fbbf24; }
+.star-empty { color: rgba(255,255,255,0.15); }
+.featured {
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.04);
+}
+.featured-badge {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  color: #0a0e27;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.section-title {
+  font-size: 20px;
+  color: #f1f5f9;
+  margin: 32px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🚀 AI 网红工具日报 · 2026-07-22</h1>
+    <div class="subtitle">今天 AI 网红推文里，内容创作者能立刻上手用的工具、教程、工作流</div>
+    <div class="meta-bar">
+      <span class="meta-pill">📅 2026-07-22</span>
+      <span class="meta-pill">📦 5 组缓存</span>
+      <span class="meta-pill">⭐ 精选 10 条</span>
+      <span class="meta-pill">🌐 中文翻译</span>
+    </div>
+  </header>
+
+  <h2 class="section-title">🏆 Top 10 · 创作者可直接上手</h2>
+
+  <!-- Card 1 -->
+  <div class="card featured">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="featured-badge">TOP 1</span>
+        <a href="https://x.com/OpenAI/status/2078243670265041038" target="_blank">Codex Security 插件快速入门教程</a>
+      </div>
+      <div class="tags">
+        <span class="tag tag-教程">教程</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI" target="_blank">@OpenAI</a> · <a href="https://x.com/OpenAI/status/2078243670265041038" target="_blank">推文链接</a></div>
+    <div class="original">"Here's how to add the Codex Security plugin in Codex and get started: Add the plugin in Codex. After installation is complete, the button changes to 'Try in chat.' Click 'Try in chat' to start a new Codex chat with a Codex Security scan prompt ready to run. Choose a folder…"</div>
+    <div class="translation"><strong>中文翻译：</strong>Codex Security 插件上手三步走：① 在 Codex 里添加插件，安装完成后按钮会变成"Try in chat"；② 点击该按钮新建一个 Codex 对话，扫描 prompt 已预填好；③ 选择要扫描的文件夹直接跑。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      <span style="color:#94a3b8;">(8/10 · 全场最高)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你在用 Codex 写代码，立刻花 2 分钟装上 Codex Security 插件，让每次写完代码自动过一遍漏洞扫描，比事后审计省时间。</div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/petergyang/status/2078846124828545179" target="_blank">Claude Code 长跑工作流：/loop /goal /workflows</a></div>
+      <div class="tags">
+        <span class="tag tag-工作流">工作流</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/petergyang" target="_blank">@petergyang</a> · <a href="https://x.com/petergyang/status/2078846124828545179" target="_blank">推文链接</a></div>
+    <div class="original">"We've got /loop, /goal, and workflows. They all get the agent to run for long periods of time." Here's my new episode with @trq212 from the Claude Code team, where he shared how he plans, builds, and runs loops with Claude Code: → How /loop, /goal, and workflows work…</div>
+    <div class="translation"><strong>中文翻译：</strong>Claude Code 团队的 trq212 介绍了让 Agent 长时间运行的三个核心机制：/loop（循环执行）、/goal（目标驱动）、workflows（自定义流水线）。本质都是把"一次性 prompt"升级成"持续运行的 agent"。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(7/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>写一个 Claude Code 自定义命令，把你日常重复的内容生产流程（比如"读 RSS → 提炼要点 → 写推文"）封装成 <code>/loop</code> 工作流，让 agent 7×24 替你跑初稿。</div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/Alibaba_Qwen/status/2079563513736089902" target="_blank">Qwen3.8-Max-Preview 登陆 Qoder · 自主长任务 Agent</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Alibaba_Qwen" target="_blank">@Alibaba_Qwen</a> · <a href="https://x.com/Alibaba_Qwen/status/2079563513736089902" target="_blank">推文链接</a></div>
+    <div class="original">"Day 0 on Qoder: Qwen3.8-Max-Preview is live. 🚀 2.4T params + huge gains in Coding & Cowork — running on Qoder's agentic core, built to run autonomous, long-horizon tasks end to end while you step away. Up to 98% off right now (0.5x → 0.01x). The window to go big is open."</div>
+    <div class="translation"><strong>中文翻译：</strong>Qwen3.8-Max-Preview（2.4T 参数）在 Qoder IDE 上线，主打 Coding & Cowork，定位是"自主长任务 agent"——你离开电脑它也能端到端跑完。现在有 0.5x → 0.01x 的限时折扣（98% off）。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(7/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你做的内容需要跨多步骤（写脚本 + 跑数据 + 出图），可以试用 Qoder 把整套流程托管给 agent；折扣窗口期内成本极低，适合 benchmark 自己的真实工作负载。</div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/Alibaba_Qwen/status/2079172722161299801" target="_blank">Qwen3.8 Web 前端能力大幅提升</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Alibaba_Qwen" target="_blank">@Alibaba_Qwen</a> · <a href="https://x.com/Alibaba_Qwen/status/2079172722161299801" target="_blank">推文链接</a></div>
+    <div class="original">"During Preview, Qwen3.8 is getting better by the day. Latest version is live now, with broad gains and a big step up on web frontend. Thank you all — the response to Qwen3.8-Max-Preview blew us away. Qwen3.8 is still evolving daily. Come test it, and tell us what breaks."</div>
+    <div class="translation"><strong>中文翻译：</strong>Qwen3.8 Preview 期间几乎每天更新，最新版本在 Web 前端生成上有"大步提升"，适合做落地页/交互 demo 的创作者去压测。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(6/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你要快速搭一个营销 landing page 或产品 demo 页面，让 Qwen3.8 跑一版试试，比 GPT/Claude 在前端代码的视觉还原上可能更贴预期。</div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/GoogleDeepMind/status/2079589698490572961" target="_blank">Gemini 3.6 Flash · Agent 场景优化版</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a> · <a href="https://x.com/GoogleDeepMind/status/2079589698490572961" target="_blank">推文链接</a></div>
+    <div class="original">"We're rolling out three new models to make AI agents faster, smarter, and cheaper at scale: 🔵 Gemini 3.6 Flash: It uses fewer tokens than 3.5 Flash to deliver higher quality work at the exact same cost. 🔵 Gemini 3.5 Flash-Lite: A fast, cost-effective option for everyday tasks…"</div>
+    <div class="translation"><strong>中文翻译：</strong>DeepMind 推三个新模型，主打 agent 场景的"更快、更聪明、更便宜"：Gemini 3.6 Flash 比 3.5 Flash 用更少 token 拿到更高质量；3.5 Flash-Lite 主打日常任务；3.6 Flash 已能在 GeminiApp 和 API 里用。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(6/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你的内容生产 agent 每天跑量大，把主力模型换成 3.6 Flash，能在保持质量的前提下压 token 成本，长期算账可观。</div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/MiniMax_AI/status/2078178092959564164" target="_blank">Raven · 记忆优先的 Agent Harness（已集成 MiniMax M3）</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI" target="_blank">@MiniMax_AI</a> · <a href="https://x.com/MiniMax_AI/status/2078178092959564164" target="_blank">推文链接</a></div>
+    <div class="original">"We're excited to bring @MiniMax_AI to Raven 🐦‍⬛ as a first-class model option. MiniMax powers the model. Raven makes that intelligence compound across runs. Built on EverOS, Raven is a memory-first, self-improving agent harness. It gives models durable user and agent memory…"</div>
+    <div class="translation"><strong>中文翻译：</strong>Raven 把 MiniMax M3 作为一等公民模型接入，定位是"记忆优先 + 自我改进"的 agent 框架（基于 EverOS）。核心卖点：跨多次运行持久化用户和 agent 记忆，让模型表现不断累积。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(6/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你用 AI 跑多轮内容创作（比如连载专栏、长视频脚本），Raven 的持久记忆能避免每轮重复 prompt 同样的背景信息，省 token 也更连贯。</div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/thsottiaux/status/2077928427936710901" target="_blank">ChatGPT 桌面端侧边栏升级</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/thsottiaux" target="_blank">@thsottiaux</a> · <a href="https://x.com/thsottiaux/status/2077928427936710901" target="_blank">推文链接</a></div>
+    <div class="original">"Evening! We've gotten lots of great feedback on the new ChatGPT desk app (which we didn't get totally quite right on the first try), and as a result, we've made some changes. 1/ ChatGPT conversation history and projects are now visible in the sidebar. Also, your Chat and Work…"</div>
+    <div class="translation"><strong>中文翻译：</strong>ChatGPT 桌面端第一版被吐槽后火速迭代：侧边栏现在能直接看到对话历史和 Projects，Chat 和 Work 区隔更清楚。1.5M 浏览量说明创作者是真在重度用桌面端。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(5/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>把长期项目（比如"2026 内容矩阵"）建在 ChatGPT Projects 里，桌面端侧边栏一目了然，比翻历史记录快得多。</div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/OpenAI/status/2077501603050033634" target="_blank">GPT-Live · 一边对话一边并行执行多任务</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI" target="_blank">@OpenAI</a> · <a href="https://x.com/OpenAI/status/2077501603050033634" target="_blank">推文链接</a></div>
+    <div class="original">"A closer look at improved intelligence in GPT-Live: the model can keep a conversation going while helping with multiple tasks at once, checking flights, pulling up local weather, and shaping an itinerary in real time."</div>
+    <div class="translation"><strong>中文翻译：</strong>GPT-Live 的能力升级：保持跟你对话的同时并行干多件事——查航班、拉本地天气、实时生成行程。注意力不再"独占式"，而是"并行编排"。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(5/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>用 GPT-Live 跑选题会：你跟它讨论选题的同时，它后台帮你拉相关数据/竞品推文/日历事件，单轮交互的信息密度翻倍。</div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/OpenAI/status/2078243667081617826" target="_blank">GPT-5.6 Sol · 网络安全场景 SOTA</a></div>
+      <div class="tags">
+        <span class="tag tag-工具">工具</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI" target="_blank">@OpenAI</a> · <a href="https://x.com/OpenAI/status/2078243667081617826" target="_blank">推文链接</a></div>
+    <div class="original">"GPT-5.6 Sol sets a new state of the art in cybersecurity on 'The Last Ones' cyber range. We're already seeing that capability into defensive outcomes: helping teams find, validate, and fix vulnerabilities in real-world code. Put it to work with Codex Security."</div>
+    <div class="translation"><strong>中文翻译：</strong>GPT-5.6 Sol 在 "The Last Ones" 网络安全靶场刷了 SOTA，能在真实代码里找漏洞、验证、利用 Codex Security 修。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star-empty">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(4/10 · 偏硬核，对开发者创作者实用)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>如果你做安全相关的内容或产品，把 GPT-5.6 Sol 接进自己的 demo：让它跑一遍你代码里的常见漏洞，结果可以直接做成内容素材。</div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><a href="https://x.com/Kimi_Moonshot/status/2078488387523350911" target="_blank">Kimi K3 · 600K token 做独立游戏 demo 仅 $3.24</a></div>
+      <div class="tags">
+        <span class="tag tag-工作流">工作流</span>
+        <span class="tag tag-应用">应用</span>
+      </div>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot" target="_blank">@Kimi_Moonshot</a> · <a href="https://x.com/Kimi_Moonshot/status/2078488387523350911" target="_blank">推文链接</a></div>
+    <div class="original">"Kimi K3 just 3 shotted this CS:GO × Portal clone for me using around 600,000 tokens. $3.24 in API usage. The same token cost would be $10.80 with Fable 5 & $6 with GPT-5.6 Sol. The era of free indie game development is closer than you think anon!"</div>
+    <div class="translation"><strong>中文翻译：</strong>用户用 Kimi K3 三连击就搓出一个 CS:GO × Portal 的克隆 demo，消耗约 60 万 token，API 成本仅 $3.24。同样的 token 量在 Fable 5 要 $10.80、GPT-5.6 Sol 要 $6。</div>
+    <div class="rating">
+      <span class="rating-label">实用性评分：</span>
+      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star-empty">★</span>
+      <span style="color:#94a3b8;">(7/10)</span>
+    </div>
+    <div class="apply">💡 <strong>如何应用：</strong>用 Kimi K3 跑"高 token 消耗型"内容创作（生成可交互 demo、动画脚本、长篇 RPG 剧情）时，单条成本可以压到几美元，产出物却直接是用户能玩的内容。</div>
+  </div>
+
+  <!-- Summary -->
+  <h2 class="section-title">📊 今日速览</h2>
+  <table class="summary-table">
+    <thead>
+      <tr><th>类别</th><th>数量</th><th>代表条目</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🛠 工具</td><td>5</td><td>Codex Security、Qwen3.8-Max、Gemini 3.6 Flash、Raven、ChatGPT 桌面端</td></tr>
+      <tr><td>📚 教程</td><td>1</td><td>Codex Security plugin 上手指南</td></tr>
+      <tr><td>⚙️ 工作流</td><td>3</td><td>Claude Code /loop、Kimi K3 独立游戏、Gemini agent 流水线</td></tr>
+      <tr><td>💡 能力/技巧</td><td>1</td><td>GPT-Live 并行任务</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">🧭 选品原则</h2>
+  <div class="card">
+    <p style="color:#cbd5e1; margin-bottom:8px;">✅ <strong style="color:#34d399;">收录：</strong>能立刻上手用的工具 / 教程 / 工作流 / 使用技巧</p>
+    <p style="color:#cbd5e1;">❌ <strong style="color:#f87171;">排除：</strong>硬件/基础设施（Stargate、工业 AI 部署）、融资/收入（Token Plan 定价）、纯基准对比（Kimi K3 leaderboard #4、Qwen3.8 排名）、学术论文（GPT-Red、Reward-seeking、Agentic misalignment）</p>
+  </div>
+
+  <div class="footer">
+    本日报由 AI 网红影响力追踪 skill 自动生成 · 数据源 X / Twitter · 报告时间 2026-07-22 10:03 UTC
+  </div>
+</div>
+</body>
+</html>
