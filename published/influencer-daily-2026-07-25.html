@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-25</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --card-border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --tag-tool: #3fb950;
+  --tag-tutorial: #d29922;
+  --tag-prompt: #a371f7;
+  --tag-workflow: #f778ba;
+  --tag-mindset: #79c0ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 24px 16px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 32px 16px 24px;
+  border-bottom: 1px solid var(--card-border);
+  margin-bottom: 32px;
+}
+h1 {
+  font-size: 28px;
+  background: linear-gradient(120deg, #58a6ff, #a371f7, #f778ba);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+header .subtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+header .focus {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(88,166,255,0.12);
+  border: 1px solid rgba(88,166,255,0.3);
+  border-radius: 100px;
+  color: var(--accent);
+  font-size: 13px;
+}
+section.summary {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+section.summary h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+section.summary ol {
+  padding-left: 22px;
+}
+section.summary li {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+section.summary li strong {
+  color: var(--text);
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  transition: border-color .2s, transform .2s;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.author { color: var(--accent); font-weight: 600; }
+.tags { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  background: rgba(255,255,255,0.05);
+}
+.tag.tool { color: var(--tag-tool); border: 1px solid rgba(63,185,80,0.4); }
+.tag.tutorial { color: var(--tag-tutorial); border: 1px solid rgba(210,153,34,0.4); }
+.tag.prompt { color: var(--tag-prompt); border: 1px solid rgba(163,113,247,0.4); }
+.tag.workflow { color: var(--tag-workflow); border: 1px solid rgba(247,120,186,0.4); }
+.tag.mindset { color: var(--tag-mindset); border: 1px solid rgba(121,192,255,0.4); }
+.stats { color: var(--text-muted); font-size: 13px; margin-left: auto; }
+.body p { margin-bottom: 10px; color: #c9d1d9; font-size: 14px; }
+.howto {
+  background: rgba(88,166,255,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.howto strong { color: var(--accent); }
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed rgba(88,166,255,0.3); }
+a:hover { border-bottom-style: solid; }
+footer {
+  text-align: center;
+  margin-top: 36px;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+  border-top: 1px solid var(--card-border);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📡 AI 网红工具日报</h1>
+  <div class="subtitle">2026-07-25 · 创作人 5 分钟上手版</div>
+  <div class="focus">今日聚焦：写作祛魅 + Claude 上下文工程 + 语音工作流</div>
+</header>
+
+<section class="summary">
+  <h2>📌 今日三句话</h2>
+  <ol>
+    <li><strong>写作祛魅</strong>：karpathy / petergyang / Zarazhangrui 强调"少 prompt、多 rambles / 厚上下文"——Claude 5 + GPT-Live 把 prompt 工程的复杂度从"写得准"转移到"想得清"。</li>
+    <li><strong>语音即接口</strong>：ChatGPT Voice 桌面 + Codex、Karpathy /voice 长吐槽两条路径合流，2026 下半年创作工具的主入口大概率是声音。</li>
+    <li><strong>Agent 实战模板井喷</strong>：trq212 砍 80% prompt / catwu 日历 prompt / steipete autoreview 66 轮——把昨天还停留在 benchmark 的 Agent 变成"今天就能装"的 Skill。</li>
+  </ol>
+</section>
+
+<div class="card">
+  <h3>1. /no-ai-slop Skill：20+ 模式滤镜，把 AI 味一次性洗掉</h3>
+  <div class="meta">
+    <span class="author">@petergyang</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+      <span class="tag tutorial">📚 教程</span>
+    </span>
+    <span class="stats">❤️ 5,200 · 🔁 325 · 👁️ 607K</span>
+  </div>
+  <div class="body">
+    <p>作者开源了一套 <code>/no-ai-slop</code> skill，能识别并清除文章里 20 多种典型的 AI 写作痕迹——空洞连接词、机械化排比、过度对仗等等。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>克隆 github.com/petergyang/no-... 把 skill 装进 Claude / Cursor / Codex，下次写完稿直接 <code>/no-ai-slop</code> 跑一遍，发出前能砍掉一大半"机器味"。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/petergyang/status/2079943830024188105" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>2. Claude 上下文工程新规则：精简 80% System Prompt 后的发现</h3>
+  <div class="meta">
+    <span class="author">@trq212</span>
+    <span class="tags">
+      <span class="tag tutorial">📚 教程</span>
+      <span class="tag prompt">💡 Prompt</span>
+    </span>
+    <span class="stats">❤️ 8,600 · 🔁 879 · 👁️ 1.3M</span>
+  </div>
+  <div class="body">
+    <p>Anthropic 在 Claude 5 系列上删掉了 ~80% 的 Claude Code 系统 prompt，整理出写 system prompt / skills / Claude.MD 的新规则，关键发现：少塞示例、少列禁忌，反而更聪明。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>把你项目里那些塞满 "DO NOT..." 长长的 system prompt 砍掉一半试试，Claude 5 反而会更听话——尤其是 Fable 系列。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/trq212/status/2080710971228918066" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>3. Codex + 5.6 Sol 三步画 graph 工作流</h3>
+  <div class="meta">
+    <span class="author">@steipete 引用 @alex_frantic</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+      <span class="tag tutorial">📚 教程</span>
+    </span>
+    <span class="stats">❤️ 2,500 · 🔁 168 · 👁️ 291K</span>
+  </div>
+  <div class="body">
+    <p>原文三步实现"画图 → 让 Codex 转成代码 → 跑通"：① 任何工具（含纸笔）画 workflow 图 ② 把图丢给 Codex 说"写个 code mode 脚本实现这个 workflow" ③ Codex 自己跑通。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>下次要搭自动化 pipeline 但懒得写 spec 时，先用 Mermaid / 白板画流程图，截图丢给 Codex 5.6，让它直接出 code mode 脚本。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/steipete/status/2080779917130858598" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>4. Karpathy 的"长吐槽 /voice 模式"</h3>
+  <div class="meta">
+    <span class="author">@karpathy</span>
+    <span class="tags">
+      <span class="tag mindset">🧠 思维</span>
+      <span class="tag workflow">🤖 AI 使用技巧</span>
+    </span>
+    <span class="stats">❤️ 48,000 · 🔁 4,000 · 👁️ 3.7M</span>
+  </div>
+  <div class="body">
+    <p>一个高度可复用的工作流——当你懒得打字、又嫌提示词太短讲不清需求时，靠着椅背切到 <code>/voice</code> 模式，对着 LLM 吐槽 10 分钟，常能拿到比精细短 prompt 更好的结果。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>需要解释一个复杂上下文时（debug、新项目 kickoff、设计意图），先在脑子里组织一遍，再切到语音让模型"听"你说，bits 密度比打字高得多。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/karpathy/status/2079610838143623371" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>5. Claude Cowork 日历管理 Prompt 模板</h3>
+  <div class="meta">
+    <span class="author">@_catwu</span>
+    <span class="tags">
+      <span class="tag prompt">💡 Prompt</span>
+      <span class="tag workflow">📋 工作流</span>
+    </span>
+    <span class="stats">❤️ 531 · 🔁 18 · 👁️ 54K</span>
+  </div>
+  <div class="body">
+    <p>作者分享她用 Claude Cowork 管理日历的 prompt 模板：要求 ① &lt;20 小时会议 ② 合并冲突会议并参考过去常拒的会议类型 ③ 晚饭不算 20 小时额度（还有其它规则，原帖附完整 prompt）。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>把这个 prompt 改一改塞给你的 Cowork / Agent，让它每周自动帮你管日历，重点是给出明确的量化指标和"参考历史决策"。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/_catwu/status/2079011428380602526" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>6. ChatGPT Voice 桌面端：用声音指挥 Codex</h3>
+  <div class="meta">
+    <span class="author">@OpenAI</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+    </span>
+    <span class="stats">❤️ 12,000 · 🔁 1,300 · 👁️ 3.6M</span>
+  </div>
+  <div class="body">
+    <p>ChatGPT Voice 进入桌面 App，基于 GPT-Live，能同时说话、听话、协调 App 内 Codex 和 Work 里跑的多个 agent。全球今天开始灰度。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>把 ChatGPT 桌面端更新到最新版本，开 Voice，按住说话直接指挥 Codex 写代码——不用切换窗口，散步时也能让 Agent 干正事。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/OpenAI/status/2080378182469857576" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>7. Gemini Spark：丢日历 PDF 自动同步到 Google Calendar</h3>
+  <div class="meta">
+    <span class="author">@joshwoodward</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+    </span>
+    <span class="stats">❤️ 804 · 🔁 42 · 👁️ 52K</span>
+  </div>
+  <div class="body">
+    <p>Gemini Spark 上线（Google AI Pro 订阅 US 用户先行），用真实案例演示：丢一份学校校历 PDF 进去，让 Gemini 把所有 "No School" 日子加到 Google Calendar，自动完成。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>家里有学龄孩子的把学校发的 PDF 直接丢给 Gemini Spark，几秒钟排好全年假期；出差党可以丢酒店确认单让它自动加到日历。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/joshwoodward/status/2080771183944073347" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>8. Claude Design + Claude Code：纯自然语言做前端</h3>
+  <div class="meta">
+    <span class="author">@trq212</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+      <span class="tag workflow">📋 工作流</span>
+    </span>
+    <span class="stats">❤️ 2,700 · 🔁 48 · 👁️ 270K</span>
+  </div>
+  <div class="body">
+    <p>"我怎么现在才知道 <code>/design</code>"。Claude Design 配合 Claude Code 做前端体验极佳，纯自然语言描述就能出 UI，告别 Figma mockup。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>Claude Code 里跑 <code>/design</code> 描述你要的界面，让 Agent 出 HTML/CSS/React 直接看效果，比用画板再转 Figma 快 5 倍。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/trq212/status/2080090919832084753" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>9. Opus 5 推理档位调档技巧</h3>
+  <div class="meta">
+    <span class="author">@alliekmiller</span>
+    <span class="tags">
+      <span class="tag prompt">💡 Prompt</span>
+      <span class="tag workflow">🤖 AI 使用技巧</span>
+    </span>
+    <span class="stats">❤️ 266 · 🔁 8 · 👁️ 31K</span>
+  </div>
+  <div class="body">
+    <p>Opus 5 速度极快但"非常 eager"——默认 high reasoning 跑复杂任务反而过度，复杂任务切到 medium 反而更合适。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>Opus 5 出活太"积极"时，下调一档 reasoning effort；短任务直接默认 medium，长链任务保留 high。多档位切换比一档打天下高效得多。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/alliekmiller/status/2080744408593391866" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>10. Autoreview Skill：66 轮重构的自动化代码审查</h3>
+  <div class="meta">
+    <span class="author">@steipete</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+      <span class="tag workflow">📋 工作流</span>
+    </span>
+    <span class="stats">❤️ 135 · 🔁 5 · 👁️ 16K</span>
+  </div>
+  <div class="body">
+    <p>作者用 autoreview skill 在一个棘手的重构项目上跑了 66 轮无人工介入——GitHub 上 <code>agent-skills/skills/autoreview/SKILL.md</code> 开源。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>装上 autoreview skill，遇到代码异味多、需要反复打磨的 PR 时让它自己跑 N 轮，比人肉 review 更耐心。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/steipete/status/2080899298838098034" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>11. /voice 多线协作：让 ChatGPT Voice 像团队一样聊</h3>
+  <div class="meta">
+    <span class="author">@petergyang</span>
+    <span class="tags">
+      <span class="tag workflow">📋 工作流</span>
+      <span class="tag mindset">🧠 思维</span>
+    </span>
+    <span class="stats">❤️ 163 · 🔁 9 · 👁️ 10K</span>
+  </div>
+  <div class="body">
+    <p>作者提出下一代工作流——能并行起多个 ChatGPT Voice thread，一边你跟它们说话，一边它们互相讨论。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>写多角色项目（播客脚本、模拟访谈、产品 vs. 运营辩论）时，并行开多个 Voice session，分别给不同 prompt，让 Agent 之间对话你只听。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/petergyang/status/2080508139091427741" target="_blank">查看原推</a></p>
+</div>
+
+<div class="card">
+  <h3>12. OpenWorker：开源任务交付型 Agent</h3>
+  <div class="meta">
+    <span class="author">@AndrewYNg</span>
+    <span class="tags">
+      <span class="tag tool">🛠️ 工具</span>
+    </span>
+    <span class="stats">❤️ 8,500 · 🔁 1,200 · 👁️ 763K</span>
+  </div>
+  <div class="body">
+    <p>吴恩达团队开源的 OpenWorker——不只是 chat，而是把任务"做完"并交付：给你一份精修文档、发 Slack、更新日历。能力：客户简报、日历整理、报告草拟、邮件分流。</p>
+  </div>
+  <div class="howto">
+    <strong>怎么用：</strong>拉下来跑通 baseline，对比你的 Claude Cowork / Codex Agent，挑选开源基础 + 私有 Skill 的"Agent 套件"组合。
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--text-muted)">👉 <a href="https://x.com/AndrewYNg/status/2080333504446108104" target="_blank">查看原推</a></p>
+</div>
+
+<footer>
+  <p>由 AI 网红日报自动生成 · 数据来源：~150 条 X/Twitter 推文 · 筛选标准：内容创作者 5 分钟内能上手</p>
+  <p style="margin-top:8px;">📡 每日 18:00 (Asia/Shanghai) 自动推送</p>
+</footer>
+
+</body>
+</html>
