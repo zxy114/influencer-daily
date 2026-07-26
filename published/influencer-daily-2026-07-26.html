@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-26</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-2: #111726;
+    --bg-3: #1a2233;
+    --border: #1f2a3d;
+    --text: #e4e8f0;
+    --text-dim: #9aa3b8;
+    --text-faint: #5d6680;
+    --accent: #00d9ff;
+    --accent-2: #7c5cff;
+    --gold: #ffd166;
+    --silver: #c0c8d4;
+    --bronze: #cd7f32;
+    --tag-tool: #00d9ff;
+    --tag-tutorial: #7c5cff;
+    --tag-prompt: #ff6b9d;
+    --tag-workflow: #06d6a0;
+    --tag-thinking: #ffd166;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.65;
+    padding: 40px 24px 80px;
+    min-height: 100vh;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  .hero {
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,217,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .date-badge {
+    display: inline-block;
+    background: rgba(0,217,255,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0,217,255,0.3);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { color: var(--text-dim); font-size: 15px; margin-bottom: 20px; }
+  .criteria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .criteria-block {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .criteria-block strong { color: var(--text); display: block; margin-bottom: 6px; }
+  .criteria-block .ok { color: var(--tag-workflow); }
+  .criteria-block .no { color: #ff5c5c; }
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .card:hover {
+    border-color: rgba(0,217,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,217,255,0.08);
+  }
+  .card-top1 {
+    background: linear-gradient(135deg, rgba(255,209,102,0.06) 0%, var(--bg-2) 60%);
+    border-color: rgba(255,209,102,0.3);
+  }
+  .card-top1::before {
+    content: '🏆';
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 28px;
+  }
+
+  .rank {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .rank-num {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-faint);
+    letter-spacing: 0.5px;
+  }
+  .rank-num.gold { color: var(--gold); }
+  .rank-num.silver { color: var(--silver); }
+  .rank-num.bronze { color: var(--bronze); }
+  .score {
+    background: rgba(0,217,255,0.12);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .tag-tool     { background: rgba(0,217,255,0.12);   color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(124,92,255,0.12);  color: var(--tag-tutorial); }
+  .tag-prompt   { background: rgba(255,107,157,0.12); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(6,214,160,0.12);   color: var(--tag-workflow); }
+  .tag-thinking { background: rgba(255,209,102,0.12); color: var(--tag-thinking); }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .quote {
+    background: var(--bg-3);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+  }
+  .quote strong { color: var(--text); }
+  .meta {
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .apply {
+    background: rgba(6,214,160,0.06);
+    border: 1px solid rgba(6,214,160,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .apply-label {
+    color: var(--tag-workflow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .pull-quote {
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 32px 0;
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .pull-quote::before {
+    content: '"';
+    display: block;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 0.5;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+  }
+  .pull-quote-author {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+  .pull-quote-author a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .themes {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 36px;
+  }
+  .themes h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .theme-list { list-style: none; }
+  .theme-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .theme-list li:last-child { border-bottom: none; }
+  .theme-list strong { color: var(--text); }
+
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .summary-row { grid-template-columns: repeat(2, 1fr); }
+    .criteria { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .hero { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <span class="date-badge">2026-07-26 · SUNDAY</span>
+    <h1>AI 网红工具日报</h1>
+    <p class="subtitle">每天从 AI 圈最值得关注的人那里，挑出能让你立刻上手用的技巧、工具和工作流。</p>
+    <div class="criteria">
+      <div class="criteria-block">
+        <strong>📥 收录</strong>
+        <span class="ok">工具推荐 · 教程 · Prompt 模板</span><br>
+        <span class="ok">工作流优化 · AI 使用技巧</span>
+      </div>
+      <div class="criteria-block">
+        <strong>🚫 排除</strong>
+        <span class="no">硬件/基础设施 · 融资/收入</span><br>
+        <span class="no">纯基准对比 · 学术论文</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-row">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">缓存分组</div></div>
+    <div class="stat"><div class="stat-num">179</div><div class="stat-label">推文总数</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">精选条目</div></div>
+    <div class="stat"><div class="stat-num">7.8%</div><div class="stat-label">入选率</div></div>
+  </div>
+
+  <!-- TOP 1 -->
+  <div class="card card-top1">
+    <div class="rank">
+      <span class="rank-num gold">🏆 TOP 1</span>
+      <span class="score">⭐⭐⭐⭐⭐ 98/100</span>
+      <div class="tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-thinking">思维</span></div>
+    </div>
+    <div class="card-title">Karpathy 的"长篇碎碎念"工作流</div>
+    <div class="quote"><strong>原文：</strong>我发现跟 LLM 协作时一个很有用的模式：长篇碎碎念会话。有时候 LLM 需要更多 bit 才能理解你想做什么，但你自己懒得打那么多字。这时候我喜欢往后一靠，切到 /voice 然后自言自语说 10 分钟...意外地出奇好用。</div>
+    <div class="meta">@karpathy · 48K 赞 · 4000 转 · 380 万阅读 · <a href="https://x.com/karpathy/status/2079610838143623371" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>下次懒得打字时，切换 ChatGPT / Claude 的语音模式，对着麦克风把脑子里模糊的需求"说"出来，让 AI 帮你整理成清晰的 prompt。</div>
+  </div>
+
+  <!-- TOP 2 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num silver">🥇 TOP 2</span>
+      <span class="score">⭐⭐⭐⭐⭐ 95/100</span>
+      <div class="tags"><span class="tag tag-tutorial">教程</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="card-title">trq212 删掉 80% Claude Code 系统提示的实战经验</div>
+    <div class="quote"><strong>原文：</strong>我们为最新的模型移除了大约 80% 的 Claude Code 系统提示。这是我们关于如何为它们写系统提示、skills 和 Claude.MD 学到的东西。Context engineering 的新规则已经发布。</div>
+    <div class="meta">@trq212 · 14K 赞 · 1600 转 · 340 万阅读 · <a href="https://x.com/trq212/status/2080710971228918066" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>读原文 article，重写你的 Claude Code / Cursor 的系统提示——少即是多，最新模型不再需要冗长的指令堆叠，把关键约束说清楚就行。</div>
+  </div>
+
+  <!-- TOP 3 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num bronze">🥈 TOP 3</span>
+      <span class="score">⭐⭐⭐⭐⭐ 94/100</span>
+      <div class="tags"><span class="tag tag-tutorial">教程</span><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">steipete 的"画图工作流"——Codex + 5.6 Sol</div>
+    <div class="quote"><strong>原文：</strong>用 Codex 和 5.6 Sol 做 graph-max 三步搞定：
+1. 画一张图（任何工具都行，哪怕纸上画）
+2. 发给 Codex 说"写一个 code mode 脚本来实现这个工作流，用 <你的输入> 跑"
+没有第 3 步，就这么简单。说真的就这么简单。</div>
+    <div class="meta">@steipete · 213 赞 · 313 转 · 675K 阅读 · <a href="https://x.com/steipete/status/2080776965070496115" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把工作流先用手画出来（哪怕是流程图草图），让 Codex/Claude Code 直接生成可执行脚本。视觉化思考 → 一键实现。</div>
+  </div>
+
+  <!-- TOP 4 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 4</span>
+      <span class="score">⭐⭐⭐⭐⭐ 93/100</span>
+      <div class="tags"><span class="tag tag-prompt">Prompt 模板</span><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">catwu 的 Claude Cowork 日历管理 Prompt 模板</div>
+    <div class="quote"><strong>原文：</strong>我喜欢用 Claude Cowork 管理我的日历。这是我的 prompt：
+
+管理我本周的日历。要求：
+1. 会议不超过 20 小时
+2. 合并冲突的会议
+3. 参考过去几周看我会拒绝哪些类型的会议
+4. 晚宴不计入 20 小时</div>
+    <div class="meta">@_catwu · 531 赞 · 18 转 · 54K 阅读 · <a href="https://x.com/_catwu/status/2079011428380602526" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>复制 prompt 模板到 Claude Cowork，让它按你的偏好自动整理日历。"参考过去几周"是关键——它会学习你的拒绝习惯。</div>
+  </div>
+
+  <!-- TOP 5 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 5</span>
+      <span class="score">⭐⭐⭐⭐ 90/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">教程</span></div>
+    </div>
+    <div class="card-title">petergyang 开源 /no-ai-slop 技能</div>
+    <div class="quote"><strong>原文：</strong>我受够了读 AI 味儿的稿子，所以今天开源我的 /no-ai-slop skill，能从任何文章里清除 20+ 种 slop 模式。
+
+📌 免费获取：github.com/petergyang/no-...
+如果觉得有用请 star，让更多人看到。</div>
+    <div class="meta">@petergyang · 5200 赞 · 326 转 · 616K 阅读 · <a href="https://x.com/petergyang/status/2079943830024188105" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>Star 仓库，把 skill 安装到 Claude Code / Cursor，写完任何对外文案先跑一遍这工具，把"delve into"、"in today's world"那种 AI 味儿清掉。</div>
+  </div>
+
+  <!-- TOP 6 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 6</span>
+      <span class="score">⭐⭐⭐⭐ 87/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="card-title">petergyang 的 Codex 完整工作系统预告</div>
+    <div class="quote"><strong>原文：</strong>Jason 是 OpenAI 的 DevEx 工程师，写了 Codex 工作使用的官方指南。明天的播客里，他展示了完整的 Codex 工作系统：
+→ 在 Slack 和 email 上跑 chief of staff
+→ 把过去的会话转化为新的 skills</div>
+    <div class="meta">@petergyang · 93 赞 · 7 转 · <a href="https://x.com/petergyang/status/2081029209993154980" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把历史 Claude/Codex 会话总结成可复用的 skill，让 AI 越用越懂你的工作模式。这是真正的高级玩家玩法。</div>
+  </div>
+
+  <!-- TOP 7 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 7</span>
+      <span class="score">⭐⭐⭐⭐ 85/100</span>
+      <div class="tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-thinking">思维</span></div>
+    </div>
+    <div class="card-title">petergyang 躺在床上用 ChatGPT Voice 干活</div>
+    <div class="quote"><strong>原文：</strong>躺在床上用 ChatGPT Voice 在 codex 里干活真的很爽。要用好这个，我觉得你得记住所有长跑 thread 的名字。</div>
+    <div class="meta">@petergyang · 145 赞 · 5 转 · <a href="https://x.com/petergyang/status/2080793867960643823" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>躺平式编程——语音模式+记忆里的 thread 命名体系。但前提是你得给项目 thread 起好记的名字。</div>
+  </div>
+
+  <!-- TOP 8 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 8</span>
+      <span class="score">⭐⭐⭐⭐ 83/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">技巧</span></div>
+    </div>
+    <div class="card-title">alliekmiller 的 Opus 5 推理档位调优</div>
+    <div class="quote"><strong>原文：</strong>我提前用到了 Opus 5，有件事要提醒大家：模型本身不可思议、快得要命，但它太 eager 了。我在复杂任务上默认用 high 推理档位，这次得调到 medium。推理档位影响巨大！</div>
+    <div class="meta">@alliekmiller · 360 赞 · 10 转 · <a href="https://x.com/alliekmiller/status/2080744408593391866" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>用 Claude Opus 5 时，复杂任务别一上来就 high reasoning，先试 medium——既保证质量又不会被过度工程化拖慢。</div>
+  </div>
+
+  <!-- TOP 9 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 9</span>
+      <span class="score">⭐⭐⭐⭐ 82/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">OpenAI 桌面端 ChatGPT Voice 上线</div>
+    <div class="quote"><strong>原文：</strong>ChatGPT Voice 现在进入桌面 app。仅用语音控制你的电脑，指挥 ChatGPT Work 或 Codex 里运行的多个 agent。由 GPT-Live 驱动，可以同时说话、监听并协调 app 内的工作。今天全球推送。</div>
+    <div class="meta">@OpenAI · 13K 赞 · 1300 转 · 410 万阅读 · <a href="https://x.com/OpenAI/status/2080378182469857576" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>下载 ChatGPT 桌面 app，试着用语音同时指挥多个 agent 跑任务。这是 Karpathy 那种"碎碎念工作流"的官方产品化版本。</div>
+  </div>
+
+  <!-- TOP 10 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 10</span>
+      <span class="score">⭐⭐⭐⭐ 80/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">技巧</span></div>
+    </div>
+    <div class="card-title">trq212 用 /design 做前端</div>
+    <div class="quote"><strong>原文：</strong>真遗憾我到现在才真的输入 /design，但用 Claude Design + Claude Code 做前端确实爽。</div>
+    <div class="meta">@trq212 · 2700 赞 · 49 转 · 273K 阅读 · <a href="https://x.com/trq212/status/2080090919832084753" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>在 Claude Code 里直接敲 /design，让 Claude 帮你做前端原型。不要手动写 HTML——AI 时代的前端流程已经完全不一样了。</div>
+  </div>
+
+  <!-- TOP 11 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 11</span>
+      <span class="score">⭐⭐⭐⭐ 78/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">技巧</span></div>
+    </div>
+    <div class="card-title">alexalbert__ — Opus 5 做出顾问级的表格和幻灯片</div>
+    <div class="quote"><strong>原文：</strong>才过了 6 个月，Opus 5 现在能做出接近超人水平的电子表格和幻灯片，跟咨询顾问做的一样好。事情变化太快了。</div>
+    <div class="meta">@alexalbert__ · 3400 赞 · 181 转 · 427K 阅读 · <a href="https://x.com/alexalbert__/status/2080731979528679617" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把报告类工作（财报分析、deck 制作）丢给 Claude Opus 5，质量已经够得上付费咨询的水准，6 个月前还不行。</div>
+  </div>
+
+  <!-- TOP 12 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 12</span>
+      <span class="score">⭐⭐⭐⭐ 77/100</span>
+      <div class="tags"><span class="tag tag-tutorial">技巧</span><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">elonmusk 推荐 Grok Build 的语音 prompt 玩法</div>
+    <div class="quote"><strong>原文：</strong>@stevenmarkryan：我用 Grok Build 的最大心得是 VOICE PROMPT。ctrl+space 然后开说。比打字快太多了。而且 Grok 特别擅长理解你那种想到哪说到哪的碎碎念式语音流。
+
+@elonmusk：你可以直接跟 Grok Build 对话。</div>
+    <div class="meta">@elonmusk · 1300 赞 · 172 转 · 616K 阅读 · <a href="https://x.com/elonmusk/status/2081202568282169661" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>下载 Grok Build，ctrl+space 切到语音模式，闭眼说需求。Karpathy 的方法论在 Grok 里同样适用。</div>
+  </div>
+
+  <!-- TOP 13 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 13</span>
+      <span class="score">⭐⭐⭐⭐ 75/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-tutorial">技巧</span></div>
+    </div>
+    <div class="card-title">joshwoodward 的 Gemini Spark 用例</div>
+    <div class="quote"><strong>原文：</strong>Gemini 不仅会聊天，它能干活。今天的用例：丢一个学校日历 PDF 进去。让 Gemini 把所有"不上学"的日子加到你的 Google 日历里。搞定。
+
+📍Gemini Spark 现在对美国所有 Google AI Pro 订阅用户开放。</div>
+    <div class="meta">@joshwoodward · 1000 赞 · 53 转 · 75K 阅读 · <a href="https://x.com/joshwoodward/status/2080771183944073347" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把任何 PDF/文档丢给 Gemini，让它直接操作 Google Calendar / Docs / Sheets，省掉手工录入。Google AI Pro 订阅用户可立即试。</div>
+  </div>
+
+  <!-- TOP 14 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 14</span>
+      <span class="score">⭐⭐⭐⭐ 73/100</span>
+      <div class="tags"><span class="tag tag-thinking">思维</span><span class="tag tag-tutorial">提示</span></div>
+    </div>
+    <div class="card-title">alliekmiller — 大家都在浪费 AI 订阅</div>
+    <div class="quote"><strong>原文：</strong>大家都在浪费 AI 订阅。他们没意识到 AI 在实现自己目标方面能有多强。他们让 AI 回邮件时脑子里没有任何目标，也没什么能往上对接到"大局观"的。
+
+我小时候如果爸妈让我打扫房间，我就会想尽办法找捷径。</div>
+    <div class="meta">@alliekmiller · 113 赞 · 11 转 · <a href="https://x.com/alliekmiller/status/2079222598710538512" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>打开 AI 前先问自己：我要达成的"大局观"目标是什么？没有目标的 AI 调用 = 浪费钱。先写清楚目标，再让 AI 干活。</div>
+  </div>
+
+  <!-- Pull Quote -->
+  <div class="pull-quote">
+    我现在想要所有模型的 #1 件事是：速度。智能已经够好了，但每个任务等 1-5 分钟是最差的窗口——太短做不了深度工作，太长又没法盯着屏幕。所以我开始刷推了。Agent 让我们都变得更 ADHD。
+    <span class="pull-quote-author">— <a href="https://x.com/zarazhangrui/status/2080829737044439444" target="_blank">@zarazhangrui</a> · 419 赞</span>
+  </div>
+
+  <!-- Today's themes -->
+  <div class="themes">
+    <h2>🎯 今日主旋律</h2>
+    <ol class="theme-list">
+      <li><strong>Voice-first 工作流爆发</strong> —— Karpathy / petergyang / elonmusk 三个人不约而同推荐语音模式。OpenAI 顺势把 ChatGPT Voice 推到桌面端。</li>
+      <li><strong>Context engineering 是新瓶颈</strong> —— trq212 直接说"我们删了 80% 系统提示"，少即是多成了新共识。</li>
+      <li><strong>可视化 → 代码化</strong> —— steipete 的"画图工作流"展示了 2026 年最舒服的编程姿势。</li>
+      <li><strong>Skill 复用</strong> —— petergyang 的 /no-ai-slop 和 Codex 工作系统都在强调一件事：好的 skill 是积累出来的资产。</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    生成时间：2026-07-26 18:00 北京时间<br>
+    数据源：g1-g5 共 5 组缓存，179 条推文，筛选后 14 条精华
+  </div>
+
+</div>
+</body>
+</html>
