@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-07-27</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-2: #111726;
+    --bg-3: #1a2233;
+    --border: #1f2a3d;
+    --text: #e4e8f0;
+    --text-dim: #9aa3b8;
+    --text-faint: #5d6680;
+    --accent: #00d9ff;
+    --accent-2: #7c5cff;
+    --gold: #ffd166;
+    --silver: #c0c8d4;
+    --bronze: #cd7f32;
+    --tag-tool: #00d9ff;
+    --tag-tutorial: #7c5cff;
+    --tag-prompt: #ff6b9d;
+    --tag-workflow: #06d6a0;
+    --tag-thinking: #ffd166;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.65;
+    padding: 40px 24px 80px;
+    min-height: 100vh;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  .hero {
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0,217,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .date-badge {
+    display: inline-block;
+    background: rgba(0,217,255,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0,217,255,0.3);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { color: var(--text-dim); font-size: 15px; margin-bottom: 20px; }
+  .criteria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .criteria-block {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .criteria-block strong { color: var(--text); display: block; margin-bottom: 6px; }
+  .criteria-block .ok { color: var(--tag-workflow); }
+  .criteria-block .no { color: #ff5c5c; }
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .card:hover {
+    border-color: rgba(0,217,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,217,255,0.08);
+  }
+  .card-top1 {
+    background: linear-gradient(135deg, rgba(255,209,102,0.06) 0%, var(--bg-2) 60%);
+    border-color: rgba(255,209,102,0.3);
+  }
+  .card-top1::before {
+    content: '🏆';
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    font-size: 28px;
+  }
+
+  .rank {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .rank-num {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-faint);
+    letter-spacing: 0.5px;
+  }
+  .rank-num.gold { color: var(--gold); }
+  .rank-num.silver { color: var(--silver); }
+  .rank-num.bronze { color: var(--bronze); }
+  .score {
+    background: rgba(0,217,255,0.12);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .tag-tool     { background: rgba(0,217,255,0.12);   color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(124,92,255,0.12);  color: var(--tag-tutorial); }
+  .tag-prompt   { background: rgba(255,107,157,0.12); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(6,214,160,0.12);   color: var(--tag-workflow); }
+  .tag-thinking { background: rgba(255,209,102,0.12); color: var(--tag-thinking); }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .quote {
+    background: var(--bg-3);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+  }
+  .quote strong { color: var(--text); }
+  .meta {
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .meta a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .apply {
+    background: rgba(6,214,160,0.06);
+    border: 1px solid rgba(6,214,160,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .apply-label {
+    color: var(--tag-workflow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .pull-quote {
+    background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 32px 0;
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .pull-quote::before {
+    content: '"';
+    display: block;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 0.5;
+    margin-bottom: 16px;
+    font-family: Georgia, serif;
+  }
+  .pull-quote-author {
+    display: block;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+  .pull-quote-author a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  .themes {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 36px;
+  }
+  .themes h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--accent);
+  }
+  .theme-list { list-style: none; }
+  .theme-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .theme-list li:last-child { border-bottom: none; }
+  .theme-list strong { color: var(--text); }
+
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .summary-row { grid-template-columns: repeat(2, 1fr); }
+    .criteria { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .hero { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <span class="date-badge">2026-07-27 · MONDAY</span>
+    <h1>AI 网红工具日报</h1>
+    <p class="subtitle">每天从 AI 圈最值得关注的人那里，挑出能让你立刻上手用的技巧、工具和工作流。</p>
+    <div class="criteria">
+      <div class="criteria-block">
+        <strong>📥 收录</strong>
+        <span class="ok">工具推荐 · 教程 · Prompt 模板</span><br>
+        <span class="ok">工作流优化 · AI 使用技巧</span>
+      </div>
+      <div class="criteria-block">
+        <strong>🚫 排除</strong>
+        <span class="no">硬件/基础设施 · 融资/收入</span><br>
+        <span class="no">纯基准对比 · 学术论文</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary-row">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">缓存分组</div></div>
+    <div class="stat"><div class="stat-num">157</div><div class="stat-label">推文总数</div></div>
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">精选条目</div></div>
+    <div class="stat"><div class="stat-num">8.9%</div><div class="stat-label">入选率</div></div>
+  </div>
+
+  <!-- TOP 1 -->
+  <div class="card card-top1">
+    <div class="rank">
+      <span class="rank-num gold">🏆 TOP 1</span>
+      <span class="score">⭐⭐⭐⭐⭐ 97/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="card-title">steipete 的 autoreview skill 创下 66 轮新纪录</div>
+    <div class="quote"><strong>原文：</strong>我们用 autoreview skill 创了新纪录。在一次棘手的 refactor 任务上跑到了 66 轮。
+
+仓库：github.com/openclaw/agent-skills/skills/autoreview/SKILL.md</div>
+    <div class="meta">@steipete · 64 赞 · 74 转 · 151K 阅读 · <a href="https://x.com/steipete/status/2080899298838098034" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把 autoreview skill 装到 Claude Code / Codex，写一个 SKILL.md 让 agent 在每次 PR 后自动 review。66 轮对了就是没漏——把"人工 review 这一步"从流水线里彻底删掉。</div>
+  </div>
+
+  <!-- TOP 2 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num silver">🥇 TOP 2</span>
+      <span class="score">⭐⭐⭐⭐⭐ 95/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">AndrewNg 开源 OpenWorker——不只聊天，而是交付成品</div>
+    <div class="quote"><strong>原文：</strong>宣布 OpenWorker！一个开源 agent，不只是聊天，而是交付成品——给你一份打磨好的文档、发一条 Slack、更新日历。准备客户简报、梳理日历、写报告、triage 邮件，全部交给他。</div>
+    <div class="meta">@AndrewYNg · 9400 赞 · 1400 转 · 961K 阅读 · <a href="https://x.com/AndrewYNg/status/2080333504446108104" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>clone OpenWorker 仓库，给它接上你的日历/Slack/邮件 API。让 agent 从"陪你说话"升级到"替你干活"——交付物是可点击的链接，不是又一段文字。</div>
+  </div>
+
+  <!-- TOP 3 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num bronze">🥈 TOP 3</span>
+      <span class="score">⭐⭐⭐⭐⭐ 93/100</span>
+      <div class="tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">steipete 用 Codex 跑大规模并行 QA——终于不作弊了</div>
+    <div class="quote"><strong>原文：</strong>今天一天都在用 Codex 跑大规模并行 QA，准备下一个 release。Sol 真的非常猛——能深度理解意图，能发现复杂的行为 bug。以前这种 workflow 在 compaction 边界就崩了，或者模型开始糊弄。</div>
+    <div class="meta">@steipete · 118 赞 · 49 转 · 135K 阅读 · <a href="https://x.com/steipete/status/2081169373784633552" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>每次 release 前开 N 个 Codex 实例并行跑 QA，每实例负责一个测试场景。compaction 边界没崩=模型终于能撑住长任务了，动手试。</div>
+  </div>
+
+  <!-- TOP 4 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 4</span>
+      <span class="score">⭐⭐⭐⭐ 90/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="card-title">Musk 力推 Grok Build 的 /deep-research 命令</div>
+    <div class="quote"><strong>原文：</strong>Grok Build /deep-research 这个命令是真的猛——用受限的并行 agent、交叉验证证据，最后给你一份带引用的报告。</div>
+    <div class="meta">@elonmusk · 4400 赞 · 878 转 · 2.1M 阅读 · <a href="https://x.com/elonmusk/status/2081449658363134075" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>写研报、做尽调、查竞品，不用再手动开 5 个 tab 切来切去。直接 <code>/deep-research 你的主题</code>，等 5 分钟拿一份带引用的报告。</div>
+  </div>
+
+  <!-- TOP 5 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 5</span>
+      <span class="score">⭐⭐⭐⭐ 88/100</span>
+      <div class="tags"><span class="tag tag-tutorial">教程</span><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">YuHelenYu 的 AI Agent 安全三件套（发现/连接/策略）</div>
+    <div class="quote"><strong>原文：</strong>大多数安全团队给 AI agent 的安全控制比给新员工还松。2/3 的组织对 agent 的控制比对人更弱。
+
+@okta 的 AI Blueprint 工具把环境拆成三层：
+1️⃣ Discovery —— agent 在哪
+2️⃣ Connections —— 接触了哪些系统
+3️⃣ Policy —— 哪些事不能干</div>
+    <div class="meta">@YuHelenYu · 108 赞 · 2 转 · 11K 阅读 · <a href="https://x.com/YuHelenYu/status/2080074271775412583" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>立刻盘点你团队里所有 agent 跑的 channel——它们在 reset 密码、碰敏感数据、推 production code。用 Okta 的三层框架 review 一遍权限，没收的赶紧收。</div>
+  </div>
+
+  <!-- TOP 6 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 6</span>
+      <span class="score">⭐⭐⭐⭐ 85/100</span>
+      <div class="tags"><span class="tag tag-thinking">思维</span></div>
+    </div>
+    <div class="card-title">nikunj 的"prompt 之证"取代"工作量之证"</div>
+    <div class="quote"><strong>原文：</strong>"prompt 之证"很快就会取代"工作量之证"。</div>
+    <div class="meta">@nikunj · 61 赞 · 3 转 · 5.9K 阅读 · <a href="https://x.com/nikunj/status/2081383934928068619" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>简历/项目总结里别再写"做了 X 个功能"，开始写"用 prompt 实现了 X 自动化"。能证明你 give AI 清晰指令的能力，比加班时长值钱。</div>
+  </div>
+
+  <!-- TOP 7 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 7</span>
+      <span class="score">⭐⭐⭐⭐ 83/100</span>
+      <div class="tags"><span class="tag tag-thinking">思维</span></div>
+    </div>
+    <div class="card-title">zarazhangrui 的"AI 指标，别只看 token 消耗"</div>
+    <div class="quote"><strong>原文：</strong>别再用 token 消耗量衡量 AI 采用了。应该衡量从用户需求出现到东西上线的时间。</div>
+    <div class="meta">@zarazhangrui · 42 赞 · 2 转 · 2.7K 阅读 · <a href="https://x.com/zarazhangrui/status/2081627581997269192" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>下次老板问"AI 用了多少 token"，改汇报"AI 把上线周期从 X 周缩到 X 天"。预算评审会上 metric 一换，整套叙事就翻了。</div>
+  </div>
+
+  <!-- TOP 8 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 8</span>
+      <span class="score">⭐⭐⭐⭐ 82/100</span>
+      <div class="tags"><span class="tag tag-thinking">思维</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <div class="card-title">zarazhangrui 押注"talk-first"工作流——延迟归零</div>
+    <div class="quote"><strong>原文：</strong>我赌未来我们是这么工作的：你不用打字、不用写文档，你说，做就执行，可以在沙滩上。说和做的延迟应该归零。</div>
+    <div class="meta">@zarazhangrui · 186 赞 · 14 转 · 22K 阅读 · <a href="https://x.com/zarazhangrui/status/2081304624603295791" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>把语音当主输入渠道而不是 fallback——先说 30 秒，再让 AI 整理成文档/邮件。打字永远追不上你说话的速度。</div>
+  </div>
+
+  <!-- TOP 9 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 9</span>
+      <span class="score">⭐⭐⭐⭐ 80/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">Qwen3.8-Max-Preview 上线 Qoder——2.4T 参数 + 98% 折扣</div>
+    <div class="quote"><strong>原文：</strong>Day 0 on Qoder：Qwen3.8-Max-Preview 上线，🚀 2.4T 参数，coding 和 cowork 大幅提升。跑在 Qoder 的 agentic core 上，能跑端到端长链自主任务。现在限时 0.5x → 0.01x，相当于 98% off。</div>
+    <div class="meta">@Alibaba_Qwen · 工具 · <a href="https://x.com/Alibaba_Qwen/status/2079563513736089902" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>注册 Qoder 账号用 Qwen3.8-Max-Preview 跑 coding 任务。窗口期 0.01x 定价——同样一美金，能跑 100 倍的任务量。</div>
+  </div>
+
+  <!-- TOP 10 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 10</span>
+      <span class="score">⭐⭐⭐⭐ 78/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">Qwen-Image-3.0 落地——"真实"是这一代的核心命题</div>
+    <div class="quote"><strong>原文：</strong>🎨 Qwen-Image-3.0 来了。如果 1.0 是"精准"，2.0 加了"多样/完整/美/真"，3.0 只剩一个词：实。三维度"实"：📰 丰富内容、🎨 真实细节、🔍 真实质感。</div>
+    <div class="meta">@Alibaba_Qwen · 4.8K 阅读 · <a href="https://x.com/Alibaba_Qwen/status/2079906336381509659" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>之前 1.0/2.0 一直有 AI 塑料感，3.0 主打"实"——做产品图、人物写真、复杂海报试它。免费档 + Token Plan $6/月，价比 Midjourney 友好。</div>
+  </div>
+
+  <!-- TOP 11 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 11</span>
+      <span class="score">⭐⭐⭐⭐ 76/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">Qwen-Audio-3.0-TTS——细粒度情绪标签可视化</div>
+    <div class="quote"><strong>原文：</strong>推出 Qwen-Audio-3.0-TTS，两种口味：⚡ Flash（实时交互）和 🎵 Plus（高质量生成）。新功能：细粒度内联标签——steer [whisper]、[angry]、[breaths] 和 [laughs]；自由风格自然语言控制。</div>
+    <div class="meta">@Alibaba_Qwen · 1.9K 阅读 · <a href="https://x.com/Alibaba_Qwen/status/2080270065547809134" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>做播客/有声书/短视频配音，直接在文本里写 <code>[whisper][breaths]这是机密</code> 这种内联标签控制情绪。比 ElevenLabs 便宜，且对中文支持更原生。</div>
+  </div>
+
+  <!-- TOP 12 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 12</span>
+      <span class="score">⭐⭐⭐⭐ 75/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">Gemini 3.6 Flash / 3.5 Flash-Lite 双发——3.6 比 3.5 少 65% token</div>
+    <div class="quote"><strong>原文：</strong>今天发布的 laser 焦点在性能、延迟、账单：
++ 3.6 Flash 复杂 coding 任务省 65% token
++ 3.5 Flash-Lite 达到 350 输出 token/秒
+两个都已在 Gemini app 上线。下一步：3.5 Pro。</div>
+    <div class="meta">@joshwoodward · 1300 赞 · 121 转 · 188K 阅读 · <a href="https://x.com/joshwoodward/status/2079595879808569534" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>高频低成本任务切换到 3.5 Flash-Lite（350 tok/s，适合 classification/批量解析）；复杂任务用 3.6 Flash 拿 token 节省。Agent 后端批量调用时账单直接砍一半。</div>
+  </div>
+
+  <!-- TOP 13 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 13</span>
+      <span class="score">⭐⭐⭐⭐ 73/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">Midjourney V8.2 默认上线——风格更激进、更个性化</div>
+    <div class="quote"><strong>原文：</strong>今天发布 V8.2 并设为 Midjourney 默认模型。专注于美学、个性化和图像质量。新风格更大胆、更前卫、更新鲜，个性化也比以往任何时候都好。</div>
+    <div class="meta">@midjourney · 132 赞 · 153 转 · 1.7K 阅读 · <a href="https://x.com/midjourney/status/2080781271043911807" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>之前用 V8 觉得"安全"，V8.2 风格更锐利。品牌方要做有辨识度的视觉/AIGC 创作就开 V8.2；做产品图太激进反而失控，保持 V8。</div>
+  </div>
+
+  <!-- TOP 14 -->
+  <div class="card">
+    <div class="rank">
+      <span class="rank-num">TOP 14</span>
+      <span class="score">⭐⭐⭐⭐ 70/100</span>
+      <div class="tags"><span class="tag tag-tool">工具</span></div>
+    </div>
+    <div class="card-title">OpenAI Presence——企业级 voice/chat agent 部署框架</div>
+    <div class="quote"><strong>原文：</strong>企业新工具：OpenAI Presence，帮公司在客户和内部工作流里部署可信的 voice/chat agent。AI agent 能回答问题、调用公司系统、执行批准过的动作、必要时升级到人，同时持续自改进。</div>
+    <div class="meta">@OpenAI · 2200 赞 · 229 转 · 528K 阅读 · <a href="https://x.com/OpenAI/status/2079916436232036614" target="_blank">查看推文 →</a></div>
+    <div class="apply"><span class="apply-label">💡 如何应用</span>想做客服/内部 IT support 自动化但卡在"agent 能不能信"的，可以试 Presence 框架。把"回答"的权限锁紧——只能调白名单 API、必须 trace 决策路径。</div>
+  </div>
+
+  <div class="pull-quote">
+    AI 教程之所以这么多，是因为通用聊天产品越通用越难用。普通人面对一个空白框就卡住了——他们真的不知道该问什么。
+    <span class="pull-quote-author">— <a href="https://x.com/zarazhangrui/status/2081627109299310684" target="_blank">@zarazhangrui</a></span>
+  </div>
+
+  <div class="themes">
+    <h2>🎯 今日主旋律</h2>
+    <ul class="theme-list">
+      <li><strong>Agent 已经"交货"阶段</strong>——AndrewNg 的 OpenWorker 和 OpenAI Presence 都在强调：agent 的交付物应该是"能用的成品"，不是"又一段对话"。</li>
+      <li><strong>AI 安全从"事后审计"到"事前 policy"</strong>——YuHelenYu 引的 Okta 数据显示 2/3 的组织对 agent 的控制比对人还松，这是当下最大的隐性风险。</li>
+      <li><strong>中国模型追上来了</strong>——Qwen3.8-Max-Preview 2.4T 参数 + 0.01x 限时，Qwen-Image-3.0 主打"实"，Qwen-Audio-3.0-TTS 推情绪标签。工具链是当下最值得收藏的。</li>
+      <li><strong>指标革命</strong>——zarazhangrui 提的"从 token 烧到上线时间"会成为新 KPI 框架——决定谁继续烧钱、谁真的赚钱。</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    生成时间：2026-07-27 18:00 北京时间 · 数据源：g1-g5 共 5 组缓存，~157 条推文，筛选后 14 条精华
+  </div>
+
+</div>
+</body>
+</html>
