@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-07-28</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        .header h1 { font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 10px; }
+        .header .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .filter-notes {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        .filter-notes h3 { color: var(--accent-blue); margin-bottom: 10px; font-size: 1rem; }
+        .filter-notes ul { list-style: none; padding-left: 0; }
+        .filter-notes li { margin-bottom: 5px; color: var(--text-secondary); font-size: 0.9rem; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-orange);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .card-title { font-size: 1.4rem; margin-bottom: 8px; color: var(--text-primary); line-height: 1.4; }
+        .card-category { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .tag[data-category="工具"] { border-left: 3px solid var(--accent-blue); }
+        .tag[data-category="教程"] { border-left: 3px solid var(--accent-blue); }
+        .tag[data-category="Prompt"] { border-left: 3px solid var(--accent-purple); }
+        .tag[data-category="工作流"] { border-left: 3px solid var(--accent-green); }
+        .tag[data-category="思维"] { border-left: 3px solid var(--accent-purple); }
+
+        .rating { color: var(--rating-gold); font-weight: 600; }
+
+        .card-content { color: var(--text-primary); line-height: 1.8; }
+        .card-content p { margin-bottom: 12px; }
+        .card-content h3 { color: var(--accent-green); margin: 15px 0 8px; font-size: 1.1rem; }
+
+        .how-to-use {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent-green);
+        }
+        .how-to-use h4 { color: var(--accent-green); margin-bottom: 8px; font-size: 0.95rem; }
+
+        .source-link { color: var(--accent-blue); text-decoration: none; transition: color 0.2s; }
+        .source-link:hover { color: var(--accent-orange); }
+        .card-source { display: block; margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary); }
+
+        .trends {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-top: 40px;
+        }
+        .trends h3 { color: var(--accent-orange); margin-bottom: 12px; }
+        .trends li { color: var(--text-secondary); margin-bottom: 8px; font-size: 0.95rem; }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
+        }
+        .footer p { color: var(--text-secondary); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .card { padding: 20px; }
+            .card-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🤖 AI网红工具日报</h1>
+        <div class="subtitle">2026年7月28日 · 每日精选工具推荐、教程、Prompt模板、工作流优化与AI技巧</div>
+        <div class="meta">📅 生成时间：2026-07-28 10:04 UTC</div>
+    </div>
+
+    <div class="filter-notes">
+        <h3>📊 筛选说明</h3>
+        <ul>
+            <li>✅ 收录标准：工具推荐 / 教程 / Prompt模板 / 工作流优化 / AI使用技巧</li>
+            <li>❌ 排除内容：硬件/基础设施 / 融资/收入 / 纯基准对比 / 学术论文 / 政治观点 / 模型发布公告</li>
+            <li>🎯 质量门槛：内容创作者看完能立即上手用</li>
+            <li>📝 数据来源：今日 g1-g5 全部 5 组缓存（135 条 → 13 条精选，完成率 100%）</li>
+        </ul>
+    </div>
+
+    <div id="content">
+
+        <!-- Item 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣ Claude 5 上下文工程新规则：删掉 80% System Prompt</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="教程">📝 教程</span>
+                        <span class="tag" data-category="Prompt">🎯 Prompt</span>
+                        <span class="rating">⭐ 9.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我们为最新模型删掉了 Claude Code 系统提示中约 80% 的内容，这是我们写 system prompt、skills 与 Claude.MD 时学到的东西。原文标题：《Claude 5 模型上下文工程新规则》。我之前写过如何为最新一代 Claude 5 模型写 prompt 并迭代探索要构建什么，但当你向 Claude 发送消息时……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>今天就把你的 Claude Code 系统提示精简到核心条目：① 项目一句话定位 ② 必读文件清单 ③ 输出格式约束。其余"客套 + 防御性条款 + 通用最佳实践"删掉，把 token 留给真实上下文（CLAUDE.md / skills）—— Anthropic 官方验证：少 80% system prompt，效果更好且更便宜。</p>
+                </div>
+                <span class="card-source">来源：@trq212 - <a href="https://x.com/trq212/status/2080710971228918066" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">2️⃣ Karpathy 长语音速记法：让 LLM「听懂你偷懒的那部分」</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 9/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>与 LLM 协作时一个有用的模式是「长篇速记吐」。有时 LLM 需要更多细节才能理解你的目标，但你懒得打字。这时候我喜欢往后一靠，切到 /voice，用大约 10 分钟……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>Prompt 卡壳别放弃——直接开 ChatGPT Voice 或 Claude Code 的语音模式，闭眼把上下文、约束、目标、风格、参考案例全说出来，让 AI 自己整理。Karpathy 的实战证明：语音比文字快 3-5 倍，且自带上下文密度。适合需求调研、初稿脑暴、复杂 bug 描述。</p>
+                </div>
+                <span class="card-source">来源：@karpathy - <a href="https://x.com/karpathy/status/2079610838143623371" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">3️⃣ OpenAI DevEx 公开 Codex 5 大提效诀窍</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="教程">📝 教程</span>
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 8.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>来自 OpenAI DevEx 工程师 @jxnlco 关于 Codex 工作流的 5 大要点：1. 让 Codex 挖掘你过去会话中浮现的新 skills 与工作流。让 Codex 扫描过去约 30 天的对话，提炼你反复做的任务并建议可封装为 skill 的模式……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>把这段 prompt 直接复制给你的 Codex / Claude Code："扫描我过去 30 天会话，找出至少出现 3 次的任务模式，为每个模式起草一个可复用的 skill（输入/输出/触发条件/示例），写到 /skills 目录"。AI 自动帮你梳理个人工作流，效率翻倍。</p>
+                </div>
+                <span class="card-source">来源：@petergyang - <a href="https://x.com/petergyang/status/2081767492184387765" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">4️⃣ /design 命令：Claude Code 前端开窍的隐藏指令</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="Prompt">🎯 Prompt</span>
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我很遗憾花了这么久才真正打出 `/design`，但用 Claude Design + Claude Code 写前端真的好用到爆。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>在 Claude Code 中敲 `/design` 激活设计模式——专为 UI/前端任务优化：自动读设计系统文件、生成带 Tailwind/组件库一致性的 JSX、保留你项目的 spacing/color token。非前端任务别开，会拖慢响应。建议给它配一份 design-system.md 效果更稳。</p>
+                </div>
+                <span class="card-source">来源：@trq212 - <a href="https://x.com/trq212/status/2080090919832084753" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">5️⃣ Codex 远程修视频：手机就能让 AI 干活</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我问 OpenAI 的 @jxnlco："Codex 干过最离谱的一件事是什么？"他的回答："我正在骑车时同事让我修一支发布视频。于是我用手机远程连上，让 Codex 用 computer use 编辑视频、导出，然后……"</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>这个场景说明 Codex + computer use 已经可以脱离桌面：通勤、出差、散步时接手临时需求。给自己的 Codex 配一个 mobile 友好的入口（比如 Telegram bot 转发），遇到"立刻要"的改稿/裁剪/导格式任务时发一条语音描述就完事。</p>
+                </div>
+                <span class="card-source">来源：@petergyang - <a href="https://x.com/petergyang/status/2081775399097549083" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">6️⃣ ChatGPT Voice 桌面版：用语音控制所有 Agent</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>ChatGPT Voice 已在桌面端上线。纯语音控制你的电脑，并同时指挥运行在 ChatGPT Work 或 Codex 中的多个 Agent。基于 GPT-Live，可边说边听并协调多个工作流。今日全球推送。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>桌面端开 Voice = 你的"AI 工头"。一边写文档一边对麦克风喊："让 Codex 跑测试"、"Work 帮我查一下 CRM 今天的新增 lead"。建议开启后戴单耳耳机，避免麦克风串扰影响 Codex 监听。</p>
+                </div>
+                <span class="card-source">来源：@OpenAI - <a href="https://x.com/OpenAI/status/2080378182469857576" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">7️⃣ OpenWorker：开源 Agent 直接交付成品</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>宣布 OpenWorker！一个开源 Agent，不只是跟你对话，而是交付完成品——递给你一份润色好的文档、发 Slack 消息、更新日历条目。让它准备客户简报、理顺你的日程、写一份报告，或 triage 邮件……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>跟 Manus / Devin 思路一致但完全开源：本地或私有云部署，把「客户简报 + 日程调整 + 草稿」这类跨工具任务交给它。适合需要数据驻留的团队和小企业；可读源码定制、接 MCP 工具，比闭源 Agent 更可控。</p>
+                </div>
+                <span class="card-source">来源：@AndrewYNg - <a href="https://x.com/AndrewYNg/status/2080333504446108104" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 8 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">8️⃣ Gemini Spark：扔个 PDF 让 AI 改日历</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 7.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Gemini 不只是说话，它能帮你把事干完。今天的案例：拖入一份校历 PDF，让 Gemini 把所有"No School"的日子加进你的 Google Calendar——搞定。📍Gemini Spark 已对所有 Google AI Pro 美国订阅者上线，即将全球推广……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>有 Google AI Pro 的立即试：把合同 / 课程表 / 活动手册 / 发票 PDF 丢给 Gemini Spark，直接说"提取所有 6 月日期加到我工作日历"或"找出 3 笔超过 1 万的报销填到 Sheets"。节省的不只是时间，是周一下午不再手动录入。</p>
+                </div>
+                <span class="card-source">来源：@joshwoodward - <a href="https://x.com/joshwoodward/status/2080771183944073347" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 9 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">9️⃣ Opus 5 推理强度实战调参：默认 Medium 更稳</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="Prompt">🎯 Prompt</span>
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我提前试用了 Opus 5，只想提一点：模型惊艳、快到飞起，但"渴望程度"过高。我对复杂任务默认用 high 推理强度，结果要降到 medium。推理档位影响真的很大！</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>Opus 5 / GPT-5 类新模型默认 high 容易"过度思考"——简单总结也要绕路 3 圈。规则：① 信息检索 / 摘要 / 短写 → low 或 medium；② 复杂代码 / 多步推理 → high；③ 不确定时观察 token 使用曲线，剧烈波动说明档位错配。</p>
+                </div>
+                <span class="card-source">来源：@alliekmiller - <a href="https://x.com/alliekmiller/status/2080744408593391866" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 10 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">🔟 Sam Altman 亲示范：手机聊出完整旅行团建规划站</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>ChatGPT Work 比名字暗示的强得多。我用手机发了句：「用我所有聊天历史，想出 8 人长周末旅行的几个主意，规划最好三种方案，再做一个全栈站点让 9 个人能协调……」</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>这条 prompt 模板直接抄：「用我历史聊天记录，找出 X 场景的 Y 方案，并交付一个可分享成果」。组合 ChatGPT Work 的 Memory + 联网 + 建站能力，从"一句话 prompt"到"可交付 MVP"中间只剩手机和一杯咖啡的距离。</p>
+                </div>
+                <span class="card-source">来源：@sama - <a href="https://x.com/sama/status/2081396796174282900" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 11 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣1️⃣ AI 评测用 $/task，不是 $/token</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="思维">💡 思维</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>顺便说，按"每千 token 美元"作为成本指标，去年某个时候已经死了。如果你还没把你的图表 x 轴换成"每任务美元"（参考 @ArtificialAnlys），那我真的不知道你能不能再被严肃对待。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>谈 AI 成本时删掉 token 单价 — 改算"一个客户邮件 triage 任务花多少钱"、"一份周报花多少钱"。把同一任务在 GPT-5.6、Opus 5、Kimi K3、Haiku 上各跑 10 次取中位数，才是 2026 年的成本对话方式。</p>
+                </div>
+                <span class="card-source">来源：@swyx - <a href="https://x.com/swyx/status/2081904230768816487" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 12 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣2️⃣ 别烧 token 了，量"需求→上线"的时长</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="思维">💡 思维</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>别再用"烧了多少 token"衡量 AI 采用率。改成衡量「用户需求出现 → 该需求真正上线」的时长。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>给团队设一个新指标：Time-to-Ship-After-Need（从需求出现到上线的天数/小时）。token 是输入，TTN 是输出。给 leader 汇报时只报后者：本周 5 个客户需求平均 4.2 天上线，上周是 9 天，AI 工作流节省 X 人天。</p>
+                </div>
+                <span class="card-source">来源：@zarazhangrui - <a href="https://x.com/zarazhangrui/status/2081627581997269192" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Item 13 -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣3️⃣ Prompt 经济崛起：Proof of Prompt 取代 Proof of Work</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="思维">💡 思维</span>
+                        <span class="rating">⭐ 6.5/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>「Prompt 之证」很快会取代「工作量之证」。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>升职答辩、freelance 报价、个人简历——评估标准从"做了多少工时"变成"写了多有效的 prompt"。今天起：把你解决过的难题存成 prompt 模板，把"我用 N 小时 + AI"对应成"我 1 个 prompt 产出 N 件交付"，这是 2026 的可移植资产。</p>
+                </div>
+                <span class="card-source">来源：@nikunj - <a href="https://x.com/nikunj/status/2081383934928068619" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <!-- Trends -->
+        <div class="trends">
+            <h3>📈 趋势观察</h3>
+            <ul>
+                <li>🔹 <strong>上下文工程成为新瓶颈：</strong>trq212 的 80% 删减法 + Karpathy 的语音速记法，共同指向"prompt 写法比模型本身更重要"</li>
+                <li>🔹 <strong>Opus 5 推理档位是坑：</strong>alliekmiller 提醒——默认 high 会过激，medium 才是日常甜蜜点</li>
+                <li>🔹 <strong>AI 评测单位 $/task：</strong>swyx + ArtificialAnlys 推动的指标升级——业内对话规范化前移</li>
+                <li>🔹 <strong>开源 Agent 觉醒：</strong>OpenWorker / robobun 标志开源 Agent 不再只是玩具，已可交付成品</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>📧 AI网红工具日报 · 内容创作者每日灵感源</p>
+        <p style="margin-top:8px;">任务ID：cron:2a25fa8c-873a-4f64-9c28-4faef679b95d</p>
+        <p style="margin-top:8px;">线上版：<a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-07-28.html" target="_blank" class="source-link" style="color:var(--accent-blue);">zxy114.github.io/influencer-daily</a></p>
+    </div>
+</div>
+</body>
+</html>
