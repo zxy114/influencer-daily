@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-07-29</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #161a23;
+    --bg-card-hover: #1e2330;
+    --border: #262b38;
+    --text: #e6e9ef;
+    --text-dim: #9aa3b2;
+    --text-faint: #6b7280;
+    --accent: #7c9eff;
+    --accent-2: #a78bfa;
+    --gold: #fbbf24;
+    --silver: #d1d5db;
+    --bronze: #f59e0b;
+    --tag-tool: #10b981;
+    --tag-tutorial: #3b82f6;
+    --tag-prompt: #f59e0b;
+    --tag-workflow: #a78bfa;
+    --tag-mindset: #ec4899;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    padding: 32px 16px 80px;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 32px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .subtitle { color: var(--text-dim); font-size: 14px; }
+  .meta-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-faint);
+  }
+  .meta-bar .badge {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+  .summary-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .summary-box h3 { color: var(--accent); margin-bottom: 12px; font-size: 16px; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    font-size: 13px;
+  }
+  .summary-grid div { color: var(--text-dim); }
+  .summary-grid div strong { color: var(--text); display: block; font-size: 18px; margin-top: 2px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: #3a4154;
+    transform: translateY(-1px);
+  }
+  .card-rank {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+  }
+  .card.gold .card-rank { color: var(--gold); }
+  .card.silver .card-rank { color: var(--silver); }
+  .card.bronze .card-rank { color: var(--bronze); }
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .card-original {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: rgba(124, 158, 255, 0.05);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .tag-tool { background: rgba(16, 185, 129, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(59, 130, 246, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(245, 158, 11, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(167, 139, 250, 0.15); color: var(--tag-workflow); }
+  .tag-mindset { background: rgba(236, 72, 153, 0.15); color: var(--tag-mindset); }
+  .source {
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+  .source a { color: var(--accent); text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .rating { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .apply-box {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(167, 139, 250, 0.06);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 4px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .apply-box strong { color: var(--accent-2); margin-right: 6px; }
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .card { padding: 18px 20px; }
+    .card h2 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle">2026-07-29 · 周三 · 12 条精选</div>
+    <div class="meta-bar">
+      <span class="badge">📦 缓存 4/5 组</span>
+      <span class="badge">⭐ 最高评分 9/10</span>
+      <span class="badge">🔧 工具 · 📝 教程 · 🧠 思维</span>
+    </div>
+  </header>
+
+  <div class="summary-box">
+    <h3>📊 今日速览</h3>
+    <div class="summary-grid">
+      <div>入选<strong>12 条</strong></div>
+      <div>工具<strong>5 条</strong></div>
+      <div>教程<strong>5 条</strong></div>
+      <div>思维<strong>4 条</strong></div>
+      <div>工作流<strong>2 条</strong></div>
+      <div>最高互动<strong>15K ❤️</strong></div>
+    </div>
+  </div>
+
+  <div class="card gold">
+    <div class="card-rank">🥇 #1 · ⭐⭐⭐⭐⭐</div>
+    <h2>Claude 系统提示词新规则 — 砍掉 80% 后的精华</h2>
+    <div class="card-original">我们为最新一代模型砍掉了 Claude Code 系统提示词约 80%——这就是我们学到的"为 Claude 5 模型写系统提示、skills 和 Claude.MD"的规则。文章《Claude 5 模型上下文工程新规》。</div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="tag tag-prompt">🎯 Prompt</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2080710971228918066" target="_blank">@trq212</a> · 15K ❤️ 1.8K 🔁 4.3M 👁️</div>
+    <div class="rating">⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>用 Claude Code 做长任务时，把系统提示词当"少即是多"对待——明确目标、给高质量样例、避免冗余约束。领域知识放进 <code>.claude/skills/</code> 而不是堆在 system prompt 里。</div>
+  </div>
+
+  <div class="card silver">
+    <div class="card-rank">🥈 #2 · ⭐⭐⭐⭐</div>
+    <h2>Codex Security CLI 开源 — 仓库安全扫描工具</h2>
+    <div class="card-original">我们悄悄开源了 Codex Security CLI，但 Hacker News 比我们先发现了……现在你可以用它扫描代码库、跨次运行追踪发现项、验证修复，并把安全检查加入 CI/CD。这是早期版本，欢迎反馈。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI/status/2082263717916586117" target="_blank">@OpenAI</a> · 3K ❤️ 249 🔁 188K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>把 Codex Security CLI 接入 GitHub Actions，每次 PR 自动跑漏洞扫描。对独立开发者和小团队来说，相当于免费拿到一个能跟 Snyk 掰手腕的开源替代品。</div>
+  </div>
+
+  <div class="card bronze">
+    <div class="card-rank">🥉 #3 · ⭐⭐⭐⭐</div>
+    <h2>ChatGPT Voice 上桌面 — 语音指挥多个 Agent</h2>
+    <div class="card-original">ChatGPT Voice 现在进入桌面应用。只需用语音，就能控制你的电脑并指挥 ChatGPT Work 或 Codex 里运行的多个 agent。由 GPT-Live 驱动，能同时说、听，并在 app 里协调工作。今日全球开放。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-mindset">💡 使用技巧</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI/status/2080378182469857576" target="_blank">@OpenAI</a> · 13K ❤️ 1.4K 🔁 4.5M 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>边走路边用 AirPod 给 Codex 派活儿——描述一个 bug 让它复现并提 PR，或者让 ChatGPT Work 同时起草邮件 + 更新日历 + 生成会议纪要。从"坐在桌前敲键盘"解放到"边走边做"。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#4 · ⭐⭐⭐⭐</div>
+    <h2>Replit Model Selector — 一键切换 Kimi K3 / DeepSeek V4 / 全部 GPT</h2>
+    <div class="card-original">- Kimi K3：1/4 价格的前沿智能 - DeepSeek V4 flash：廉价劳模 - 全部 GPT 系列 - 老牌 Anthropic 模型。Replit 推出 Model Selector——为任务选最合适的智能，现在支持开源模型。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/amasad/status/2082263440908079290" target="_blank">@amasad</a> · 120 ❤️ 8 🔁 13K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>不要把所有任务都丢给同一个模型。代码生成用 Claude/Codex，廉价批量翻译/分类用 Kimi K3 或 DeepSeek V4 flash，复杂推理保留 GPT-5.6 Pro。在 Replit 里一次设置好推荐配置，按任务自动路由。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#5 · ⭐⭐⭐⭐</div>
+    <h2>Codex 实战：骑车时让 Codex 帮你修视频</h2>
+    <div class="card-original">我问 OpenAI DevEx 的 @jxnlco："Codex 给你干过最疯狂的事是什么？"他说："我在骑车，同事让我修一个发布视频。我远程连上手机，让 Codex 用 computer use 编辑视频、导出、回传——我全程脚没落地、手没碰键盘。"</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">💡 使用技巧</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/petergyang/status/2081775399097549083" target="_blank">@petergyang</a> · 423 ❤️ 21 🔁 77K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>给自己设一个"Codex 替我做"清单——把那些"本应该现在做但又懒得打开电脑"的事（修图、改文案、回邮件、整理文件）全部委托出去。关键是把任务描述清楚，包括验收标准。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#6 · ⭐⭐⭐⭐</div>
+    <h2>Sam Altman 用 ChatGPT 策划 8 人长周末旅行</h2>
+    <div class="card-original">ChatGPT 的"工作"能力非同寻常，而且"工作"这个词都低估了它。我从手机发了这条："用我所有聊天记录，想出 8 人长周末旅行的点子，规划 3 个最佳方案，做个全栈网站让 9 个人一起协调想做什么……"</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">💡 使用技巧</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/sama/status/2081396796174282900" target="_blank">@sama</a> · 17K ❤️ 573 🔁 3.6M 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>试着用 ChatGPT 一句话承包"策划 + 建站 + 协调"全流程。下次组织活动、搬家、装修——直接让 AI 读完你的偏好，给出 3 个方案并落地成可协作页面，比自己开十几个标签页高效得多。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#7 · ⭐⭐⭐⭐</div>
+    <h2>思维转变：用 $/task 而不是 $/token 衡量 AI 成本</h2>
+    <div class="card-original">顺带一提，$/输入输出 token 这种成本度量方式大概去年就死了。如果你还没把 X 轴更新成 $/task（via @ArtificialAnlys），那我不知道你还能不能被严肃对待。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/swyx/status/2081904230768816487" target="_blank">@swyx</a> · 309 ❤️ 12 🔁 52K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>把"花了多少 token"的报表改成"完成一个用户需求花了多少钱"。当你从 token 思维切到 task 思维，才会主动去想：哪些任务根本不该用 AI？哪些用便宜模型就够了？这才是真正的 ROI 优化。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#8 · ⭐⭐⭐⭐</div>
+    <h2>Proof of Prompt &gt; Proof of Work</h2>
+    <div class="card-original">Proof of prompt 很快会取代 proof of work。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/nikunj/status/2081383934928068619" target="_blank">@nikunj</a> · 84 ❤️ 3 🔁 9.4K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>核心竞争力从"我能干多少活"转向"我能多好地描述我要什么"。把你的工作流拆解出来，专门花时间练习写高质量 Prompt——这是新的杠杆点。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#9 · ⭐⭐⭐⭐</div>
+    <h2>Claude Design + Claude Code 前端开发新体验</h2>
+    <div class="card-original">我后悔这么晚才打 /design。用 Claude Design 配合 Claude Code 做前端，真的太爽了。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2080090919832084753" target="_blank">@trq212</a> · 2.7K ❤️ 48 🔁 277K 👁️</div>
+    <div class="rating">⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>Claude Code 里直接 <code>/design</code> 起一个设计稿→代码的协作流。先让 Design 出视觉，再让 Code 实现，比从 Figma 导入快 10 倍。适合做 Landing Page、内部工具、demo 原型。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#10 · ⭐⭐⭐</div>
+    <h2>Gemini Spark — PDF 转 Google Calendar 一句话搞定</h2>
+    <div class="card-original">Gemini 不只是聊天，它能把事办了。今日用例：丢一份学校日历 PDF 进去，告诉 Gemini 把所有"No School"的日子加到 Google Calendar。搞定。📍Gemini Spark 现已对所有美国 Google AI Pro 订阅者开放，下周全球铺开。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/joshwoodward/status/2080771183944073347" target="_blank">@joshwoodward</a> · 1.1K ❤️ 57 🔁 86K 👁️</div>
+    <div class="rating">⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>试着用 Gemini Spark 处理所有"看到 PDF/图片就想转成结构化动作"的场景——发票→记账、合同→待办、菜单→购物清单。关键是描述清楚"输出到哪里"（日历/邮件/Slack/Notion）。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#11 · ⭐⭐⭐</div>
+    <h2>内容创意无限方法 — 一张图搞定</h2>
+    <div class="card-original">我如何获得源源不断的内容创意，一张图说清楚。</div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="tag tag-mindset">💡 使用技巧</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2081983750658044079" target="_blank">@zarazhangrui</a> · 286 ❤️ 12 🔁 27K 👁️</div>
+    <div class="rating">⭐⭐⭐ 6/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>当你卡在"今天发什么"的时候，把你最近 30 天刷到的所有内容、跟朋友的对话、工作中遇到的痛点丢给 AI，让它找出 3 个能做成内容的角度。重点是输入要"杂"，AI 负责找规律。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#12 · ⭐⭐⭐</div>
+    <h2>通用 AI 工具难用的真相</h2>
+    <div class="card-original">为什么有那么多 AI 教程：聊天产品越通用，越难用。人们面对一个空白框就懵，因为他们真的不知道该问什么。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2081627109299310684" target="_blank">@zarazhangrui</a> · 142 ❤️ 8 🔁 11K 👁️</div>
+    <div class="rating">⭐⭐⭐ 6/10</div>
+    <div class="apply-box"><strong>💡 如何应用：</strong>与其给用户一个空白聊天框，不如给"场景模板"。做产品时，每个用户群配 3-5 个一键开始的 Prompt 模板（"帮我写小红书爆款"、"把这段录音整理成会议纪要"），比教 Prompt 工程更有效。</div>
+  </div>
+
+  <footer>
+    <p>日报由 AI 自动生成 · 数据采集截止 2026-07-29 09:05 UTC</p>
+    <p style="margin-top:8px;">📡 监控 50+ AI 网红账号 · 每日 UTC 02-09 时采集 · 自动筛选 + 评分排序</p>
+  </footer>
+</div>
+</body>
+</html>
