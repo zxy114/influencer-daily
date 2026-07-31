@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-07-31</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #161a23;
+    --bg-card-hover: #1e2330;
+    --border: #262b38;
+    --text: #e6e9ef;
+    --text-dim: #9aa3b2;
+    --text-faint: #6b7280;
+    --accent: #7c9eff;
+    --accent-2: #a78bfa;
+    --gold: #fbbf24;
+    --silver: #d1d5db;
+    --bronze: #f59e0b;
+    --tag-tool: #10b981;
+    --tag-tutorial: #3b82f6;
+    --tag-prompt: #f59e0b;
+    --tag-workflow: #a78bfa;
+    --tag-mindset: #ec4899;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6; padding: 32px 16px 80px;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header { text-align: center; padding: 32px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+  h1 { font-size: 32px; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .subtitle { color: var(--text-dim); font-size: 14px; }
+  .meta-bar { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 13px; color: var(--text-faint); }
+  .meta-bar .badge { background: var(--bg-card); border: 1px solid var(--border); padding: 4px 12px; border-radius: 12px; }
+  .summary-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .summary-box h3 { color: var(--accent); margin-bottom: 12px; font-size: 16px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; font-size: 13px; }
+  .summary-grid div { color: var(--text-dim); }
+  .summary-grid div strong { color: var(--text); display: block; font-size: 18px; margin-top: 2px; }
+  .trend-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .trend-box h3 { color: var(--accent-2); margin-bottom: 12px; font-size: 16px; }
+  .trend-box ol { padding-left: 20px; color: var(--text-dim); font-size: 14px; }
+  .trend-box ol li { margin-bottom: 10px; }
+  .trend-box ol li strong { color: var(--text); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin-bottom: 20px; transition: transform 0.15s, border-color 0.15s; }
+  .card:hover { background: var(--bg-card-hover); border-color: #3a4154; transform: translateY(-1px); }
+  .card-rank { display: inline-block; font-size: 13px; font-weight: 600; color: var(--text-faint); margin-bottom: 8px; }
+  .card.gold .card-rank { color: var(--gold); }
+  .card.silver .card-rank { color: var(--silver); }
+  .card.bronze .card-rank { color: var(--bronze); }
+  .card h2 { font-size: 20px; margin-bottom: 12px; color: var(--text); line-height: 1.4; }
+  .card-original { color: var(--text-dim); font-size: 14px; margin-bottom: 14px; padding: 12px 14px; background: rgba(124, 158, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 4px; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; font-size: 12px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-weight: 500; }
+  .tag-tool { background: rgba(16, 185, 129, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(59, 130, 246, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(245, 158, 11, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(167, 139, 250, 0.15); color: var(--tag-workflow); }
+  .tag-mindset { background: rgba(236, 72, 153, 0.15); color: var(--tag-mindset); }
+  .source { color: var(--text-faint); font-size: 12px; }
+  .source a { color: var(--accent); text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .rating { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .apply-box { margin-top: 14px; padding: 12px 14px; background: rgba(167, 139, 250, 0.06); border-left: 3px solid var(--accent-2); border-radius: 4px; color: var(--text-dim); font-size: 14px; }
+  .apply-box strong { color: var(--accent-2); margin-right: 6px; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-faint); font-size: 12px; }
+  @media (max-width: 600px) { h1 { font-size: 24px; } .card { padding: 18px 20px; } .card h2 { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle">2026-07-31 · 周五 · 13 条精选</div>
+    <div class="meta-bar">
+      <span class="badge">📦 缓存 5/5 组</span>
+      <span class="badge">⭐ 最高评分 9/10</span>
+      <span class="badge">🔧 工具 · 📝 教程 · 🎯 Prompt</span>
+    </div>
+  </header>
+
+  <div class="summary-box">
+    <h3>📊 今日总结</h3>
+    <div class="summary-grid">
+      <div>缓存到位<strong>5/5 组 ✅</strong></div>
+      <div>入选条目<strong>13 条</strong></div>
+      <div>工具 / 教程<strong>8 条</strong></div>
+      <div>工作流 / 思维<strong>5 条</strong></div>
+      <div>最高互动<strong>1.1K ❤️</strong></div>
+      <div>关键人物<strong>5 位</strong></div>
+    </div>
+  </div>
+
+  <div class="trend-box">
+    <h3>📈 今日趋势</h3>
+    <ol>
+      <li><strong>「现场直播 AI 协作」成为新流量密码</strong>——Danshipper 直播用 ChatGPT for Work 写作、Joshwoodward 演示 Gemini Mac 语音键、Zara Zhang 的 Install Party 现场装 agent。Show, don't tell 在 AI 时代加速演化。</li>
+      <li><strong>开源多模态全线推进</strong>——Hailuo H3（视频 + 立体声音频）、Kimi K3（2.8T MoE + 1M context）双双走开源路线。Runway、fal、OpenRouter、DigitalOcean Day-0 上线，创作者选择从「订阅单一工具」转向「按模型混搭」。</li>
+      <li><strong>招聘市场两极分化</strong>——Swyx 一针见血：AI-native IC 碾压 10 年经验 manager。LinkedIn JD 里写「agent orchestrator」比写「team lead」招到强一个数量级的人才。</li>
+      <li><strong>AI 工作流「安装即上手」</strong>——从 Gemini Mac 按 Fn 说话，到 Install Party 装 agent 再让新人跑任务，2026 下半年的 AI 普及策略是把装机门槛降到零。</li>
+    </ol>
+  </div>
+
+  <div class="card gold">
+    <div class="card-rank">🥇 #1 · 9/10</div>
+    <h2>Gemini Mac 语音听写：Hold Fn + Speak 直接出文本</h2>
+    <div class="card-original">我的新欢：Gemini Mac App ➔ 按住 Fn 键 ➔ 说话 ➔ 干净打磨过的文本直接出现在光标位置。零编辑、零拷贝粘贴。免费下：gemini.google/mac</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/joshwoodward/status/2082926031543967896">@joshwoodward</a> · 388 ❤️ · 31K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>把语音转文字 + AI 改写合并成一个键——任何 Mac 应用都能直接说一段话拿到干净稿。写邮件、改文案、记日记、回 Slack 一气呵成。先在 Gemini Mac App 里启用语音模式，按 Fn 试一次。</div>
+  </div>
+
+  <div class="card silver">
+    <div class="card-rank">🥈 #2 · 9/10</div>
+    <h2>「Install Party」——给非技术团队做 AI 培训的正确姿势</h2>
+    <div class="card-original">当经理问我怎么给非技术团队做 AI 培训，我的建议永远一样：办一场 Install Party。每人带一台笔记本，当场把 agent 装到他们电脑上，让他们立刻跑一个有意义的任务。跳过抽象的演讲。一旦…</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2083084770763002350">@zarazhangrui</a> · 47 ❤️ · 2.7K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>下周三组会别再 PPT 讲「什么是 Claude Code」，直接拉 30 分钟 Install Party：现场装好 agent、给一个新员工真实任务（写周报、爬竞品、做幻灯）。行动比讲理论 10 倍有效。</div>
+  </div>
+
+  <div class="card bronze">
+    <div class="card-rank">🥉 #3 · 9/10</div>
+    <h2>Swyx：AI-native IC 碾压 10 年经验的 Manager</h2>
+    <div class="card-original">再说招聘——现在对「AI-native IC / player-coach」是巨大牛市，对「head of X」的 manager 是巨大熊市。从没见过这么剧烈的两极分化。说白了：1 年经验管 10 个 agent > 10 年经验管 10-100 人</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/swyx/status/2082199414656127010">@swyx</a> · 1.1K ❤️ · 92K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>你团队里如果有人能「用 Claude/agent 干 5 个人的活」，立刻给他 IC 头衔和股权——别再纠结「管理幅度」传统指标。2026 招聘 JD 改成「agent orchestrator」比「team lead」招到的人强一个数量级。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#4 · 8/10</div>
+    <h2>Replit Design：单条 prompt 出一份可用的 brochure 模板</h2>
+    <div class="card-original">Replit Design 出 brochure！我刚试了新 @Replit Design：单条 prompt、模型 GPT-5.6 Sol / Max、$3.55 成本、结果：可直接用的 brochure 模板、评分 5/5</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/amasad/status/2082980019316642103">@amasad</a> · 74 ❤️ · 12K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>下次要出活动手册 / Landing Page / 内部传单，直接进 Replit Design 一句话出模板。比开 Figma 找模板快 10 倍、$3.55 一份——独立创作者 / 小团队首选。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#5 · 8/10</div>
+    <h2>Allie Miller：Codex Voice + Computer Use 的多模态组合</h2>
+    <div class="card-original">Codex Voice Mode + Computer Use 太野了。你可以来回踱步、或者摇摇椅子，同时跟它说话。感觉像《少数派报告》+ 一个相当能打的 AI 参谋长</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/alliekmiller/status/2082911011053400484">@alliekmiller</a> · 46 ❤️ · 4K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>边走动边口述 PRD / bug 复现 / 客户支持工单，让 Codex 同时操作电脑跑测试。运动 + 语音是创作类工作（写代码、写文案）的倍增器，告别久坐脖子酸。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#6 · 8/10</div>
+    <h2>Kimi K3 开源发布——1M context + 原生视觉</h2>
+    <div class="card-original">发布 Kimi K3 模型权重与技术报告。Kimi K3 是我们最强模型：2.8T MoE、原生视觉理解、1M token 上下文窗口。新架构：每单位算力 2.5x 智能，不只是参数更多。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2081760186235289764">@Kimi_Moonshot</a> · 1.5K ❤️ · 46K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>需要本地部署 + 长上下文（整本代码库、几小时会议记录、整本书）的场景，用 Together AI / DigitalOcean 上的 Kimi K3 跑——比闭源 API 便宜且可定制。开发者 next side project 直接接。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#7 · 8/10</div>
+    <h2>Hailuo H3 上线——首个开源「全模态」视频生成模型</h2>
+    <div class="card-original">Hailuo H3：Omni-Reference、商用级生成、极致成本效率、开源权重。你的创作命运，你做主。即日登陆 HailuoAI.video 与 Hailuo API。</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/Hailuo_AI/status/2083006198828417501">@Hailuo_AI</a> · 官方发布</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>做短视频 / 广告 / 教学视频的创作者直接试 H3 的「文本 → 视频 + 立体声音频」——不用单独配音乐、不用二次合成。一条 prompt 出有配乐的视频片段，独立 YouTuber 成本砍半。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#8 · 8/10</div>
+    <h2>Midjourney V8.2：默认模型升级美学与个性化</h2>
+    <div class="card-original">今天发布 V8.2 并设为 Midjourney 默认模型。本次升级专注美学、个性化和画质。新风格更有创意、大胆、前卫、新鲜，个性化效果更上一层楼。玩得开心！</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/midjourney/status/2080781271043911807">@midjourney</a> · 142 ❤️ · 1.8K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>所有 Midjourney 出图任务从今天起默认走 V8.2——更激进、更个性化。给客户做品牌素材 / 文章配图 / 社交媒体视觉时记得刷新参数确认走的是 V8.2 而不是旧 V7。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#9 · 8/10</div>
+    <h2>Zara Zhang 的「一张图」内容创意框架</h2>
+    <div class="card-original">我怎么获得源源不断的内容创意，看这张图就够了</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2081983750658044079">@zarazhangrui</a> · 351 ❤️ · 68K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>把这张图存下来当你的「选题看板」——把日常工作/兴趣/痛点填进去对应象限，每周挑一格产出 1-3 条内容。351 个点赞说明这是创作者最大公约数痛点。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#10 · 7/10</div>
+    <h2>Peter Yang：ChatGPT Work 离「我真正想要的 AI 产品」只差一步</h2>
+    <div class="card-original">ChatGPT Work 离我真正想要的 AI 产品只差一步——一台持久在线的云端个人电脑 + 已认证的浏览器。我理解 Work 现在的工作方式（请纠正我）：1. 用插件认证 Gmail 之类的应用…</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="source">来源：<a href="https://x.com/petergyang/status/2082827314572964276">@petergyang</a> · 251 ❤️ · 27K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>当你评估「AI agent 该往哪走」时，把 Peter 的 vision 当 checklist——是否持久运行、是否能跨浏览器操作登录态、能否把中间结果存到云端。这三个能力决定 agent 能不能真正替代人。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#11 · 7/10</div>
+    <h2>Danshipper：直播 ChatGPT for Work 写作全过程</h2>
+    <div class="card-original">看我用 ChatGPT for Work 现场直播写作全过程</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/danshipper/status/2082839820657623243">@danshipper</a> · 28 ❤️ · 5.1K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>下次写长文/报告时，把屏幕分享开着——一边口述一边让 ChatGPT for Work 起草，比关起门来打字快 3 倍。同事/客户看到 AI 协作流程后，对你的方法论信任度 +50%。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#12 · 7/10</div>
+    <h2>Madhu Guru：「Model Sense」是 AI PM 的新 Product Sense</h2>
+    <div class="card-original">7 个月过去了，这一点依然成立。最大 alpha 在于理解模型前沿。「Model Sense」是 AI 产品经理的新 Product Sense。你需要成为模型 whisperer。最佳机会藏在模型能力的边缘——今天勉强可能、6 个月后稳定可靠的边界…</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="source">来源：<a href="https://x.com/realmadhuguru/status/2082629168035201459">@realmadhuguru</a> · 8 ❤️ · 2.5K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>做 AI 产品 / 内容前花 30 分钟测一下 GPT-5.6、Opus 5、Hailuo H3 在你这个场景里的真实表现——把能力边界写在产品需求第一页。「模型能用啥」决定「产品该做啥」。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#13 · 7/10</div>
+    <h2>Nikunj Kwatra：用 Claude Code 做两周旅行的「事后复盘」</h2>
+    <div class="card-original">我用 Claude Code 当两周旅行的主交互界面，然后让它做一次完整复盘，看看下次能怎么做得更好</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/nikunj/status/2081992618649547100">@nikunj</a> · 15 ❤️ · 4.7K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>做项目 / 写完一篇长文 / 跑完一次活动后，把所有聊天记录、邮件、笔记丢给 Claude Code，让它生成一份「下次改进清单」。AI 复盘比自我感觉客观 50%。</div>
+  </div>
+
+  <footer>
+    📊 今日热词：Gemini Mac · Install Party · Replit Design · Codex Voice · Hailuo H3 · Kimi K3<br>
+    🤖 日报由 AI 自动生成 · 数据采集截止时间 2026-07-31 09:04 UTC
+  </footer>
+</div>
+</body>
+</html>
