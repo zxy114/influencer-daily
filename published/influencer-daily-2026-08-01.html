@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-08-01</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #161a23;
+    --bg-card-hover: #1e2330;
+    --border: #262b38;
+    --text: #e6e9ef;
+    --text-dim: #9aa3b2;
+    --text-faint: #6b7280;
+    --accent: #7c9eff;
+    --accent-2: #a78bfa;
+    --gold: #fbbf24;
+    --silver: #d1d5db;
+    --bronze: #f59e0b;
+    --tag-tool: #10b981;
+    --tag-tutorial: #3b82f6;
+    --tag-prompt: #f59e0b;
+    --tag-workflow: #a78bfa;
+    --tag-mindset: #ec4899;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6; padding: 32px 16px 80px;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header { text-align: center; padding: 32px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+  h1 { font-size: 32px; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+  .subtitle { color: var(--text-dim); font-size: 14px; }
+  .meta-bar { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px; font-size: 13px; color: var(--text-faint); }
+  .meta-bar .badge { background: var(--bg-card); border: 1px solid var(--border); padding: 4px 12px; border-radius: 12px; }
+  .summary-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .summary-box h3 { color: var(--accent); margin-bottom: 12px; font-size: 16px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; font-size: 13px; }
+  .summary-grid div { color: var(--text-dim); }
+  .summary-grid div strong { color: var(--text); display: block; font-size: 18px; margin-top: 2px; }
+  .trend-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 32px; }
+  .trend-box h3 { color: var(--accent-2); margin-bottom: 12px; font-size: 16px; }
+  .trend-box ol { padding-left: 20px; color: var(--text-dim); font-size: 14px; }
+  .trend-box ol li { margin-bottom: 10px; }
+  .trend-box ol li strong { color: var(--text); }
+  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin-bottom: 20px; transition: transform 0.15s, border-color 0.15s; }
+  .card:hover { background: var(--bg-card-hover); border-color: #3a4154; transform: translateY(-1px); }
+  .card-rank { display: inline-block; font-size: 13px; font-weight: 600; color: var(--text-faint); margin-bottom: 8px; }
+  .card.gold .card-rank { color: var(--gold); }
+  .card.silver .card-rank { color: var(--silver); }
+  .card.bronze .card-rank { color: var(--bronze); }
+  .card h2 { font-size: 20px; margin-bottom: 12px; color: var(--text); line-height: 1.4; }
+  .card-original { color: var(--text-dim); font-size: 14px; margin-bottom: 14px; padding: 12px 14px; background: rgba(124, 158, 255, 0.05); border-left: 3px solid var(--accent); border-radius: 4px; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; font-size: 12px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 10px; font-weight: 500; }
+  .tag-tool { background: rgba(16, 185, 129, 0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(59, 130, 246, 0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(245, 158, 11, 0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(167, 139, 250, 0.15); color: var(--tag-workflow); }
+  .tag-mindset { background: rgba(236, 72, 153, 0.15); color: var(--tag-mindset); }
+  .source { color: var(--text-faint); font-size: 12px; }
+  .source a { color: var(--accent); text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .rating { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .apply-box { margin-top: 14px; padding: 12px 14px; background: rgba(167, 139, 250, 0.06); border-left: 3px solid var(--accent-2); border-radius: 4px; color: var(--text-dim); font-size: 14px; }
+  .apply-box strong { color: var(--accent-2); margin-right: 6px; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-faint); font-size: 12px; }
+  @media (max-width: 600px) { h1 { font-size: 24px; } .card { padding: 18px 20px; } .card h2 { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle">2026-08-01 · 周六 · 13 条精选</div>
+    <div class="meta-bar">
+      <span class="badge">📦 缓存 5/5 组</span>
+      <span class="badge">⭐ 最高评分 10/10</span>
+      <span class="badge">🔧 工具 · 📝 教程 · 🎯 Prompt</span>
+    </div>
+  </header>
+
+  <div class="summary-box">
+    <h3>📊 今日总结</h3>
+    <div class="summary-grid">
+      <div>缓存到位<strong>5/5 组 ✅</strong></div>
+      <div>入选条目<strong>13 条</strong></div>
+      <div>教程 / 工具<strong>6 条</strong></div>
+      <div>工作流 / 思维<strong>7 条</strong></div>
+      <div>最高阅读<strong>3.0M 👁️</strong></div>
+      <div>关键人物<strong>7 位</strong></div>
+    </div>
+  </div>
+
+  <div class="trend-box">
+    <h3>📈 今日趋势</h3>
+    <ol>
+      <li><strong>「Claude Design 6 步工作流」成为本周最强实操教程</strong>——Peter Yang 这条拿到 135K 阅读，6 步走完「design md → prototype → HTML spec → core flow → build」，25 分钟从 idea 到 app。创作者本周最值得抄作业的一条。</li>
+      <li><strong>Voice / Voice Mode 全面崛起</strong>——Allie Miller 凌晨 2 点靠 Codex Voice Mode 救场、Josh Woodward 的 Gemini Mac 按 Fn 说话直接出干净文本。语音 + 电脑协作的「AI 参谋长」形态正式落地。</li>
+      <li><strong>「Install Party」式 AI 普及策略</strong>——zarazhangrui 给非技术团队做 AI 培训的核心方法：跳过 PPT，直接现场装机 + 现场跑真实任务。从「讲清楚什么是 agent」转向「让 agent 跑起来」。</li>
+      <li><strong>Workflow token 化（distill agent harness）</strong>——swyx 一句话把 agent 配置从个人手艺变成团队资产。能蒸馏模型就能蒸馏 harness，这跟传统 SOP 文档一个量级但作用于 agent。</li>
+    </ol>
+  </div>
+
+  <div class="card gold">
+    <div class="card-rank">🥇 #1 · 10/10</div>
+    <h2>Peter Yang：6 步用 Claude 从 0 到 1 设计并交付全栈 App（25 分钟教程）</h2>
+    <div class="card-original">这是我最新的教程，介绍我用 AI 设计和构建产品的 6 步流程，包括：→ 定义问题并创建 design md → 在 Claude Design 中做原型 → 起草交互式 HTML spec → 设计核心流程并构建。我分享了一个真实案例，完整展示了 25 分钟内从 idea 到 app 的全过程。</div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/petergyang/status/2082473770741272747">@petergyang</a> · 106 ❤️ · 135K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 10/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>本周要做一个 MVP / 落地页 / 内部工具？直接抄这套 6 步：① 写 design md 锁定问题与边界 ② Claude Design 快速出原型图 ③ 把原型转成可点 HTML spec ④ 用 Claude Code 按 spec 实现核心流。整套 25 分钟，比传统「PRD → 设计 → 开发」快 20×。</div>
+  </div>
+
+  <div class="card silver">
+    <div class="card-rank">🥈 #2 · 9/10</div>
+    <h2>Sam Altman：ChatGPT Work 家庭日历播客用例</h2>
+    <div class="card-original">昨晚听到一个超酷的 ChatGPT Work 用法：把你家的日历连上 ChatGPT，告诉它每个孩子的兴趣。每天早上送孩子上学的路上，让它生成一个播客——聊今天下午某孩子的足球赛、某个孩子的生日、最近的新闻等等。</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/sama/status/2083221585792762171">@sama</a> · 6.9K ❤️ · 3.0M 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>试试这个 prompt 模板——「基于今天/本周的家庭日历和每个孩子的兴趣清单，生成一段 5 分钟家庭播客脚本：① 今天的赛事/活动 ② 即将到来的生日/纪念日 ③ 一条跟孩子兴趣相关的新闻」。早上通勤直接 TTS 播放，省下亲子闲聊的「不知道聊啥」时刻。</div>
+  </div>
+
+  <div class="card bronze">
+    <div class="card-rank">🥉 #3 · 9/10</div>
+    <h2>zarazhangrui：非技术团队的 AI 培训正确姿势——「Install Party」</h2>
+    <div class="card-original">当经理问我怎么给非技术团队做 AI 培训，我的建议永远一样：办一场 Install Party。每人带一台笔记本，当场把 agent 装到他们电脑上，让他们立刻跑一个有意义的任务。跳过抽象的演讲。一旦装上，第一个「wow」瞬间就来，剩下的他们自己会探索。</div>
+    <div class="card-meta">
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2083084770763002350">@zarazhangrui</a> · 322 ❤️ · 19K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>下次周会/季度培训别再 PPT 讲「什么是 Claude Code / Cursor」了，直接开 30 分钟 Install Party：现场装 agent、给一个新员工一个真实任务（写周报、爬竞品、做汇报 PPT）。行动比讲理论有效 10 倍，可复用模板：装好→给任务→复盘。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#4 · 9/10</div>
+    <h2>Allie Miller：Codex Voice Mode 救了凌晨 2 点的紧急工作</h2>
+    <div class="card-original">快凌晨 2 点了，我之所以刚刚搞定所有紧急工作，唯一的原因就是 Codex Voice Mode。天呐。怎么大家都没为这个疯狂？我觉得我的工作方式跟一个月前完全不一样了。基本例子：「嘿，帮我看看这个……」</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/alliekmiller/status/2083068232915730829">@alliekmiller</a> · 381 ❤️ · 39K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>把 Codex Voice Mode 设成你的「深夜加班神器」：对着麦克风口述 bug 复现、PRD 草稿、客户支持工单，AI 直接生成代码 / 工单 / 邮件草稿。手酸眼睛累的紧急任务，口述效率比键盘高 3×。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#5 · 9/10</div>
+    <h2>joshwoodward：Gemini Mac App 听写黑科技——按 Fn 直接说话出干净文本</h2>
+    <div class="card-original">我的新欢：Gemini Mac App ➔ 按住 Fn 键 ➔ 说话 ➔ 干净打磨过的文本直接出现在光标位置。零编辑、零拷贝粘贴。免费下：gemini.google/mac</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="source">来源：<a href="https://x.com/joshwoodward/status/2082926031543967896">@joshwoodward</a> · 539 ❤️ · 44K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐⭐ 9/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>把 Gemini Mac App 设为默认听写工具——按 Fn 直接在任何应用说话出稿。写邮件、改文案、记日记、回 Slack 一气呵成，比 Whisper + 手工改写快 5×，而且免费。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#6 · 8/10</div>
+    <h2>thenanyu：Linear 团队 30% bug 走完「Issue → Agent → PR → Release」闭环</h2>
+    <div class="card-original">Linear 里最常见的循环就是这个变体（Issue > Agent > PR > Release）。我们约 30% 的 bug 走完了这个完整流程。但其中有些细节值得注意——指令应该要求 agent 深入研究 root cause……</div>
+    <div class="card-meta">
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="tag tag-tutorial">📝 教程</span>
+      <span class="source">来源：<a href="https://x.com/thenanyu/status/2083230295206121807">@thenanyu</a> · 88 ❤️ · 12K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>在你的 Linear / Jira 里建一条「Agent-fixable」标签——挑 30% 重复模式的 bug 走「agent 自动 PR」闭环，关键是要在 prompt 里强制要求「先研究 root cause，再提 PR」。别让 agent 乱改，先复现再修。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#7 · 8/10</div>
+    <h2>Replit Design：单条 prompt 出可用的 brochure 模板（$3.55 / 5/5 评分）</h2>
+    <div class="card-original">Replit Design 出 brochure 了！我刚试了新 @Replit Design：单条 prompt、模型 GPT-5.6 Sol/Max、$3.55 成本、结果：可直接用的 brochure 模板、评分 5/5</div>
+    <div class="card-meta">
+      <span class="tag tag-tool">🔧 工具</span>
+      <span class="source">来源：<a href="https://x.com/amasad/status/2082980019316642103">@amasad</a> · 220 ❤️ · 32K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>下次要做活动手册 / Landing Page / 内部传单 / 课程介绍单页，直接进 Replit Design 一句话出模板。比开 Figma 找模板快 10×，$3.55 一份——独立创作者 / 小团队首选。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#8 · 8/10</div>
+    <h2>steipete：Codex 5.5 不用 queue 了，扔什么它都接</h2>
+    <div class="card-original">以前 queue 是必须的，但 5.5 之后模型不再混淆了，你可以一边让它工作一边往里扔东西，它会认真处理你扔过去的每件事。</div>
+    <div class="card-meta">
+      <span class="tag tag-prompt">💡 使用技巧</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/steipete/status/2083369880599015713">@steipete</a> · 180 ❤️ · 50K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>用 Codex 5.5 写代码时，把任务列表直接往对话窗口里堆——改个 typo、补个测试、调个样式，不用等上一步完成。模型抗干扰能力是 5.5 真正的杀手特性，比纯刷 benchmark 重要。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#9 · 8/10</div>
+    <h2>swyx：能蒸馏模型，就能蒸馏 agent harness</h2>
+    <div class="card-original">pro tip：如果你能蒸馏模型，你也能蒸馏 agent harness。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/swyx/status/2083073422410821846">@swyx</a> · 303 ❤️ · 47K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐⭐ 8/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>把你们团队最强的「Claude Code / Cursor / agent 配置」提炼出来——system prompt + 工具链 + 工作流模板 = 一份「agent harness 模板」。新成员 / 新项目直接套，比让每个人从 0 摸索快 5×。这跟传统意义上的「团队 best practice 文档」是一个层级的东西，但作用于 agent。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#10 · 7/10</div>
+    <h2>Allie Miller：让你的 AI 员工每天「do smart things」循环跑</h2>
+    <div class="card-original">我们需要在 AI agent 和 AI 员工身上多用一些「生活教练式的玄学」。我想看到更奇怪的交互模式，不只是纯委派。例：✅ 我有一个定时循环对我的 AI 员工说「去做聪明的事」，每天跑好几次 ✅ 人们……</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/alliekmiller/status/2083258033245753393">@alliekmiller</a> · 22 ❤️ · 3.7K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>给 Claude / GPT 设一个 cron 任务，每天早上 9 点触发，prompt 是「审视一下我的 Notion / Linear / 邮件里过去 24 小时的新条目，挑 3 件『今天可以自动推进的聪明事』，执行并报告」。让 AI 像员工一样主动汇报，而不是你每件都问。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#11 · 7/10</div>
+    <h2>Peter Yang：ChatGPT Work 离「我真正想要的 AI 产品」只差一步</h2>
+    <div class="card-original">ChatGPT Work 似乎离我真正想要的 AI 产品——一个持久化的云端个人电脑 + 认证过的浏览器——只差一步。这是我理解的它今天「怎么工作」的机制（如果我理解错了请纠正）：1. 用插件去认证 Gmail 等 App……</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="tag tag-workflow">⚙️ 工作流</span>
+      <span class="source">来源：<a href="https://x.com/petergyang/status/2082827314572964276">@petergyang</a> · 375 ❤️ · 42K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>你现在就可以用 ChatGPT Work 试这套流程：① 把 Gmail / Calendar / Notion / Linear 通过插件接进去 ② prompt 它「跨这些工具完成 [某个任务]」 ③ 看哪一步会断在认证/记忆——那就是未来「persistent cloud computer」的缺口。提前用 = 提前踩坑。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#12 · 7/10</div>
+    <h2>zarazhangrui：深度领域经验 × AI-native = 几乎无敌</h2>
+    <div class="card-original">如果你既有深厚的领域专业知识和经验，又是 AI-native 且不断重塑自己去采用新的工作方式，那基本上是无敌的。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2082705944782520462">@zarazhangrui</a> · 134 ❤️ · 14K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>盘点你 5 年以上的领域积累（行业 know-how / 客户关系 / 工艺细节），把它跟 AI 工具叠加——而不是去抢「纯 prompt 工程师」的饭碗。2026 年的护城河 = 领域纵深 × AI-native 速度，两边都有的从业者是稀缺品。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-rank">#13 · 7/10</div>
+    <h2>swyx：「Vibe coding」的贬义已经消失了</h2>
+    <div class="card-original">注意到「vibe coding」这个词的贬义含义已经完全消失了——因为从非技术到超技术，每个人都在这么干。</div>
+    <div class="card-meta">
+      <span class="tag tag-mindset">🧠 思维</span>
+      <span class="source">来源：<a href="https://x.com/swyx/status/2083294839186260385">@swyx</a> · 52 ❤️ · 4.8K 👁️</span>
+    </div>
+    <div class="rating">⭐⭐⭐⭐⭐⭐⭐ 7/10</div>
+    <div class="apply-box"><strong>如何应用：</strong>别再纠结「这个代码我能不能 review」——只要 vibe coding 能跑出 MVP、能给客户演示、能收钱，就先发出去。2026 年的产品经理 / 设计师 / 运营都得是 vibe coder，跟不会用 Excel 一样丢人。下周一挑个内部工具，自己 vibe coding 一个。</div>
+  </div>
+
+  <footer>
+    生成时间：2026-08-01 · 数据源：5 组 X / Twitter 抓取缓存（132 条 → 精选 13 条）· 生成者：小瓜 cron<br>
+    分类统计：教程 3 · 工具 3 · 工作流 5 · 思维 4 · 使用技巧 4（部分条目多分类）
+  </footer>
+</div>
+</body>
+</html>
