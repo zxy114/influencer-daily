@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-03</title>
+<style>
+:root {
+  --bg: #0d0f14;
+  --bg-card: #161922;
+  --bg-elevated: #1d2230;
+  --border: #2a3142;
+  --border-soft: #232a3a;
+  --text: #e6e9f0;
+  --text-soft: #9aa3b8;
+  --text-muted: #6b7488;
+  --accent: #7c5cff;
+  --accent-soft: #7c5cff20;
+  --green: #34d399;
+  --green-soft: #34d39920;
+  --yellow: #fbbf24;
+  --yellow-soft: #fbbf2420;
+  --orange: #fb923c;
+  --orange-soft: #fb923c20;
+  --blue: #60a5fa;
+  --blue-soft: #60a5fa20;
+  --pink: #f472b6;
+  --pink-soft: #f472b620;
+  --red: #f87171;
+  --red-soft: #f8717120;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 80px 0;
+}
+
+.bg-glow {
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, var(--accent-soft) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 60px 24px 0;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.brand-tag {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--text) 0%, var(--text-soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-soft);
+  max-width: 600px;
+  margin: 0 auto 28px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 56px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title .emoji {
+  font-size: 26px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--border);
+}
+
+.card.featured {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+  border-color: var(--accent-soft);
+  box-shadow: 0 0 0 1px var(--accent-soft), 0 8px 32px rgba(124, 92, 255, 0.05);
+}
+
+.card-rank {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.card.featured .card-rank {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.card-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 280px;
+}
+
+.rating {
+  display: inline-flex;
+  gap: 2px;
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--yellow);
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.tag.tool { background: var(--blue-soft); color: var(--blue); }
+.tag.tutorial { background: var(--green-soft); color: var(--green); }
+.tag.prompt { background: var(--pink-soft); color: var(--pink); }
+.tag.workflow { background: var(--orange-soft); color: var(--orange); }
+.tag.thinking { background: var(--accent-soft); color: var(--accent); }
+
+.summary {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.source {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.source a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.source a:hover {
+  text-decoration: underline;
+}
+
+.engagement {
+  display: inline-flex;
+  gap: 14px;
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.engagement span {
+  color: var(--text-soft);
+}
+
+.apply {
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+}
+
+.apply-label {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.apply ol, .apply ul {
+  margin-left: 18px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.apply li {
+  margin-bottom: 4px;
+}
+
+.apply code {
+  font-family: "SF Mono", Monaco, Menlo, monospace;
+  font-size: 13px;
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--yellow);
+}
+
+.summary-box {
+  background: linear-gradient(135deg, var(--accent-soft) 0%, var(--pink-soft) 100%);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 48px;
+  text-align: center;
+}
+
+.summary-box .label {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.summary-box .quote {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text);
+  font-style: italic;
+}
+
+.account-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.account-pill {
+  background: var(--bg-elevated);
+  color: var(--text-soft);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+footer {
+  text-align: center;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 600px) {
+  h1 { font-size: 32px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .container { padding: 40px 16px 0; }
+  .card { padding: 20px 16px; }
+  .card-title { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+
+<header>
+  <span class="brand-tag">AI INFLUENCER DAILY</span>
+  <h1>AI 网红工具日报</h1>
+  <p class="subtitle">每天从顶级 AI 网红（Karpathy / swyx / sama / petergyang / alliekmiller 等）抓取推文，筛选出"内容创作者看完能立刻上手"的实操干货。</p>
+  <p style="color: var(--text-muted); font-size: 14px; margin-top: 12px;">📅 2026-08-03 · 第 N 期</p>
+  
+  <div class="stats">
+    <div class="stat-box">
+      <span class="stat-num">132</span>
+      <span class="stat-label">候选推文</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">15</span>
+      <span class="stat-label">命中干货</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">12</span>
+      <span class="stat-label">覆盖账号</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">18M+</span>
+      <span class="stat-label">总曝光</span>
+    </div>
+  </div>
+</header>
+
+<div class="section-title"><span class="emoji">🏆</span> 今日必看 Top 3</div>
+
+<!-- Card 1 -->
+<div class="card featured">
+  <span class="card-rank">#1 必看</span>
+  <div class="card-header">
+    <h3 class="card-title">Sam Altman：把 ChatGPT 变成家庭播客</h3>
+    <span class="rating">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag prompt">#Prompt</span>
+    <span class="tag tool">#工具</span>
+  </div>
+  <p class="summary">让 ChatGPT 接入家庭日历，每天早上自动生成 5 分钟播客——给老大讲今天足球赛、给老二念生日、播报天气。这是个<strong>多 Agent 编排 + 实时数据接入</strong>的 Prompt 模板。</p>
+  <div class="source">
+    <a href="https://x.com/sama/status/2083221585792762171" target="_blank">@sama</a>
+    <span class="engagement">
+      <span>❤️ 12k</span><span>🔁 353</span><span>👁 13M</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>把家庭成员日历（Google Calendar / Outlook）授权给 ChatGPT</li>
+      <li>用同样的 Prompt 框架："基于今天日历 + 孩子兴趣 + 当地新闻，生成 5 分钟对话脚本"</li>
+      <li>接 ElevenLabs / NotebookLM 音频化，开车时自动播</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card featured">
+  <span class="card-rank">#2 必看</span>
+  <div class="card-header">
+    <h3 class="card-title">Karpathy：Opus 5 长上下文创意测试法</h3>
+    <span class="rating">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tutorial">#教程</span>
+    <span class="tag thinking">#AI使用技巧</span>
+  </div>
+  <p class="summary">别再用"画一只骑自行车的鹈鹕"测试 LLM 了。Karpathy 给 Opus 5 喂《魔戒》第一章 + 1M token 预算（~$10），让它自由发挥。这是<strong>用大上下文替代短指令</strong>的全新评测思路。</p>
+  <div class="source">
+    <a href="https://x.com/karpathy/status/2083749667410727319" target="_blank">@karpathy</a>
+    <span class="engagement">
+      <span>❤️ 24k</span><span>🔁 1.8k</span><span>👁 2.9M</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>写小说/剧本/广告文案：把目标读者画像 + 竞品全文 + 你想要的风格参考塞满 200k+ context</li>
+      <li>别再"一步一步提示"，让模型拥有完整的世界观</li>
+      <li>预算 ~$10 一次性产出，远胜 $0.1 × 100 次迭代</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card featured">
+  <span class="card-rank">#3 必看</span>
+  <div class="card-header">
+    <h3 class="card-title">Allie Miller：Codex Voice Mode 重塑工作流</h3>
+    <span class="rating">⭐⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag workflow">#工作流</span>
+  </div>
+  <p class="summary">Allie 在凌晨 2 点靠 Codex Voice Mode 把所有紧急工作做完——边走边跟 AI 对话，让它看屏幕、改文档。她的原话："一个月前我工作的样子跟现在完全不同。"</p>
+  <div class="source">
+    <a href="https://x.com/alliekmiller/status/2083068232915730829" target="_blank">@alliekmiller</a>
+    <span class="engagement">
+      <span>❤️ 409</span><span>🔁 20</span><span>👁 43k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>做饭/通勤时用 Voice Mode 让 AI 读代码 review、写邮件、生成大纲</li>
+      <li>关键习惯："Hey take a look at this..." + 把屏幕分享给 AI</li>
+      <li>不需要坐下来打字，AI 就是你的语音实习生</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Section: 工具与开源 -->
+<div class="section-title"><span class="emoji">🛠️</span> 工具与开源（直接能用）</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <span class="card-rank">#4</span>
+  <div class="card-header">
+    <h3 class="card-title">OpenAI Codex Security CLI 开源</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+  </div>
+  <p class="summary">OpenAI 悄悄放了开源 Codex Security CLI，Hacker News 比官方先发现。功能：扫仓库、追踪漏洞、验证修复、加 CI/CD 安全检查。</p>
+  <div class="source">
+    <a href="https://x.com/OpenAI/status/2082263717916586117" target="_blank">@OpenAI</a>
+    <span class="engagement">
+      <span>❤️ 14k</span><span>🔁 1.2k</span><span>👁 1.3M</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <pre style="font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--text-soft); white-space: pre-wrap;"># 安装
+pip install codex-security
+# 扫描当前仓库
+codex-security scan .
+# 加到 GitHub Actions
+- run: codex-security scan --fail-on high</pre>
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <span class="card-rank">#5</span>
+  <div class="card-header">
+    <h3 class="card-title">Josh Woodward：Gemini Mac 语音输入</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+  </div>
+  <p class="summary">Gemini Mac 桌面应用上线——按住 <code>Fn</code> 直接说话，光标位置直接出干净文字，零编辑零复制粘贴。</p>
+  <div class="source">
+    <a href="https://x.com/joshwoodward/status/2082926031543967896" target="_blank">@joshwoodward</a>
+    <span class="engagement">
+      <span>❤️ 560</span><span>🔁 44</span><span>👁 49k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>下载 gemini.google/mac（Mac 限定）</li>
+      <li>在任何输入框按 <code>Fn</code> 说话，文字直接出现在光标处</li>
+      <li>比 Whisper 流更省事，不用切换应用</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <span class="card-rank">#6</span>
+  <div class="card-header">
+    <h3 class="card-title">MiniMax H3：开源视频生成模型（Day 0 多平台）</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+  </div>
+  <p class="summary">MiniMax H3 开源 weights 同时登陆 HuggingFace、vLLM-Omni（OpenAI 兼容视频端点）、ComfyUI、fal、SGLang Diffusion。<strong>一个模型读文本/图片/视频/音频 → 输出带立体声的视频</strong>。</p>
+  <div class="source">
+    <a href="https://x.com/MiniMax_AI/status/2084106804032872591" target="_blank">@MiniMax_AI</a>
+    <span class="engagement">
+      <span>❤️ 84</span><span>🔁 187</span><span>👁 1.2k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ul>
+      <li>ComfyUI 用户：直接拉 weights 装 Day 0 节点</li>
+      <li>想 API 调用：vLLM-Omni 提供 OpenAI 兼容端点</li>
+      <li>本地省钱：SGLang Diffusion 跑，0 美元成本 vs Seedance 2.0 1/3 价格</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <span class="card-rank">#7</span>
+  <div class="card-header">
+    <h3 class="card-title">steipete：让 AI 帮你装 Dark Reader</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag thinking">#AI使用技巧</span>
+  </div>
+  <p class="summary">steipete 多年忍受 Gmail 白光刺眼，直到让 agent 帮他装了 Dark Reader 扩展。<strong>这是 agent 实操的最佳示范：环境配置类任务也能 agent 化。</strong></p>
+  <div class="source">
+    <a href="https://x.com/steipete/status/2083759812970786997" target="_blank">@steipete</a>
+    <span class="engagement">
+      <span>❤️ 658</span><span>🔁 23</span><span>👁 23k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>下次有"装了 X 扩展"、"改了这个系统设置"、"配了 Y 快捷键"这类需求</li>
+      <li>直接跟 Codex / Claude Code 说："帮我装 darkreader.org 扩展并配置 Gmail 域名"</li>
+      <li>10 秒完成你自己 10 分钟的研究</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Section: 工作流与教程 -->
+<div class="section-title"><span class="emoji">🧠</span> 工作流与教程</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <span class="card-rank">#8</span>
+  <div class="card-header">
+    <h3 class="card-title">thenanyu：Linear 的 Issue→Agent→PR→Release 循环</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+  </div>
+  <p class="summary">Vercel CEO Rauch 提出"Issue → Agent → PR → Release"将是软件工厂的常态。thenanyu 透露细节：~30% 的 bug 会走完整个 flow，关键让 agent 先<strong>深度调研 root cause</strong>再动手。</p>
+  <div class="source">
+    <a href="https://x.com/thenanyu/status/2083230295206121807" target="_blank">@thenanyu</a>
+    <span class="engagement">
+      <span>❤️ 128</span><span>🔁 4</span><span>👁 19k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>在 Linear 给每个 issue 写清楚 "root cause 调研步骤"作为 agent instructions</li>
+      <li>让 agent 先输出诊断报告 → 再自动开 PR</li>
+      <li>质量门：PR 模板里强制包含 "验证方法" 段</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <span class="card-rank">#9</span>
+  <div class="card-header">
+    <h3 class="card-title">Peter Yang：Hermes 自建 skills 的机制</h3>
+    <span class="rating">⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag tutorial">#教程</span>
+  </div>
+  <p class="summary">Nous Research 的 Hermes 会<strong>自己构建 skills</strong>来完成任務——但怎么避免 slop？背景任务 Hermes Curator 在你的 agent 内运行，做质量审查。</p>
+  <div class="source">
+    <a href="https://x.com/petergyang/status/2083968605432267139" target="_blank">@petergyang</a>
+    <span class="engagement">
+      <span>❤️ 67</span><span>🔁 4</span><span>👁 16k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ul>
+      <li>想做个人 AI 助手时：不直接给最终 prompt，而是<strong>让 AI 写自己的工具函数 + 加 Curator 审查</strong></li>
+      <li>参考 Hermes 模式：主 agent + 后台审计 agent 双轨</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <span class="card-rank">#10</span>
+  <div class="card-header">
+    <h3 class="card-title">swyx：Codex 中 @thread + 队列的小技巧</h3>
+    <span class="rating">⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+    <span class="tag tutorial">#教程</span>
+  </div>
+  <p class="summary">swyx 在 OpenAI Codex 里发现：可以 @ 整个 thread 把任务<strong>排进队列</strong>，平台和产品之间来回切换时不会丢上下文。</p>
+  <div class="source">
+    <a href="https://x.com/swyx/status/2083993378258288976" target="_blank">@swyx</a>
+    <span class="engagement">
+      <span>❤️ 28</span><span>🔁 2</span><span>👁 6.6k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>Codex 任务列表里 @ 一个已有 thread，整批任务会排到它的上下文</li>
+      <li>跨平台切换不再重新输入 context</li>
+      <li>适合"我同时维护多个 side project"的场景</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Section: Prompt 与 AI 使用技巧 -->
+<div class="section-title"><span class="emoji">💡</span> Prompt 与 AI 使用技巧</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <span class="card-rank">#11</span>
+  <div class="card-header">
+    <h3 class="card-title">Peter Yang：AI 的 personality 和写作风格</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag thinking">#AI使用技巧</span>
+    <span class="tag thinking">#思维</span>
+  </div>
+  <p class="summary">聪明的 AI 但说话让人烦 = 没价值。Peter Yang 认为 Opus 4.6 是 personality 最好的版本，Opus 5 有"Claude-speak"过度修辞的问题（"here's the honest truth" 这种）。</p>
+  <div class="source">
+    <a href="https://x.com/petergyang/status/2083947480136421384" target="_blank">@petergyang</a>
+    <span class="engagement">
+      <span>❤️ 145</span><span>🔁 3</span><span>👁 18k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>用 Claude Code 时强制 system prompt："避免'let me be honest'/'here's the truth'/'great question' 等套话"</li>
+      <li>同样任务在不同模型对比 personality，选最舒服的那个</li>
+      <li>长 prompt 里加："If you'd normally say X, just say Y instead"</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <span class="card-rank">#12</span>
+  <div class="card-header">
+    <h3 class="card-title">Allie Miller：用 5.6 Terra Medium 而不是 max</h3>
+    <span class="rating">⭐⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag thinking">#AI使用技巧</span>
+  </div>
+  <p class="summary">Allie 的极简建议：试试 Codex Voice Mode + 5.6 Terra Medium 档。"Thank me later." 12k+ 转发说明真香。</p>
+  <div class="source">
+    <a href="https://x.com/alliekmiller/status/2083197152830931219" target="_blank">@alliekmiller</a>
+    <span class="engagement">
+      <span>❤️ 430</span><span>🔁 13</span><span>👁 49k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>下次写代码/写邮件时，把模型从 max 降到 Medium</li>
+      <li>加 Voice Mode 一起用</li>
+      <li>大多数日常任务 Medium 够用，省 70% token</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Section: 思维模型 -->
+<div class="section-title"><span class="emoji">🌊</span> 思维模型（理解 AI 浪潮）</div>
+
+<!-- Card 13 -->
+<div class="card">
+  <span class="card-rank">#13</span>
+  <div class="card-header">
+    <h3 class="card-title">Aaron Levie：Harness 才是 AI 栈里最重要的变量</h3>
+    <span class="rating">⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag thinking">#思维</span>
+    <span class="tag workflow">#工作流</span>
+  </div>
+  <p class="summary">Levie 引 Composio 的数据：Hermes Agent 每次任务成本 $0.39，Claude Code $1.47——同一个模型差 3.7x。<strong>未来 AI 竞争的胜负不在模型，而在 harness（脚手架/编排）</strong>。</p>
+  <div class="source">
+    <a href="https://x.com/levie/status/2083389460679373135" target="_blank">@levie</a>
+    <span class="engagement">
+      <span>❤️ 372</span><span>🔁 44</span><span>👁 118k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>同任务用 Hermes / Pi Agent / Claude Code 三家各跑一次</li>
+      <li>看 cost / quality 比，不只看 quality</li>
+      <li>个人项目优先用便宜 harness，企业级再用 Claude Code</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Card 14 -->
+<div class="card">
+  <span class="card-rank">#14</span>
+  <div class="card-header">
+    <h3 class="card-title">Allie Miller：AI 解锁的是"全新的工作方式"</h3>
+    <span class="rating">⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag thinking">#思维</span>
+  </div>
+  <p class="summary">Allie 列举她用 AI 的新方式：早上 10 分钟语音对话 + 第二大脑 + 工作流循环。她更兴奋的不是"原来 1 小时的事现在 10 分钟"，而是<strong>"以前根本不会去做的事现在能做了"</strong>。</p>
+  <div class="source">
+    <a href="https://x.com/alliekmiller/status/2083986311552155748" target="_blank">@alliekmiller</a>
+    <span class="engagement">
+      <span>❤️ 87</span><span>🔁 4</span><span>👁 9.6k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ul>
+      <li>不要再问"AI 能帮我做 X 吗？"</li>
+      <li>改问"因为有了 AI，我现在能做什么以前想都不敢想的事？"</li>
+      <li>例：写一本书 / 录一期播客 / 做一款小工具</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Card 15 -->
+<div class="card">
+  <span class="card-rank">#15</span>
+  <div class="card-header">
+    <h3 class="card-title">Dan Shipper：LLM 接管任务是"agency rupture"</h3>
+    <span class="rating">⭐⭐⭐</span>
+  </div>
+  <div class="tags">
+    <span class="tag thinking">#思维</span>
+  </div>
+  <p class="summary">当你经历 LLM 接手一个"以前每步都需要你"的任务时，那是一次<strong>巨大的 agency 断裂</strong>——人会把自己等同于自己的任务，而任务被 AI 接管 = 失去身份认同感。</p>
+  <div class="source">
+    <a href="https://x.com/danshipper/status/2084038453831020916" target="_blank">@danshipper</a>
+    <span class="engagement">
+      <span>❤️ 207</span><span>🔁 18</span><span>👁 24k</span>
+    </span>
+  </div>
+  <div class="apply">
+    <div class="apply-label">如何应用</div>
+    <ol>
+      <li>接受"AI 接管任务 ≠ AI 接管你"</li>
+      <li>把身份从"我会写代码" → "我能决定写什么 + 评审写得好不好"</li>
+      <li>把焦虑转化为：从执行者升级为决策者</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="summary-box">
+  <div class="label">🎯 一句话总结今天</div>
+  <p class="quote">"AI 已经从'工具'变成'工作伙伴'——Karpathy 用 1M token 写魔戒，Sama 用 ChatGPT 给孩子做播客，Allie 凌晨 2 点靠 Voice Mode 干完全部工作。下一步不是学新工具，是重新定义'我能做什么'。"</p>
+  <div class="account-list" style="margin-top: 24px;">
+    <span class="account-pill">@sama</span>
+    <span class="account-pill">@karpathy</span>
+    <span class="account-pill">@alliekmiller</span>
+    <span class="account-pill">@OpenAI</span>
+    <span class="account-pill">@joshwoodward</span>
+    <span class="account-pill">@steipete</span>
+    <span class="account-pill">@MiniMax_AI</span>
+    <span class="account-pill">@petergyang</span>
+    <span class="account-pill">@thenanyu</span>
+    <span class="account-pill">@swyx</span>
+    <span class="account-pill">@levie</span>
+    <span class="account-pill">@danshipper</span>
+  </div>
+</div>
+
+<footer>
+  <p>📅 生成于 2026-08-03 · 数据源：5 组抓取任务（g1-g5）· 筛选标准：内容创作者看完能立刻上手用</p>
+  <p style="margin-top: 8px;">由 <a href="#">小瓜</a> · AI 网红日报自动生成</p>
+</footer>
+
+</div>
+</body>
+</html>
