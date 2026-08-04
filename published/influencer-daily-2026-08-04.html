@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-04</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-card: #1a1d24;
+    --bg-card-hover: #222631;
+    --border: #2a2f3a;
+    --border-accent: #3b82f6;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --text-bright: #f9fafb;
+    --accent: #3b82f6;
+    --accent-2: #a78bfa;
+    --tag-tool: #10b981;
+    --tag-tutorial: #f59e0b;
+    --tag-prompt: #ec4899;
+    --tag-workflow: #06b6d4;
+    --tag-mind: #a78bfa;
+    --tag-news: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 32px;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 15px;
+  }
+  .meta {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .badge {
+    display: inline-block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin: 0 4px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+  .card-num {
+    background: var(--accent);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-bright);
+  }
+  .card-rating {
+    color: #fbbf24;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  .card-tags {
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+  }
+  .tag-tool { background: var(--tag-tool); }
+  .tag-tutorial { background: var(--tag-tutorial); }
+  .tag-prompt { background: var(--tag-prompt); }
+  .tag-workflow { background: var(--tag-workflow); }
+  .tag-mind { background: var(--tag-mind); }
+  .tag-news { background: var(--tag-news); }
+  .card-text {
+    color: var(--text);
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+  .card-source {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+  }
+  .card-source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .card-source a:hover { text-decoration: underline; }
+  .card-apply {
+    background: rgba(59, 130, 246, 0.08);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .card-apply strong {
+    color: var(--accent);
+  }
+  .section-title {
+    font-size: 22px;
+    color: var(--text-bright);
+    margin: 40px 0 20px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--text-bright);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  td { font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  .combo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .combo-scenario {
+    color: var(--accent);
+    font-weight: 600;
+    flex: 0 0 140px;
+  }
+  .combo-tools {
+    color: var(--text);
+    flex: 1;
+  }
+  footer {
+    margin-top: 60px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📢 AI 网红工具日报</h1>
+  <div class="subtitle">2026-08-04 · 内容创作者今日可用清单</div>
+  <div class="meta">
+    <span class="badge">15 条精选</span>
+    <span class="badge">5 个时间窗口</span>
+    <span class="badge">30+ 账号</span>
+  </div>
+</header>
+
+<h2 class="section-title">🥇 今日精选 Top 15</h2>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">1</div>
+    <div class="card-title">karpathy：用 Opus 5 + $10 重写指环王开篇</div>
+    <div class="card-rating">⭐⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="card-text">过去那种"画个骑自行车的鹈鹕 SVG"的 LLM 测试方式开始过时。我让 Opus 5 拿到《指环王》第一章 + $10 token 预算，然后…</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/karpathy/status/2083749667410727319" target="_blank">@karpathy</a> · 27K 赞 · 4M 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>下次写长文/长视频脚本，别用"给个大纲"测试模型——直接扔一段参考材料 + 限定预算，看模型能不能在约束下做取舍。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">2</div>
+    <div class="card-title">swyx：fighting slop with slop — AI 内容治理实战</div>
+    <div class="card-rating">⭐⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="card-text">AI 内容农场泛滥？Vaibhav Gupta 在 Boundary 大会讲怎么用 AI 反制 AI 生成的内容，节奏和论点都非常好。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/swyx/status/2083753582160191988" target="_blank">@swyx</a> · 227 赞 · 59K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>做自媒体/品牌的可以参考——AI 时代的内容护城河不是写得更多，而是建立可识别的"作者指纹"。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">3</div>
+    <div class="card-title">sama：ChatGPT 家庭播客工作流</div>
+    <div class="card-rating">⭐⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="card-text">昨晚听到一个超酷的 ChatGPT 用法：连接家庭日历 + 孩子的兴趣，每天早上送娃上学路上生成一段播客——聊今天下午谁有球赛、谁快过生日、有什么新闻。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/sama/status/2083221585792762171" target="_blank">@sama</a> · 12K 赞 · 14M 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>用 ChatGPT Custom GPTs + Calendar Connector，把家庭日程做成"早晨 3 分钟音频简报"，通勤时听。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">4</div>
+    <div class="card-title">OpenAI：GPT-5.6 Sol 解 ARC-AGI-3 — 两个 API 设置让分数翻三倍</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="card-text">GPT-5.6 Sol 已经在解数学开放问题，但在 ARC-AGI-3 这种 2D 谜题上表现差。原因不是模型不行——是 harness 没让它记住学过的东西。开启两个 API 设置后，分数直接翻三倍。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/OpenAI/status/2082616636989952217" target="_blank">@OpenAI</a> · 9.4K 赞 · 1.2M 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>调 Agent 类任务时别只换 prompt，留意"memory / context cache"这类 harness 设置——长期任务的核心瓶颈常在脚手架不在模型。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">5</div>
+    <div class="card-title">OpenAI：GPT-5.6 系列大降价</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-news">资讯</span>
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="card-text">从今天起，GPT-5.6 Luna 降价 80%、Terra 降价 20%，Sol 在 API 提供更快的版本。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/OpenAI/status/2082878156483219672" target="_blank">@OpenAI</a> · 10K 赞 · 14M 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>大量调用 Luna（轻量任务）的产品可以重跑成本估算；高频对话场景切到 Sol fast 试试延迟是否更友好。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">6</div>
+    <div class="card-title">trq212：Claude Code 也能用上 Connectors</div>
+    <div class="card-rating">⭐⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+  </div>
+  <div class="card-text">很多人不知道——你给 Claude 接了 Gmail/Calendar/Slack Connector 后，Claude Code（包括 Artifacts）也能直接调用这些数据。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/trq212/status/2084387303959740449" target="_blank">@trq212</a> · 839 赞 · 94K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>在 Claude 设置里打开 Connectors，授权 Gmail/Drive/Calendar，然后 Claude Code 就能直接读邮件、查日程、读写文档。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">7</div>
+    <div class="card-title">steipete：让 agent 帮你装 Dark Reader 护眼</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-tutorial">教程</span>
+  </div>
+  <div class="card-text">忍了好几年 Gmail 白底闪瞎眼，最后让 agent 帮我装了 Dark Reader，世界清净了。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/steipete/status/2083759812970786997" target="_blank">@steipete</a> · 700 赞 · 178K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>日常小痛点别自己忍——直接跟 agent 说"装个护眼插件、配置好规则"，两分钟搞定。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">8</div>
+    <div class="card-title">joshwoodward：Gemini Mac 桌面应用 Fn+Speak 语音输入</div>
+    <div class="card-rating">⭐⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-tutorial">教程</span>
+  </div>
+  <div class="card-text">新宠：Gemini Mac app ➔ 按住 Fn ➔ 直接说话 ➔ 干净的打字结果直接到光标处。零编辑零复制粘贴。免费。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/joshwoodward/status/2082926031543967896" target="_blank">@joshwoodward</a> · 561 赞 · 49K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>下载 Gemini Mac 桌面 app（gemini.google/mac），绑定全局快捷键 Fn，写邮件/做笔记时直接语音转文字。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">9</div>
+    <div class="card-title">alliekmiller：Codex Voice Mode + GPT-5.6 Terra Medium 组合拳</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-prompt">提示词</span>
+  </div>
+  <div class="card-text">最近没看我的推？一句话总结：试 Codex 语音模式 + 用 5.6 Terra Medium，用完谢我。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/alliekmiller/status/2083197152830931219" target="_blank">@alliekmiller</a> · 431 赞 · 49K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>日常轻量任务（写邮件、总结文章、改文案）切到 Codex Voice + Terra Medium，速度和成本的平衡点可能比 GPT-5.6 Pro 更舒服。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">10</div>
+    <div class="card-title">danshipper：当 AI 接管你曾经做的任务，"自我认同"的断裂</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-mind">思维</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="card-text">当一个语言模型能完成你以前每一步都要亲手做的任务，那种感觉是巨大的"能动性断裂"——我们容易把自我等同于任务和产出，这种断裂就像失去身份认同。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/danshipper/status/2084038453831020916" target="_blank">@danshipper</a> · 334 赞 · 40K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>如果用 AI 后突然空虚或焦虑——这是正常反应。把"我会做 X"重新定义成"我决定做 X、由 AI 执行"。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">11</div>
+    <div class="card-title">thenanyu：Linear 上的 Agentic 工作流 — Issue → Agent → PR → Release</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="card-text">Linear 里最常见的循环就是这个变体。我们 ~30% 的 bug 真的走完了这个流程。关键细节：让 agent 在写代码前先深度调研根因。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/thenanyu/status/2083230295206121807" target="_blank">@thenanyu</a> · 128 赞 · 19K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>个人/小团队想搭 agentic dev workflow：开 GitHub Issue → 描述清楚根因调研要求 → Cursor/Claude Code 出 PR → CI 自动测 → 合并。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">12</div>
+    <div class="card-title">alliekmiller：3 个用 AI 解锁"全新工作方式"的例子</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-mind">思维</span>
+  </div>
+  <div class="card-text">AI 让我兴奋的不是更快做旧事，而是解锁全新的做事方式。比如 2024 年我连续 3 个月每天早上边准备边跟 AI 语音聊天 10 分钟。比如用 AI 扩建"第二大脑"。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/alliekmiller/status/2083986311552155748" target="_blank">@alliekmiller</a> · 131 赞 · 16K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>列一下你每天都做但还没 AI 化的"无聊小事"——通勤、做饭前决策、睡前回顾，看能不能语音 AI 化。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">13</div>
+    <div class="card-title">Kimi_Moonshot：Kimi Slides 一键生成完整 PPT 教程</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="card-text">用 Kimi Work 做 PPT 教程 #1：Kimi Slides 全流程——结构调研（K3 驱动）、精致设计（SmartArts + 图表）、可编辑可下载。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/Kimi_Moonshot/status/2084245860339298423" target="_blank">@Kimi_Moonshot</a> · 115 赞 · 2.2K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>下周要做汇报/分享？试一下 Kimi Slides——给主题和大纲，10 分钟出可编辑 PPT 底稿。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">14</div>
+    <div class="card-title">zarazhangrui：Codex 截图自动入 Google Calendar</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-tutorial">教程</span>
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="card-text">用 Codex 做旅行规划的简单有效案例：截图餐厅/火车/活动的预订确认，让 Codex 自动写入你的 Google Calendar。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/zarazhangrui/status/2084536363668611491" target="_blank">@zarazhangrui</a> · 19 赞 · 3.2K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>行程密集时不用一个个手动加日历——把所有确认截图丢给 Codex/Gemini，让它解析 + 批量写入 Calendar。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="card-num">15</div>
+    <div class="card-title">Hailuo_AI：500 字 Prompt 复刻整集《办公室》</div>
+    <div class="card-rating">⭐⭐⭐⭐</div>
+  </div>
+  <div class="card-tags">
+    <span class="tag tag-prompt">Prompt</span>
+  </div>
+  <div class="card-text">用 500 字 prompt 在 MiniMax H3 上生成完整《办公室》一集——镜头语言、布景、风格全写出来。</div>
+  <div class="card-source">
+    📍 <a href="https://x.com/Hailuo_AI/status/2084504994636783979" target="_blank">@Hailuo_AI</a> · 15 赞 · 1.8K 浏览
+  </div>
+  <div class="card-apply">
+    <strong>如何应用：</strong>做短视频脚本时试试"反风格化 prompt"——给一个明确的美学参照（剧名 + 镜头特征 + 灯光 + 构图），AI 视频生成结果可控性强很多。
+  </div>
+</div>
+
+<h2 class="section-title">📊 今日趋势观察</h2>
+<table>
+  <thead>
+    <tr>
+      <th>主题</th>
+      <th>信号</th>
+      <th>代表推文</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Agent + Connectors 实用化</strong></td>
+      <td>Claude Code 接入 Gmail/Calendar；steipete 让 agent 装插件</td>
+      <td>trq212 / steipete</td>
+    </tr>
+    <tr>
+      <td><strong>Mac 桌面 AI 工作流崛起</strong></td>
+      <td>Gemini Fn+Speak 语音；MiniMax H3 本地跑视频</td>
+      <td>joshwoodward / Hailuo_AI</td>
+    </tr>
+    <tr>
+      <td><strong>AI 重塑个人工作方式</strong></td>
+      <td>语音日记、第二大脑、agentic 工作流</td>
+      <td>alliekmiller / thenanyu</td>
+    </tr>
+    <tr>
+      <td><strong>降本信号</strong></td>
+      <td>GPT-5.6 系列全线降价，Codex + 中端模型成日常主流</td>
+      <td>OpenAI / alliekmiller</td>
+    </tr>
+    <tr>
+      <td><strong>测试范式升级</strong></td>
+      <td>从"画鹈鹕 SVG"到"$10 预算 + 长材料"</td>
+      <td>karpathy</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="section-title">🛠️ 推荐今天就能试的工具组合</h2>
+<div class="combo-card">
+  <div class="combo-scenario">🌅 早晨通勤</div>
+  <div class="combo-tools">Gemini Mac <code>Fn+Speak</code> 语音日记 + ChatGPT Connectors 家庭播客</div>
+</div>
+<div class="combo-card">
+  <div class="combo-scenario">📧 写邮件/笔记</div>
+  <div class="combo-tools">Codex Voice + GPT-5.6 Terra Medium</div>
+</div>
+<div class="combo-card">
+  <div class="combo-scenario">✈️ 出行规划</div>
+  <div class="combo-tools">Codex 截图 → Google Calendar 自动化</div>
+</div>
+<div class="combo-card">
+  <div class="combo-scenario">📊 做汇报 PPT</div>
+  <div class="combo-tools">Kimi Slides 主题→大纲→10 分钟出稿</div>
+</div>
+<div class="combo-card">
+  <div class="combo-scenario">✍️ 长期写作测试</div>
+  <div class="combo-tools">Opus 5 + $10 token 预算 + 一段参考材料</div>
+</div>
+
+<footer>
+  由小瓜每日整理 · 关注 AI 网红都在用什么、怎么用<br>
+  覆盖账号：OpenAI, AnthropicAI, GoogleAI/DeepMind, karpathy, swyx, sama, amasad, joshwoodward, alliekmiller, trq212, danshipper, thenanyu, steipete, MiniMax_AI, Hailuo_AI, Kimi_Moonshot, Alibaba_Qwen, zarazhangrui 等 30+ 个
+</footer>
+
+</div>
+</body>
+</html>
