@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-08-05</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --text-muted: #6b7280;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+            --link-color: #60a5fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .header .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .summary {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .summary h2 {
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+        }
+
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .summary li {
+            color: var(--text-secondary);
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .summary li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .rating {
+            background: linear-gradient(135deg, var(--rating-gold), #f59e0b);
+            color: #1a1a1a;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .meta-source {
+            color: var(--link-color);
+        }
+
+        .meta-source a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .meta-source a:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.tool { background: #1e3a8a; color: #bfdbfe; }
+        .tag.tutorial { background: #14532d; color: #bbf7d0; }
+        .tag.prompt { background: #6b21a8; color: #e9d5ff; }
+        .tag.workflow { background: #831843; color: #fbcfe8; }
+        .tag.thinking { background: #713f12; color: #fde68a; }
+
+        .section-title {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .quote {
+            background: #0d1117;
+            border-left: 3px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .translation {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--accent-green);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .how-to-apply {
+            background: rgba(249, 115, 22, 0.08);
+            border-left: 3px solid var(--accent-orange);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .how-to-apply::before {
+            content: "💡 ";
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card-title {
+                font-size: 1.15rem;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI网红工具日报</h1>
+            <div class="subtitle">2026-08-05 · 第 1 期</div>
+            <div class="meta">每日精选 · 工具 · 教程 · Prompt · 工作流 · 思维</div>
+        </div>
+
+        <div class="summary">
+            <h2>📊 今日趋势小结</h2>
+            <ul>
+                <li><strong>Agent 工作流爆发</strong>：从 steipete 让 Agent 装 Dark Reader，到 zarazhangrui 的「会议即执行」，再到 OpenAI 的 GPT-Live 实时语音——AI Agent 正在从「能写代码」扩展到「能装插件、能开会、能说话」。</li>
+                <li><strong>Harness > Model</strong>：levie 的观察与 composio 的实测一致——Hermes/Pi Agent 同任务成本只有 Claude Code 的 1/4，未来 6-12 个月 Harness 层的创新密度会超过模型层。</li>
+                <li><strong>Prompt 模板平民化</strong>：joshwoodward 的「每周 AI 简报 Prompt」、sama 的「家庭播报 Prompt」、karpathy 的「Lord of the Rings 测试」都在降低创作门槛——会写好 Prompt 比会写代码更普惠。</li>
+            </ul>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣ Google AI 双周速览：Gemini Robotics 2 / 3.5 Flash-Lite / 3.6 Flash 一站全</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/GoogleAI/status/2083221445375668654">@GoogleAI</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+                <span class="tag tutorial">📘 教程</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">It's been a busy couple of weeks! ICYMI, here's the recap ⬇️ — Gemini Robotics 2 from @GoogleDeepMind brings whole-body intelligence to robots — Gemini 3.5 Flash-Lite is our fastest, most cost-effective model optimized for high-speed agentic workflows — Gemini 3.6 Flash</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">最近两周非常忙！一图带你看回放：来自 Google DeepMind 的 Gemini Robotics 2 为机器人带来全身智能；Gemini 3.5 Flash-Lite 是我们针对高速 Agent 工作流优化的最快、最具性价比的模型；Gemini 3.6 Flash ……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">内容创作者可在 Google AI Studio 直接调用 Gemini 3.5 Flash-Lite 跑高频、低延迟的 Agent 任务（如自动回复、批量摘要），3.6 Flash 适合多模态创意工作流；现在先把它们加入你的「模型分级」清单，后续分配预算时按速度/成本/能力择优。</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">2️⃣ Gemini Notebook：单条统一 Prompt Bar，思考不被打断</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/joshwoodward/status/2084746170576892342">@joshwoodward</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+                <span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Notebook is built for thinking, not toggling. While others add more modes, Notebook keeps everything in a single, unified prompt bar and just does the things you want. Ultra and Pro subscribers can jump in now, rolling out to everyone next.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Notebook 为「思考」而生，而非为「切换」而生。当其他产品在叠加越来越多的模式时，Notebook 把所有事情保留在同一条统一的 Prompt Bar 里，直接去做你想做的事。Ultra 和 Pro 订阅用户可立即体验，下周对所有用户开放。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把研究/写稿/调研统一收进 Gemini Notebook 的单条 Prompt Bar，不用在 Chat/Canvas/Research 等多个 Tab 来回跳；适合需要长时间跨资料思考的内容创作者，写一份深度长文能省下 30% 的心智切换成本。</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">3️⃣ No AI Slop Skill：ChatGPT 插件版上线，20+ 模式一键去除 AI 味</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/petergyang/status/2084705936317542640">@petergyang</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">My No AI Slop skill is now available as a @ChatGPT plugin! It's the easiest way to remove 20+ AI slop patterns from writing. To use it, simply install the plugin and then type "@ No AI slop (text)"</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我的 No AI Slop Skill 现在作为 ChatGPT 插件上线了！这是去除 20+ 种 AI 写作痕迹最简单的方式。安装插件后，只需输入「@ No AI slop（文本）」即可使用。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">内容创作者在 ChatGPT 写完稿后，调用 @no-ai-slop 插件做最后一遍「去 AI 味」润色；特别适合公众号、小红书、Newsletter 等需要个性化文风的场景。建议同时 GitHub star 原版 Skill（petergyang/no-ai-slop），方便自定义模式库。</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">4️⃣ ChatGPT Work 全家日历播客：上班路上给孩子听的「亲子晨报」</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/sama/status/2083221585792762171">@sama</a></span>
+                <span class="tag prompt">💡 Prompt</span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">cool use case of chatgpt work i heard last night: connect your family calendars and explain your kids' interests. every morning for the drive to school, have it make a podcast that talks about one kid's soccer game that afternoon, one kid's upcoming birthday, some news, etc</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">昨晚听到的一个超酷 ChatGPT Work 用例：连接家庭日历 + 输入孩子的兴趣。每天早晨送孩子上学的路上，让 AI 生成一段播客，谈当天某孩子的足球赛、另一孩子的生日、几条新闻，等等。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把 Google Calendar/Apple Calendar 共享给 ChatGPT Work，写一段 Prompt：每天 7:30 生成 3 分钟家庭播客，覆盖当日家庭日程 + 孩子兴趣话题；通勤时间既解决「孩子没话聊」又顺带完成家庭信息同步，可直接克隆到自己的 ChatGPT Work 流程。</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">5️⃣ Claude Code Connectors：连接 Gmail/Calendar 后，Artifacts 也能直接用</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/trq212/status/2084387303959740449">@trq212</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+                <span class="tag thinking">💡 思维</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">I think a lot of people don't realize - if you connect a Claude Connector (e.g. your gmail, calendar, slack, etc), Claude Code will also be able to use them, including in Artifacts</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我觉得很多人没意识到：如果你在 Claude 里连接了 Connector（如 Gmail、日历、Slack 等），Claude Code（甚至 Artifacts）也能调用这些数据。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">在 Claude 设置里启用 Gmail/Calendar/Slack 等 Connector 后，你可以在 Artifacts 里直接让 Claude「读我今天未读邮件，生成一份行动清单 HTML」，或「读本周日历，生成时间块优化表」。日常办公场景节省 1-2 小时信息汇总时间。</div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">6️⃣ Kimi Slides 教程：3 分钟全自动生成可编辑 PPT</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/Kimi_Moonshot/status/2084245860339298423">@Kimi_Moonshot</a></span>
+                <span class="tag tutorial">📘 教程</span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Build Slides with Kimi Work - Tutorial #1. Kimi Slides handles the entire slide-building process: - Clear structure and research, powered by Kimi K3 - Cohesive design, including polished charts and SmartArts - Editable and ready to download</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">用 Kimi Work 制作幻灯片 — 教程 #1。Kimi Slides 一手包办整个幻灯片制作流程：基于 Kimi K3 提供清晰的结构与调研；统一的设计风格，包括精致的图表和 SmartArt；可编辑、可直接下载。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">产品经理/咨询/营销可把 Kimi Slides 当作「草稿 PPT 引擎」：先用它跑出 80 分结构与配图，再在 PowerPoint/Keynote 微调细节，比从空白页开始快 5-10 倍；尤其适合需要在 30 分钟内给老板交一版「能看的」方案时。</div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">7️⃣ Gemini Mac App：按住 Fn 说话，光标处直接出干净文字</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/joshwoodward/status/2082926031543967896">@joshwoodward</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">My new favorite: Gemini Mac app ➔ Hold Fn ➔ Speak ➔ Clean, polished text directly at your cursor. Zero editing or copy-pasting required. Get it for free: gemini.google/mac</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我最近的新宠：Gemini Mac 桌面应用 ➔ 按住 Fn 键 ➔ 说话 ➔ 在光标位置直接出现干净、润色过的文字。零编辑、零复制粘贴。免费下载：gemini.google/mac</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">写稿/回邮件/做笔记时，用「按住 Fn 说话」替代键盘输入，配合 Gemini 的自动润色可省去 90% 的删改；适合打字慢、想法多、追求「说到即所得」的内容创作者。建议把这条加入 macOS 的 Fn 快捷键记忆肌肉。</div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">8️⃣ 让 Agent 给你装 Dark Reader：AI 直接接管浏览器个性化</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/steipete/status/2083759812970786997">@steipete</a></span>
+                <span class="tag workflow">🔧 工作流</span>
+                <span class="tag thinking">💡 思维</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">After accepting for years that GMail is blinding me I finally asked my agent and it installed darkreader.org for me.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">忍了好几年 Gmail 晃瞎眼，我终于让我的 Agent 出手，它直接帮我装好了 darkreader.org。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把日常痛点（如「某个网站字太小」「想批量改默认设置」）直接抛给 Claude/Cursor/Agent，让它去查扩展、安装、配置；这是一类被低估的「微工作流」：AI 不只能写代码，还能替你操作浏览器与系统设置，30 秒解决几年拖延的小问题。</div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">9️⃣ 高效会议判断法：会议结束 = 待办清零</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/zarazhangrui/status/2084601752817729811">@zarazhangrui</a></span>
+                <span class="tag thinking">💡 思维</span>
+                <span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">How to judge if a meeting is efficient: An efficient meeting has no to-do list left behind, because all the actions are done DURING the meeting (either by agents who listen to the meeting in real time or by humans) The gap between saying and doing should be zero, and meetings should be judged by execution completeness, not duration.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">怎么判断一场会议是否高效：高效的会议结束后不会留下任何待办，因为所有动作都在会议进行中完成（要么由实时收听的 Agent 完成，要么由人完成）。说与做之间的鸿沟应该为零，评估一场会议应该看执行完整度，而非时长。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把你的会议流程升级：开会时让 AI Agent（如 Fathom/Granola）实时转录 + 直接产出可执行 Action Items，会后通过 Linear/Notion 自动派单；不再用「会议纪要-待办-跟催」三步走，把「说」和「做」之间的时差压到零。</div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">🔟 高效 Agent 训练法：把 Agent 拉进群聊，看它干活</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/zarazhangrui/status/2084635984164237792">@zarazhangrui</a></span>
+                <span class="tag thinking">💡 思维</span>
+                <span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">The best AI training isn't a course. It's pulling an agent into your team's group chat & letting people watch it work. Every company rolling out "AI enablement programs" should try that first.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">最好的 AI 培训不是课程，而是把一个 Agent 拉进团队的群聊里，让大家看它干活。每一家在搞「AI 赋能计划」的公司，都应该先试试这一招。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">团队推行 AI 时，不要发文档/录课程，而是把 Agent（如 Cursor/Cody/Devin）加到 Slack/飞书群，让同事们围观它处理真实任务；这种「沉浸式 Show, don't tell」比任何培训材料都有效，2 周内团队的 AI 使用率自然飙升。</div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣1️⃣ Opus 5 数据可视化：给 AI 一个数据集，让它玩出花样</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/danshipper/status/2084692896696111243">@danshipper</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+                <span class="tag prompt">💡 Prompt</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">so freaking cool. I gave Opus 5 a dataset of every certified running streak (including my own) and told it to use D3 to make a striking data visualization. It made an interactive global map, lifespan running graph, start/end date analysis, and much more.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">太酷了。我把「所有认证跑步 streak 数据集」（包括我自己的）丢给 Opus 5，让它用 D3 做一个抢眼的数据可视化。它自动做出了交互式全球地图、人生跑步曲线图、起止日期分析等等。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">内容创作者可以把 CSV/Excel 直接丢给 Claude/Opus 5，说「用 D3 帮我做一个有视觉冲击力的可视化网页」，AI 会自动选最佳图表类型、配色与交互；适合做年度回顾、行业报告、Newsletter 数据故事，比手动调 Tableau/PowerBI 快 10 倍。</div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣2️⃣ Hermes / Pi Agent：性价比碾压 Claude Code 的新 Harness</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/levie/status/2083389460679373135">@levie</a></span>
+                <span class="tag thinking">💡 思维</span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">No idea if these specific numbers generalize across tasks, but directionally it's clear that the harness is going to become the most important variable -right next to model capability- in the AI stack. The ability for harnesses to break down work in the most efficient way and use the right tool for each step is now the key differentiator.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">不知道这些具体数字是否能在所有任务上泛化，但方向很明确：Harness（执行框架）正在成为 AI 技术栈里与模型能力并列的最重要变量。Harness 能否把工作拆解到最高效的方式、每一步用对工具，现在才是真正的差异化点。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">如果你在做 AI Agent 产品，重点不是单纯堆更好的模型，而是打磨 Harness（任务拆分、工具调度、上下文管理）；如果你是用户，试试 Hermes Agent 或 Pi Agent（同任务成本只有 Claude Code 的 1/4），日常 Coding/DevOps 工作流可立刻降本。</div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣3️⃣ Codex @ 线程小技巧：跨平台项目管理更顺滑</div>
+                <div class="rating">⭐ 5/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/swyx/status/2083993378258288976">@swyx</a></span>
+                <span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">one way i'm developing Forge is to use it to host all my projects going forward. so I often find myself having to bounce back and forth between platform and product. sharing neat trick - in @OpenAI codex you can @ a thread + queue up the @, so if your project lives in another thread, you can just keep the agent running there.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我开发 Forge 的方式之一是让它托管我所有未来的项目。所以经常要在平台和产品之间来回切换。分享一个好用的小技巧：在 OpenAI Codex 里你可以 @ 一条线程 + 把 @ 排个队，如果你的项目在另一条线程里，你完全可以让 Agent 在那里继续跑。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">在 Codex/Cursor 等 IDE 里维护多个项目线程时，用「@ 线程 + 排队」机制保持 Agent 上下文不被打断；特别适合同时跑 2-3 个并行项目的内容创作者/独立开发者，避免来回切上下文导致的 5-10 分钟冷启动损耗。</div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣4️⃣ 早晨 10 分钟 AI 语音对话：解锁「第二大脑」新形态</div>
+                <div class="rating">⭐ 5/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/alliekmiller/status/2083986311552155748">@alliekmiller</a></span>
+                <span class="tag thinking">💡 思维</span>
+                <span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">I get giddy when AI unlocks entirely NEW ways of working, not just faster versions of old ones. Ex: In 2024, for 3 straight months, I had a 10min voice conversation with AI in the mornings while I got ready. Ex: To build out my second brain beyond meeting transcripts and...</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">当 AI 解锁了全新的工作方式（而不只是更快地做旧事）时，我会兴奋得不行。举例：2024 年我连续 3 个月，每天早上边准备边和 AI 进行 10 分钟语音对话。再举例：把第二大脑从会议纪要扩展到……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把早晨通勤/洗漱的 10-15 分钟「视觉空闲时间」转化成 AI 语音对话窗口，用 ChatGPT Voice 或 Gemini Live 复盘昨日 TODO、规划今日优先级、头脑风暴下一篇选题；这是一种被严重低估的「碎片时间 AI 化」工作流。</div>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣5️⃣ MiniMax H3 开源视频模型：本地 5090 离线可跑</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/Hailuo_AI/status/2084123156818915727">@Hailuo_AI</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">An open-weight video model, built for the community and verified to run on GPUs including the RTX 5090 and RTX 6000. From the community, to the community. Intelligence (definitely) with Everyone.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">一个面向社区构建的开源权重视频模型，已验证可在 RTX 5090 和 RTX 6000 等 GPU 上运行。来自社区，回馈社区。智能（确实）属于每一个人。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">视频创作者可下载 MiniMax H3（huggingface），在 RTX 5090/6000 工作站离线生成 1280×720 短视频；适合对数据隐私敏感、不愿上传云端的商业项目，或需要批量生成 B-roll 的内容工厂。注意：MacBook 也能跑（社区已验证），但需要 Sol-Attn + SageAttention 等优化。</div>
+        </div>
+
+        <div class="footer">
+            <div>📅 报告生成时间：2026-08-05 UTC 10:02</div>
+            <div style="margin-top:8px;">🤖 由小瓜自动整理 · AI网红工具日报 · 每日精选 15 条</div>
+        </div>
+    </div>
+</body>
+</html>
