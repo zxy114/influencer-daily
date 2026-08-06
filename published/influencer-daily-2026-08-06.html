@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-08-06</title>
+    <style>
+
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --text-muted: #6b7280;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+            --link-color: #60a5fa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+        .header h1 { font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 10px; }
+        .header .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 8px; }
+        .header .meta { color: var(--text-muted); font-size: 0.9rem; }
+        .summary {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+        .summary h2 { color: var(--accent-blue); margin-bottom: 16px; font-size: 1.3rem; }
+        .summary ul { list-style: none; padding-left: 0; }
+        .summary li {
+            color: var(--text-secondary);
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+        .summary li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+        .card-title { font-size: 1.4rem; color: var(--text-primary); font-weight: 600; flex: 1; }
+        .rating {
+            background: linear-gradient(135deg, var(--rating-gold), #f59e0b);
+            color: #1a1a1a;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .meta-source { color: var(--link-color); }
+        .meta-source a { color: var(--link-color); text-decoration: none; }
+        .meta-source a:hover { text-decoration: underline; }
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .tag.tool { background: #1e3a8a; color: #bfdbfe; }
+        .tag.tutorial { background: #14532d; color: #bbf7d0; }
+        .tag.prompt { background: #6b21a8; color: #e9d5ff; }
+        .tag.workflow { background: #831843; color: #fbcfe8; }
+        .tag.thinking { background: #713f12; color: #fde68a; }
+        .section-title {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .quote {
+            background: #0d1117;
+            border-left: 3px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .translation {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--accent-green);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .how-to-apply {
+            background: rgba(249, 115, 22, 0.08);
+            border-left: 3px solid var(--accent-orange);
+            padding: 16px 20px;
+            margin: 12px 0;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .how-to-apply::before { content: "💡 "; }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .card-title { font-size: 1.15rem; }
+            .card { padding: 20px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI网红工具日报</h1>
+            <div class="subtitle">2026-08-06 · 第 4 期</div>
+            <div class="meta">每日精选 · 工具 · 教程 · Prompt · 工作流 · 思维</div>
+        </div>
+
+        <div class="summary">
+            <h2>📊 今日趋势小结</h2>
+            <ul>
+                <li><strong>Qwen 全家桶一周爆发</strong>：从 Qwen3.8-Max（2.4T 参数）到 Qwen-Image-3.0 Pro，再到 ClinePass 5 折订阅——通义团队一周内把模型/图像/订阅全打通，"开源 + 商业化"双线并举，是这一波最值得关注的 AI 厂商。</li><li><strong>「单条 Prompt Bar」成主流</strong>：Gemini Notebook 的统一输入框、Spark 的自然语言定时任务、Maestro 的可视化工作流——所有头部产品都在砍模式切换，"一条 Prompt 解决一类问题"成为新基准。</li><li><strong>开源权重已逼近闭源旗舰</strong>：levie 提到的 AI 在「日常/深领域」分化，叠加 Qwen3.8-Max 与 Opus 5 仅差 39 分——内容创作者可以直接从闭源切到开源，省 60-90% 成本，性能损失不到 5%。</li><li><strong>Prompt 模板正在「去 Prompt 化」</strong>：joshwoodward 分享的每周简报 Prompt 几乎没有「Prompt 工程」痕迹，更像是给 AI 同事布置工作——这是 AI 普及的最大信号：会说话就会用 AI。</li>
+            </ul>
+        </div>
+
+
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">1️⃣ Gemini Notebook：单条统一 Prompt Bar，思考不被打断</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/joshwoodward/status/2084746170576892342">@joshwoodward</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Notebook is built for thinking, not toggling. While others add more modes, Notebook keeps everything in a single, unified prompt bar and just does the things you want. Ultra and Pro subscribers can jump in now, rolling out to everyone next.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Notebook 为「思考」而生，而非为「切换」而生。当其他产品在叠加越来越多的模式时，Notebook 把所有事情保留在同一条统一的 Prompt Bar 里，直接去做你想做的事。Ultra 和 Pro 订阅用户可立即体验，下周对所有用户开放。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">把研究/写稿/调研统一收进 Gemini Notebook 的单条 Prompt Bar，不用在 Chat/Canvas/Research 等多个 Tab 来回跳；适合需要长时间跨资料思考的内容创作者，写一份深度长文能省下 30% 的心智切换成本。</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">2️⃣ Gemini Spark 每周 AI 简报：一句 Prompt 自动生成周报</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/joshwoodward/status/2084698846609682675">@joshwoodward</a></span>
+                <span class="tag prompt">💡 Prompt</span><span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Nice use case! I set up Gemini Spark to write my own weekly AI news digest for me, and I'm still stuck on how little effort I had to put in. This is the exact prompt I gave it, just once: &quot;Every Tuesday at 12:15 PM, create a new Doc in my Drive, find the 5 biggest AI stories from that week, ...&quot;</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">好用到哭。我让 Gemini Spark 帮我写每周 AI 资讯简报，我都不敢相信自己只花了这么点功夫。这就是我一次写好的那段 Prompt：「每周二中午 12:15，在我的云端硬盘里新建一份文档，找出本周 5 大 AI 资讯……」</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">复制 eyishazyer 的 Prompt 模板到自己的 Gemini Spark（每周定时 + 自动落档云端硬盘 + 5 条核心资讯），省去每周手动整理行业资讯的 1-2 小时；自媒体、行业研究员、产品经理都能直接套用，0 代码实现「AI 替你追热点」。</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">3️⃣ Qwen-Image-3.0 Pro 上线 fal：复杂排版 + 身份一致性的图像 API</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/fal/status/2084710537401643083">@Alibaba_Qwen</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Qwen Image 3.0 Pro is now available on fal - Renders complex, dense typography - Preserves key details like facial features and identity while applying changes - Handles object edits, style transfer, background changes perfectly</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Qwen Image 3.0 Pro 现已在 fal 上线 —— 能渲染复杂密集的文字排版；在做修改时保持人脸特征与身份一致；对象编辑、风格迁移、背景替换都做得非常稳。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">在 fal.ai 直接调用 Qwen Image 3.0 Pro 做产品图、电商主图、品牌视觉、海报排版（中文也能排），相比 Midjourney 优势是「文字 + 身份一致性」这两点特别强；内容创作者做小红书/公众号封面、或给客户做品牌延展图时特别适合。</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">4️⃣ petergyang /human-review Skill：AI 改稿时打开可视化编辑器</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/petergyang/status/2085055745410945126">@petergyang</a></span>
+                <span class="tag tutorial">📘 教程</span><span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">How to use my new /human-review skill to edit HTML and Markdown files directly: 1. Tell Codex or Claude Code: &quot;Install this: github.com/petergyang/hum…&quot; 2. Type &quot;/human-review (your doc name)&quot; 3. It'll open a visual editor where you can edit and format text directly, resize</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">怎么用我新出的 /human-review Skill 来直接编辑 HTML 和 Markdown 文件：1. 告诉 Codex 或 Claude Code「安装这个：github.com/petergyang/hum…」 2. 输入「/human-review（你的文档名）」 3. 它会打开一个可视化编辑器，让你直接改文本、调整格式</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">在 Codex/Claude Code 里安装 github.com/petergyang/human-review，写稿中途调「/human-review」即可弹出一个所见即所得的可视化编辑器（直接拖拽图片、改格式），不再被「告诉 AI 改第三段第二行」这种低效反馈卡住；适合长文、长报告、产品文档场景。</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">5️⃣ OpenAI GPT-Live 语音架构升级：边说边推理，工具调用不打断对话</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/OpenAI/status/2084378415818579972">@OpenAI</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag tutorial">📘 教程</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">GPT-Live can listen while it speaks. To make that feel natural at ChatGPT scale, we rebuilt the voice stack from client to model. This new architecture keeps audio flowing continuously, so deeper reasoning and tool use don't interrupt the conversation</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">GPT-Live 能在自己说话的同时继续听。为了在 ChatGPT 规模下做到这一点自然，我们从客户端到模型重做了整套语音架构。这套新架构让音频持续流动，更深的推理与工具调用都不会打断对话。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">升级到 ChatGPT 移动端的 GPT-Live 模式后，体验「边想边说 + 同时调用日历/邮件/搜索」的真实连续对话；适合需要边查资料边整理思路的研究者/记者/律师，可以一边开会一边让 AI 帮你补充上下文，工具调用不再有「卡顿点」。</div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">6️⃣ Qwen3.8-Max 发布：2.4T 参数 + 10 天自主编程，开源权重下周到</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/Alibaba_Qwen/status/2084100707423289643">@Alibaba_Qwen</a></span>
+                <span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Meet Qwen3.8-Max - our most capable model to date. Next week, the open weights of Qwen3.8-Max will be released, and Qwen3.8-27B is also going open-weights to meet you all! Qwen3.8-Max, a new bar for coding and cowork at 2.4T parameters: - Autonomous coding: 10+ days of</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Qwen3.8-Max 亮相——我们迄今最强的模型。下周 Qwen3.8-Max 开源权重，Qwen3.8-27B 也将开源！Qwen3.8-Max 以 2.4T 参数在编码与协作上立下新标杆：自主编程可连续 10 天以上……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">现在先用 Qwen3.8-Max 的 API（已在阿里云 ModelStudio / ClinePass 上线）跑 Coding 与多步骤 Agent 任务；下周开源权重发布后，本地部署 27B 跑日常任务，零成本持平 4o 级体验；产品经理 / 独立开发者可提前把 Qwen 加入「模型分级」清单。</div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">7️⃣ Kimi Slides 教程：3 分钟全自动生成可编辑 PPT（K3 驱动）</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/Kimi_Moonshot/status/2084245860339298423">@Kimi_Moonshot</a></span>
+                <span class="tag tutorial">📘 教程</span><span class="tag tool">🛠️ 工具</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Build Slides with Kimi Work - Tutorial #1. Kimi Slides handles the entire slide-building process: - Clear structure and research, powered by Kimi K3 - Cohesive design, including polished charts and SmartArts - Editable and ready to download</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">用 Kimi Work 做幻灯片 — 教程 #1。Kimi Slides 全流程一站搞定：基于 Kimi K3 提供清晰结构与调研；统一设计风格（含精致图表与 SmartArt）；可编辑、可直接下载。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">产品经理 / 咨询 / 营销可把 Kimi Slides 当作「草稿 PPT 引擎」：先让它跑出 80 分结构与配图，再在 PowerPoint/Keynote 微调，比从空白页快 5-10 倍；尤其适合 30 分钟内给老板交一版「能看的」方案。</div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">8️⃣ Google AI 双周速览：Gemini Robotics 2 + 3.5 Flash-Lite + 3.6 Flash 一站全</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/GoogleAI/status/2083221445375668654">@GoogleAI</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag tutorial">📘 教程</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">It's been a busy couple of weeks! ICYMI, here's the recap - Gemini Robotics 2 from Google DeepMind brings whole-body intelligence to robots - Gemini 3.5 Flash-Lite is our fastest, most cost-effective model optimized for high-speed agentic workflows - Gemini 3.6 Flash</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">最近两周非常忙！一图速览回放：来自 Google DeepMind 的 Gemini Robotics 2 为机器人带来全身智能；Gemini 3.5 Flash-Lite 是我们针对高速 Agent 工作流优化的最快、最具性价比的模型；Gemini 3.6 Flash……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">在 Google AI Studio 直接调 Gemini 3.5 Flash-Lite 跑高频、低延迟的 Agent 任务（自动回复、批量摘要），3.6 Flash 适合多模态创意工作流；先把它们加入你的「模型分级」清单，后续分配预算时按速度/成本/能力择优。</div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">9️⃣ realmadhuguru：AI 普及卡在「要求用户懂实验室黑话」</div>
+                <div class="rating">⭐ 7/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/realmadhuguru/status/2085036386781221257">@realmadhuguru</a></span>
+                <span class="tag thinking">💡 思维</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Been thinking about why AI diffusion has been slow. It's because we are asking users to understand our nerdy lab speak. We greet them with a blank window and ask them to write a prompt. Then they have to pick a model, decide whether they need an agent, and somehow know what</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我一直在想为什么 AI 普及这么慢。问题出在我们要求用户听懂实验室黑话。我们只给用户一个空白窗口，让他们自己写 Prompt。然后还得自己选模型、决定要不要 Agent、再搞清楚什么场景该用啥……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">做面向非技术受众的 AI 产品/内容时，少讲「Temperature」「上下文窗口」「Agent」这些术语，多讲「让 AI 帮你做这件事」的具体动作；这条洞察本身就是一个创作角度：写一篇《为什么 80% 的普通人还没用上 AI》的爆款文。</div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">🔟 levie：AI 在日常与「深领域」的表现会持续分化</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/levie/status/2083589132660711452">@levie</a></span>
+                <span class="tag thinking">💡 思维</span><span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">We're going to see an increasing divergence between what AI does in our personal lives and in daily productivity vs. what it can do in very deep domains like math, science, legal, coding and more. Up to some threshold, capability was evenly felt across all domains because the</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">我们正在看到 AI 在日常生活/工作 vs. 数学、科学、法律、编程等「深领域」的表现持续分化。在某个阈值之前，能力是均匀分布的，但越过一个临界点后会……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">用「日常 AI」与「专家 AI」的二分法重整自己的工具栈：日常写作/总结/翻译用 Flash-Lite / Haiku 这类快便宜模型；深度研究/合同审查/严肃写作用 Pro / Opus 这类强推理模型；不要一个模型打天下，混搭效率翻倍。</div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">11️⃣ Qwen3.8-Max 上 ClinePass：5 折订阅，$4.99 试用 CLI</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/cline/status/2084689818999718309">@Alibaba_Qwen</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag tutorial">📘 教程</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Qwen3.8-Max is now available in ClinePass, a subscription for ~5x discounted access. Use it on Cline CLI w/ $4.99 special promo: npm i -g cline This is currently the most affordable way to access Qwen.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Qwen3.8-Max 现已上线 ClinePass —— 约 5 折订阅优惠。配合 Cline CLI + $4.99 试用 Promo：npm i -g cline。这是目前最便宜的 Qwen 接入方式。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">内容创作者 / 独立开发者装一个 Cline（npm i -g cline），用 $4.99 的 Promo 试用 ClinePass，再把 Qwen3.8-Max 接进自己的 Codex/Claude Code 工作流；这是当下最便宜的「顶配开源模型 + Agent Harness」组合，5 折订阅省下 60% 成本。</div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">12️⃣ MiniMax H3 × Maestro 1.5.5：社区 48 小时做出官方没规划的周边工具</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/Hailuo_AI/status/2084745241589080491">@Hailuo_AI</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag workflow">🔧 工作流</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Maestro v1.5.5 with MiniMax H3 is out! The community got H3 running on hardware we never tested - from a gaming GPU to MacBooks running fully offline - and built tooling we didn't plan for within 48 hours. We're genuinely glad we opened it up.</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">Maestro 1.5.5 配合 MiniMax H3 上线了！社区在我们从未测试过的硬件上把 H3 跑了起来——从游戏级 GPU 到完全离线的 MacBook——48 小时内就做出了我们没规划的周边工具。我们真的很高兴把它开源了出来。</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">下载 Maestro 1.5.5（huggingface 上的 MiniMax H3 官方推荐 UI），在 5090 / 6000 工作站或 M2/M3 MacBook 上本地跑 H3 视频生成；社区工具链（ComfyUI、Maestro）已 48 小时就绪，适合做对数据隐私敏感的 B-roll / 短视频批量生产。</div>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">13️⃣ realmadhuguru 原型 → 生产 playbook：用最强模型验证，6-8 周后切开源</div>
+                <div class="rating">⭐ 6/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/realmadhuguru/status/2084809416105472070">@realmadhuguru</a></span>
+                <span class="tag workflow">🔧 工作流</span><span class="tag thinking">💡 思维</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Ok builders, here's your playbook. Prototype your product with the best frontier model. Cost be damned. Validate the user experience. Then, 6-8 weeks later when open-weight models catch up - move your production workloads there, and to smaller models where possible. In that</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">好了 builder 们，这是你们的剧本。先用最强的前沿模型做原型——别在乎成本——验证完用户体验；6-8 周后等开源权重追上来了，把生产流量切到那里，能用小模型的就用小模型。在这个节奏里……</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">做 AI 产品时按「前沿模型验证体验 → 等开源追上后切流量」的两段式规划：MVP 阶段用 GPT-5.6/Opus 5 不心疼成本，2 个月后切到 Qwen3.8-Max / DeepSeek-V4 把单位成本压到 1/10；这条 playbook 适合所有 AI 创业团队直接套用。</div>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">14️⃣ Qwen3.8-Max 拿下 Image-to-WebDev Arena #2：开源模型首次逼近 Claude Opus 5</div>
+                <div class="rating">⭐ 5/10</div>
+            </div>
+            <div class="meta-row">
+                <span class="meta-source">📡 <a href="https://x.com/arena/status/2084798782231994733">@Alibaba_Qwen</a></span>
+                <span class="tag tool">🛠️ 工具</span><span class="tag thinking">💡 思维</span>
+            </div>
+            <div class="section-title">📝 推文原文</div>
+            <div class="quote">Exciting news: Qwen3.8-Max is #2 in Image-to-WebDev Arena! With 1,631 pts, it's trailing only Claude Opus 5 (Max) by 39 pts! Congrats again on this huge release!</div>
+            <div class="section-title">🌐 中文翻译</div>
+            <div class="translation">好消息：Qwen3.8-Max 拿下 Image-to-WebDev Arena #2！1631 分，仅落后 Claude Opus 5（Max）39 分！再次恭喜 Qwen 这一波重磅发布！</div>
+            <div class="section-title">🎯 如何应用</div>
+            <div class="how-to-apply">做 Web 开发 / 前端产品的可以拿 Qwen3.8-Max 试 Image-to-WebDev：丢一张设计稿，AI 直接出 HTML+CSS+JS，比 Figma-to-Code 工具更接近生产可用；这是开源模型首次逼近 Opus 5 这种闭源旗舰，是「前端 AI 化」的明显转折点。</div>
+        </div>
+
+        <div class="footer">
+            <div>📅 报告生成时间：2026-08-06 UTC 10:02</div>
+            <div style="margin-top:8px;">🤖 由小瓜自动整理 · AI网红工具日报 · 每日精选 14 条</div>
+        </div>
+    </div>
+</body>
+</html>
