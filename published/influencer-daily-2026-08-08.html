@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-08</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-card: #131826;
+    --bg-card-hover: #1a2032;
+    --border: #232a3d;
+    --border-hover: #4f7cff;
+    --text: #e6e9f2;
+    --text-dim: #8a93a8;
+    --text-bright: #ffffff;
+    --accent: #4f7cff;
+    --accent-2: #ff7849;
+    --gold: #ffc857;
+    --tag-tool: #4f7cff;
+    --tag-tutorial: #00d4a8;
+    --tag-prompt: #ff7849;
+    --tag-workflow: #c084fc;
+    --tag-mindset: #ffc857;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, rgba(79, 124, 255, 0.12), rgba(255, 120, 73, 0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(79,124,255,0.18), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,120,73,0.12), transparent 50%);
+    pointer-events: none;
+  }
+  header > * { position: relative; z-index: 1; }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle { color: var(--text-dim); font-size: 1.05rem; }
+  .meta {
+    display: inline-flex; gap: 16px; margin-top: 20px;
+    font-size: 0.9rem; color: var(--text-dim);
+    background: rgba(0,0,0,0.3); padding: 8px 16px;
+    border-radius: 999px; border: 1px solid var(--border);
+  }
+  .meta span::before { content: "•"; margin-right: 8px; color: var(--accent); }
+  .meta span:first-child::before { display: none; }
+
+  .toc {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin-bottom: 40px;
+  }
+  .toc a {
+    display: block; padding: 14px 18px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text);
+    text-decoration: none; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--text-bright);
+    margin: 48px 0 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title .emoji { font-size: 1.8rem; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(79, 124, 255, 0.15);
+  }
+  .card h3 {
+    font-size: 1.25rem;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 0.78rem; padding: 4px 10px;
+    border-radius: 6px; font-weight: 600;
+    background: rgba(79, 124, 255, 0.15);
+    color: var(--tag-tool);
+    border: 1px solid rgba(79, 124, 255, 0.3);
+  }
+  .tag.tutorial { background: rgba(0, 212, 168, 0.15); color: var(--tag-tutorial); border-color: rgba(0, 212, 168, 0.3); }
+  .tag.prompt   { background: rgba(255, 120, 73, 0.15); color: var(--tag-prompt); border-color: rgba(255, 120, 73, 0.3); }
+  .tag.workflow { background: rgba(192, 132, 252, 0.15); color: var(--tag-workflow); border-color: rgba(192, 132, 252, 0.3); }
+  .tag.mindset  { background: rgba(255, 200, 87, 0.15); color: var(--tag-mindset); border-color: rgba(255, 200, 87, 0.3); }
+  .tag.tool     { background: rgba(79, 124, 255, 0.15); color: var(--tag-tool); border-color: rgba(79, 124, 255, 0.3); }
+
+  .quote {
+    background: rgba(0, 0, 0, 0.25);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+  .source {
+    font-size: 0.88rem; color: var(--text-dim);
+    margin: 10px 0;
+  }
+  .source a {
+    color: var(--accent); text-decoration: none;
+    font-weight: 500;
+  }
+  .source a:hover { text-decoration: underline; }
+  .rating { color: var(--gold); font-size: 0.95rem; letter-spacing: 2px; }
+  .apply {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: rgba(79, 124, 255, 0.08);
+    border: 1px dashed rgba(79, 124, 255, 0.35);
+    border-radius: 10px;
+    font-size: 0.93rem;
+    color: var(--text);
+  }
+  .apply strong { color: var(--accent-2); font-weight: 700; margin-right: 4px; }
+
+  .summary-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 16px; font-size: 0.95rem;
+  }
+  .summary-table th, .summary-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .summary-table th {
+    background: rgba(79, 124, 255, 0.08);
+    color: var(--text-bright);
+    font-weight: 700;
+  }
+  .summary-table td:first-child {
+    color: var(--accent); font-weight: 600;
+    width: 100px;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+  footer .heart { color: var(--accent-2); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔥 AI 网红工具日报</h1>
+  <div class="subtitle">今天 13 条来自 AI 一线网红能立刻上手用的工具 / 教程 / Prompt / 工作流</div>
+  <div class="meta">
+    <span>2026-08-08</span>
+    <span>35 位 AI 网红</span>
+    <span>5 组缓存</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#section-tools">🛠️ 工具推荐</a>
+  <a href="#section-tutorial">📚 教程 / Prompt</a>
+  <a href="#section-workflow">⚙️ 工作流优化</a>
+  <a href="#section-mindset">🧠 思维方法论</a>
+  <a href="#section-summary">📌 速读</a>
+</nav>
+
+<h2 class="section-title" id="section-tools"><span class="emoji">🛠️</span>工具推荐</h2>
+
+<div class="card">
+  <h3>1. /human-review — 给 AI 编辑反馈的 Alfred 替代品</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag prompt">#Prompt</span>
+  </div>
+  <div class="quote">"/human-review" 现在已经有 500+ GitHub stars 了。我昨天用了一整天来编辑 HTML 并做了几个改进。现在你可以：输入「-」或「1.」创建项目符号和编号列表 / 选中文本按 ⌘K 加链接 / 拖放图片 / 审阅并……</div>
+  <div class="source">来源：<a href="https://x.com/petergyang/status/2085776743642898847" target="_blank">@petergyang</a></div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>直接装 Claude Code skill（petergyang/human-review GitHub）。给 AI 修改反馈再也不用在聊天框里写"改第 3 段"——像人一样用快捷键操作。</div>
+</div>
+
+<div class="card">
+  <h3>2. /no-ai-slop — 给 AI 输出"祛魅"的爆款 skill</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag prompt">#Prompt</span>
+  </div>
+  <div class="quote">我的上一款开源 skill "/no-ai-slop" 显然戳中了痛点（4K stars）。今天我再推一款免费的 AI skill "/human-review"……</div>
+  <div class="source">来源：<a href="https://x.com/petergyang/status/2085006701984698712" target="_blank">@petergyang</a></div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>跟 /human-review 配套用——前者去掉 AI 套话、emoji 堆砌、"让我想想"这类口水，后者像编辑真人文章一样精细修改。</div>
+</div>
+
+<div class="card">
+  <h3>3. MiniMax H3 Turbo LoRA — 视频生成快 5 倍</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag workflow">#视频生成</span>
+  </div>
+  <div class="quote">重磅发布！MiniMax H3 Turbo lora 让生成速度快 5 倍。只需要 4 步而不是 20 步。</div>
+  <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2085614043512127542" target="_blank">@MiniMax_AI</a></div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>LoRA 在 HuggingFace 开源（larryvrh/MiniMax-H3-Turbo-Lora），插进你自己的 ComfyUI 工作流。原来 1 分钟的镜头现在 12 秒出，迭代效率直接翻倍。</div>
+</div>
+
+<div class="card">
+  <h3>4. MiniMax H3 进 ComfyUI — 完整使用流程</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag tutorial">#教程</span>
+  </div>
+  <div class="quote">MiniMax H3：一个全新的开源视频模型，现已在 ComfyUI 中上线。H3 是一个开源、多用途的多模态视频生成模型，支持文本、图像、视频和音频……</div>
+  <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2085556856311984150" target="_blank">@MiniMax_AI</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>跟着 ComfyUI 工作流跑 T2V/I2V/V2V/A2V 四种模式。H3 在 RTX 5090/6000 上能跑（开源 weights）。</div>
+</div>
+
+<div class="card">
+  <h3>5. Gemini Omni 免费视频额度延长到 8 月 11 日</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag prompt">#福利</span>
+  </div>
+  <div class="quote">再给你一点时间创作更多视频：现在你有直到 2026 年 8 月 11 日 23:59 PT 来免费创建 10 条 Gemini Omni 视频（app 或 web）。</div>
+  <div class="source">来源：<a href="https://x.com/joshwoodward/status/2085708977296335125" target="_blank">@joshwoodward</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>11 号前赶紧薅羊毛，每账号 10 条免费 Omni 视频——拿来做短视频测试 prompt 比 Veo 便宜太多。</div>
+</div>
+
+<div class="card">
+  <h3>6. Qwen Image 3.0 Pro 上线 fal — 复杂排版渲染神器</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag workflow">#图像</span>
+  </div>
+  <div class="quote">Qwen Image 3.0 Pro 现已在 fal 上线——可渲染复杂密集的排版 / 保留面部特征和身份等关键细节 / 完美处理对象编辑、风格迁移、背景替换。</div>
+  <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2084856462434807977" target="_blank">@Alibaba_Qwen</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>上 fal.ai 选 Qwen Image 3.0 Pro，跑电商图、海报、产品图——尤其是文字密集型设计（菜单、价格牌、说明书图）终于不会糊了。</div>
+</div>
+
+<h2 class="section-title" id="section-tutorial"><span class="emoji">📚</span>教程 / Prompt 模板</h2>
+
+<div class="card">
+  <h3>7. Kimi Slides 全流程教程 #1 — 一句话生成整套 PPT</h3>
+  <div class="tags">
+    <span class="tag tutorial">#教程</span>
+    <span class="tag tool">#PPT</span>
+  </div>
+  <div class="quote">用 Kimi Work 制作幻灯片——Kimi Slides 处理整个幻灯片制作过程：由 Kimi K3 驱动的清晰结构与调研 / 包括精美图表与 SmartArt 的连贯设计 / 可编辑并可下载……</div>
+  <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2084245860339298423" target="_blank">@Kimi_Moonshot</a></div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>输入一个主题（"Q3 跨境电商复盘"），Kimi Slides 自动帮你搜资料、排版、生成图表、给可编辑 .pptx——汇报前 5 分钟出全套。</div>
+</div>
+
+<div class="card">
+  <h3>8. Gemini Spark 每周 AI 简报 Prompt 模板</h3>
+  <div class="tags">
+    <span class="tag prompt">#Prompt</span>
+    <span class="tag workflow">#自动化</span>
+  </div>
+  <div class="quote">我让 Gemini Spark 帮我写自己的每周 AI 新闻简报。仍然震惊于我付出的努力那么少。这就是我给它的 Prompt，只给一次："每周二下午 12:15，在我的 Drive 里新建一个 Doc，找出当周 5 个最大的 AI 故事……"</div>
+  <div class="source">来源：<a href="https://x.com/eyishazyer/status/" target="_blank">@eyishazyer</a> 经 <a href="https://x.com/joshwoodward/status/2084698846609682675" target="_blank">@joshwoodward</a> 转发</div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>抄这个 prompt 模板到你的 Gemini Spark（或其他定时 agent）："每周二 12:15，在 Drive 新建 Doc，找出当周 5 个最大 AI 故事……"——零维护的自运转简报流。</div>
+</div>
+
+<div class="card">
+  <h3>9. NotebookLM — 单一 prompt bar 统一体验</h3>
+  <div class="tags">
+    <span class="tag tool">#工具</span>
+    <span class="tag tutorial">#笔记</span>
+  </div>
+  <div class="quote">Notebook 是为思考而生的，不是为切换模式。当其他产品加更多模式时，Notebook 把一切留在一个统一的 prompt bar 里，就做你想做的事。Ultra 和 Pro 订阅者现在可用，下周推送给所有人……</div>
+  <div class="source">来源：<a href="https://x.com/joshwoodward/status/2084746170576892342" target="_blank">@joshwoodward</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>把研究材料（PDF/网页/笔记）全扔进 Notebook，单一输入框提问或生成——不用在 Deep Research/Audio/Slides 几个 tab 里来回切。</div>
+</div>
+
+<h2 class="section-title" id="section-workflow"><span class="emoji">⚙️</span>工作流优化</h2>
+
+<div class="card">
+  <h3>10. Claude Code 会话互相通信 — 多 agent 协作</h3>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+    <span class="tag tool">#多 agent</span>
+  </div>
+  <div class="quote">Claude Code 新功能：你的会话现在可以互相通信（合谋搞事情）。你不再需要在另一个会话里重新解释自己，可以让 Claude 去做。它会发送一个摘要（不是你的历史或文件），另一个会话中途接手……</div>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2085881253786722587" target="_blank">@realmadhuguru</a> · <a href="https://x.com/ClaudeDevs" target="_blank">@ClaudeDevs</a></div>
+  <div class="rating">⭐⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>写一个"研究 agent"让它搜索，把摘要扔给"写作 agent"起草，再扔给"审稿 agent"修改——session 间用 /message 自动接力，不用手动复制粘贴上下文。</div>
+</div>
+
+<div class="card">
+  <h3>11. Claude Code auto mode 默认开启 — 89% 危险命令被拦</h3>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+    <span class="tag tool">#安全</span>
+  </div>
+  <div class="quote">自动模式比任何其他权限系统都更安全，尤其是比自己审查更安全。激动地宣布，我们将默认推送给所有人，且分类器零额外开销……auto mode 用单独分类器审阅 shell 命令和操作。测试中拦住了 89% 的危险命令。手动审批只拦了 14%。</div>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2085804481984475437" target="_blank">@trq212</a> · <a href="https://x.com/ClaudeDevs" target="_blank">@ClaudeDevs</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>8 月 14 日起 Claude Code Pro/Max/Team 用户默认进入 auto mode——可以放心让它跑长时间任务，不用每条命令都确认。</div>
+</div>
+
+<div class="card">
+  <h3>12. Claude Connectors 在 Code + Artifacts 中通用</h3>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+    <span class="tag tool">#集成</span>
+  </div>
+  <div class="quote">我觉得很多人没意识到——如果你连了 Claude Connector（比如你的 gmail、日历、slack 等），Claude Code 也能用它们，包括在 Artifacts 里。</div>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2084387303959740449" target="_blank">@trq212</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>在 Claude 设置里把 Gmail/Google Calendar/Slack 接上 connector，Artifacts 里生成的网页就能直接调用这些数据——比如自动生成"今天日历 + 本周邮件摘要"的 HTML 报告。</div>
+</div>
+
+<div class="card">
+  <h3>13. 让 Codex 替你装 darkreader — agent 自动化小例子</h3>
+  <div class="tags">
+    <span class="tag workflow">#工作流</span>
+    <span class="tag tool">#自动化</span>
+  </div>
+  <div class="quote">接受了多年 GMail 在闪瞎我之后，我终于让我的 agent 帮我装了 darkreader.org。</div>
+  <div class="source">来源：<a href="https://x.com/steipete/status/2083759812970786997" target="_blank">@steipete</a></div>
+  <div class="rating">⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>把那些"懒得动手但早该做"的小事（装插件、调设置、改配置）列给 Codex/Claude Code agent——别再让"懒"挡道。</div>
+</div>
+
+<h2 class="section-title" id="section-mindset"><span class="emoji">🧠</span>思维 / 方法论</h2>
+
+<div class="card">
+  <h3>14. 想法先说再写——录音 vs 文档</h3>
+  <div class="tags">
+    <span class="tag mindset">#思维</span>
+    <span class="tag workflow">#沟通</span>
+  </div>
+  <div class="quote">我注意到，人们在口头说出新想法时比写文档时更清晰。在他们嘴和文档之间，核心想法会被埋掉，因为他们试图加上下文、润色、让它听起来更聪明。所以我让我团队这么做：录下来……</div>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2085390240899043406" target="_blank">@realmadhuguru</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>想到新点子时先录 60 秒语音（手机自带录音或 Otter），让 Whisper 转写，再用 AI 润色——比直接写文档保留更多原始洞察。</div>
+</div>
+
+<div class="card">
+  <h3>15. 与 agent 协作 = 管人</h3>
+  <div class="tags">
+    <span class="tag mindset">#思维</span>
+    <span class="tag workflow">#Agent</span>
+  </div>
+  <div class="quote">如果你想理解真实世界中 agent 采用的动态，这篇帖子是个很好的起点。大家都太沉迷于跟聊天机器人聊天了，以至于还没有充分认识到：跟 agent 协作更像是在流程中管理一个人，而不是……</div>
+  <div class="source">来源：<a href="https://x.com/levie/status/2085587079405425146" target="_blank">@levie</a></div>
+  <div class="rating">⭐⭐⭐⭐</div>
+  <div class="apply"><strong>如何应用：</strong>别把 agent 当"更聪明的聊天框"——给它清晰目标、定义流程、检查产出（而不是检查过程）。心态从"提问者"切到"管理者"。</div>
+</div>
+
+<h2 class="section-title" id="section-summary"><span class="emoji">📌</span>今日速读</h2>
+
+<div class="card">
+<table class="summary-table">
+  <thead>
+    <tr><th>类别</th><th>数量</th><th>代表条目</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>工具推荐</td><td>6</td><td>/human-review、H3 Turbo LoRA、Qwen Image 3.0 Pro</td></tr>
+    <tr><td>教程 / Prompt</td><td>3</td><td>Kimi Slides、Gemini Spark 周报 prompt、NotebookLM</td></tr>
+    <tr><td>工作流优化</td><td>4</td><td>Claude Code 多会话、auto mode、Connectors、Codex 自动化</td></tr>
+    <tr><td>思维 / 方法论</td><td>2</td><td>录音先于文档、与 agent 协作 = 管人</td></tr>
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <div>Generated by <span class="heart">小瓜</span> 🤖</div>
+  <div style="margin-top: 8px;">数据源：g1-g5 缓存（2026-08-08 02:00–09:04 UTC）· 覆盖 35 位 AI 网红</div>
+  <div style="margin-top: 8px; font-size: 0.8rem;">📢 每日 18:00（北京时间）自动发布</div>
+</footer>
+
+</div>
+</body>
+</html>
