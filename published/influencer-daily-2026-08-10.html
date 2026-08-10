@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-10</title>
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-card: #131826;
+    --bg-card-hover: #1a2032;
+    --border: #232a3d;
+    --border-hover: #4f7cff;
+    --text: #e6e9f2;
+    --text-dim: #8a93a8;
+    --text-bright: #ffffff;
+    --accent: #4f7cff;
+    --accent-2: #ff7849;
+    --gold: #ffc857;
+    --tag-tool: #4f7cff;
+    --tag-tutorial: #00d4a8;
+    --tag-prompt: #ff7849;
+    --tag-workflow: #c084fc;
+    --tag-mindset: #ffc857;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, rgba(79, 124, 255, 0.12), rgba(255, 120, 73, 0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(79,124,255,0.18), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,120,73,0.12), transparent 50%);
+    pointer-events: none;
+  }
+  header > * { position: relative; z-index: 1; }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle { color: var(--text-dim); font-size: 1.05rem; }
+  .meta {
+    display: inline-flex; gap: 16px; margin-top: 20px;
+    font-size: 0.9rem; color: var(--text-dim);
+    background: rgba(0,0,0,0.3); padding: 8px 16px;
+    border-radius: 999px; border: 1px solid var(--border);
+  }
+  .meta span::before { content: "•"; margin-right: 8px; color: var(--accent); }
+  .meta span:first-child::before { display: none; }
+
+  .toc {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin-bottom: 40px;
+  }
+  .toc a {
+    display: block; padding: 14px 18px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; color: var(--text);
+    text-decoration: none; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--text-bright);
+    margin: 48px 0 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title .emoji { font-size: 1.8rem; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+  }
+  .card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(79, 124, 255, 0.15);
+  }
+  .card h3 {
+    font-size: 1.25rem;
+    color: var(--text-bright);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 0.78rem; padding: 4px 10px;
+    border-radius: 6px; font-weight: 600;
+    background: rgba(79, 124, 255, 0.15);
+    color: var(--tag-tool);
+    border: 1px solid rgba(79, 124, 255, 0.3);
+  }
+  .tag.tutorial { background: rgba(0, 212, 168, 0.15); color: var(--tag-tutorial); border-color: rgba(0, 212, 168, 0.3); }
+  .tag.prompt   { background: rgba(255, 120, 73, 0.15); color: var(--tag-prompt); border-color: rgba(255, 120, 73, 0.3); }
+  .tag.workflow { background: rgba(192, 132, 252, 0.15); color: var(--tag-workflow); border-color: rgba(192, 132, 252, 0.3); }
+  .tag.mindset  { background: rgba(255, 200, 87, 0.15); color: var(--tag-mindset); border-color: rgba(255, 200, 87, 0.3); }
+  .tag.tool     { background: rgba(79, 124, 255, 0.15); color: var(--tag-tool); border-color: rgba(79, 124, 255, 0.3); }
+  .tag.bonus    { background: rgba(255, 120, 73, 0.15); color: var(--accent-2); border-color: rgba(255, 120, 73, 0.3); }
+
+  .quote {
+    background: rgba(0, 0, 0, 0.25);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+  .source {
+    font-size: 0.88rem; color: var(--text-dim);
+    margin: 10px 0;
+  }
+  .source a {
+    color: var(--accent); text-decoration: none;
+    font-weight: 500;
+  }
+  .source a:hover { text-decoration: underline; }
+  .rating { color: var(--gold); font-size: 0.95rem; letter-spacing: 2px; }
+  .apply {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: rgba(79, 124, 255, 0.08);
+    border: 1px dashed rgba(79, 124, 255, 0.35);
+    border-radius: 10px;
+    font-size: 0.93rem;
+    color: var(--text);
+  }
+  .apply strong { color: var(--accent-2); font-weight: 700; margin-right: 4px; }
+
+  .summary-table {
+    width: 100%; border-collapse: collapse;
+    margin-top: 16px; font-size: 0.95rem;
+  }
+  .summary-table th, .summary-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  .summary-table th {
+    background: rgba(79, 124, 255, 0.08);
+    color: var(--text-bright);
+    font-weight: 700;
+  }
+  .summary-table td:first-child {
+    color: var(--accent); font-weight: 600;
+    width: 100px;
+  }
+
+  .trend-card {
+    background: linear-gradient(135deg, rgba(79,124,255,0.06), rgba(255,120,73,0.06));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+  .trend-card h4 {
+    color: var(--text-bright);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .trend-card p {
+    color: var(--text);
+    font-size: 0.93rem;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+  footer p { margin: 6px 0; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📢 AI 网红工具日报</h1>
+  <p class="subtitle">每天精选 AI 网红圈最实用的工具、Prompt、教程与工作流技巧。创作者看完即可上手。</p>
+  <div class="meta">
+    <span>2026-08-10</span>
+    <span>共 15 条</span>
+    <span>工具 / 教程 / Prompt / 工作流</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#section-1">🛠️ 工具 & 功能上新</a>
+  <a href="#section-2">🎓 教程 & 工作流</a>
+  <a href="#section-3">📝 Prompt 模板</a>
+  <a href="#section-4">🎁 限时福利</a>
+  <a href="#section-5">🎯 今日趋势</a>
+</nav>
+
+<h2 id="section-1" class="section-title"><span class="emoji">🛠️</span>一、工具 & 功能上新</h2>
+
+<div class="card">
+  <h3>1. Anthropic Claude Code：Session 间可互相发送消息</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="quote">"New in Claude Code: your sessions can now message each other. Instead of having to re-explain yourself in another session, you can now tell Claude to do it. It sends a summary (not your history or files), and the other session picks it up mid-task."</div>
+  <p class="source">来源：<a href="https://x.com/ClaudeDevs" target="_blank">@ClaudeDevs</a> · <a href="https://x.com/ClaudeDevs/status/2085878722000040006" target="_blank">推文链接</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>多 Claude 会话并行协作时<strong>不再需要手动复制粘贴上下文</strong>。让 A 会话调研、B 会话写代码，A 完成时把摘要"投递"给 B，B 直接接着干。<strong>适合长流程项目拆段</strong>：先让一个会话出方案，另一个会话基于方案立刻执行。</div>
+</div>
+
+<div class="card">
+  <h3>2. Kimi Slides：AI 一键生成可编辑 PPT（教程 #1）</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+    <span class="tag tutorial">🎓 教程</span>
+  </div>
+  <div class="quote">"Build Slides with Kimi Work - Tutorial #1. Kimi Slides handles the entire slide-building process: - Clear structure and research, powered by Kimi K3 - Cohesive design, including polished charts and SmartArts - Editable and ready to download"</div>
+  <p class="source">来源：<a href="https://x.com/Kimi_Moonshot" target="_blank">@Kimi_Moonshot</a> · <a href="https://x.com/Kimi_Moonshot/status/2084245860339298423" target="_blank">推文链接</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>上传主题 + 大纲，<strong>Kimi K3 自动出调研、结构、图表、SmartArt</strong>，成品 PPT 可编辑下载。<strong>省掉"画框-排版-对图表"3 小时的死劳动</strong>。做工作汇报、产品介绍、内容选题 PPT 都能用。</div>
+</div>
+
+<div class="card">
+  <h3>3. Qwen-MM-Plugins：让 Agent Harness 真正"多模态"</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="quote">"👀 Seeing is just the beginning. With Qwen-MM-Plugins, turn your favorite agent harness multimodal-native — read images, videos &amp; documents, edit videos, work with 3D/CAD, and more. From multimodal models → multimodal agents."</div>
+  <p class="source">来源：<a href="https://x.com/Alibaba_Qwen" target="_blank">@Alibaba_Qwen</a> · <a href="https://github.com/QwenLM/Qwen-MM-Plugins" target="_blank">GitHub</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>开源插件包，<strong>把任意 agent harness 升级为多模态原生</strong>：读图、读视频、读文档，编辑视频、处理 3D/CAD。<strong>给自己的 Claude Code / Cursor / 自建 agent 接上视觉/视频能力</strong>，从纯文本 agent 一步跨到多模态 agent。</div>
+</div>
+
+<div class="card">
+  <h3>4. Gemini Notebook：统一 Prompt 栏，去掉"模式切换"</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="quote">"Notebook is built for thinking, not toggling. While others add more modes, Notebook keeps everything in a single, unified prompt bar and just does the things you want."</div>
+  <p class="source">来源：<a href="https://x.com/joshwoodward" target="_blank">@joshwoodward</a> · <a href="https://x.com/joshwoodward/status/2084746170576892342" target="_blank">推文链接</a> · Gemini 团队产品负责人</p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>跟 ChatGPT 那种"模型/插件/工具"按钮堆叠不同，<strong>Notebook 只保留一个 Prompt 栏</strong>，AI 自己判断该用什么。Ultra/Pro 订阅者已经能用，下周开放给所有用户。<strong>做研究、写长文时减少决策疲劳</strong>。</div>
+</div>
+
+<div class="card">
+  <h3>5. Anthropic Claude Ultracode：动态工作流革新</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="quote">"I still think Anthropic ultracode is one of the most important coding mode innovations ever invented. If you havent understood the potential of dynamic workflows you should try to. Just met a Kill My SaaS competitor who did a pretty good submission in 3 ultracode prompts."</div>
+  <p class="source">来源：<a href="https://x.com/swyx" target="_blank">@swyx</a> · <a href="https://x.com/swyx/status/2086324411385426346" target="_blank">推文链接</a> · AI Engineer Summit 创始人</p>
+  <p class="rating">实用性：⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>Ultracode 模式让 Claude 不再是"单回合 prompt → 输出"，而是<strong>根据上下文动态重组工作流</strong>。已有参赛者 3 个 prompt 交出像样的 SaaS 作品。<strong>对内容创作者的启示</strong>：把"复杂任务"切成"动态工作流"而非一锅炒。</div>
+</div>
+
+<div class="card">
+  <h3>6. OpenAI GPT-Live：实时语音双向对话</h3>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="quote">"GPT-Live can listen while it speaks. To make that feel natural at ChatGPT scale, we rebuilt the voice stack from client to model. This new architecture keeps audio flowing continuously, so deeper reasoning and tool use don't interrupt the conversation."</div>
+  <p class="source">来源：<a href="https://x.com/OpenAI" target="_blank">@OpenAI</a> · <a href="https://x.com/OpenAI/status/2084378415818579975" target="_blank">推文链接</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>GPT-Live 在 AI 说话的同时还能继续听你说话，<strong>意味着边说边打断、补充细节成为可能</strong>。做播客采访、口述想法、随时追问的工具场景会比之前自然得多。</div>
+</div>
+
+<h2 id="section-2" class="section-title"><span class="emoji">🎓</span>二、教程 & 工作流</h2>
+
+<div class="card">
+  <h3>7. Linear Agent：把"Agent 做不了的事"自动变 Product Issue</h3>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💡 思维</span>
+  </div>
+  <div class="quote">"Linear Agent files feature requests for itself. If a user asks it to do something and it doesn't have the right tool, the agent reports the gap. Linear's system then adds the request to an issue so that every task the agent can't complete becomes product feedback."</div>
+  <p class="source">来源：<a href="https://x.com/petergyang" target="_blank">@petergyang</a> · <a href="https://x.com/petergyang/status/2086562291206791482" target="_blank">推文链接</a> · Linear 团队 Nan &amp; Jacob 访谈</p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>Linear 设计的反模式 → 自动化：Agent 缺什么工具 ≠ 报错，而是<strong>自动开 Issue 反馈给产品团队</strong>。<strong>抄过来用在你的内容工作流</strong>：让 AI 助手"做不了"的事自动归类到 backlog，下次升级 prompt 库时就有了真实需求数据。</div>
+</div>
+
+<div class="card">
+  <h3>8. 删掉那些"改变我人生"的 Skills（swyx 警告）</h3>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💡 思维</span>
+  </div>
+  <div class="quote">"Occasional reminder to DELETE your skills. When you are bombarded constantly by 'this skill changed my life!!' on the timeline, you will pile up stuff that at best just eats context, and at worst interacts with other skills nastily."</div>
+  <p class="source">来源：<a href="https://x.com/swyx" target="_blank">@swyx</a> · <a href="https://x.com/swyx/status/2086505938144616810" target="_blank">推文链接</a> · <a href="https://forge.smol.ai/blog/dangerous…" target="_blank">SmolForge 博客</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>你的 Claude/Cursor skill 列表是不是塞了几十个？定期做减法</strong>。Skill 多 = 占 context 窗口 = 互相干扰。一次只保留 5-10 个高频 skill，其余归档。<strong>质量比数量重要得多</strong>。</div>
+</div>
+
+<div class="card">
+  <h3>9. Codex + 视频化远程 KVM：让 Agent 看见真机屏幕</h3>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+  </div>
+  <div class="quote">"I gave codex a video-enabled remote KVM so it can automate e2e test the iMessage-integration on OpenClaw. (iMessage is unreliable in VMs, and certain features such as read receipts require SIP to be disabled)"</div>
+  <p class="source">来源：<a href="https://x.com/steipete" target="_blank">@steipete</a> · <a href="https://x.com/steipete/status/2084988316324397312" target="_blank">推文链接</a> · OpenClaw 创始人</p>
+  <p class="rating">实用性：⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>当 Agent 需要测试"必须在真机/特定环境"才跑得动的功能时（iMessage、读回执、SIM 卡相关），<strong>给 agent 接一个视频流远程 KVM</strong>，让它能看屏幕、模拟点击。比单纯 API 自动化多覆盖一类边界场景。<strong>对自媒体运营的启发</strong>：用 AI 自动截屏验证 UI 改动。</div>
+</div>
+
+<div class="card">
+  <h3>10. 长周期 Agent 三件套：行为规范、本体论、过程监督</h3>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💡 思维</span>
+  </div>
+  <div class="quote">"How to build long-horizon AI agents: behavior specs, ontologies, process supervision - my conversation with @mitch_troy, co-founder of @trybasis"</div>
+  <p class="source">来源：<a href="https://x.com/mattturck" target="_blank">@mattturck</a> · <a href="https://x.com/mattturck/status/2085402933579964730" target="_blank">推文链接</a> · Basis 创始人访谈</p>
+  <p class="rating">实用性：⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong>长周期 Agent 不是单次 prompt 能解决的。需要 (1) <strong>行为规范（behavior specs）</strong> 明确"该不该做"，(2) <strong>本体论（ontology）</strong> 定义领域概念关系，(3) <strong>过程监督（process supervision）</strong> 在中间步骤给反馈而非只看结果。<strong>给自己的内容 agent 写一份"该不该发/什么时候发"的 spec</strong>。</div>
+</div>
+
+<div class="card">
+  <h3>11. 写文档 vs 录口播：说出来的想法更清晰</h3>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💡 思维</span>
+  </div>
+  <div class="quote">"Hazards of leaving voice mode on while writing. I've noticed people are much clearer when they speak through new ideas than writing a doc on it. Somewhere between their mouth and the doc, the core idea gets buried as they try to add context, polish it and make it sound smart."</div>
+  <p class="source">来源：<a href="https://x.com/danshipper" target="_blank">@danshipper</a> · <a href="https://x.com/danshipper/status/2086583281877680398" target="_blank">推文链接</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>把团队头脑风暴从"写文档"改成"录口播"</strong>。让 AI 先把录音转写 + 结构化整理，再产出文档。避免边写边"为了显得聪明"而稀释核心想法。<strong>适合内容创作者头脑风暴 → 脚本的工作流</strong>。</div>
+</div>
+
+<h2 id="section-3" class="section-title"><span class="emoji">📝</span>三、Prompt 模板</h2>
+
+<div class="card">
+  <h3>12. "defaults matter, no hedging" —— Claude.md 一句话 Prompt</h3>
+  <div class="tags">
+    <span class="tag prompt">📝 Prompt</span>
+  </div>
+  <div class="quote">"I eventually had to put 'defaults matter, no hedging' in the Claude.md file. Lesson in there somewhere!"</div>
+  <p class="source">来源：<a href="https://x.com/nikunj" target="_blank">@nikunj</a> · <a href="https://x.com/nikunj/status/2086492103945900437" target="_blank">推文链接</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>立刻抄进你的 Claude.md / 系统 Prompt</strong>。原意是吐槽"feature flag 太多导致默认值不准"，但这句话适用范围广得离谱——<strong>告诉 AI "别和稀泥，给默认值"</strong>，少 80% 的"取决于..."。配合"give 3 options"等结构化指令效果更佳。</div>
+</div>
+
+<div class="card">
+  <h3>13. Agent 设计黄金法则：少指令，多工具</h3>
+  <div class="tags">
+    <span class="tag prompt">📝 Prompt</span>
+    <span class="tag workflow">⚙️ 工作流</span>
+  </div>
+  <div class="quote">"Give [your agent] as little instruction as possible. Give it the tools to load context instead."</div>
+  <p class="source">来源：<a href="https://x.com/petergyang" target="_blank">@petergyang</a> · <a href="https://x.com/petergyang/status/2086456268856991971" target="_blank">推文链接</a> · Linear 团队</p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>反直觉但有效的 Prompt 设计</strong>。别在系统 Prompt 里塞规则，改成给 agent 一组"加载上下文"的工具（读文件、查 web、查数据库）。<strong>这样 Prompt 永远稳定，context 按需加载</strong>。内容工作流举例：给 AI 写作助手"读历史文章"、"读选题库"、"查 SEO 关键词"3 个工具，胜过 500 字规则。</div>
+</div>
+
+<div class="card">
+  <h3>14. 一句话 Prompt 让 Gemini Spark 每周自动生成 AI 资讯</h3>
+  <div class="tags">
+    <span class="tag prompt">📝 Prompt</span>
+  </div>
+  <div class="quote">"Every Tuesday at 12:15 PM, create a new Doc in my Drive, find the 5 biggest AI stories from that week..."（完整版见推文）</div>
+  <p class="source">来源：<a href="https://x.com/joshwoodward" target="_blank">@joshwoodward</a> · <a href="https://x.com/joshwoodward/status/2084698846609682675" target="_blank">推文链接</a> · 引用用户 <a href="https://x.com/eyishazyer" target="_blank">@eyishazyer</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>结构化 Prompt 三件套</strong>：(1) 触发时间（每周二 12:15），(2) 产出位置（我的 Drive 新建 Doc），(3) 内容标准（当周 5 条最大 AI 故事）。丢给 Gemini Spark 定时执行。<strong>改一改就能套用</strong>：每周博客、每周竞品监控、每周内容汇总。</div>
+</div>
+
+<h2 id="section-4" class="section-title"><span class="emoji">🎁</span>四、限时免费 / 福利</h2>
+
+<div class="card">
+  <h3>15. Gemini Omni 免费 10 个视频延期到 8/11</h3>
+  <div class="tags">
+    <span class="tag bonus">🎁 福利</span>
+  </div>
+  <div class="quote">"More time to create more videos: You now have until August 11, 2026 at 11:59pm PT to create 10 Gemini Omni videos at no cost in the app or on web."</div>
+  <p class="source">来源：<a href="https://x.com/joshwoodward" target="_blank">@joshwoodward</a> · <a href="https://x.com/joshwoodward/status/2085708977296335125" target="_blank">推文链接</a> · <a href="https://x.com/GeminiApp" target="_blank">@GeminiApp</a></p>
+  <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+  <div class="apply"><strong>如何应用：</strong><strong>北京时间 8/12 下午 3 点前</strong>登录 Gemini App，免费生成 10 个 Omni 视频。零成本测出 Omni 视频能力的天花板，<strong>顺便存一批 demo 素材做二创</strong>。错过再等一轮就是几周后。</div>
+</div>
+
+<h2 id="section-5" class="section-title"><span class="emoji">🎯</span>今日趋势总结</h2>
+
+<div class="trend-card">
+  <h4>1. Agent 基础设施成为新蓝海</h4>
+  <p>Claude Code session 互通、Codex 视频 KVM、长周期 Agent 三件套（行为规范+本体论+过程监督）——<strong>单一 Agent 的时代正在过去，多 Agent 协作 + 视觉/视频接口才是下一站</strong>。</p>
+</div>
+
+<div class="trend-card">
+  <h4>2. 删繁就简是产品主流</h4>
+  <p>swyx 喊"删 skill"、Notebook 砍掉模式切换、Claude.md 一句话取代长 prompt——<strong>AI 产品迭代的主旋律是减少用户决策负担</strong>。</p>
+</div>
+
+<div class="trend-card">
+  <h4>3. 多模态 Agent 开源化</h4>
+  <p>Qwen-MM-Plugins 让任意 harness 升级多模态，Kimi Slides 端到端 PPT——<strong>创作者不再需要"文本先、视频后"的二段式工作流</strong>。</p>
+</div>
+
+<table class="summary-table">
+  <thead>
+    <tr><th>分类</th><th>条数</th><th>代表条目</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>🛠️ 工具</td><td>6</td><td>Claude Code session 互通 / Kimi Slides / Qwen-MM-Plugins</td></tr>
+    <tr><td>⚙️ 工作流</td><td>5</td><td>Linear Agent 自开 Issue / 删 Skill / Codex 视频 KVM</td></tr>
+    <tr><td>📝 Prompt</td><td>3</td><td>"defaults matter" / 少指令多工具 / 每周 AI 资讯</td></tr>
+    <tr><td>🎁 福利</td><td>1</td><td>Gemini Omni 免费 10 视频（限时至 8/11）</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  <p>📮 反馈 / 投稿：欢迎 Telegram 群聊内 @小瓜</p>
+  <p>📅 下期发布时间：明日 18:00 (Asia/Shanghai)</p>
+  <p>🌐 在线版：<a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-08-10.html" target="_blank">https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-08-10.html</a></p>
+</footer>
+
+</div>
+</body>
+</html>
