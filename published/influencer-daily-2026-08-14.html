@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-14</title>
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-card: #141b2d;
+    --bg-card-hover: #1a2238;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --accent: #60a5fa;
+    --accent-2: #a78bfa;
+    --tag-tool: #34d399;
+    --tag-prompt: #fbbf24;
+    --tag-workflow: #f472b6;
+    --tag-tutorial: #60a5fa;
+    --tag-think: #a78bfa;
+    --score: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .rank {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .author {
+    color: var(--text-dim);
+  }
+  .author a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .author a:hover { text-decoration: underline; }
+  .emoji {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .quote {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+    font-style: italic;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .tag-工具 { background: rgba(52, 211, 153, 0.15); color: var(--tag-tool); border: 1px solid rgba(52, 211, 153, 0.3); }
+  .tag-Prompt { background: rgba(251, 191, 36, 0.15); color: var(--tag-prompt); border: 1px solid rgba(251, 191, 36, 0.3); }
+  .tag-工作流 { background: rgba(244, 114, 182, 0.15); color: var(--tag-workflow); border: 1px solid rgba(244, 114, 182, 0.3); }
+  .tag-教程 { background: rgba(96, 165, 250, 0.15); color: var(--tag-tutorial); border: 1px solid rgba(96, 165, 250, 0.3); }
+  .tag-思维, .tag-AI技巧 { background: rgba(167, 139, 250, 0.15); color: var(--tag-think); border: 1px solid rgba(167, 139, 250, 0.3); }
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .stars { color: var(--score); letter-spacing: 1px; }
+  .howto {
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .howto-label {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .summary {
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .summary h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 8px;
+  }
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .quote-block {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+    border-radius: 12px;
+    text-align: center;
+    font-style: italic;
+    color: var(--text);
+  }
+  .quote-block p { margin: 0.5rem 0; }
+  .quote-author { color: var(--text-dim); font-size: 0.85rem; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    h1 { font-size: 1.6rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI 网红工具日报</h1>
+  <p class="subtitle">2026-08-14 · 5 组缓存全命中，精选 13 条「看完立刻能用」</p>
+  <p class="meta">📦 数据源：今日 5 组 X 抓取缓存（G1 / G2 / G3 / G4 / G5）</p>
+</header>
+
+<div class="grid">
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#1</span>
+    <span class="author">@<a href="https://x.com/erikbryn/status/2087642421836566678" target="_blank">erikbryn</a></span>
+  </div>
+  <span class="emoji">⭐</span>
+  <h3>Forbes 重磅："每个 AI 投资都在跟没人数过的预算赛跑"</h3>
+  <p class="quote">AI 加速了 N 步，但只要遗留系统那一步没动，整条流程就被卡死</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    跟 @vibhas_ratanjee 聊 AI 采用的关键盲区。核心 nugget——AI 加速很多步，但只要遗留系统那一步没动，整条流程就被卡死。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>下次做 AI workflow 优化，先画完整流程图找出"那一个没动的步骤"——往往不是 AI 不行，而是某个老系统没接上。
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#2</span>
+    <span class="author">@<a href="https://x.com/DeepLearn007/status/2087985758879584686" target="_blank">DeepLearn007</a></span>
+  </div>
+  <span class="emoji">🔓</span>
+  <h3>Stanford 论文：1 个 Prompt 解锁 76% 被压制的创造力</h3>
+  <p class="quote">RLHF 剥掉 76% 创造力</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Stanford 发现每家主流 AI 都在"以隐藏的真实创造力的一小部分"运行。RLHF 训练把 76% 的创造力剥掉，让模型听起来"更安全"。有一个 prompt 能解锁被压制的版本——叫 "Mode Collapse"。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>搜 "HowToPrompt Mode Collapse unlock prompt"，加到 system message 里测试同一个创意任务的差异。对需要"不那么安全"输出的写作/产品场景，效果显著。
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#3</span>
+    <span class="author">@<a href="https://x.com/realmadhuguru/status/2087916590964851172" target="_blank">realmadhuguru</a></span>
+  </div>
+  <span class="emoji">🧹</span>
+  <h3>Prompt Debt 是新的 Tech Debt——每次模型更新要砍 50%</h3>
+  <p class="quote">多数 prompts 让产品更差</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Prompt debt 是新的 tech debt。每次模型更新，你应该砍掉至少 50% 的 prompts。多数 AI 产品 prompts 臃肿，让产品质量变差。典型路径：模型失败 → 加 10 条规则；tool call 失败 → 加更多上下文。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>每个新模型版本上线时，跑一遍 prompt 库做减法——把能合并的合并，能删的删。今天就挑 5 个最臃肿的 prompt 看能不能砍掉一半。
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#4</span>
+    <span class="author">@<a href="https://x.com/zarazhangrui/status/2086758509979316423" target="_blank">zarazhangrui</a></span>
+  </div>
+  <span class="emoji">🎨</span>
+  <h3>学设计最快方法：让 Codex 截图 + 加注释拆解</h3>
+  <p class="quote">从例子学永远比从理论学更好</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    给 Codex 一个设计得好的网站，让它分析为什么好，再让它截全屏图，在图上加注释拆解为什么 work。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+    <span class="tag tag-Prompt">Prompt</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>挑 5 个你欣赏的 landing page，让 Codex 逐个分析 + 标注（grid / 留白 / 字重 / 配色）。下次自己做设计直接套模式。
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#5</span>
+    <span class="author">@<a href="https://x.com/swyx/status/2088073777779515615" target="_blank">swyx</a></span>
+  </div>
+  <span class="emoji">🔄</span>
+  <h3>/align-me 升级：批量提问代替来回对齐（spec decoding 同款）</h3>
+  <p class="quote">批量问题能砍掉 60% 对齐税</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    受 @mattpocockuk 和 @trq212 启发，把 /align-me 改了一版——支持批量提问而非一问一回。同样的直觉来自 spec decoding（一次看 2-10 步），对设计任务 INCREDIBLY 有效。Theo 说 Matt 的 "grill-me" skill 是对齐 agents 的神器。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>做 spec / design review 时，把所有"我想确认的点"打包成一次性 list 给 agent，而不是来回多轮。每轮对话有"对齐税"，批量能砍掉 60%。
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#6</span>
+    <span class="author">@<a href="https://x.com/alliekmiller/status/2087783161698672788" target="_blank">alliekmiller</a></span>
+  </div>
+  <span class="emoji">💬</span>
+  <h3>史上最短最强 Prompt："do smart things"——3 字管千军万马</h3>
+  <p class="quote">"do smart things"</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Greg Isenberg：过去 12 个月听过最牛的 agent prompt——来自一个管过数十亿 P&L、AWS 100 人团队、现在跑 34 个 agent 的人——"do smart things"（做聪明事）。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>当 agent 卡在"该做什么"时，给它授权："do smart things, here's the goal: X"——比列 20 条规则更接近真实管理者的语言。
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#7</span>
+    <span class="author">@<a href="https://x.com/alliekmiller/status/2087558225029689618" target="_blank">alliekmiller</a></span>
+  </div>
+  <span class="emoji">💬</span>
+  <h3>18 个两字 AI Prompt 套路（Allie Miller 心头好）</h3>
+  <p class="quote">"now what" / "plz fix" + 16 个</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    "now what" —— 大项目交付后还有精力，让 AI 再给一拨；"plz fix" —— 配截图、bug 报告直接丢过去；以及另外 16 个两字 prompt。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>直接抄作业——把 "now what" / "plz fix" / "make it pop" / "show diff" 这种极简指令加入你的 prompt 字典，省掉 50% 的措辞纠结。
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#8</span>
+    <span class="author">@<a href="https://x.com/trq212/status/2086931647468097932" target="_blank">trq212</a></span>
+  </div>
+  <span class="emoji">🔁</span>
+  <h3>"Tell Claude to keep going"——最被低估的 Prompt 技巧</h3>
+  <p class="quote">别急着追加复杂指令</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    跟 Claude 协作的 2 个关键技能——1）算力分配：决定哪些问题值得花算力；2）思维伙伴：要真的深入理解 proof 才知道是不是真的。"有时候你只需要告诉 Claude 继续"。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>Claude 输出"半成品"时直接发 "keep going"——别急着追加复杂指令。先看它能不能自己推完。
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#9</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087996496088297746" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">🧠</span>
+  <h3>ChatGPT Computer History：跨应用跨网站自动记忆你的活动</h3>
+  <p class="quote">下次不用再解释背景</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    ChatGPT 现在能记住你电脑上跨应用、跨网站的活动。桌面应用开启 Computer History 后，未来交互更个性化、更少需要解释。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>开启 ChatGPT 桌面 app 的 Computer History——下次提需求时不用再解释背景，agent 自动从你的工作上下文里捡信息。注意先 review 隐私设置。
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#10</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087231350134980830" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">🐧</span>
+  <h3>ChatGPT Linux 桌面 App 预览版上线</h3>
+  <p class="quote">在 Linux 上一体化 ChatGPT + Codex</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    预览版：ChatGPT Linux 桌面 app。在你已经工作/构建的 Linux 系统上跑 ChatGPT、ChatGPT Work、Codex，带着项目和浏览器 workflow 同步。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>Linux 开发者直接装预览版——Codex 命令行 + ChatGPT Work 一体化，告别 terminal 和浏览器之间反复切换。
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#11</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087912623883051300" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">📈</span>
+  <h3>前 10% 企业用 plugins 2x、skills 6x——别被平均数骗了</h3>
+  <p class="quote">Skills 是高阶杠杆</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    前 10% 的企业用 plugins 频率是普通公司的 2 倍，用 skills 是 6 倍。这些前沿公司不是偶然领先的。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>下次设计 AI 工具时优先做 plugin / skill 接入点，比做"原生 UI"重要 3 倍。Skills 是高阶杠杆——把团队流程固化成可复用 agent。
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#12</span>
+    <span class="author">@<a href="https://x.com/mattturck/status/2087528600849252696" target="_blank">mattturck</a></span>
+  </div>
+  <span class="emoji">🔗</span>
+  <h3>Graph engineering is the new prompt engineering</h3>
+  <p class="quote">越往上越有护城河</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    "Graph engineering is the new loop engineering is the new harness engineering is the new context engineering is the new prompt engineering." 希望你不再迷惑。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>你最近在做的 Agent 工程——是 prompt level 还是 context level 还是 graph level？越往上（graph）越有护城河，越往下（prompt）越容易被替代。
+  </div>
+</div>
+
+<!-- Card 13 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#13</span>
+    <span class="author">@<a href="https://x.com/petergyang/status/2087345374633824486" target="_blank">petergyang</a></span>
+  </div>
+  <span class="emoji">🛠️</span>
+  <h3>/human-review：Claude Code 反馈神器（免费 GitHub）</h3>
+  <p class="quote">给 AI 反馈不再痛苦</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    之前 /no-ai-slop 拿了 4K stars，今天再发 /human-review——给 AI 反馈真的很痛苦，每次"改第 3 段""改图片"来回拉扯。现在 717 GitHub stars，免费用。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>直接装 <code>github.com/petergyang/human-review</code>，结构化 diff 视图 + 自然语言混合，给 Claude Code 反馈不再"猜措辞"。
+  </div>
+</div>
+
+</div>
+
+<div class="summary">
+  <h2>📊 今日速览</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">~130</div>
+      <div class="stat-label">抓取推文总数</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">通过筛选</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">工具推荐</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Prompt 技巧</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">工作流 / 教程</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">思维 / 启发</div>
+    </div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 1rem;">
+    ❌ 已排除：模型融资 / 学术论文 / 硬件 / 政治 / 八卦 / 安全事件 / 模型发布公告
+  </p>
+</div>
+
+<div class="quote-block">
+  <p>"Graph engineering is the new loop engineering is the new harness engineering is the new context engineering is the new prompt engineering."</p>
+  <p class="quote-author">—— @mattturck</p>
+  <p style="margin-top: 1rem;">"Prompt debt is the new tech debt."</p>
+  <p class="quote-author">—— @realmadhuguru</p>
+  <p style="margin-top: 1rem;">"Sometimes all you need to do is tell Claude to keep going."</p>
+  <p class="quote-author">—— @trq212</p>
+</div>
+
+<footer>
+  <p>生成时间：2026-08-14 10:02 UTC</p>
+  <p>下次更新：2026-08-15 10:00 UTC</p>
+</footer>
+
+</body>
+</html>
