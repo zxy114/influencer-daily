@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-15</title>
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-card: #141b2d;
+    --bg-card-hover: #1a2238;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --accent: #60a5fa;
+    --accent-2: #a78bfa;
+    --tag-tool: #34d399;
+    --tag-prompt: #fbbf24;
+    --tag-workflow: #f472b6;
+    --tag-tutorial: #60a5fa;
+    --tag-think: #a78bfa;
+    --score: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .rank {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .author {
+    color: var(--text-dim);
+  }
+  .author a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .author a:hover { text-decoration: underline; }
+  .emoji {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .quote {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+    font-style: italic;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .tag-工具 { background: rgba(52, 211, 153, 0.15); color: var(--tag-tool); border: 1px solid rgba(52, 211, 153, 0.3); }
+  .tag-Prompt { background: rgba(251, 191, 36, 0.15); color: var(--tag-prompt); border: 1px solid rgba(251, 191, 36, 0.3); }
+  .tag-工作流 { background: rgba(244, 114, 182, 0.15); color: var(--tag-workflow); border: 1px solid rgba(244, 114, 182, 0.3); }
+  .tag-教程 { background: rgba(96, 165, 250, 0.15); color: var(--tag-tutorial); border: 1px solid rgba(96, 165, 250, 0.3); }
+  .tag-思维, .tag-AI技巧 { background: rgba(167, 139, 250, 0.15); color: var(--tag-think); border: 1px solid rgba(167, 139, 250, 0.3); }
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .stars { color: var(--score); letter-spacing: 1px; }
+  .howto {
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .howto-label {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .summary {
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .summary h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 8px;
+  }
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .quote-block {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+    border-radius: 12px;
+    text-align: center;
+    font-style: italic;
+    color: var(--text);
+  }
+  .quote-block p { margin: 0.5rem 0; }
+  .quote-author { color: var(--text-dim); font-size: 0.85rem; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    h1 { font-size: 1.6rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI 网红工具日报</h1>
+  <p class="subtitle">2026-08-15 · 5 组缓存全命中，精选 13 条「看完立刻能用」</p>
+  <p class="meta">📦 数据源：今日 5 组 X 抓取缓存（G1 / G2 / G3 / G4 / G5）</p>
+</header>
+
+<div class="grid">
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#1</span>
+    <span class="author">@<a href="https://x.com/AndrewYNg/status/2088302050706686198" target="_blank">AndrewYNg</a></span>
+  </div>
+  <span class="emoji">⭐</span>
+  <h3>Andrew Ng《AI 工程技能地图》——AI 工程师必看</h3>
+  <p class="quote">2026 年建软件的方式与 2022 年截然不同</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    AI 工程技能地图发布——涵盖 Prompt / Context / Harness / Eval / Agent / Architecture 6 大板块。掌握这套技能的人拥有无数可能。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>点开文章看完整 6 大板块，对照自查缺哪块。内容创作者尤其要吃透「Eval」和「Context Engineering」——这俩直接决定作品能不能稳定复用。
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#2</span>
+    <span class="author">@<a href="https://x.com/deepseek_ai/status/2087887408440164663" target="_blank">deepseek_ai</a></span>
+  </div>
+  <span class="emoji">🔓</span>
+  <h3>DeepSeek Harness v0.1 开源——MIT 协议，agent 框架新标配</h3>
+  <p class="quote">一切皆插件</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    DeepSeek Harness 开发者预览版发布。MIT 协议开源，基于 Cordis 元框架构建，agent harness 围绕「一切皆插件」架构设计。github.com/deepseek-ai/deepseek-harness
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>今天就 clone 下来跑通。基于「一切皆插件」的架构让你能直接替换 Claude Code / Cursor 的工具链。如果你想自己写 agent，这是 2026 年最值得读的样板代码之一。
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#3</span>
+    <span class="author">@<a href="https://x.com/Alibaba_Qwen/status/2088280182356611304" target="_blank">Alibaba_Qwen</a></span>
+  </div>
+  <span class="emoji">🎯</span>
+  <h3>Qwen3.8-27B 开源权重——27B 跑赢 3.7-Plus</h3>
+  <p class="quote">262K 原生上下文，可扩 1M</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    原生多模态 dense 模型，27B 参数整体跑赢 Qwen3.7-Plus。262K 原生上下文，可轻松扩展到 1M。本地 17GB 显存就能跑。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>直接 <code>ollama launch qwen3.8</code> 跑本地，或者 LM Studio / RTX Spark 都能 17GB 显存跑起来。262K 原生上下文能塞一整本小说——做长文档摘要 / 全书翻译 / 跨章节写作立刻能用。
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#4</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087996496088297746" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">💬</span>
+  <h3>ChatGPT Computer History——跨应用跨网站自动记忆</h3>
+  <p class="quote">下次提需求时不用再复述背景</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    ChatGPT 现在能记住你电脑上跨应用、跨网站的活动。桌面应用开启 Computer History 后，未来交互更个性化、更少需要解释。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>立刻在 ChatGPT 桌面 app 开启 Computer History。下次提需求时不用再复述背景——agent 自动从你的工作上下文捡信息。先 review 隐私设置（哪些 app 排除掉）。
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#5</span>
+    <span class="author">@<a href="https://x.com/GoogleDeepMind/status/2087948366294515977" target="_blank">GoogleDeepMind</a></span>
+  </div>
+  <span class="emoji">⚡</span>
+  <h3>Gemini 3.7 Flash——比 3.6 便宜 50%，3 周从 0 到发布</h3>
+  <p class="quote">更强于编码、知识工作和 Web 开发</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Gemini 3.7 Flash 上线。更强于编码、知识工作和 Web 开发。价格便宜 50%（年底前），速度更快，3 周内从 0 到发布。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>高并发的内容生成 / 翻译 / 摘要场景立刻切换到 3.7 Flash——同样的输入便宜一半。Gemini Spark 也跑 3.7 Flash，长 prompt 任务的响应明显更快。先在 AI Studio 比测再切生产。
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#6</span>
+    <span class="author">@<a href="https://x.com/elonmusk/status/2088443051890917436" target="_blank">elonmusk</a></span>
+  </div>
+  <span class="emoji">🔌</span>
+  <h3>Grok 4.6 进 GitHub Copilot——CLI / IDE / Cloud 全打通</h3>
+  <p class="quote">Grok 4.6 + Grok Build harness 才发挥最佳性能</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Grok 4.6 已在 GitHub Copilot 上线。CLI、IDE 和云产品中均可试用。注意：Grok 4.6 要配 Grok Build harness 才发挥最佳性能，裸 eval 不准。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>在 GitHub Copilot CLI 里换 <code>grok-4.6</code> 跑代码生成——比 Sonnet 便宜且响应快。x.ai 立即试用。
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#7</span>
+    <span class="author">@<a href="https://x.com/joshwoodward/status/2087751559606407615" target="_blank">joshwoodward</a></span>
+  </div>
+  <span class="emoji">🔗</span>
+  <h3>Gemini App 新一波集成——Angi / OpenTable / Pandora 都能聊</h3>
+  <p class="quote">跨应用编排工作流</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Gemini 开始跨应用完成任务。新一波集成上线——Angi、Fever、GetYourGuide、Granola、iHeartRadio、Localiza、OpenTable、Otter、Pandora、Thumbtack 等。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>在 Gemini App settings 里把你常用的服务（OpenTable 订餐 / Otter 会议纪要 / Granola 笔记）连起来。让 Gemini 跨 app 编排工作流——"约今晚 8 点 Italian 餐厅并加进日历"一句话搞定。
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#8</span>
+    <span class="author">@<a href="https://x.com/steipete/status/2088486859244741020" target="_blank">steipete</a></span>
+  </div>
+  <span class="emoji">📂</span>
+  <h3>steipete 实战：AGENTS.md 加一行——PR 自动上传视频</h3>
+  <p class="quote">把"团队默认行为"写进 AGENTS.md</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    给 AGENTS.md 加了一行简短指令：每个改 UI 状态的 PR 自动上传视频。agent 工程化最优雅范式——团队默认行为写进 AGENTS.md，AI 工具自动遵循。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>改一行动词成本极低，但能强制整个团队/所有 agent 走同一标准。建议今天就给你的 AGENTS.md 加一条 PR 录制规范。
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#9</span>
+    <span class="author">@<a href="https://x.com/petergyang/status/2088108304274960667" target="_blank">petergyang</a></span>
+  </div>
+  <span class="emoji">📝</span>
+  <h3>petergyang 提问：Product Spec 要不要给 agent 单独写一节？</h3>
+  <p class="quote">一稿两视图</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    现在的 product spec，怎么写才能让 humans 和 agents 都看着舒服又简洁？还是给人/agent 写两个分开的 section？
+  </p>
+  <div class="tags">
+    <span class="tag tag-工作流">工作流</span>
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>最佳实践是「一稿两视图」——同一份 spec 上半部分给人类读（Why / 用户故事），下半部分是机器友好结构（Goal / Acceptance Criteria / Edge cases）。试着用 markdown 标题分隔 + JSON block 嵌结构化字段，agent 直接 parse，human 读 prose。
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#10</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087912623883051300" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">⚡</span>
+  <h3>OpenAI 内部数据：top 10% 企业用 plugins 2x、skills 6x</h3>
+  <p class="quote">Skills 是高阶杠杆</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    前 10% 的企业用 plugins 频率是普通公司的 2 倍，用 skills 是 6 倍。这些前沿公司不是偶然领先的。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>下次设计 AI 工具时优先做 plugin / skill 接入点，比做"原生 UI"重要 3 倍。Skills 是高阶杠杆——把团队流程固化成可复用 agent。立刻盘点：你团队的 ChatGPT Skills / Claude Skills 库里目前有几个？低于 5 个就是落后。
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#11</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087231350134980830" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">🐧</span>
+  <h3>ChatGPT Linux 桌面 App 预览版上线</h3>
+  <p class="quote">Linux 开发者福音</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    预览版：ChatGPT Linux 桌面 app。在你已经工作/构建的 Linux 系统上跑 ChatGPT、ChatGPT Work、Codex，带着项目和浏览器 workflow 同步。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>Linux 开发者直接装预览版——Codex CLI + ChatGPT Work 一体化，告别 terminal 和浏览器之间反复切换。原生集成能直接读项目代码，再也不用手 copy-paste。
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#12</span>
+    <span class="author">@<a href="https://x.com/steipete/status/2087568620465607078" target="_blank">steipete</a></span>
+  </div>
+  <span class="emoji">🔄</span>
+  <h3>steipete：cli → apps → services → cloud sessions（工作流进化论）</h3>
+  <p class="quote">认清楚自己在哪一阶段再选工具</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    cli 是一年前，apps 大概 6 个月前，现在轮到 services、web、cloud sessions。工作流在快速进化。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐</span>
+    <span>7/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>诊断一下你现在的工作流——还卡在 cli 阶段？已经用 apps？还是开始编排 services/cloud sessions？每阶段对应不同的工具组合：cli = 命令行党，apps = GUI 编排，services = API 编排，cloud sessions = agent 协作。
+  </div>
+</div>
+
+<!-- Card 13 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#13</span>
+    <span class="author">@<a href="https://x.com/Hailuo_AI/status/2088012632641217005" target="_blank">Hailuo_AI</a></span>
+  </div>
+  <span class="emoji">🎵</span>
+  <h3>MiniMax Music 3 开源 + ComfyUI 本地版</h3>
+  <p class="quote">本地玩转 SOTA 音乐生成</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    MiniMax-Music-3 已在 ComfyUI 本地可用，"开放到 AGI 到来为止"。Cloud 版本即将上线。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐</span>
+    <span>7/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>在 ComfyUI 里直接装 MiniMax-Music-3 节点——本地跑 SOTA 音乐生成不再需要云端配额。做短视频 BGM / 播客片头 / 情绪音景全免费。云版本上线前本地玩转各类 prompt 套路。
+  </div>
+</div>
+
+</div>
+
+<div class="summary">
+  <h2>📊 今日速览</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">~131</div>
+      <div class="stat-label">抓取推文总数</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">通过筛选</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">工具推荐</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Prompt 技巧</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">工作流 / 教程</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">思维 / 启发</div>
+    </div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 1rem;">
+    已排除：模型融资 / 学术论文 / 硬件 / 政治 / 八卦 / 安全事件 / 纯基准对比 / 模型公告
+  </p>
+</div>
+
+<div class="quote-block">
+  <p>"Prompt debt is the new tech debt. Every model update, cut at least 50% of your prompts."</p>
+  <p class="quote-author">—— @realmadhuguru</p>
+  <p style="margin-top: 1rem;">"Graph engineering is the new loop engineering is the new harness engineering is the new context engineering is the new prompt engineering."</p>
+  <p class="quote-author">—— @mattturck</p>
+  <p style="margin-top: 1rem;">"cli was a year ago. apps maybe 6 months. now it's services, web, cloud sessions."</p>
+  <p class="quote-author">—— @steipete</p>
+</div>
+
+<footer>
+  <p>生成时间：2026-08-15 10:04 UTC · 下次更新：2026-08-16 10:00 UTC</p>
+  <p style="margin-top: 0.5rem;">📡 数据源：5 组 X 抓取缓存 · 🛠️ 小瓜自动生成</p>
+</footer>
+
+</body>
+</html>
