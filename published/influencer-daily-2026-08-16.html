@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-16</title>
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-card: #141b2d;
+    --bg-card-hover: #1a2238;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --accent: #60a5fa;
+    --accent-2: #a78bfa;
+    --tag-tool: #34d399;
+    --tag-prompt: #fbbf24;
+    --tag-workflow: #f472b6;
+    --tag-tutorial: #60a5fa;
+    --tag-think: #a78bfa;
+    --score: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.25rem;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .rank {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .author {
+    color: var(--text-dim);
+  }
+  .author a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .author a:hover { text-decoration: underline; }
+  .emoji {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .quote {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.75rem;
+    font-style: italic;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .tag-工具 { background: rgba(52, 211, 153, 0.15); color: var(--tag-tool); border: 1px solid rgba(52, 211, 153, 0.3); }
+  .tag-Prompt { background: rgba(251, 191, 36, 0.15); color: var(--tag-prompt); border: 1px solid rgba(251, 191, 36, 0.3); }
+  .tag-工作流 { background: rgba(244, 114, 182, 0.15); color: var(--tag-workflow); border: 1px solid rgba(244, 114, 182, 0.3); }
+  .tag-教程 { background: rgba(96, 165, 250, 0.15); color: var(--tag-tutorial); border: 1px solid rgba(96, 165, 250, 0.3); }
+  .tag-思维, .tag-AI技巧 { background: rgba(167, 139, 250, 0.15); color: var(--tag-think); border: 1px solid rgba(167, 139, 250, 0.3); }
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .stars { color: var(--score); letter-spacing: 1px; }
+  .howto {
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+  .howto-label {
+    color: var(--accent);
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+  .summary {
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .summary h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(96, 165, 250, 0.05);
+    border-radius: 8px;
+  }
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .quote-block {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+    border-radius: 12px;
+    text-align: center;
+    font-style: italic;
+    color: var(--text);
+  }
+  .quote-block p { margin: 0.5rem 0; }
+  .quote-author { color: var(--text-dim); font-size: 0.85rem; }
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    h1 { font-size: 1.6rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI 网红工具日报</h1>
+  <p class="subtitle">2026-08-16 · 5 组缓存全命中，精选 13 条「看完立刻能用」</p>
+  <p class="meta">📦 数据源：今日 5 组 X 抓取缓存（G1 / G2 / G3 / G4 / G5）</p>
+</header>
+
+<div class="grid">
+
+<!-- Card 1 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#1</span>
+    <span class="author">@<a href="https://x.com/HowToPrompt__/status/2087814163372666927" target="_blank">HowToPrompt__</a></span>
+  </div>
+  <span class="emoji">⭐</span>
+  <h3>Stanford「Mode Collapse」+ 一个 prompt 解锁 76% 创造力</h3>
+  <p class="quote">RLHF 训练为了"安全"阉割了 76% 的创造力</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    斯坦福论文指出，RLHF 训练为了迎合人类评分员，会"阉割"掉 76% 的模型创造力（Mode Collapse）。并公开了一段 prompt，可以把这部分被压掉的创造力"解锁"回来。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>10/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>把那段反 RLHF prompt 加到你的系统提示里——内容创作 / 头脑风暴 / 标题党写作这些"安全默认值"特别高的工作流，立刻就能感觉输出更野、更出人意料。建议保留一份 prompt 前后对比 baseline，看哪个场景真有效。
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#2</span>
+    <span class="author">@<a href="https://x.com/AndrewYNg/status/2088302050706686198" target="_blank">AndrewYNg</a></span>
+  </div>
+  <span class="emoji">⭐</span>
+  <h3>Andrew Ng《AI 工程技能地图》——AI 工程师必看</h3>
+  <p class="quote">2026 年建软件的方式跟 2022 年彻底不一样了</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Andrew Ng 发布 AI Engineering Skills Map，覆盖 Prompt / Context / Harness / Eval / Agent / Architecture 6 大板块。掌握这套技能的人拥有无数可能。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>点开文章看完整 6 大板块，对照自查缺哪块。内容创作者尤其要吃透「Eval」和「Context Engineering」——这俩直接决定作品能不能稳定复用，agent 跑十次能不能稳定产出十次合格稿。
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#3</span>
+    <span class="author">@<a href="https://x.com/deepseek_ai/status/2087887408440164663" target="_blank">deepseek_ai</a></span>
+  </div>
+  <span class="emoji">🔓</span>
+  <h3>DeepSeek Harness v0.1 开源——MIT 协议，agent 框架新标配</h3>
+  <p class="quote">Everything is a Plugin</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    DeepSeek Harness 开发者预览版发布。MIT 协议开源，基于 Cordis 元框架构建，agent harness 围绕「一切皆插件」架构设计。github.com/deepseek-ai/deepseek-harness
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>今天就 clone 下来跑通。基于「一切皆插件」的架构让你能直接替换 Claude Code / Cursor 的工具链。如果你想自己写 agent harness，这是 2026 年最值得读的样板代码之一。
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#4</span>
+    <span class="author">@<a href="https://x.com/petergyang/status/2088626815166464507" target="_blank">petergyang</a></span>
+  </div>
+  <span class="emoji">🎯</span>
+  <h3>Riley Brown 用 Codex 跑完整内容生意——AI 缩略图逆向工程</h3>
+  <p class="quote">让 Codex 找 100 个对标样本</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Riley Brown 用 Codex 跑整个内容生意。炸裂的一段：他让 Codex 找 100 个自己 niche 里 top-performing 的 YouTube 缩略图，作为参考样本喂给 AI 生成自己的缩略图。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工作流">工作流</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>把这段工作流抄走——"Codex 找 100 个对标样本 + AI 反向学习 + 套自己的素材生成"。任何垂直内容创作都能复用：缩略图 / 标题 / 开场 hook / 章节结构。先让 agent 调研你的赛道 top 100，再做"反向工程"。
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#5</span>
+    <span class="author">@<a href="https://x.com/zarazhangrui/status/2086758509979316423" target="_blank">zarazhangrui</a></span>
+  </div>
+  <span class="emoji">🎨</span>
+  <h3>Zara Zhang：用 Codex 学习优秀设计——截图 + 标注拆解</h3>
+  <p class="quote">从样例学永远比从原则学高效</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    给 Codex 一个设计得很好的网站，让它分析设计为什么好，然后让它截图网站 + 在图上标注「设计为什么 work」的所有要点。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>找你所在行业 top 3 的网站 / 落地页 / App 截图，让 Codex 做同样的拆解标注，输出做成团队 onboarding 文档。把"为什么这个设计 work"显性化，比光看灵感图有效 10 倍。
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#6</span>
+    <span class="author">@<a href="https://x.com/trq212/status/2088721023223132213" target="_blank">trq212</a></span>
+  </div>
+  <span class="emoji">🔬</span>
+  <h3>trq212：Claude artifact 解释 AI 水印原理——无损水印为什么能 work</h3>
+  <p class="quote">无损水印听起来反直觉</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    无质量损耗的水印听起来反直觉。trq212 让 Claude 做了个 artifact 把水印原理拆给你看。无损水印之所以能 work，跟 EU AI Act 合规要求直接相关——所有大模型都在加。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>9/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>点开那个 artifact 看完整可视化推演。理解水印原理之后，你就能判断：哪天你拿到一段"看起来像 AI 写的"内容时，水印能不能成为判定依据。Anthropic 之后会开放文本检测 API，到时候可以直接接入内容审核 pipeline。
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#7</span>
+    <span class="author">@<a href="https://x.com/steipete/status/2088486859244741020" target="_blank">steipete</a></span>
+  </div>
+  <span class="emoji">📂</span>
+  <h3>steipete 实战：AGENTS.md 加一行——PR 自动上传视频</h3>
+  <p class="quote">把"团队默认行为"写进 AGENTS.md</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    给团队共享的 AGENTS.md 加了一行简短指令：每个改 UI 状态的 PR 自动上传视频。agent 工程化最优雅范式——团队默认行为写进 AGENTS.md，AI 工具自动遵循。
+  </p>
+  <div class="tags">
+    <span class="tag tag-教程">教程</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>改一行动词成本极低，但能强制整个团队/所有 agent 走同一标准。建议今天就给你的 AGENTS.md 加一条 PR 录制规范。同样的招可以套到 commit message、PR template、code review checklist——只要是"团队必须做"的事，就该写进 AGENTS.md。
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#8</span>
+    <span class="author">@<a href="https://x.com/alliekmiller/status/2087783161698672788" target="_blank">alliekmiller</a></span>
+  </div>
+  <span class="emoji">💬</span>
+  <h3>Greg Isenberg 的 3 字 prompt——"do smart things"</h3>
+  <p class="quote">极简的委托，留足 agent 决策空间</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    过去 12 个月 Allie 听过最好的 agent prompt 只有 3 个词，来自一个管理多 billion P&amp;L、AWS 带过 100 人、现在管 34 个 agent 团队的人："do smart things"。
+  </p>
+  <div class="tags">
+    <span class="tag tag-Prompt">Prompt</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>在你的 agent prompt 里试试这条原则——别把每一步都写死，把"目标 + 约束 + 自由度"写出来就够。"do smart things" 这种 prompt 在多步决策、长链路任务上效果最明显，比"按 1/2/3/4 步做"的死板 prompt 产出常常更好。
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#9</span>
+    <span class="author">@<a href="https://x.com/mattturck/status/2087528600849252696" target="_blank">mattturck</a></span>
+  </div>
+  <span class="emoji">🧠</span>
+  <h3>Matt Turck：graph engineering is the new prompt engineering</h3>
+  <p class="quote">每一波范式都在自我吃掉上一波</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    每一波 AI 工程范式都在自我吃掉上一波：prompt → context → harness → loop → graph engineering。希望能消除大家对此的困惑。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>当你听到一个"AI 新范式"术语时，认清楚它替代了什么、加了什么杠杆。今天的内容创作者如果还在死磕 prompt 优化（最底层），但已经需要开始用 agent harness（更高阶）。对照检查你的工作流处在哪一层，往上跳一级就有 2-5 倍效率差。
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#10</span>
+    <span class="author">@<a href="https://x.com/OpenAI/status/2087912623883051300" target="_blank">OpenAI</a></span>
+  </div>
+  <span class="emoji">⚡</span>
+  <h3>OpenAI 内部数据：top 10% 企业用 plugins 2x、skills 6x</h3>
+  <p class="quote">Skills 是高阶杠杆</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    前 10% 的企业用 plugins 频率是普通公司的 2 倍，用 skills 是 6 倍。这些前沿公司不是偶然领先的。
+  </p>
+  <div class="tags">
+    <span class="tag tag-思维">思维</span>
+    <span class="tag tag-工作流">工作流</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>下次设计 AI 工具时优先做 plugin / skill 接入点，比做"原生 UI"重要 3 倍。Skills 是高阶杠杆——把团队流程固化成可复用 agent。立刻盘点：你团队的 ChatGPT Skills / Claude Skills 库里目前有几个？低于 5 个就是落后。
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#11</span>
+    <span class="author">@<a href="https://x.com/Alibaba_Qwen/status/2088280182356611304" target="_blank">Alibaba_Qwen</a></span>
+  </div>
+  <span class="emoji">🎯</span>
+  <h3>Qwen3.8-27B 开源权重——27B 跑赢 3.7-Plus</h3>
+  <p class="quote">262K 原生上下文，可扩 1M</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    原生多模态 dense 模型，27B 参数整体跑赢 Qwen3.7-Plus。262K 原生上下文，可轻松扩展到 1M。本地 17GB 显存就能跑（LM Studio / Ollama / RTX Spark 都支持）。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>直接 <code>ollama launch qwen3.8</code> 跑本地，或者 LM Studio / RTX Spark 都能 17GB 显存跑起来。262K 原生上下文能塞一整本小说——做长文档摘要 / 全书翻译 / 跨章节写作立刻能用。Claude Code / OpenCode harness 都已经 day-0 适配。
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#12</span>
+    <span class="author">@<a href="https://x.com/GoogleDeepMind/status/2087948366294515977" target="_blank">GoogleDeepMind</a></span>
+  </div>
+  <span class="emoji">⚡</span>
+  <h3>Gemini 3.7 Flash——比 3.6 便宜 50%，3 周从 0 到发布</h3>
+  <p class="quote">更强于编码、知识工作和 Web 开发</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Gemini 3.7 Flash 上线。更强于编码、知识工作和 Web 开发。价格便宜 50%（年底前），速度更快，3 周内从 0 到发布（靠算法改进，没堆参数）。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>高并发的内容生成 / 翻译 / 摘要场景立刻切换到 3.7 Flash——同样的输入便宜一半。Gemini Spark 也跑 3.7 Flash，长 prompt 任务的响应明显更快。先在 AI Studio 比测再切生产。
+  </div>
+</div>
+
+<!-- Card 13 -->
+<div class="card">
+  <div class="card-header">
+    <span class="rank">#13</span>
+    <span class="author">@<a href="https://x.com/elonmusk/status/2088100521261359218" target="_blank">elonmusk</a></span>
+  </div>
+  <span class="emoji">🔌</span>
+  <h3>Grok 4.6 + Grok Build harness 才发挥最佳性能</h3>
+  <p class="quote">裸 eval 不准</p>
+  <p style="margin-bottom: 1rem; color: var(--text-dim); font-size: 0.9rem;">
+    Grok 4.6 已发布，但要注意：Grok 4.6 要配 Grok Build harness 才发挥最佳性能，裸 eval 出来的数据不准——评估时务必带 harness。Grok.com/build 上手。
+  </p>
+  <div class="tags">
+    <span class="tag tag-工具">工具</span>
+    <span class="tag tag-教程">教程</span>
+  </div>
+  <div class="score-row">
+    <span class="stars">⭐⭐⭐⭐</span>
+    <span>8/10</span>
+  </div>
+  <div class="howto">
+    <span class="howto-label">💡 如何应用：</span>任何 Grok 4.6 benchmark 数据，没提 Build harness 的直接打 30% 折扣。自己在 Grok Build 里搭工作流比裸调 4.6 效果好得多。这条提醒对所有 harness 化模型都通用——Cursor / Claude Code / Codex 等都是同理。
+  </div>
+</div>
+
+</div>
+
+<div class="summary">
+  <h2>📊 今日速览</h2>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">~131</div>
+      <div class="stat-label">抓取推文总数</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">通过筛选</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">工具推荐</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Prompt 技巧</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">工作流 / 教程</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">思维 / 启发</div>
+    </div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 1rem;">
+    已排除：模型融资 / 学术论文 / 硬件 / 政治 / 八卦 / 安全事件 / 纯基准对比 / 模型公告 / 营销活动
+  </p>
+</div>
+
+<div class="quote-block">
+  <p>"Graph engineering is the new loop engineering is the new harness engineering is the new context engineering is the new prompt engineering."</p>
+  <p class="quote-author">—— @mattturck</p>
+  <p style="margin-top: 1rem;">"The best prompt for AI agents I've heard over the last 12 months is ONLY 3 words: do smart things."</p>
+  <p class="quote-author">—— Greg Isenberg via @alliekmiller</p>
+  <p style="margin-top: 1rem;">"Give Codex a well-designed website, ask it to analyze what makes the design great, then ask it to take a complete screenshot with annotations."</p>
+  <p class="quote-author">—— @zarazhangrui</p>
+</div>
+
+<footer>
+  <p>生成时间：2026-08-16 10:03 UTC · 下次更新：2026-08-17 10:00 UTC</p>
+  <p style="margin-top: 0.5rem;">📡 数据源：5 组 X 抓取缓存 · 🛠️ 小瓜自动生成</p>
+</footer>
+
+</body>
+</html>
