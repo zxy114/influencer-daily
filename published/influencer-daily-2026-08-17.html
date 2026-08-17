@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 网红工具日报 — 2026-08-17</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      color: #e0e0e0;
+      opacity: 0.9;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+      border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .card-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    .rating {
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      color: #ffd700;
+      font-size: 1.1em;
+    }
+
+    .star.empty {
+      color: rgba(255, 215, 0, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .card-source {
+      font-size: 0.85em;
+      color: #667eea;
+      margin-bottom: 12px;
+    }
+
+    .card-source a {
+      color: #764ba2;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .card-source a:hover {
+      color: #667eea;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+
+    .card-description {
+      color: #b0b0b0;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .card-application {
+      background: rgba(102, 126, 234, 0.1);
+      border-left: 3px solid #667eea;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: #d0d0d0;
+    }
+
+    .card-application strong {
+      color: #667eea;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 AI 网红工具日报</h1>
+      <div class="subtitle">内容创作者的 AI 工具箱 · 每日精选</div>
+      <div class="meta">
+        <div class="meta-item">📅 2026-08-17</div>
+        <div class="meta-item">📊 14 条精选</div>
+        <div class="meta-item">🎯 工具 + 教程 + 工作流</div>
+      </div>
+    </header>
+
+    <div class="cards-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">1</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">Codex 驱动 150 万粉丝内容工厂</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/petergyang/status/2088992989452640435" target="_blank">@petergyang</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Peter Yang 采访了用 Codex 运营 150 万粉丝内容业务的 Riley Brown。核心工作流：用 AI 生成缩略图、动画和 B-roll；自动调研并撰写高转化脚本；把长视频拆成多平台适配的片段。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>把 Codex 当成「创意总监 + 剪辑师」用：先让它按脚本批量出图，再人工挑最抓眼球的 3 张做 A/B 测试封面。
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">2</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">一个 Prompt 解锁模型隐藏创造力</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/DeepLearn007/status/2087985758879584686" target="_blank">@DeepLearn007</a>
+        </div>
+        <div class="tags">
+          <span class="tag">Prompt</span>
+          <span class="tag">思维</span>
+        </div>
+        <div class="card-description">
+          Stanford 研究指出，主流大模型在 RLHF 训练后会丢失约 76% 的原始创造力（"Mode Collapse"）。他们找到了一个 prompt，可以让模型恢复到更自由、更有创意的输出模式。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>在写营销文案、创意脚本或 brainstorming 时，在 prompt 末尾加上这个「解锁 creativity」的触发句，能明显提升输出多样性，避免 AI 味太重。
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">3</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">50 小时从零到 TestFlight：Replit 极速开发</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/amasad/status/2088276799461675372" target="_blank">@amasad</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Replit CEO Amjad Masad 分享：remoko.app 从第一个 prompt 到 TestFlight 分享，只花了不到 50 小时。他用 Replit 快速原型 + 测试，验证了「个人小工具」的可行性。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>想做 MVP/工具类产品？直接用 Replit 起项目，不用等环境配置。适合验证「这个功能有人愿意用吗？」的假设，速度比传统开发快 10 倍。
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">4</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">Kimi Slides 教程：K3 自动生成可编辑 PPT</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/Kimi_Moonshot/status/2084245860339298423" target="_blank">@Kimi_Moonshot</a>
+        </div>
+        <div class="tags">
+          <span class="tag">教程</span>
+          <span class="tag">工具</span>
+        </div>
+        <div class="card-description">
+          Moonshot 官方发布 Kimi Work 幻灯片教程。Kimi Slides 自动完成：清晰结构 + 调研、图表与 SmartArt 设计、生成可编辑的 PPT 并支持下载。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>下次做汇报/课程大纲时，把文档丢给 Kimi Slides，让它自动生成结构 + 图表，你只需要改关键数据和 storytelling 节点，省掉 80% 排版时间。
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">5</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">Midjourney V8.2：--preview + --sref random</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/midjourney/status/2070223272072065228" target="_blank">@midjourney</a>
+        </div>
+        <div class="tags">
+          <span class="tag">Prompt</span>
+          <span class="tag">工具</span>
+        </div>
+        <div class="card-description">
+          Midjourney 更新两招：加 --preview 可提前预览 V8.2 美学风格；--sref random 配合批量草稿模式，能以 24 倍速探索风格空间，比 Standard 4 张模式便宜一半。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>做品牌视觉/社交媒体配图时，用 --sref random 批量跑风格参考，快速锁定 2-3 个方向再精修，成本减半、效率翻倍。
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">6</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+          </div>
+        </div>
+        <div class="card-title">AI 落地的隐藏杀手：没改的「第十步」遗留流程</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/erikbryn/status/2087642421836566678" target="_blank">@erikbryn</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工作流</span>
+          <span class="tag">思维</span>
+        </div>
+        <div class="card-description">
+          Harvard Business Review 文章指出：AI 常加速多个步骤，但一个没改的「第十步」遗留流程就能让预期节省归零。建议在自动化前先做端到端流程审计，找出那个真正卡脖子的旧步骤。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>给客户做 AI 落地咨询时，先画一张「客户旅程 + 每步耗时」的图，找出那个还在用 Excel/人工审批的卡点，优先解决它，ROI 会比全面铺开高 5 倍。
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">7</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">AI 能加速 80% 的工作日，前提是别填满会议</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/erikbryn/status/2087553697282986337" target="_blank">@erikbryn</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工作流</span>
+          <span class="tag">思维</span>
+        </div>
+        <div class="card-description">
+          erikbryn 总结了 AI 落地的关键认知：AI 把决策和执行加速，但如果组织文化没变，省下的时间会被更多会议填满。真正受益的团队会把省下的时间重新分配给创新实验。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>推动团队 AI 化时，配套改会议节奏：把「同步会」改成「异步更新 + 文档决策」，让 AI 加速真正流向高价值工作，而不是空转。
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">8</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">Codex + WisprFlow：10 分钟语音生成完整幻灯片</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/petergyang/status/2089068517979283639" target="_blank">@petergyang</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Riley Brown 分享：10 分钟边走边说就能生成 80% 的幻灯片内容。用 WisprFlow 录音 → 自动转文字 → 再让 AI 生成 Excalidraw 风格的图表和 9 页幻灯片框架。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>做课程大纲/演讲准备时，先录 10 分钟「讲给自己听」的音频，用 WisprFlow 转写，再喂给 AI 生成结构化 PPT，比对着空白文档硬想快 3 倍。
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">9</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">周末离线 AI 工作流：手机 + EarPods + ChatGPT</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/alliekmiller/status/2089035175216685374" target="_blank">@alliekmiller</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工作流</span>
+          <span class="tag">工具</span>
+        </div>
+        <div class="card-description">
+          Allie Miller 分享「周末史诗级 AI 工作流」：只需要手机、耳机、ChatGPT 移动端 + Auto Mode。步骤：充好电 → 插 EarPods → 涂防晒 → 散步 → 让 Codex Remote 在后台跑任务。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>适合需要「深度思考 + 批量生成」的任务：写长文框架、整理会议录音、批量生成 social media 内容。把手机放口袋，散步时 AI 在干活。
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">10</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">DeepSeek Harness v0.1：MIT 开源 Agent 框架</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/deepseek_ai/status/2087887408440164663" target="_blank">@deepseek_ai</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          DeepSeek 开源了 Harness v0.1，基于 Cordis meta-framework，主打「Everything is a Plugin」理念。开发者可以用它快速构建 agent harness，代码 MIT 许可。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>如果你想搭一个多步骤 AI agent（比如自动调研 → 写草稿 → 发邮件），用 DeepSeek Harness 当骨架，比自己从零写 tool-calling 逻辑省 2-3 天。
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">11</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">Gemini 3.7 Flash：50% 降价 + 3 周性能跃升</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/joshwoodward/status/2087751559606407615" target="_blank">@joshwoodward</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Google 发布 Gemini 3.7 Flash，价格比 3.6 Flash 便宜 50%，智能提升显著，且仅用约 3 周就完成迭代。同时 Gemini 新增大量第三方应用集成（Angi、OpenTable、Pandora 等）。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>做 AI 应用/客服机器人的团队，立刻切到 3.7 Flash 做 A/B 测试，成本砍半的同时性能可能还更好。集成场景可以直接用新出的 app connections。
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">12</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">Graph Engineering 是新的 Prompt Engineering</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/mattturck/status/2087528600849252696" target="_blank">@mattturck</a>
+        </div>
+        <div class="tags">
+          <span class="tag">思维</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Matt Turck 提出一个趋势链：Prompt Engineering → Context Engineering → Harness Engineering → Loop Engineering → Graph Engineering。他认为下一代 AI 应用的核心竞争力在于设计 agent 之间的协作图。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>如果你在做 AI 产品，把精力从「优化单条 prompt」转移到「设计 agent 协作图」上：谁是 supervisor，谁是 worker，信息怎么在节点间流转。这才是下一道护城河。
+        </div>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">13</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">用 Codex 分析优秀网站的设计原理</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/zarazhangrui/status/2086758509979316423" target="_blank">@zarazhangrui</a>
+        </div>
+        <div class="tags">
+          <span class="tag">教程</span>
+          <span class="tag">工具</span>
+        </div>
+        <div class="card-description">
+          Zara Zhang 分享一个学设计的方法：给 Codex 一个设计精美的网站，让它分析「为什么这个设计好」，再让它截图并添加标注，把设计原理拆解成可学习的要点。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>做 landing page / 产品官网时，把竞品的优秀案例丢给 Codex 做设计解剖，你能快速学到：留白比例、字体层级、CTA 位置等可复用的原则。
+        </div>
+      </div>
+
+      <!-- Card 14 -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-number">14</span>
+          <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star empty">★</span>
+            <span class="star empty">★</span>
+          </div>
+        </div>
+        <div class="card-title">WisprFlow 语音 → Excalidraw 自动生成幻灯片</div>
+        <div class="card-source">
+          来源：<a href="https://x.com/petergyang/status/2089068517979283639" target="_blank">@petergyang</a>
+        </div>
+        <div class="tags">
+          <span class="tag">工具</span>
+          <span class="tag">工作流</span>
+        </div>
+        <div class="card-description">
+          Peter Yang 总结 Riley Brown 的做法：10 分钟语音能生成 80% 的演示内容。用 WisprFlow 边走边说 → AI 自动生成 Excalidraw 图表 + 9 页幻灯片框架。
+        </div>
+        <div class="card-application">
+          <strong>如何应用：</strong>适合内容创作者做课程/演讲准备：先录 10 分钟「讲给自己听」的音频，用 WisprFlow 转写，再喂给 AI 生成结构化 PPT，比对着空白文档硬想快 3 倍。
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>📊 今日关键词：Codex · WisprFlow · Prompt · Workflow · Agent · Graph Engineering · Midjourney V8.2 · Gemini 3.7 Flash · DeepSeek Harness · Kimi Slides · Mode Collapse · AI adoption · Excalidraw</p>
+      <p style="margin-top: 10px;">日报由 AI 自动生成 · 数据来源：X/Twitter 缓存 · 2026-08-17</p>
+    </footer>
+  </div>
+</body>
+</html>
