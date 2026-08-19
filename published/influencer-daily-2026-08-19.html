@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 网红工具日报 - 2026-08-19</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .date-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #667eea;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-size: 1.3em;
+            color: #ffffff;
+            margin-bottom: 8px;
+            flex: 1;
+        }
+        .card-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-tool { background: rgba(102, 126, 234, 0.2); color: #667eea; }
+        .badge-tutorial { background: rgba(118, 75, 162, 0.2); color: #764ba2; }
+        .badge-workflow { background: rgba(240, 147, 43, 0.2); color: #f0932b; }
+        .badge-prompt { background: rgba(0, 210, 211, 0.2); color: #00d2d3; }
+        .badge-thinking { background: rgba(255, 159, 243, 0.2); color: #ff9ff3; }
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+            color: #a0a0a0;
+        }
+        .card-meta a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .card-meta a:hover {
+            text-decoration: underline;
+        }
+        .card-content {
+            color: #c0c0c0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .card-content strong {
+            color: #ffffff;
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .stars {
+            color: #ffd700;
+            letter-spacing: 2px;
+        }
+        .rating-text {
+            color: #a0a0a0;
+            font-size: 0.85em;
+        }
+        .apply-tip {
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 3px solid #667eea;
+            border-radius: 6px;
+            color: #d0d0d0;
+            font-size: 0.9em;
+        }
+        .apply-tip strong {
+            color: #667eea;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI 网红工具日报</h1>
+            <div class="date-badge">2026-08-19</div>
+            <p style="margin-top: 15px; color: #a0a0a0;">今日精选 12 条高质量推文 · 内容创作者看完即可上手</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">精选内容</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">数据源组</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">工具类</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">教程类</div>
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Codex Live Voice Mode 完整 Setup 教程</div>
+                    <span class="card-badge badge-tutorial">教程</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/alliekmiller">@alliekmiller</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    大家严重低估了两件事：1) Claude 动态工作流。Claude 能即时生成执行框架！你只需用自然语言描述目标，它会自动调度 400 个 agent 并行执行并汇总结果。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★★</span>
+                    <span class="rating-text">9/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>立即试用 Codex Live Voice Mode：Mac 上运行 Codex + 手机控制 + 语音对话。这是今年最被低估的功能之一。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">如何做高质量 AI 系统评估（Eval）</div>
+                    <span class="card-badge badge-tutorial">教程</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/realmadhuguru">@realmadhuguru</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    做好 eval 的最佳方式：选一个你极其熟悉的工作流，让它的质量可量化。研究真实 traces——典型用户的 prompt 序列、每一步的理想响应是什么。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★★</span>
+                    <span class="rating-text">9/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>本周挑一个你常用的 AI 工作流，画出 prompt 序列图，为每一步定义"好/坏"标准。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Grok Bot：5 个必试使用场景（完整教程）</div>
+                    <span class="card-badge badge-tutorial">教程</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/petergyang">@petergyang</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    Grok Bot 是个人 AI agent 的未来缩影。教程教你搭建 5 个实用 bot：Bot 管理顾问、YouTube 视频研究员、X/Twitter 热门推文侦察兵等。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★★</span>
+                    <span class="rating-text">9/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>花 30 分钟跟着教程搭一个"X Scout" bot，让它每天自动帮你抓取行业热门推文。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Claude Code 新增 /design 命令</div>
+                    <span class="card-badge badge-tool">工具</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/trq212">@trq212</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    打开 Claude Code，输入 <code>/design &lt;你想设计的东西&gt;</code>，立刻试试。在写代码前先用 /design 快速生成多个 UI 方案。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★★</span>
+                    <span class="rating-text">9/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>写代码前先用 /design 快速生成多个 UI 方案，挑中最喜欢的 artboard 再动手实现。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Google Sheets 原生 AI 应用：Sheets Canvas</div>
+                    <span class="card-badge badge-tool">工具</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/GoogleAI">@GoogleAI</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    用 Sheets Canvas 和 Gemini 3.7 Flash 将电子表格变成实时交互的小型应用，无需编码。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★</span>
+                    <span class="rating-text">8/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>把现有的数据表格升级为交互式 dashboard，让团队无需写代码就能直接查询和分析数据。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">DeepSeek Harness v0.1：开源 Agent 框架</div>
+                    <span class="card-badge badge-tool">工具</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/deepseek_ai">@deepseek_ai</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    DeepSeek Harness v0.1 开发者预览版发布！基于 Cordis meta-framework，MIT 开源，面向全球 agent harness 开发者。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★</span>
+                    <span class="rating-text">8/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>如果你正在搭 AI agent，值得把 DeepSeek Harness 加入候选框架对比列表。MIT 协议意味着可以自由修改和商用。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">MiniMax H3 生成游戏精灵工作流</div>
+                    <span class="card-badge badge-tutorial">教程</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/MiniMax_AI">@MiniMax_AI</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    用 MiniMax H3 制作游戏精灵的完整流程：角色设计图 → 每个动作生成 5 秒视频 → 截取极端帧 → 抠掉背景 → 打包成精灵表。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★</span>
+                    <span class="rating-text">8/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>独立游戏开发者可以用这个工作流快速生成 2D 游戏素材，成本远低于传统 3D 建模。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Claude 动态工作流：Agent 自动生成执行框架</div>
+                    <span class="card-badge badge-workflow">工作流</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/alliekmiller">@alliekmiller</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    你只需用自然语言描述想要的结果，Claude 会自动生成执行框架，调度数百个 agent 并行工作并汇总结果。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★</span>
+                    <span class="rating-text">8/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>下次遇到复杂任务时，尝试用"最终目标描述"代替"步骤列表"让 Claude 自己规划执行路径。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">AI Engineer Thumbnail Lab：开源 A/B 测试数据</div>
+                    <span class="card-badge badge-tool">工具</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/swyx">@swyx</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    我们对 AI Engineer 频道的 YouTube 缩略图做了大量 A/B 测试。这个过程很不透明，今天我们把经验开源出来。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★★</span>
+                    <span class="rating-text">8/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>直接去 Thumbnail Lab 看数据，学习哪些缩略图风格能提升点击率。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">AI Engineering Skills Map：Andrew Ng 最新技能地图</div>
+                    <span class="card-badge badge-tutorial">教程</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/AndrewYNg">@AndrewYNg</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    发布 AI Engineering 技能地图。2022 年之后，AI 让我们能用完全不同的方式构建软件。掌握这些技能的人将拥有大量机会。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★</span>
+                    <span class="rating-text">7/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>用这张地图做技能 gap 分析，找出自己最需要补的 2-3 个技能点，优先学习。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Audio Priority Bar：解决 Mac 切换设备音频丢失</div>
+                    <span class="card-badge badge-tool">工具</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/petergyang">@petergyang</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    Mac 每次连接/断开 AirPods 都会重置默认麦克风和扬声器，超级烦人。@tobi 8 个月前已经做出来了：Audio Priority Bar。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★</span>
+                    <span class="rating-text">7/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>Mac 用户直接下载 Audio Priority Bar，告别 AirPods 切换时的音频设置烦恼。
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">AI 时代的 B2B 软件 UX 已经不可再差</div>
+                    <span class="card-badge badge-thinking">思维</span>
+                </div>
+                <div class="card-meta">
+                    <span>👤 <a href="https://x.com/realmadhuguru">@realmadhuguru</a></span>
+                </div>
+                <div class="card-content">
+                    <strong>中文翻译：</strong><br>
+                    AI 时代，B2B 软件再也不能有糟糕的 UX 了。借助 AI，每个产品都应该像最好的消费级软件一样易用。
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★★★★</span>
+                    <span class="rating-text">7/10 实用性</span>
+                </div>
+                <div class="apply-tip">
+                    <strong>💡 如何应用：</strong>如果你做 ToB 产品，用 AI 工具重新设计 onboarding 流程，把复杂的多步操作压缩成自然语言指令。
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📊 数据来源：g1 ~ g5 共 5 组缓存 | 🕐 生成时间：2026-08-19 10:00 UTC</p>
+            <p style="margin-top: 10px;">🤖 由 AI 网红工具日报自动生成</p>
+        </footer>
+    </div>
+</body>
+</html>
