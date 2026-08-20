@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-20</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0a0e1a;
+    color: #e4e8f0;
+    line-height: 1.7;
+    padding: 24px 16px 80px;
+    min-height: 100vh;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 36px 0 28px;
+    border-bottom: 1px solid rgba(99, 153, 255, 0.15);
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 32px;
+    background: linear-gradient(135deg, #6399ff 0%, #b06aff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle { color: #8a93a8; font-size: 14px; }
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #6b7384;
+  }
+  .meta span::before { content: "•"; margin-right: 8px; color: #6399ff; }
+  .meta span:first-child::before { display: none; }
+
+  .card {
+    background: linear-gradient(135deg, #131826 0%, #1a2030 100%);
+    border: 1px solid rgba(99, 153, 255, 0.12);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    border-color: rgba(99, 153, 255, 0.35);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f0f4ff;
+    flex: 1;
+  }
+  .score {
+    background: linear-gradient(135deg, #6399ff 0%, #b06aff 100%);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    background: rgba(99, 153, 255, 0.12);
+    color: #8ab4ff;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .tag.tool { background: rgba(99, 220, 160, 0.12); color: #7ce5b3; }
+  .tag.tutorial { background: rgba(255, 184, 99, 0.12); color: #ffc678; }
+  .tag.prompt { background: rgba(255, 138, 199, 0.12); color: #ffa1ce; }
+  .tag.workflow { background: rgba(176, 106, 255, 0.12); color: #c89bff; }
+  .tag.mindset { background: rgba(255, 220, 99, 0.12); color: #ffe584; }
+
+  .source {
+    font-size: 13px;
+    color: #8a93a8;
+    margin-bottom: 12px;
+  }
+  .source a {
+    color: #6399ff;
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+
+  .original {
+    background: rgba(99, 153, 255, 0.06);
+    border-left: 3px solid #6399ff;
+    padding: 12px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: #c8d0e0;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .apply {
+    background: rgba(99, 220, 160, 0.08);
+    border-left: 3px solid #63dca0;
+    padding: 12px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: #d4f0e2;
+  }
+  .apply::before {
+    content: "💡 如何应用";
+    display: block;
+    color: #7ce5b3;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: #6b7384;
+    margin-top: 10px;
+  }
+
+  .index {
+    background: rgba(99, 153, 255, 0.05);
+    border: 1px solid rgba(99, 153, 255, 0.12);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 32px 0;
+  }
+  .index h2 { font-size: 16px; color: #6399ff; margin-bottom: 12px; }
+  .index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .index-item { font-size: 13px; color: #c8d0e0; }
+  .index-item strong { color: #8ab4ff; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(99, 153, 255, 0.12) 0%, rgba(176, 106, 255, 0.12) 100%);
+    border: 1px solid rgba(176, 106, 255, 0.3);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 36px 0;
+  }
+  .highlight-box h2 { color: #c89bff; margin-bottom: 14px; font-size: 18px; }
+  .highlight-box ol { margin-left: 20px; }
+  .highlight-box li { margin-bottom: 8px; font-size: 14px; }
+
+  footer {
+    text-align: center;
+    padding-top: 32px;
+    color: #4a5160;
+    font-size: 12px;
+    border-top: 1px solid rgba(99, 153, 255, 0.08);
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>📡 AI 网红工具日报</h1>
+    <div class="subtitle">每天精选 10-15 条 AI 网红推文，让创作者立刻上手用</div>
+    <div class="meta">
+      <span>2026-08-20</span>
+      <span>Thursday</span>
+      <span>12 条精选</span>
+      <span>源数据 30+ 条</span>
+    </div>
+  </header>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">1. Codex Live Voice Mode — 远程用手机语音操控电脑编码</div>
+      <div class="score">⭐ 5/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+      <span class="tag tutorial">📚 教程</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/alliekmiller/status/2089756603239076275">@alliekmiller</a></div>
+    <div class="original">How to Set Up Codex Live Voice Mode (and completely change the way you work). Mac 上设置 Codex，从手机控制电脑，开始实时语音对话。"今年被严重低估的功能"。</div>
+    <div class="apply">在 Mac 装 Codex Desktop，手机连同账号，路上/做饭时用语音 push 代码片段或问代码问题。把通勤时间变成编码时间。</div>
+    <div class="stats"><span>👍 111</span><span>🔁 15</span></div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">2. /design 命令 — Claude Code 写代码前先出 3 个视觉方案</div>
+      <div class="score">⭐ 5/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag prompt">🛠 Prompt</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2089529798850969805">@trq212</a> 转 <a href="https://x.com/nateparrott">@nateparrott</a></div>
+    <div class="original">Claude Code 新增 /design 命令预览。在 CC Desktop 或 CLI 里输入 /design &lt;功能&gt;，出几个 artboard 选项，先选设计再实现。</div>
+    <div class="apply">下次写 UI 前先 /design 3 个方案，挑一个喜欢的再 implement，省掉"返工"的时间。</div>
+    <div class="stats"><span>👍 2000</span><span>🔁 81</span></div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">3. 做 Eval 的方法论 — 三步把工作流变成可衡量质量</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag mindset">🧠 思维</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2089480958571331623">@realmadhuguru</a></div>
+    <div class="original">做 Eval 最好的方式：拿一个你熟悉的 workflow，先想清楚怎么衡量质量。研究真实 trace——用户实际 prompt 序列、每一步的好回答应该是什么样、最终结果什么样。</div>
+    <div class="apply">给你的 AI 产品/工作流先列"质量定义"——什么算好、什么算坏、每步长啥样，再去搭 eval 比直接堆指标有效 10x。</div>
+    <div class="stats"><span>👍 266</span><span>🔁 13</span></div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">4. Eval 成本怎么降 — 像 frontier model 一样先建质量前沿</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag mindset">🧠 思维</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2089918106814603728">@realmadhuguru</a></div>
+    <div class="original">Eval 成本思路：像 frontier model 一样——先建"质量前沿"，再沿成本曲线往下走。从最高质量方法开始，先想清楚怎么验证 AI 产品是否正常工作。</div>
+    <div class="apply">别一上来就用便宜的小模型做 eval——先用最强的模型+人审做"质量金标准"，再逐步用便宜方案逼近。</div>
+    <div class="stats"><span>👍 82</span><span>🔁 5</span></div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">5. AI Engineer 技能地图 — 2026 年写代码不一样了</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tutorial">📚 教程</span>
+      <span class="tag mindset">🧠 思维</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/AndrewYNg/status/2088302050706686198">@AndrewYNg</a></div>
+    <div class="original">The AI Engineering Skills Map — AI 让你用跟 2022 完全不同的方式写软件。掌握这些技能的人有大量机会。</div>
+    <div class="apply">打开 Andrew Ng 的 Skills Map 自评一下，找 1-2 个自己最弱的技能（比如 RAG / Evals / Agent Design）制定 30 天学习计划。</div>
+    <div class="stats"><span>👍 22000</span><span>🔁 3600</span></div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">6. AI 网红 1 周 1M views — &lt;$200 全栈拆解</div>
+      <div class="score">⭐ 5/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+      <span class="tag workflow">💡 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2090207945221112256">@MiniMax_AI</a> 转 <a href="https://x.com/omooretweets">@omooretweets</a></div>
+    <div class="original">Olivia Moore 用 AI 做了个网红，1 周拿到 1200 粉丝、1M 播放、花费不到 $200。Stack: 图片 ChatGPT / 脚本 ChatGPT / 音效 ElevenLabs / 对口型视频 MiniMax / 动作视频 Imagine / 视频生成 Krea + fal。</div>
+    <div class="apply">这就是完整 AI 内容工厂清单。直接抄这套工具组合，从 0 到 1 跑一遍你的 AI 网红 idea。</div>
+    <div class="stats"><span>👍 9000</span><span>🔁 38</span></div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">7. AI Engineer 缩略图实验室 — 公开 A/B 测试数据</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tutorial">📚 教程</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/swyx/status/2089798658225266806">@swyx</a></div>
+    <div class="original">AI Engineer YouTube 缩略图 A/B 测试开源。一直以来觉得这个过程不透明，今天开放我们的学习成果。希望大家能分享经验或从我们的经验中学习。</div>
+    <div class="apply">做 YouTube/B 站视频前去 swyx 的 thumbnail lab 看哪类缩略图 CTR 最高，省自己瞎试。</div>
+    <div class="stats"><span>👍 48</span><span>🔁 6</span></div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">8. Sheets canvas + Gemini 3.7 Flash — 表格秒变 Mini App</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/GoogleAI/status/2089437060310434098">@GoogleAI</a></div>
+    <div class="original">把电子表格数据变活：用 Sheets canvas + Gemini 3.7 Flash，把电子表格变成可交互的 mini-app——无需写代码。</div>
+    <div class="apply">把客户/销售/库存数据表丢进去，生成可点、可筛选、可演示的小工具，分享给团队或客户。</div>
+    <div class="stats"><span>👍 963</span><span>🔁 102</span></div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">9. Linear AI 使用报告 — PM 是 AI 增长最快的群体</div>
+      <div class="score">⭐ 3/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag mindset">💡 数据洞察</span>
+      <span class="tag mindset">🧠 思维</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/petergyang/status/2089877052728168852">@petergyang</a></div>
+    <div class="original">Linear 4 万+ 产品团队 AI 使用报告：所有职能 AI 都在涨，但产品增长最快，从 12% 涨到 34%。当 PM 时有一堆事务性工作。</div>
+    <div class="apply">如果你是 PM，把会议纪要、需求文档、竞品分析这三件事先让 AI 接管，一周内就能看到效率变化。</div>
+    <div class="stats"><span>👍 9</span><span>🔁 4</span></div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">10. Audio Priority Bar — Mac AirPods 麦克风不再被偷切</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/petergyang/status/2089775372212801706">@petergyang</a></div>
+    <div class="original">Mac 每次连接/断开 AirPods 都自动切默认麦克风和音源超烦。本来想 vibe code 解决，发现 tobi 8 个月前就做了！强推 Audio Priority Bar。</div>
+    <div class="apply">立即下载 Audio Priority Bar（Mac），设置好优先级，从此开会/录音不再被突然切换。</div>
+    <div class="stats"><span>👍 31</span><span>🔁 22</span></div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">11. DeepSeek Harness v0.1 — MIT 开源的 Agent Harness 框架</div>
+      <div class="score">⭐ 4/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+      <span class="tag workflow">🔄 工作流</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/deepseek_ai/status/2087887408440164663">@deepseek_ai</a></div>
+    <div class="original">DeepSeek Harness v0.1 开发者预览。基于 Cordis meta-framework，"一切皆插件"。MIT 开源。</div>
+    <div class="apply">如果你在搭 Agent 系统，看下 Harness 的插件架构怎么组织 prompt/tool/memory，比从头写干净 10x。</div>
+    <div class="stats"><span>👍 20000</span><span>🔁 2400</span></div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">12. Grok 4.6 上 AWS Bedrock — 集成多了个选项</div>
+      <div class="score">⭐ 3/5</div>
+    </div>
+    <div class="tags">
+      <span class="tag tool">🛠 工具</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/elonmusk/status/2090266488666247275">@elonmusk</a> 转 <a href="https://x.com/mattsgarman">@mattsgarman</a></div>
+    <div class="original">Grok 4.6 已在 Amazon Bedrock 上线。AWS CTO 感谢和 SpaceX AI 团队的合作。</div>
+    <div class="apply">在 AWS 上做产品的团队现在多一个 LLM 选项，可以直接试 Grok 4.6 跑生产。</div>
+    <div class="stats"><span>👍 1500</span><span>🔁 190</span></div>
+  </div>
+
+  <div class="index">
+    <h2>🗂 今日分类索引</h2>
+    <div class="index-grid">
+      <div class="index-item"><strong>工具发布：</strong>Gemini 3.7 Flash · DeepSeek V4-Pro · Qwen3.8-27B · DeepSeek Harness · Grok 4.6 on Bedrock</div>
+      <div class="index-item"><strong>教程方法：</strong>Codex Live Voice · /design 命令 · Sheets canvas · Skills Map · 缩略图实验室</div>
+      <div class="index-item"><strong>思维工作流：</strong>Eval 方法论 · Eval 成本曲线 · Linear AI 报告 · AI 网红 stack 拆解</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <h2>💡 今日最大收获</h2>
+    <ol>
+      <li>给你的 Mac 装 Codex，路上用手机语音推代码</li>
+      <li>下次写 UI 前先 <code>/design</code> 三个方案</li>
+      <li>把你的产品数据表丢进 Gemini Sheets canvas，10 分钟变 mini-app</li>
+    </ol>
+  </div>
+
+  <footer>
+    生成时间：2026-08-20 10:04 UTC · 数据源：30+ 条 AI 网红推文 · by 小瓜
+  </footer>
+
+</div>
+</body>
+</html>
