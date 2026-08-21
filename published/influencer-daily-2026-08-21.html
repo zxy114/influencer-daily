@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-21</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+        background: #0a0a0f;
+        color: #e4e4eb;
+        line-height: 1.6;
+        padding: 24px 16px;
+        min-height: 100vh;
+    }
+    .container { max-width: 880px; margin: 0 auto; }
+    header {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border: 1px solid #2a2a3e;
+        border-radius: 16px;
+        padding: 32px 24px;
+        margin-bottom: 28px;
+        text-align: center;
+    }
+    h1 {
+        font-size: 28px;
+        background: linear-gradient(135deg, #6ee7b7 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+    }
+    .subtitle { color: #9ca3af; font-size: 14px; }
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+    }
+    .stat {
+        background: rgba(110, 231, 183, 0.08);
+        border: 1px solid rgba(110, 231, 183, 0.2);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+    .stat strong { color: #6ee7b7; }
+    .card {
+        background: #15151f;
+        border: 1px solid #2a2a3e;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 18px;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-2px);
+        border-color: #3b82f6;
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .rank {
+        background: linear-gradient(135deg, #3b82f6, #6ee7b7);
+        color: #0a0a0f;
+        font-weight: 700;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        flex-shrink: 0;
+    }
+    .category-tag {
+        background: rgba(110, 231, 183, 0.15);
+        color: #6ee7b7;
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-left: 8px;
+    }
+    .handle {
+        color: #6ee7b7;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+    }
+    .handle:hover { text-decoration: underline; }
+    .rating {
+        color: #fbbf24;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+    .original {
+        color: #9ca3af;
+        font-size: 13px;
+        font-style: italic;
+        margin-bottom: 12px;
+        padding: 10px 12px;
+        background: #0f0f17;
+        border-left: 3px solid #3b82f6;
+        border-radius: 4px;
+    }
+    .translation {
+        color: #e4e4eb;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    .apply {
+        background: rgba(110, 231, 183, 0.08);
+        border: 1px solid rgba(110, 231, 183, 0.25);
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #a7f3d0;
+        font-size: 13px;
+        margin-top: 12px;
+    }
+    .apply-label {
+        color: #6ee7b7;
+        font-weight: 600;
+        margin-right: 6px;
+    }
+    .source-link {
+        color: #60a5fa;
+        font-size: 12px;
+        text-decoration: none;
+        margin-top: 8px;
+        display: inline-block;
+    }
+    .source-link:hover { text-decoration: underline; }
+    .appendix {
+        background: #15151f;
+        border: 1px solid #2a2a3e;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-top: 28px;
+        color: #9ca3af;
+        font-size: 13px;
+    }
+    .appendix h3 { color: #e4e4eb; margin-bottom: 12px; font-size: 16px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    td, th { padding: 6px 12px; text-align: left; border-bottom: 1px solid #2a2a3e; }
+    th { color: #6ee7b7; font-weight: 600; }
+    footer {
+        text-align: center;
+        color: #6b7280;
+        font-size: 12px;
+        margin-top: 32px;
+        padding: 16px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+    <h1>📢 AI 网红工具日报</h1>
+    <div class="subtitle">2026-08-21 (周五) · 自动汇总 5 组缓存</div>
+    <div class="stats">
+        <div class="stat">📝 收录 <strong>12</strong> 条</div>
+        <div class="stat">🗂️ 缓存 <strong>5</strong> 组</div>
+        <div class="stat">🏷️ 分类 <strong>5</strong> 类</div>
+        <div class="stat">👤 来源 <strong>9</strong> 个账号</div>
+    </div>
+</header>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#1</span>
+            <span class="category-tag">📚 教程</span>
+            <a href="https://x.com/Kimi_Moonshot/status/2089979521412034787" target="_blank" class="handle">@Kimi_Moonshot</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 9/10</div>
+    </div>
+    <div class="original">📌 原文：Kimi Work for Financial Analysts - Tutorial #2: Use Kimi Work for 3 common investment research tasks — Build a live investor dashboard, Update financial models in spreadsheet, Process and generate reports in batch.</div>
+    <div class="translation">💬 提供了 3 个可直接复用的金融分析师 AI 工作流模板（仪表盘、模型更新、批量报告），不是空谈而是 step-by-step 操作路径。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>把 Kimi Work 当作新员工：先用它建一个你常用指标的投资仪表盘，再用它批量跑季度财报摘要，1 小时内就能感受到生产力提升。
+    </div>
+    <a href="https://x.com/Kimi_Moonshot/status/2089979521412034787" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#2</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/omooretweets/status/2090132821579014534" target="_blank" class="handle">@omooretweets</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 9/10</div>
+    </div>
+    <div class="original">📌 原文：I made an AI influencer who got 1,200 followers and 1M views in a week — on less than $200. Stack: Image gen (ChatGPT) / Script+Prompts (ChatGPT) / SFX (ElevenLabs) / Talking videos (MiniMax) / Action videos (imagine) / Video gen (krea + fal).</div>
+    <div class="translation">💬 完整的 AI 内容创作工具栈 + 真实 ROI 数据（$200 投入 / 1M 曝光）。每个工具的角色清晰，可直接照搬。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天就搭一个最小可跑 stack：ChatGPT 出角色+脚本 → ElevenLabs 做声音 → MiniMax 出 5 秒 talking head，把第一条短视频发出去。
+    </div>
+    <a href="https://x.com/omooretweets/status/2090132821579014534" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#3</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/Alibaba_Qwen/status/2088280182356611304" target="_blank" class="handle">@Alibaba_Qwen</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 9/10</div>
+    </div>
+    <div class="original">📌 原文：Qwen3.8-27B open weights released — native multimodal, 27B params, outperforms Qwen3.7-Plus overall, shines in coding &amp; office workflows, 262K native context (extendable to 1M).</div>
+    <div class="translation">💬 开源 27B 模型、本地可跑、262K-1M 上下文、办公+编码场景实测强。一行命令就能下载，立刻可用。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>下载 Qwen3.8-27B 跑 Cline/Cursor，替代 GPT-4o 处理长文档和日常编码，敏感数据不再外发。
+    </div>
+    <a href="https://x.com/Alibaba_Qwen/status/2088280182356611304" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#4</span>
+            <span class="category-tag">💡 思维</span>
+            <a href="https://x.com/trq212/status/2089844723691479333" target="_blank" class="handle">@trq212</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 9/10</div>
+    </div>
+    <div class="original">📌 原文：weird that there&#x27;s a &#x27;make a lot of money&#x27; button and nobody&#x27;s pressing it — take your SaaS, make it headless, let agents use it, charge per interaction (esp for enterprises).</div>
+    <div class="translation">💬 把&#x27;产品要被 agent 调用&#x27;和&#x27;按次计费&#x27;这两个趋势压成一句话。1.3M 阅读证明了这是当前最强的产品直觉。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天盘点你的 SaaS：哪些 API 能被 Claude/ChatGPT 直接调用？能否改成 headless + 按 token/调用计费？给一个 agent 集成套餐。
+    </div>
+    <a href="https://x.com/trq212/status/2089844723691479333" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#5</span>
+            <span class="category-tag">✨ Prompt</span>
+            <a href="https://x.com/zarazhangrui/status/2016337615843434646" target="_blank" class="handle">@zarazhangrui</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 9/10</div>
+    </div>
+    <div class="original">📌 原文：I created a Claude Skill that makes beautiful slides on the web. Code can create much better slides than most PPT tools — Claude interviews you first about aesthetics, then generates a few directions to &#x27;show not tell&#x27;, and you pick.</div>
+    <div class="translation">💬 Claude Skill 模板：先访谈审美 → 生成 3 个方向 → 用户挑 → 出成品。这套流程可复用到任何设计任务。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>套用这个模式做你自己的 Skill：让 Claude 先问 5 个品味问题 → 给 3 个风格方向 → 你选 1 个再深做。设计效率翻倍。
+    </div>
+    <a href="https://x.com/zarazhangrui/status/2016337615843434646" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#6</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/Hailuo_AI/status/2090613786046779485" target="_blank" class="handle">@Hailuo_AI</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    </div>
+    <div class="original">📌 原文：MiniMax Design officially live — Turn Ideas into Commercial-Grade Content. Agent-Driven Workflow: input your goal, agents autonomously plan/execute/deliver. Built for ads, e-commerce assets, motion graphics.</div>
+    <div class="translation">💬 第一个把&#x27;多 agent 自动做商业广告&#x27;做成产品的平台。输入目标 → 自动出成片。跨境卖家/营销人立刻能用。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天上传你下一条 Meta 广告 brief 到 MiniMax Design，让 agents 自己跑出 3 个版本，看哪个 CTR 最高。
+    </div>
+    <a href="https://x.com/Hailuo_AI/status/2090613786046779485" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#7</span>
+            <span class="category-tag">✨ Prompt</span>
+            <a href="https://x.com/petergyang/status/2090564541499498919" target="_blank" class="handle">@petergyang</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    </div>
+    <div class="original">📌 原文：My gut is that a lot of AI output can be improved just by building a loop where a manager agent negs the worker agent: &#x27;Are you sure this is the best you can do?&#x27; &#x27;I think you can do better, try again&#x27; &#x27;Take a closer look, give me 11/10 output&#x27;.</div>
+    <div class="translation">💬 把&#x27;批评循环&#x27;变成具体的 prompt 模板。3 句话就是 1 轮 manager-worker 协作机制，可直接拼到任何工作流。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>复制这 3 句到你的 agent 系统提示末尾，让 manager agent 自动跑两轮 critic-then-revise，质量肉眼可见提升。
+    </div>
+    <a href="https://x.com/petergyang/status/2090564541499498919" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#8</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/cline/status/2089825294677143973" target="_blank" class="handle">@clinedotcom</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    </div>
+    <div class="original">📌 原文：Qwen3.8-27B is now the #1 local model in Cline after just 4 days — ends a 4-month streak by Qwen2.5-Coder-7B. (via @cline)</div>
+    <div class="translation">💬 实证：Qwen3.8-27B 在真实 IDE 编码工具里 4 天登顶。不是基准分数，是开发者用脚投票的结果。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>在 Cline/Cursor 里把 default model 切到 Qwen3.8-27B (本地或 API)，跑一个真实 PR，对比 GPT-4o 的 diff 质量。
+    </div>
+    <a href="https://x.com/cline/status/2089825294677143973" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#9</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/joshwoodward/status/2089520767281324112" target="_blank" class="handle">@joshwoodward</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    </div>
+    <div class="original">📌 原文：What&#x27;s next for Gemini: #1 Workspace tools revamp in 1-2 weeks, #2 3.7 Flash better tool calling, #3 New &#x27;Projects&#x27; design — circling back to ask what to improve.</div>
+    <div class="translation">💬 Gemini 产品负责人亲自剧透路线图。三件具体事情 1-2 周内落地，知道什么会变才好提前布局。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天试 Gemini 3.7 Flash + Projects 组合，把你的多文档项目搬进去。1-2 周后 Workspace 新功能一上，你已经在用。
+    </div>
+    <a href="https://x.com/joshwoodward/status/2089520767281324112" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#10</span>
+            <span class="category-tag">⚙️ 工作流</span>
+            <a href="https://x.com/realmadhuguru/status/2090595384905113939" target="_blank" class="handle">@realmadhuguru</a>
+        </div>
+        <div class="rating">⭐⭐⭐⭐ 8/10</div>
+    </div>
+    <div class="original">📌 原文：How to build great evals — Part 4. The reason enterprises struggle with AI is the lack of an eval strategy. You need a laddered eval strategy, with multiple evals on the cost/realism spectrum.</div>
+    <div class="translation">💬 把&#x27;搭评估&#x27;这个最被低估的环节拆成阶梯式方法论。不是泛泛而谈，是具体的 cost/realism 二维矩阵。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天给你的核心 AI 工作流写第一份评估：3 条 prompt 输入 → 3 个 ground truth → 让 GPT 自动打分。明天开始每周迭代。
+    </div>
+    <a href="https://x.com/realmadhuguru/status/2090595384905113939" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#11</span>
+            <span class="category-tag">💡 思维</span>
+            <a href="https://x.com/danshipper/status/2057514494960513272" target="_blank" class="handle">@danshipper</a>
+        </div>
+        <div class="rating">⭐⭐⭐ 7/10</div>
+    </div>
+    <div class="original">📌 原文：We&#x27;ve automated every single thing we can with AI agents. And yet there&#x27;s way more human work to do than ever. 4 → 30 employees since GPT-3. How AI makes expert competence cheap, and why that drives up demand for human judgment.</div>
+    <div class="translation">💬 反直觉的实证：自动化越彻底，公司人越多。把&#x27;AI 替代人&#x27;这个误区的反面证据讲透了。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>今天算一笔账：你团队里哪些角色是&#x27;AI 放大了他们的判断&#x27;而不是&#x27;AI 替代了他们&#x27;？把岗位描述里的&#x27;判断&#x27;放大。
+    </div>
+    <a href="https://x.com/danshipper/status/2057514494960513272" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <span class="rank">#12</span>
+            <span class="category-tag">🛠️ 工具</span>
+            <a href="https://x.com/aisearchio/status/2089951139718693335" target="_blank" class="handle">@MiniMax_AI</a>
+        </div>
+        <div class="rating">⭐⭐⭐ 7/10</div>
+    </div>
+    <div class="original">📌 原文：H3 streaming video LoRA adapter released on HuggingFace — community can fine-tune MiniMax H3 for real-time generation, online hackathon planned.</div>
+    <div class="translation">💬 开源流式视频生成 LoRA，等于把&#x27;实时 AI 视频&#x27;从云端 API 拉到本地。游戏主播/直播带货场景的新基建。</div>
+    <div class="apply">
+        <span class="apply-label">💡 如何应用：</span>下载 mvp-lab/MiniMax-H3-RAVEN-Streaming-LoRA，跑一次 30 秒 demo。如果你想做实时 AI 主播，这周末就能 hack。
+    </div>
+    <a href="https://x.com/aisearchio/status/2089951139718693335" target="_blank" class="source-link">🔗 查看原推 →</a>
+</div>
+
+<div class="appendix">
+    <h3>📊 数据来源</h3>
+    <table>
+        <thead><tr><th>缓存组</th><th>命中条数</th></tr></thead>
+        <tbody>
+<tr><td>g1.json</td><td>4</td></tr><tr><td>g2.json</td><td>1</td></tr><tr><td>g3.json</td><td>8</td></tr><tr><td>g5.json</td><td>2</td></tr></tbody></table>
+    <p style="margin-top:12px"><strong style="color:#6ee7b7">Handle 分布：</strong> @MiniMax_AI(5)、@Alibaba_Qwen(2)、@OpenAI(2)、@Kimi_Moonshot(1)、@trq212(1)、@AnthropicAI(1)、@sama(1)、@zarazhangrui(1)、@danshipper(1)</p>
+    <p style="margin-top:12px"><strong style="color:#6ee7b7">筛选标准：</strong>工具推荐 / 教程 / Prompt 模板 / 工作流优化 / AI 使用技巧</p>
+    <p><strong style="color:#6ee7b7">排除：</strong>硬件/基础设施、融资/收入、纯基准对比、学术论文</p>
+</div>
+<footer>
+    📅 由 AI 网红日报系统自动生成 · 2026-08-21
+</footer>
+</div>
+</body>
+</html>
