@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-08-24</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  .header .date {
+    color: #94a3b8;
+    font-size: 0.9rem;
+  }
+  .header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .stat {
+    background: #1e293b;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+  .stat-value {
+    color: #60a5fa;
+    font-weight: bold;
+  }
+  .card {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #3b82f6;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  .card-category {
+    background: #3b82f6;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .card-category.tutorial { background: #10b981; }
+  .card-category.workflow { background: #f59e0b; }
+  .card-category.thinking { background: #8b5cf6; }
+  .card-category.prompt { background: #ec4899; }
+  .card-category.tool { background: #3b82f6; }
+  .card-text {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+  }
+  .card-meta a {
+    color: #60a5fa;
+    text-decoration: none;
+  }
+  .card-meta a:hover {
+    text-decoration: underline;
+  }
+  .utility {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stars {
+    color: #fbbf24;
+  }
+  .apply {
+    background: #0f172a;
+    border-left: 3px solid #10b981;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-style: italic;
+  }
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #64748b;
+    font-size: 0.8rem;
+    border-top: 1px solid #1e293b;
+    margin-top: 2rem;
+  }
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">1. @Alibaba_Qwen</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">Huge thanks to Unsloth for the great work. This is wonderful news for the community\! 🥳Qwen3.8\-27B, smaller and sharper than ever. Let&#x27;s try it\! [@UnslothAI](https://x.com/UnslothAI...</div>
+    <div class="card-meta">
+      <span>❤️ 138000</span>
+      <span>🔁 121</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/Alibaba_Qwen/status/2090289279037821023" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">2. @GoogleDeepMind</div>
+      <span class="card-category tutorial">教程</span>
+    </div>
+    <div class="card-text">Games have been an important testbed for our AI research for over 15 years. 🎮 From mastering Atari to reaching Grandmaster in StarCraft II, they have driven some of our biggest AI breakthroughs. Our work with SIMA...</div>
+    <div class="card-meta">
+      <span>❤️ 132000</span>
+      <span>🔁 136</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/GoogleDeepMind/status/2090772922818286080" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这篇教程提供了一个系统化的方法论，建议今天花 30 分钟按步骤实践一次，内化后应用到你的工作流中。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">3. @Kimi_Moonshot</div>
+      <span class="card-category tutorial">教程</span>
+    </div>
+    <div class="card-text">Kimi Work for Financial Analysts \- Tutorial \#2 Use Kimi Work for 3 common investment research tasks: \- Build a live investor dashboard \- Update financial models in spreadsheet \- Process and generate reports in...</div>
+    <div class="card-meta">
+      <span>❤️ 77000</span>
+      <span>🔁 70</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/Kimi_Moonshot/status/2089979521412034787" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这篇教程提供了一个系统化的方法论，建议今天花 30 分钟按步骤实践一次，内化后应用到你的工作流中。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">4. @Alibaba_Qwen</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">Replying to [@ValsAI](https://x.com/ValsAI On [@harvey](https://x.com/harvey &#x27;s Legal Agent, it is tied with Fable 5 at 11.3pts and is ahead of Kimi K3, Qwen 3.8 Max, and DeepSeek V4....</div>
+    <div class="card-meta">
+      <span>❤️ 73000</span>
+      <span>🔁 58</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/ValsAI/status/2089836849561014420" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">5. @karpathy</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">One pattern I find useful for working with LLMs is a nice long ramble session. Sometimes the LLM needs more bits to understand what you&#x27;re trying to achieve, but you&#x27;re too lazy to type them. In these cases I like to...</div>
+    <div class="card-meta">
+      <span>❤️ 2400</span>
+      <span>🔁 4100</span>
+      <span>👁 50,000</span>
+      <span>·</span>
+      <a href="https://x.com/karpathy/status/2079610838143623371" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">6. @erikbryn</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">Deep insight https://x.com/corsaren corsaren @corsaren Jul 21 Local minima are extremely rare in high dimensional spaces, so if you ever feel stuck in a rut it’s probably just because you aren’t considering a wide...</div>
+    <div class="card-meta">
+      <span>❤️ 8500</span>
+      <span>🔁 18</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/erikbryn/status/2090136133846061142" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">7. @realmadhuguru</div>
+      <span class="card-category tutorial">教程</span>
+    </div>
+    <div class="card-text">How to build great evals \- part 4 The reason enterprises struggle with building decent AI systems is the lack of an eval strategy. You need a laddered eval strategy, for your unique use cases, with multiple evals on...</div>
+    <div class="card-meta">
+      <span>❤️ 16</span>
+      <span>🔁 23</span>
+      <span>👁 268</span>
+      <span>·</span>
+      <a href="https://x.com/realmadhuguru/status/2090595384905113939" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这篇教程提供了一个系统化的方法论，建议今天花 30 分钟按步骤实践一次，内化后应用到你的工作流中。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">8. @karpathy</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">This is a new paradigm for interacting with Claude that is significantly more &quot;inline&quot; with all the other human activity org\-wide. Once you do all of the under the hood engineering work to make this &quot;just work&quot; \(e.g....</div>
+    <div class="card-meta">
+      <span>❤️ 1400</span>
+      <span>🔁 1900</span>
+      <span>👁 23,000</span>
+      <span>·</span>
+      <a href="https://x.com/karpathy/status/2069547676849557725" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">9. @karpathy</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">Introducing Claude Tag, a new way for teams to work with Claude. In Slack, Claude joins as a team member with access to the channels and tools you choose. Tag Claude in and delegate tasks to it while you focus on other...</div>
+    <div class="card-meta">
+      <span>❤️ 1400</span>
+      <span>🔁 1900</span>
+      <span>👁 23,000</span>
+      <span>·</span>
+      <a href="https://x.com/karpathy/status/2069468693017268244" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">10. @AnthropicAI</div>
+      <span class="card-category tutorial">教程</span>
+    </div>
+    <div class="card-text">Many drugs work by binding to a specific target in the body and blocking or changing what it does. An important first step in the drug development process is designing a molecule that can bind tightly to its target....</div>
+    <div class="card-meta">
+      <span>❤️ 556</span>
+      <span>🔁 1400</span>
+      <span>👁 12,000</span>
+      <span>·</span>
+      <a href="https://x.com/AnthropicAI/status/2089842387845804246" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这篇教程提供了一个系统化的方法论，建议今天花 30 分钟按步骤实践一次，内化后应用到你的工作流中。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">11. @Hailuo_AI</div>
+      <span class="card-category workflow">工作流</span>
+    </div>
+    <div class="card-text">🐙MiniMax Design is officially live\! Turn Ideas into Commercial\-Grade Content \#MiniMaxDesign \#MiniMax 🤖Agent\-Driven Workflow: Input your goal. Agents autonomously plan, execute, and deliver. 🪄Built for Commercial...</div>
+    <div class="card-meta">
+      <span>❤️ 2100</span>
+      <span>🔁 199</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/Hailuo_AI/status/2090613786046779485" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这套工作流可以立即集成到你的日常流程中，从最简单的步骤开始，逐步优化效率。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">12. @levie</div>
+      <span class="card-category workflow">工作流</span>
+    </div>
+    <div class="card-text">Great post on what post training looks like for applied AI use\-cases to bring down costs and improve accuracy on certain tasks. This will increasingly be an approach that companies that can get closer to the underlying...</div>
+    <div class="card-meta">
+      <span>❤️ 36</span>
+      <span>🔁 47</span>
+      <span>👁 293</span>
+      <span>·</span>
+      <a href="https://x.com/levie/status/2090664811185205722" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这套工作流可以立即集成到你的日常流程中，从最简单的步骤开始，逐步优化效率。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">13. @MiniMax_AI</div>
+      <span class="card-category prompt">Prompt</span>
+    </div>
+    <div class="card-text">I made an AI influencer who got 1,200 followers and 1M views in a week \- on less than $200. My stack: \- Image gen/editing: [@ChatGPT](https://x.com/ChatGPT \- Script / prompts: [@ChatGPT](https://x.com/ChatGPT \-...</div>
+    <div class="card-meta">
+      <span>❤️ 1</span>
+      <span>🔁 0</span>
+      <span>👁 1,000,000</span>
+      <span>·</span>
+      <a href="https://x.com/omooretweets/status/2090132821579014534" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐⭐</span>
+    </div>
+    <div class="apply">💡 这个 Prompt 模板可以直接复制使用，建议测试后根据你的场景微调。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">14. @karpathy</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">We&#x27;re starting to leave the territory where you&#x27;d test an LLM by e.g. &quot;create an svg of pelican on a bicycle&quot;. As one idea to generalize it, I was interested what Opus 5 would do if I gave it the first paragraph of the...</div>
+    <div class="card-meta">
+      <span>❤️ 1500</span>
+      <span>🔁 2200</span>
+      <span>👁 28,000</span>
+      <span>·</span>
+      <a href="https://x.com/karpathy/status/2083749667410727319" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">15. @Hailuo_AI</div>
+      <span class="card-category tool">工具</span>
+    </div>
+    <div class="card-text">Generate endless KOC promo videos with one click on \#MiniMaxDesign \! https://x.com/alexconia Alex Rivas \| IA @alexconia Aug 20 Hice este anuncio UGC con MiniMax H3 en MiniMax Design. Para creadores y marketers, lo...</div>
+    <div class="card-meta">
+      <span>❤️ 3600</span>
+      <span>🔁 15</span>
+      <span>👁 0</span>
+      <span>·</span>
+      <a href="https://x.com/Hailuo_AI/status/2091070413271130534" target="_blank">查看原推</a>
+    </div>
+    <div class="utility">
+      <span>实用性：</span>
+      <span class="stars">⭐⭐</span>
+    </div>
+    <div class="apply">💡 这是可以直接上手使用的工具/产品，建议今天就注册试用，花 15 分钟探索核心功能。</div>
+  </div>
+
+  <div class="footer">
+    <p>🤖 AI 网红工具日报 | 2026-08-24</p>
+    <p style="margin-top: 0.5rem;">Generated from 145 scanned tweets → 142 unique → 84 filtered → 15 selected</p>
+  </div>
+</div>
+</body>
+</html>
