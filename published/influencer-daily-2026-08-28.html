@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 — 2026-08-28</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #0a0e17;
+  color: #e4e6eb;
+  line-height: 1.6;
+  padding: 20px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+header {
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 1px solid #1e2738;
+  margin-bottom: 40px;
+}
+header h1 {
+  font-size: 2.5em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+header .date { color: #8b92a5; font-size: 1.1em; }
+header .stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.stat {
+  background: #1a1f2e;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid #2a3142;
+}
+.stat-value {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #667eea;
+}
+.stat-label { color: #8b92a5; font-size: 0.9em; }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #1a1f2e;
+  border: 1px solid #2a3142;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #667eea;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.card-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+.card-meta h3 { color: #e4e6eb; font-size: 1.1em; }
+.card-meta .handle { color: #8b92a5; font-size: 0.9em; }
+
+.card-content {
+  color: #c4c8d4;
+  font-size: 0.95em;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.card-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tag {
+  background: #252b3d;
+  color: #667eea;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  border: 1px solid #3a4155;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #2a3142;
+}
+.rating { color: #ffd700; font-size: 0.95em; }
+.card-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 6px 16px;
+  background: #252b3d;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.card-link:hover {
+  background: #667eea;
+  color: white;
+}
+
+.insights {
+  background: #1a1f2e;
+  border: 1px solid #2a3142;
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 40px;
+}
+.insights h2 {
+  color: #667eea;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+.insight-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #2a3142;
+}
+.insight-item:last-child { border-bottom: none; }
+.insight-item h4 { color: #e4e6eb; margin-bottom: 8px; }
+.insight-item p { color: #8b92a5; }
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #8b92a5;
+  border-top: 1px solid #1e2738;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.8em; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026 年 8 月 28 日</div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">12</div>
+        <div class="stat-label">精选内容</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">8</div>
+        <div class="stat-label">KOL 来源</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">内容分类</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">PY</div>
+        <div class="card-meta">
+          <h3>@petergyang</h3>
+          <div class="handle">AI 模型横评</div>
+        </div>
+      </div>
+      <div class="card-content">
+        实测 ChatGPT / Claude / Grok / Gemini 在 10 大真实场景下的表现对比。几个关键发现：ChatGPT 在写作和浏览器任务上领先，Claude 在编码和安全任务上更稳，Grok 在实时信息检索上优势明显，Gemini 在多模态任务中表现均衡。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">教程</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 9/10</span>
+        <a href="https://x.com/petergyang/status/2092673493100040515" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">PY</div>
+        <div class="card-meta">
+          <h3>@petergyang</h3>
+          <div class="handle">/no-ai-slop 开源技能</div>
+        </div>
+      </div>
+      <div class="card-content">
+        开源一个可去除 20+ AI 写作套路的 skill，已在 GitHub 获得 6K+ stars。支持在 Claude Code / Cursor / Windsurf 中直接调用，一键把"AI 味"文本改写成自然风格。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">Prompt</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 10/10</span>
+        <a href="https://x.com/petergyang/status/2093132262602920002" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">SW</div>
+        <div class="card-meta">
+          <h3>@swyx</h3>
+          <div class="handle">Simulation 是新 Scaling Law</div>
+        </div>
+      </div>
+      <div class="card-content">
+        从"预测"到"模拟"：AI 的下一个前沿是构建数字孪生 + 行为基础模型。不只是预测用户行为，而是模拟如何塑造结果。可参考 Simile.ai 的 85% 准确率数字孪生方案。
+      </div>
+      <div class="card-tags">
+        <span class="tag">思维</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 7/10</span>
+        <a href="https://x.com/swyx/status/2090948945753076141" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">RM</div>
+        <div class="card-meta">
+          <h3>@realmadhuguru</h3>
+          <div class="handle">企业 AI 最高杠杆策略</div>
+        </div>
+      </div>
+      <div class="card-content">
+        两条建议：1) 立刻构建模型无关的 AI 栈（LangChain / LlamaIndex 抽象层），避免供应商锁定；2) 自建 Eval 体系，把业务指标转化为 AI 输出评分卡，每周回归测试。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工作流</span>
+        <span class="tag">教程</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 10/10</span>
+        <a href="https://x.com/realmadhuguru/status/2093143877087879377" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">RM</div>
+        <div class="card-meta">
+          <h3>@realmadhuguru</h3>
+          <div class="handle">高质量 Eval 构建指南 Part 9</div>
+        </div>
+      </div>
+      <div class="card-content">
+        大多数 Eval 失败的原因是团队把它们当成静态文档，而用户期望和行为已经演进。建议把 Eval 当产品迭代：每月更新测试集，跟踪真实行为变化，把评分卡变成可复用的内部工具。
+      </div>
+      <div class="card-tags">
+        <span class="tag">教程</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 8/10</span>
+        <a href="https://x.com/realmadhuguru/status/2092426017118028266" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">AY</div>
+        <div class="card-meta">
+          <h3>@AndrewYNg</h3>
+          <div class="handle">OpenWorker 开源 Agent</div>
+        </div>
+      </div>
+      <div class="card-content">
+        吴恩达团队发布的开源 Agent，不只是聊天，而是能在你的笔记本电脑上直接完成任务。新版本重点强化了安全场景工作流，适合处理敏感文档、客户信息，数据完全不出本地。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">开源</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 8/10</span>
+        <a href="https://x.com/AndrewYNg/status/2092315079576555806" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">TQ</div>
+        <div class="card-meta">
+          <h3>@trq212</h3>
+          <div class="handle">Claude Code SendFeedback</div>
+        </div>
+      </div>
+      <div class="card-content">
+        Claude 新增 SendFeedback 工具：不用手动写反馈报告，直接告诉 Claude "给这个回复打个反馈"，它会自动生成结构化的 bug report。团队可批量收集 AI 使用反馈，大幅提升迭代效率。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 8/10</span>
+        <a href="https://x.com/trq212/status/2092696449616376140" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">DS</div>
+        <div class="card-meta">
+          <h3>@danshipper</h3>
+          <div class="handle">Claude 内置浏览器</div>
+        </div>
+      </div>
+      <div class="card-content">
+        Claude Cowork 现在内置浏览器，Agent 可以自主浏览网页、点击元素、提取信息。可串联 MCP 工具，实现"浏览器+文件系统+数据库"全自动工作流，适合竞品监控、数据抓取、表单填写等任务。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 10/10</span>
+        <a href="https://x.com/danshipper/status/2092756144447983619" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">DS</div>
+        <div class="card-meta">
+          <h3>@danshipper</h3>
+          <div class="handle">Codex 原生 App 发布</div>
+        </div>
+      </div>
+      <div class="card-content">
+        OpenAI 推出 Codex 原生桌面应用，支持 /model 切换不同模型，通过 MCP 连接数据库/文件系统。WebMCP 模式让 Agent 直接在浏览器里操作，适合前端自动化测试和网页数据提取。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 8/10</span>
+        <a href="https://x.com/danshipper/status/2092686463859126492" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">JW</div>
+        <div class="card-meta">
+          <h3>@joshwoodward</h3>
+          <div class="handle">Gemini Voice 年度功能</div>
+        </div>
+      </div>
+      <div class="card-content">
+        Gemini 推出语音优先交互模式：告诉 Gemini 你想做什么，它会自主执行。支持多步骤任务链，可调用外部 API 和工具，标志着 AI 从"对话"进入"执行"时代。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 9/10</span>
+        <a href="https://x.com/joshwoodward/status/2093074288295481470" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">JW</div>
+        <div class="card-meta">
+          <h3>@joshwoodward</h3>
+          <div class="handle">Gemini Notebook 书籍智能</div>
+        </div>
+      </div>
+      <div class="card-content">
+        现在可以把书直接导入 Notebook，AI 会提取作者的核心观点并应用到你的项目中。对于作者和出版商，这是触达新读者的全新方式，把纸质书变成"可交互的知识库"。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 8/10</span>
+        <a href="https://x.com/joshwoodward/status/2093070717508296923" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">JW</div>
+        <div class="card-meta">
+          <h3>@joshwoodward</h3>
+          <div class="handle">Google Labs 多人 AI 实验</div>
+        </div>
+      </div>
+      <div class="card-content">
+        Google Labs 推出多人实时 AI 协作实验：多用户可以同时与同一个 AI 智能体交互，智能体协调不同角色的输入。这是 AI 从"单人工具"走向"团队协作平台"的重要一步。
+      </div>
+      <div class="card-tags">
+        <span class="tag">工具</span>
+        <span class="tag">思维</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 7/10</span>
+        <a href="https://x.com/joshwoodward/status/2092614266818064389" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-avatar">ZZ</div>
+        <div class="card-meta">
+          <h3>@zarazhangrui</h3>
+          <div class="handle">AI 写作双标现象</div>
+        </div>
+      </div>
+      <div class="card-content">
+        很多人对 AI 写作持双重标准："我用 AI 写没关系，你用 AI 写就有问题"。这种双标反映了 AI 内容检测市场的焦虑，也说明"AI 味"已经成为一种需要被主动管理的品牌风险。
+      </div>
+      <div class="card-tags">
+        <span class="tag">思维</span>
+        <span class="tag">工作流</span>
+      </div>
+      <div class="card-footer">
+        <span class="rating">⭐ 7/10</span>
+        <a href="https://x.com/zarazhangrui/status/2092773720112988366" class="card-link" target="_blank">查看原文 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="insights">
+    <h2>📊 今日洞察</h2>
+    <div class="insight-item">
+      <h4>🔵 Claude 生态爆发</h4>
+      <p>Claude Code SendFeedback + Cowork 内置浏览器 + 统一 Memory，Anthropic 正在把 Claude 从"聊天模型"升级为"操作系统级"工作平台。对于内容创作者，这意味着可以用自然语言驱动完整的浏览器工作流。</p>
+    </div>
+    <div class="insight-item">
+      <h4>🔵 Codex 追赶 ChatGPT</h4>
+      <p>OpenAI 推出 Codex 原生 App + WebMCP，桌面 AI 编程工具进入白热化竞争。内容创作者可以关注 WebMCP 模式，用 Agent 做前端自动化测试和网页数据提取。</p>
+    </div>
+    <div class="insight-item">
+      <h4>🔵 Eval 成为核心基础设施</h4>
+      <p>不只是技术团队，企业 AI 负责人也开始重视"模型无关 + 自建 Eval"的架构。对于内容创作者，这意味着 AI 生成内容的质量可以被量化管理，不再是黑盒。</p>
+    </div>
+    <div class="insight-item">
+      <h4>🔵 AI 写作去味需求爆发</h4>
+      <p>/no-ai-slop 开源技能获得 6K stars，说明市场对"AI 味"的容忍度在降低。内容创作者应该把"去 AI 味"作为标准工作流的一部分。</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>📅 生成时间：2026-08-28 | 数据来源：Twitter/X AI influencers</p>
+    <p style="margin-top: 10px; color: #667eea;">🤖 Powered by OpenClaw AI</p>
+  </footer>
+</div>
+</body>
+</html>
