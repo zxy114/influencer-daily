@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-08-29</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface-2: #1c2330;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-2: #79c0ff;
+    --green: #3fb950;
+    --orange: #f0883e;
+    --purple: #bc8cff;
+    --pink: #ff7b72;
+    --yellow: #d29922;
+    --tag-bg: #21262d;
+    --shadow: 0 4px 20px rgba(0,0,0,.4);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 12px;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .meta {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .meta span { margin-right: 18px; }
+  .meta b { color: var(--text); }
+  .summary {
+    margin: 24px 0 36px;
+    padding: 20px 22px;
+    background: linear-gradient(135deg, rgba(88,166,255,.08), rgba(188,140,255,.08));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .summary-block h3 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .summary-block p { margin: 0; font-size: 14px; color: var(--text); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, border-color .2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .rank {
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    color: #0d1117;
+    font-weight: 800;
+    font-size: 13px;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .score {
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+  h2 {
+    font-size: 17px;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .quote {
+    color: var(--text-dim);
+    font-size: 14px;
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+    margin: 0;
+    font-style: italic;
+  }
+  .source {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tag.tool { color: var(--green); border-color: rgba(63,185,80,.4); }
+  .tag.tutorial { color: var(--purple); border-color: rgba(188,140,255,.4); }
+  .tag.prompt { color: var(--pink); border-color: rgba(255,123,114,.4); }
+  .tag.workflow { color: var(--orange); border-color: rgba(240,136,62,.4); }
+  .tag.thinking { color: var(--accent-2); border-color: rgba(121,192,255,.4); }
+  .howto {
+    background: var(--surface-2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--text);
+    border-left: 3px solid var(--green);
+  }
+  .howto b {
+    color: var(--green);
+    margin-right: 6px;
+  }
+  .digest {
+    margin-top: 40px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .digest h2 {
+    color: var(--accent-2);
+    margin: 0 0 14px;
+    font-size: 18px;
+  }
+  .digest ul { padding-left: 20px; margin: 0; }
+  .digest li { margin-bottom: 10px; font-size: 14.5px; }
+  .digest li b { color: var(--accent); }
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .container { padding: 20px 14px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">AI 网红日报 · Daily Digest</div>
+    <h1>2026-08-29 · 创作者可直接上手的 12 条 AI 信号</h1>
+    <div class="meta">
+      <span>📅 <b>2026-08-29</b></span>
+      <span>📦 数据来源：<b>G1 + G2 + G3 + G4 + G5</b></span>
+      <span>🔍 原始 <b>108</b> 条 → 精选 <b>12</b> 条</span>
+    </div>
+  </header>
+
+  <section class="summary">
+    <div class="summary-block">
+      <h3>模型层</h3>
+      <p>Google 一周连发 Gemini 3.5 Transcribe + Omni 1.1 Flash；Qwen3.8-Flash 进 OpenRouter。</p>
+    </div>
+    <div class="summary-block">
+      <h3>Agent 层</h3>
+      <p>Claude Code 加速可扩展性（Agents.MD / SendFeedback），OpenWorker 开源任务型 agent。</p>
+    </div>
+    <div class="summary-block">
+      <h3>创作工具</h3>
+      <p>Hailuo Design 一句话做 AE 动画，Play with Putty 多人 vibe coding。</p>
+    </div>
+    <div class="summary-block">
+      <h3>方法论</h3>
+      <p>用 eval 套件 + 模型无关策略对冲 API 厂商变动，是当前最高杠杆动作。</p>
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">1</span>
+        <span class="score">⭐⭐⭐⭐⭐ 5/5</span>
+      </div>
+      <h2>MiniMax H3 × fal：开源视频生成模型架构深度拆解</h2>
+      <p class="quote">"A great deep dive from the @fal team on how they built H3 Max, combining post-training with a co-designed inference stack to improve prompt adherence, visual quality, and speed."</p>
+      <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2093103692010676461" target="_blank" rel="noopener">@MiniMax_AI → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+        <span class="tag tutorial">#教程</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>跑视频生成 API 时，先读这份 post-training + 推理栈协同设计文档，知道哪些旋钮对"prompt 依从度 vs 速度"最关键，省掉一周盲调。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">2</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Google AI 本周发布汇总：Gemini 3.5 Transcribe + Omni 1.1 Flash</h2>
+      <p class="quote">"Here's what launched this week: — Gemini 3.5 Transcribe, our most precise speech-to-text model yet — Gemini Omni 1.1 Flash, expanded creative capabilities for video generation and editing."</p>
+      <div class="source">来源：<a href="https://x.com/GoogleAI/status/2093356767992279503" target="_blank" rel="noopener">@GoogleAI → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>播客剪辑/口播字幕换成 Gemini 3.5 Transcribe；短视频包装用 Omni 1.1 Flash，速度与可控性兼顾。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">3</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Gemini Omni 1.1 Flash 正式上线 Flow：可控视频生成</h2>
+      <p class="quote">"We're rolling out Gemini Omni 1.1 Flash to make generative video highly controllable, faster to iterate on, and more polished for production-grade use."</p>
+      <div class="source">来源：<a href="https://x.com/GoogleDeepMind/status/2093338200580256172" target="_blank" rel="noopener">@GoogleDeepMind → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+        <span class="tag workflow">#工作流</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>在 Flow by Google 跑多轮镜头迭代时把"可控性"参数拉高，分镜重写不再丢角色一致性，可直接进成片剪辑。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">4</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>ChatGPT Business Premium Seats：$100/月面向小团队</h2>
+      <p class="quote">"Introducing ChatGPT Business Premium Seats — The new $100 Premium seat is a game changer for small businesses and startups, giving lean teams better tools, faster workflows..."</p>
+      <div class="source">来源：<a href="https://x.com/OpenAI/status/2092335305366069305" target="_blank" rel="noopener">@OpenAI → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+        <span class="tag workflow">#工作流</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>3-10 人小工作室用 Premium Seats 替代"Plus + API"拼凑方案，集中计费 + 共享 workspace 上下文。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">5</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Play with Putty：Google Labs 实时协作 vibe coding</h2>
+      <p class="quote">"Play with Putty is a collaborative vibe coding tool that lets you build tools and websites together in real time. Join the waitlist at labs.google/playwithputty."</p>
+      <div class="source">来源：<a href="https://x.com/joshwoodward/status/2092293667688173593" target="_blank" rel="noopener">@joshwoodward → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>远程团队搭落地页/一次性工具时用 Putty 替代"开 Zoom 各写各的"，多人同栈 vibe coding 上手门槛接近 Figma。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">6</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>ChatGPT vs Claude vs Grok vs Gemini 横评教程</h2>
+      <p class="quote">"A few months ago, I used Claude for almost everything. Today, my AI usage looks very different. Here's my new tutorial where I tested ChatGPT, Claude, Grok, and Gemini head-to-head across..."</p>
+      <div class="source">来源：<a href="https://x.com/petergyang/status/2092630854648693189" target="_blank" rel="noopener">@petergyang → 推文</a></div>
+      <div class="tags">
+        <span class="tag tutorial">#教程</span>
+        <span class="tag workflow">#工作流</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>用同一组任务（写作/编码/浏览器使用/长上下文）四家各跑一遍，记录胜率，重新分配 4 个工具的日常分工。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">7</span>
+        <span class="score">⭐⭐⭐⭐⭐ 5/5</span>
+      </div>
+      <h2>一句话生成 AE 动画：Hailuo Design 工作流</h2>
+      <p class="quote">"Build After Effects animations with just one easy prompt ✍️ ... MiniMax Design unlocked a new creative world. Guess how long this video took? 10 minutes! And the crazy part? I only used one prompt."</p>
+      <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2091070803471392896" target="_blank" rel="noopener">@Hailuo_AI → 推文</a></div>
+      <div class="tags">
+        <span class="tag prompt">#Prompt</span>
+        <span class="tag workflow">#工作流</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>把"AE 模板工作流"换成"自然语言 → Hailuo 生成 → 微调"，原本一周做的片头/转场，一个上午出 5 条备选。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">8</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>企业 AI 落地的模型无关策略（高杠杆建议）</h2>
+      <p class="quote">"If you lead AI for an enterprise, the highest leverage thing you can do is to make your AI stack model agnostic. 1/ Today: build an eval suite that fully captures your use case."</p>
+      <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2093143877087879377" target="_blank" rel="noopener">@realmadhuguru → 推文</a></div>
+      <div class="tags">
+        <span class="tag workflow">#工作流</span>
+        <span class="tag thinking">#思维</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>改造前先花 2 周搭一条覆盖 80% 场景的 eval 套件，之后换模型/换供应商就是"跑分"的事，避免被 API 涨价/限速卡脖子。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">9</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Claude Code 即将更"可魔改"</h2>
+      <p class="quote">"excited to share more on how we're making Claude Code more hackable soon ... include being able to easily use Agents.MD or make other system prompt modifications."</p>
+      <div class="source">来源：<a href="https://x.com/trq212/status/2092303682616627311" target="_blank" rel="noopener">@trq212 → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>等 Agents.MD 上线后，把团队规范（commit 风格、PR 模板、测试约定）写进 AGENTS.md，每个新成员/分支开箱即用。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">10</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Claude Code 新增 SendFeedback 工具</h2>
+      <p class="quote">"Claude now has a SendFeedback tool so instead of you guys having to hit /feedback and write up a report, you can just tell Claude to draft and approve it."</p>
+      <div class="source">来源：<a href="https://x.com/trq212/status/2092696449616376140" target="_blank" rel="noopener">@trq212 → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+        <span class="tag workflow">#工作流</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>跑长链路 agent 任务时，让 Claude 在每次报错/歧义点自动整理反馈草稿并提交，比手动 /feedback 效率高一截。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">11</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>Qwen3.8-Flash 上线 OpenRouter</h2>
+      <p class="quote">"Qwen3.8-Flash is now live on @OpenRouter! ⚡ Coding assistants, agentic workflows, long-video understanding, all one API call away."</p>
+      <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2092857839299826095" target="_blank" rel="noopener">@Alibaba_Qwen → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>长视频理解/多模态场景下，把 Qwen3.8-Flash 作为 OpenRouter 上的"性价比候选"，先跑批处理 benchmark 再决定是否替换主力模型。</div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="rank">12</span>
+        <span class="score">⭐⭐⭐⭐ 4/5</span>
+      </div>
+      <h2>OpenWorker：开源任务型 Agent（Andrew Ng 推荐）</h2>
+      <p class="quote">"OpenWorker — an open source agent that doesn't just chat but completes tasks on your laptop — just released a new version with many features for security workflows."</p>
+      <div class="source">来源：<a href="https://x.com/An…5806" target="_blank" rel="noopener">@AndrewYNg → 推文</a></div>
+      <div class="tags">
+        <span class="tag tool">#工具</span>
+      </div>
+      <div class="howto"><b>如何应用：</b>本机跑安全扫描/代码审计时，OpenWorker 比云端 agent 更适合——开源 + 自托管 + 任务导向，可接进 CI 做 PR 阶段的安全门。</div>
+    </article>
+
+  </div>
+
+  <section class="digest">
+    <h2>📌 今日速读 · 1 句话版本</h2>
+    <ul>
+      <li><b>模型层：</b>Google 一周连发 Gemini 3.5 Transcribe + Omni 1.1 Flash，视频/语音两条线同时升级；Qwen3.8-Flash 进 OpenRouter，多模态又多一个性价比选项。</li>
+      <li><b>Agent 层：</b>Claude Code 加快可扩展性（Agents.MD / SendFeedback），OpenWorker 把任务型 agent 开源化，OpenAI 把企业席位做轻。</li>
+      <li><b>创作工具：</b>Hailuo Design"一句话做 AE 动画"工作流成熟，Play with Putty 把 vibe coding 拉进多人协作模式。</li>
+      <li><b>方法论：</b>用 eval 套件 + 模型无关策略对冲 API 厂商变动，是当前企业 AI 落地最被反复验证的高杠杆动作。</li>
+    </ul>
+  </section>
+
+  <footer>
+    本日报由 AI 网红日报工作流自动生成 · 数据来源：108 条原始推文（5 组） · 筛选后保留 12 条高质量条目
+  </footer>
+</div>
+</body>
+</html>
