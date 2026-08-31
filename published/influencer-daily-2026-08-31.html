@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-08-31</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d1117;
+    --bg-elev: #161b22;
+    --bg-card: #1c2128;
+    --border: #30363d;
+    --border-glow: #58a6ff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+    --accent: #58a6ff;
+    --accent-2: #7ee787;
+    --accent-3: #f0883e;
+    --accent-4: #d2a8ff;
+    --accent-5: #ff7b72;
+    --gold: #ffd700;
+    --shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+    line-height: 1.7;
+    padding: 0;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+  header {
+    text-align: center;
+    padding: 24px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-4));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  header .date {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  header .stats {
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .meta {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .meta strong { color: var(--accent-2); }
+  .meta em { color: var(--text-dim); font-style: normal; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--border-glow);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent);
+  }
+  .card.top1::before { background: linear-gradient(180deg, var(--gold), var(--accent-3)); }
+  .card.top2::before, .card.top3::before { background: var(--accent-3); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .card-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+  .rank {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .card.top1 .rank { color: var(--gold); }
+  .card.top2 .rank, .card.top3 .rank { color: var(--accent-3); }
+  .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  h2 {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .tag.tool { color: var(--accent); border-color: rgba(88,166,255,0.4); }
+  .tag.tutorial { color: var(--accent-2); border-color: rgba(126,231,135,0.4); }
+  .tag.prompt { color: var(--accent-4); border-color: rgba(210,168,255,0.4); }
+  .tag.workflow { color: var(--accent-3); border-color: rgba(240,136,62,0.4); }
+  .tag.mindset { color: var(--accent-5); border-color: rgba(255,123,114,0.4); }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .source a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.15s;
+  }
+  .source a:hover { border-bottom-color: var(--accent); }
+  .engage { font-size: 12px; color: var(--text-dim); }
+  .engage span { margin-left: 8px; }
+  .tweet {
+    background: var(--bg);
+    border-left: 3px solid var(--border);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .apply {
+    background: linear-gradient(135deg, rgba(126,231,135,0.08), rgba(88,166,255,0.06));
+    border: 1px solid rgba(126,231,135,0.25);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .apply::before {
+    content: "💡 如何应用";
+    display: block;
+    color: var(--accent-2);
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .summary-table {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 36px;
+  }
+  .summary-table h3 {
+    font-size: 16px;
+    color: var(--accent-4);
+    margin-bottom: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-muted); font-weight: 600; font-size: 13px; }
+  td:first-child { color: var(--text); font-weight: 500; }
+  .sources {
+    margin-top: 36px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+  .sources h3 { color: var(--accent); margin-bottom: 12px; font-size: 16px; }
+  .sources code {
+    background: var(--bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--accent-2);
+    font-size: 12px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🤖 AI 网红工具日报</h1>
+  <div class="date">2026-08-31 · 星期一</div>
+  <div class="stats">数据来源：G1-G5 全 5 组缓存（约 95 条推文）· 精选 <strong style="color:#7ee787">14</strong> 条</div>
+</header>
+
+<div class="meta">
+  <strong>收录标准：</strong>工具推荐 / 教程 / Prompt 模板 / 工作流优化 / AI 使用技巧<br>
+  <strong>排除：</strong>硬件/基础设施、融资/收入、纯基准对比、学术论文<br>
+  <em>质量门槛：内容创作者看完能立刻上手用</em>
+</div>
+
+<!-- #1 -->
+<div class="card top1">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#1</span>
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <h2>ChatGPT Work 真实能力拆解：6 个 Chat 没有的杀手特性</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+    <span class="tag tutorial">📚 教程</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/simonw/status/2094214737957691854" target="_blank">@simonw</a></div>
+    <div class="engage">402 ❤️ · 28 🔄 · 21K 👁️</div>
+  </div>
+  <div class="tweet">
+    这是我尝试解释 ChatGPT Work 真正能做什么 —— 它是一个极其令人困惑但功能超强的工具，有大量 Chat 没有的特性：1) 用 Luna/Terra 替代 Sol；2) 带互联网访问的代码执行环境；3) 无头 Chrome 浏览器；4) 跨会话共享的持久文件系统；5) 发布 ChatGPT Sites；6) 用 Sol/Luna/Terra 运行子代理会话。
+  </div>
+  <div class="apply">
+    如果你买了 ChatGPT Pro/Team 但只用了 Chat 模式，等于只用了一半能力。立刻建一个 Work 项目跑通"持久文件系统"：在 Work 里写个爬虫脚本存到 fs，下次新会话直接调用 —— 这才是 Work 真正的护城河（普通 Chat 每次会话都是黑盒）。
+  </div>
+</div>
+
+<!-- #2 -->
+<div class="card top2">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#2</span>
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <h2>一行 Prompt 把漫画转成动画（MiniMax H3 Max 实战）</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag prompt">💡 Prompt 模板</span>
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2093987185741701158" target="_blank">@Hailuo_AI</a></div>
+    <div class="engage">2 ❤️ · 3 🔄 · 4.2K 👁️</div>
+  </div>
+  <div class="tweet">
+    新点子火花 ✨ —— 拿起那本十年没碰的童年漫画书。如果 H3 能直接把它变成动画剧集呢？📚 实际创作中：输入一张漫画图 + 一行 Prompt「タイポグラフィーとイラストの漫画解説アニメ」（字体排版与插图的漫画解说动画）→ H3 自动逐帧展开，参考图 → 生成结果一气呵成。
+  </div>
+  <div class="apply">
+    想做漫画解说短视频却不会 Animate？用 H3 Max（MiniMax Design 上 480p 仅 $0.02/秒，9月3日前 3 次免费）。把你的分镜脚本拍成参考图，配上「XX 主题的漫画解说动画，逐帧展开」这行 prompt，3 分钟出片。
+  </div>
+</div>
+
+<!-- #3 -->
+<div class="card top3">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#3</span>
+      <span class="stars">⭐⭐⭐⭐½</span>
+      <h2>AI 产品 Playbook 半衰期只有 3 个月（如何不被淘汰）</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag mindset">💭 思维</span>
+    <span class="tag workflow">⚙️ 工作流</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2093562783627620456" target="_blank">@realmadhuguru</a></div>
+    <div class="engage">高传播 · VC 视角</div>
+  </div>
+  <div class="tweet">
+    AI 产品构建有大约 3 个月的 Playbook 半衰期。以下是如何适应的方法：大多数传统产品团队是为发现一套 Playbook 然后榨 5 年设计的。然而在 AI 实验室，我们有意识地每几个月就扔掉 Playbook，因为我们开始看到...
+  </div>
+  <div class="apply">
+    别再花 2 周写"AI 产品 PRD"。把产品迭代节奏压到 2 周：1) Week 1 — 用 Claude/Cursor 搭 MVP 上线；2) Week 2 — 收集反馈 + A/B 测试；3) 每月彻底重构一次架构（不是改 prompt）。3 个月前的最佳实践，今天就是包袱。
+  </div>
+</div>
+
+<!-- #4 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#4</span>
+      <span class="stars">⭐⭐⭐⭐½</span>
+      <h2>如何构建好的 Evals（系列 9）：评估路线图</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tutorial">📚 教程</span>
+    <span class="tag workflow">⚙️ 工作流</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2092426017118028266" target="_blank">@realmadhuguru</a></div>
+    <div class="engage">7.7K 👁️</div>
+  </div>
+  <div class="tweet">
+    如何构建好的评估 —— 第 9 部分：评估路线图问题。大多数评估失败是因为团队把它当作静态产物，但用户的期望和行为已经进化。你的评估需要一个随产品和真实使用模式演化的路线图。
+  </div>
+  <div class="apply">
+    建一个 eval-roadmap.md（类似产品路线图）：每月加 5-10 个新测试用例，覆盖最近用户报的真实失败案例；每季度淘汰已被新模型轻松搞定的旧测试。eval 不是"建一次就完事"，是"和数据标注一起演化"。
+  </div>
+</div>
+
+<!-- #5 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#5</span>
+      <span class="stars">⭐⭐⭐⭐½</span>
+      <h2>如何构建好的 Evals（系列 8）：评估的判别性</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tutorial">📚 教程</span>
+    <span class="tag workflow">⚙️ 工作流</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2092058332735693264" target="_blank">@realmadhuguru</a></div>
+    <div class="engage">128 ❤️ · 5 🔄 · 7.6K 👁️</div>
+  </div>
+  <div class="tweet">
+    构建好评估的第 8 部分 —— 评估的判别性。一个能"爬山"的评估是有用的，当它能区分有实质差异的 AI 系统时。想象你对五个 AI 系统跑评估：A:94 / B:93 / C:95 / D:94 / E:92 —— 这样的评估几乎没有信息量。
+  </div>
+  <div class="apply">
+    做 prompt A/B 测试时，别只看最终得分 —— 检查你的评测是否能区分相似 prompt 的细微差异。如果 5 个候选得分都挤在 ±2 分内，说明评估指标太松了，需要换更敏感的判定标准（比如多维评分 + 反例覆盖率）。
+  </div>
+</div>
+
+<!-- #6 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#6</span>
+      <span class="stars">⭐⭐⭐⭐½</span>
+      <h2>重复做的任务就该建成系统（alliekmiller 的元建议）</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💭 思维</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/alliekmiller/status/2092631998426738735" target="_blank">@alliekmiller</a></div>
+    <div class="engage">高分享</div>
+  </div>
+  <div class="tweet">
+    让我震惊的是，很多人只用 AI 做一次性任务。如果你打算做一件事且知道接下来 2 个月会重复，就该建一套系统来做这件事。例如你想投放付费广告。别做广告 —— 建一个广告生成系统：标题变体、图像模板、受众分群、预算分配自动跑。
+  </div>
+  <div class="apply">
+    写下你这周会重复做的 3 件事（写周报 / 整理会议纪要 / 翻译技术文档 / 生成社交媒体文案）。对每一件花 1 小时建 Claude Project + 自定义 Skill + 模板。下周开始省 80% 时间。系统思维 &gt; 单次 prompt 思维。
+  </div>
+</div>
+
+<!-- #7 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#7</span>
+      <span class="stars">⭐⭐⭐⭐</span>
+      <h2>Claude 统一内存：Chat 和 Cowork 共享记忆</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/_catwu/status/2092337156455051345" target="_blank">@_catwu</a></div>
+    <div class="engage">产品功能上线</div>
+  </div>
+  <div class="tweet">
+    Claude 现在在 Chat 和 Cowork 之间统一了内存。你告诉 Claude 记住一次，它在所有界面都保留这个上下文！Claude 现在在 Chat 和 Cowork 之间共享同一个内存，且由你决定存什么。
+  </div>
+  <div class="apply">
+    立刻在 Claude 里建一个"个人知识库"：1) 让 Claude 记住你的工作领域、客户偏好、写作风格；2) 在 Chat 里讨论项目；3) 在 Cowork 里执行任务时自动继承上下文。不再需要每次重新介绍背景，效率翻倍。
+  </div>
+</div>
+
+<!-- #8 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#8</span>
+      <span class="stars">⭐⭐⭐⭐</span>
+      <h2>企业 AI 最高杠杆：让你的 AI 栈模型无关</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag workflow">⚙️ 工作流</span>
+    <span class="tag mindset">💭 思维</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2093143877087879377" target="_blank">@realmadhuguru</a></div>
+    <div class="engage">232 ❤️ · 22 🔄 · 11K 👁️</div>
+  </div>
+  <div class="tweet">
+    如果你在企业里负责 AI，最高杠杆的事是让你的 AI 栈模型无关。两件事值得投资：1）今天 —— 构建一套完全覆盖你的用例和业务结果的评估体系；2）明天 —— 构建抽象层让模型可插拔。
+  </div>
+  <div class="apply">
+    不要把 prompt 硬编码进产品逻辑。建一个 model adapter 接口（OpenAI/Anthropic/Google 都封装成统一接口），所有 prompt 通过评估套件打分。这样新模型出来只需加 adapter，不用改业务代码。LiteLLM / Portkey 是现成的开源方案。
+  </div>
+</div>
+
+<!-- #9 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#9</span>
+      <span class="stars">⭐⭐⭐½</span>
+      <h2>Claude Code 自动反馈工具：让 Claude 自己写 bug report</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/trq212/status/2092696449616376140" target="_blank">@trq212</a></div>
+    <div class="engage">161K 👁️</div>
+  </div>
+  <div class="tweet">
+    Claude Code 现在有 SendFeedback 工具 —— 你不用再手动 /feedback 写报告了，直接告诉 Claude 起草并发送反馈。反馈帮我们改进和理解问题，非常感谢。
+  </div>
+  <div class="apply">
+    下次 Claude Code 跑偏时，别急着重写 prompt —— 直接说"这条反馈写一下发出去"，让它自己复盘失败原因、起草修复建议。配合 DevTools 看反馈历史，比凭感觉调 prompt 高效得多。
+  </div>
+</div>
+
+<!-- #10 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#10</span>
+      <span class="stars">⭐⭐⭐½</span>
+      <h2>LLM 陈词滥调高亮器：38 个 AI 写作模式一键识别</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/simonw/status/2093277255438860358" target="_blank">@simonw</a></div>
+    <div class="engage">2.6K ❤️ · 159 🔄 · 153K 👁️</div>
+  </div>
+  <div class="tweet">
+    我的 LLM 陈词滥调高亮器现在支持 38 种模式了。tools.simonwillison.net/llm-cliche-highlighter
+  </div>
+  <div class="apply">
+    写完文章/邮件/报告后，把全文贴进这个工具 —— 它会标红「It's not just X, it's Y」「delve into」「in today's fast-paced world」这类 AI 套话。每个标记都是一个重写信号，5 分钟把 AI 稿改成人话稿。
+  </div>
+</div>
+
+<!-- #11 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#11</span>
+      <span class="stars">⭐⭐⭐½</span>
+      <h2>Play with Putty：Google Labs 多玩家 vibe coding 实验</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/joshwoodward/status/2092614266818064389" target="_blank">@joshwoodward</a></div>
+    <div class="engage">197 ❤️ · 16 🔄 · 21K 👁️</div>
+  </div>
+  <div class="tweet">
+    🚨 新实验室实验 🚨 Play with Putty 是一个协作式 vibe coding 工具，让你和他人实时一起构建工具和网站。🫟 准备好让你的想象力多人化了吗？加入候补名单 labs.google/playwithputty。
+  </div>
+  <div class="apply">
+    如果 Google Labs 开放测试就立刻申请 —— 多人协作 vibe coding 是 2026 杀手级场景。远程 pair programming 不再受地理位置限制，两人各写一个模块，AI 帮你合并。适合开源项目冷启动 + 远程团队 hackathon。
+  </div>
+</div>
+
+<!-- #12 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#12</span>
+      <span class="stars">⭐⭐⭐½</span>
+      <h2>Midjourney V8.2 编辑模型：指令编辑 + 4 张参考图</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tool">🛠️ 工具</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/midjourney/status/2093253371650031949" target="_blank">@midjourney</a></div>
+    <div class="engage">1.1K 🔄 · 86 评论</div>
+  </div>
+  <div class="tweet">
+    我们今天开始测试第一个 V8.2 编辑模型。该模型支持：1) 指令式编辑；2) 多图参考生成（最多 4 张）；3) 画笔修复（inpainting）；4) 外延扩展（outpainting）；5) 同时支持个性化、情绪板和 sref。
+  </div>
+  <div class="apply">
+    做品牌视觉素材时：传 4 张参考图（产品图、色卡、风格图、构图图）+ 一句指令"把这张产品图换成夜景霓虹色调" → V8.2 一次性出图。不用 PS 调色不用多轮迭代，电商素材/广告图/社媒封面速度提升 5x。
+  </div>
+</div>
+
+<!-- #13 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#13</span>
+      <span class="stars">⭐⭐⭐½</span>
+      <h2>传统 LLM vs 推理模型：3 分钟讲透本质区别</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag tutorial">📚 教程</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/rasbt/status/2094057793506439492" target="_blank">@rasbt</a></div>
+    <div class="engage">614 ❤️ · 57 🔄 · 35K 👁️</div>
+  </div>
+  <div class="tweet">
+    一个短视频 —— 解释传统 LLM 和推理模型（以及代理）之间的关系，思考"从头开始"的方法，并演示如何用 uv 安装 Python &amp; PyTorch 依赖。
+  </div>
+  <div class="apply">
+    给团队做"为什么我们要切到推理模型"的培训时，直接拿这个视频当引子。关键 takeaway：传统 LLM = 一次性回答；推理模型 = 多步思考（适合复杂数学/代码/规划）。如果你的产品逻辑需要"先分析再回答"，用 o1/o3 类推理模型而非 GPT-4o。
+  </div>
+</div>
+
+<!-- #14 -->
+<div class="card">
+  <div class="card-header">
+    <div class="card-title-row">
+      <span class="rank">#14</span>
+      <span class="stars">⭐⭐⭐</span>
+      <h2>是 Slop 还是佳作，取决于是否承载独特人类经验</h2>
+    </div>
+  </div>
+  <div class="tags">
+    <span class="tag mindset">💭 思维</span>
+  </div>
+  <div class="meta-row">
+    <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2093396989329469505" target="_blank">@zarazhangrui</a></div>
+    <div class="engage">23K ❤️ · 75 🔄</div>
+  </div>
+  <div class="tweet">
+    一个东西是不是 Slop，跟它是不是 AI 生成关系不大，跟它是否承载了具体、独特的人类经验和视角关系更大。人类写的 Slop 一样遍地都是。
+  </div>
+  <div class="apply">
+    下次写 AI 内容前，给自己 5 分钟回答："我这篇带给读者什么独特视角？" 如果答案是"总结了 X 模型的发布说明"——这是 Slop（任何人都能写）。如果答案是"我用了 X 模型重构了自家电商客服流程，转化率提升 17%"——这是资产。AI 加速创作，但只有个人经验不能被复制。
+  </div>
+</div>
+
+<div class="summary-table">
+  <h3>📊 今日分类分布</h3>
+  <table>
+    <thead>
+      <tr><th>分类</th><th>数量</th><th>代表条目</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🛠️ 工具</td><td>6</td><td>ChatGPT Work · Claude 统一内存 · Midjourney V8.2 · Claude SendFeedback · LLM 陈词滥调高亮器 · Play with Putty</td></tr>
+      <tr><td>📚 教程</td><td>3</td><td>Evals 系列 8 · Evals 系列 9 · 传统 LLM vs 推理模型</td></tr>
+      <tr><td>💡 Prompt 模板</td><td>1</td><td>一行 Prompt 把漫画转动画</td></tr>
+      <tr><td>⚙️ 工作流</td><td>3</td><td>AI 栈模型无关 · Playbook 半衰期 · 重复任务建系统</td></tr>
+      <tr><td>💭 思维</td><td>4</td><td>Slop vs 独特人类经验 · 3 个月半衰期 · 模型无关栈 · 用更强模型做对外内容</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sources">
+  <h3>🔗 数据来源</h3>
+  <code>G1</code> 开发者/技术领袖: simonw, rasbt, OfficialLoganK, emollick, fchollet, mattshumer_, rowancheung<br>
+  <code>G2</code> AI 创业者/投资人: elonmusk, AndrewYNg, trq212, _catwu, alliekmiller, thenanyu, realmadhuguru<br>
+  <code>G3</code> AI 模型发布: Alibaba_Qwen, MiniMax_AI, GoogleDeepMind, GoogleAI, midjourney<br>
+  <code>G4</code> AI 公司创始人/评论员: joshwoodward, mattturck, zarazhangrui, kevinweil, danshipper, DeepLearn007<br>
+  <code>G5</code> AI 视频/创意工具: Hailuo_AI, fal, levelsio, rehan_shei, MIT_CSAIL, GaryMarcus
+</div>
+
+<footer>
+  生成时间：2026-08-31 10:00 UTC · 数据范围：2026-08-26 至 2026-08-31 · 全 5 组缓存完整可用
+</footer>
+
+</div>
+</body>
+</html>
