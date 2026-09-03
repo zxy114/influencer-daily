@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 网红日报 · 2026-09-03</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --surface: #141821;
+    --surface-2: #1c2230;
+    --border: #262c3a;
+    --text: #e6e9ef;
+    --text-dim: #8a93a6;
+    --accent: #7c5cff;
+    --accent-2: #00d4ff;
+    --star: #ffd166;
+    --tag-tool: #00d4ff;
+    --tag-tutorial: #7c5cff;
+    --tag-prompt: #ff7eb6;
+    --tag-workflow: #06d6a0;
+    --tag-thinking: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 32px 20px 80px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .subtitle { color: var(--text-dim); font-size: 14px; margin: 0; }
+  .meta {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .meta-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .scope {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .scope strong { color: var(--text); }
+  .trend {
+    background: linear-gradient(135deg, rgba(124,92,126,0.1), rgba(0,212,255,0.08));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+  .trend h2 { margin: 0 0 12px; font-size: 18px; color: var(--accent-2); }
+  .trend ul { margin: 0; padding-left: 20px; }
+  .trend li { margin-bottom: 6px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tag-tool { background: rgba(0,212,255,0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(124,92,126,0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(255,126,182,0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(6,214,160,0.15); color: var(--tag-workflow); }
+  .tag-thinking { background: rgba(255,209,102,0.15); color: var(--tag-thinking); }
+  .stars {
+    color: var(--star);
+    font-size: 14px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .stars .empty { color: var(--border); }
+  .text {
+    margin: 10px 0 14px;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .source {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .apply strong {
+    color: var(--accent-2);
+    margin-right: 6px;
+  }
+  .section-title {
+    font-size: 22px;
+    margin: 32px 0 16px;
+    color: var(--text);
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--accent-2); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>AI 网红日报</h1>
+  <p class="subtitle">2026-09-03 · 工具 / 教程 / Prompt / 工作流 / 思维</p>
+  <div class="meta">
+    <span class="meta-chip">📊 5/5 数据组</span>
+    <span class="meta-chip">🎯 Top 15 条</span>
+    <span class="meta-chip">⚡ 创作者可即学即用</span>
+  </div>
+</header>
+
+<div class="scope">
+  <strong>数据范围</strong>：G1 + G2 + G3 + G4 + G5 全部完成<br/>
+  <strong>覆盖账号</strong>：simonw、trq212、alliekmiller、thenanyu、realmadhuguru、fchollet、rowancheung、Alibaba_Qwen、MiniMax_AI、Hailuo_AI、midjourney、zarazhangrui、joshwoodward 等<br/>
+  <strong>筛选标准</strong>：工具 / 教程 / Prompt / 工作流 / AI 使用技巧（排除硬件、融资、纯基准、学术论文）
+</div>
+
+<div class="trend">
+  <h2>📌 今日趋势速览</h2>
+  <ul>
+    <li><strong>vibe coding 默认化</strong>：simonw 等头部已经「找不到 → 写一个」当默认动作。</li>
+    <li><strong>模型性价比战争升级</strong>：Qwen3.8-Max-0902（$5/MToken 帕累托前沿 #1）、H3 Max（$0.02/sec）、H3 Max Turbo（2x speed）齐发。</li>
+    <li><strong>Agent UX 成下一战场</strong>：thenanyu、realmadhuguru、zarazhangrui 都在谈「不烦人的 Agent」「藏起模型选择」「会议记录喂 Agent」。</li>
+    <li><strong>本地视频生成加速</strong>：FastH3 + vLLM-Omni 让 H3 跑得动 DGX Spark 与 Apple Silicon。</li>
+  </ul>
+</div>
+
+<h2 class="section-title">🏆 今日必看 Top 15</h2>
+
+<!-- 1 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">1. simonw：GeoJSON → PNG vibe-coded 工具</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★★</span>
+  </div>
+  <p class="text">又是一个「自己写工具比找现成更快」的例子：用 vibe coding 写了个小工具，把一个或多个 GeoJSON 形状渲染成 PNG。</p>
+  <div class="source">来源：<a href="https://x.com/simonw/status/2094946976735641796">@simonw</a></div>
+  <div class="apply"><strong>如何应用</strong>：当项目里有 GeoJSON 数据要快速可视化、又找不到顺手的现成工具时，用 Cursor / v0 vibe coding 十分钟撸一个。把「找不到就写一个」当默认心态。</div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">2. Alibaba_Qwen：Qwen3.8-Max-0902 登顶 Code Arena WebDev</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">Qwen3.8-Max-0902（2.4T 参数、1M 上下文）冲上 Code Arena WebDev 总榜 #1（1691 分），超 Claude Opus 5（Max）3 分、Kimi K3 17 分；混合价格 $5/MToken，是当前帕累托前沿最高性价比。</p>
+  <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2094968708288680276">@Alibaba_Qwen</a></div>
+  <div class="apply"><strong>如何应用</strong>：在你的编码 / 长上下文任务上跑一遍 Qwen3.8-Max-0902，对比 Claude Opus 5 看性价比。QwenCloud 直接可试。</div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">3. trq212：Claude Fable 5.1 切换 effort 不再断 prompt cache</h3>
+    <span class="tag tag-tutorial">教程</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">Claude Fable 5.1 是非常好用的模型。低验证要求、边界情况少的任务切到 low effort 跑得更快，关键是切换 effort 不再破坏 prompt cache。</p>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2094945951865520458">@trq212</a></div>
+  <div class="apply"><strong>如何应用</strong>：在 Claude Code / API 里把任务分级——文案润色、批量改写等低风险任务用 low effort，cache 不重置，能省 30%+ token。</div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">4. MiniMax_AI：FastH3 本地视频生成（NVIDIA DGX Spark + Apple Silicon）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">MiniMax H3 现在可以本地跑了。FastVideo 团队开源的 FastH3 在 NVIDIA DGX Spark 和 Apple Silicon（MLX）上都支持，速度 8 倍提升。</p>
+  <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2095229744463954064">@MiniMax_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：有 Apple Silicon（M2/M3/M4 Mac）或 DGX Spark 时，本地生成 15 秒 1344×768 视频已落地，先看 FastH3 + vLLM-Omni 的开源配方。</div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">5. thenanyu：让 Agent「不那么烦」是隐形 Alpha</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">让 Agent 不那么讨人厌，是巨大的 alpha。用户要拿到价值，前提是不 rage-quit。会话 / 修辞设计（conversation design）是 UX 设计师下一个被低估的赛道。</p>
+  <div class="source">来源：<a href="https://x.com/thenanyu/status/2094928205753040999">@thenanyu</a></div>
+  <div class="apply"><strong>如何应用</strong>：做 Agent 产品时把「语气、节奏、不啰嗦」当作一等 KPI 写进 spec，比堆功能更能拉留存。</div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">6. alliekmiller：每个 AI 实验室公告都是 $20K 的免费洞察</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">每个 AI 实验室发的新模型公告，背后都是价值 $20K 的产品 + 市场洞察——「这个模型能做什么」全部基于几百万用户过去最痛的吐槽和使用模式。</p>
+  <div class="source">来源：<a href="https://x.com/alliekmiller/status/2094855935717970378">@alliekmiller</a></div>
+  <div class="apply"><strong>如何应用</strong>：每周把 Google / Anthropic / OpenAI / xAI / Qwen 的更新公告整理一遍，提取「用户痛点 → 新模型解决」清单，反过来校准自己的产品方向。</div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">7. realmadhuguru：AI 产品应该把模型选择藏起来</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">所有 AI 产品都应该把模型选择从用户视角里抹掉。用户只在乎活干完了没；让用户选模型是过重的认知负担。</p>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2095174463696589223">@realmadhuguru</a></div>
+  <div class="apply"><strong>如何应用</strong>：你的产品里如果有「选 GPT / Claude / Gemini」的下拉框，几乎一定是反模式。后台按任务自动路由 + 加 fallback，前端只暴露「结果好不好」。</div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">8. realmadhuguru：自改进产品的指标体系</h3>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">自改进产品是每家公司都该实现的「元想法」。需要的三块基石：1) 主指标 / 次指标 / 护栏指标定义清楚；2) 战略 / 路线图 / 指标挂钩；3) 数据飞轮能跑起来。</p>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2094817857821704659">@realmadhuguru</a></div>
+  <div class="apply"><strong>如何应用</strong>：搭 AI 产品前先画一张「指标三层表」——primary（北极星）、secondary（驱动）、guardrail（防翻车），再决定采集什么数据喂模型。</div>
+</div>
+
+<!-- 9 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">9. simonw：Claude Fable 5.1 SVG + 动画实测</h3>
+    <span class="tag tag-tutorial">教程</span>
+    <span class="stars">★★★<span class="empty">★★</span></span>
+  </div>
+  <p class="text">用 Fable 5.1 Max thinking 生成了我用过的 Anthropic 模型里最好的 SVG 鹈鹕（花费 $3.30），然后让它动起来。新 system prompt 主要约束：不复制歌词、不画版权角色。</p>
+  <div class="source">来源：<a href="https://x.com/simonw/status/2094938927727804684">@simonw</a></div>
+  <div class="apply"><strong>如何应用</strong>：用 Fable 5.1 Max thinking 跑 SVG 生成 + 动画 pipeline，prompt 里明确「不要照搬歌词 / 知名 IP」，能拿到干净的视觉素材。</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">10. fchollet：推理时 scaling 有两条轴</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">测试时 scaling 有两条轴：让 Agent 跑得更久（深度），跑更多个 Agent（广度）。深度大家都知道，广度在需要大范围搜索的难题上同样关键。</p>
+  <div class="source">来源：<a href="https://x.com/fchollet/status/2094693140196110647">@fchollet</a></div>
+  <div class="apply"><strong>如何应用</strong>：解复杂问题时不要只让一个 Agent 钻牛角尖，并行 spawn 多个 Agent 做广度探索，最后合并答案，质量往往跃升。</div>
+</div>
+
+<!-- 11 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">11. Hailuo_AI：H3 Max 在 Hailuo Design 上线（$0.02/sec）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">H3 Max 在 Hailuo Design 上可用——480p 起步价 $0.02/sec，9 月 3 日前送 3 次免费生成。</p>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2093977756648538465">@Hailuo_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：做短视频 / 演示素材时，先用免费额度试 H3 Max 出 480p 草稿，确认构图后再决定要不要上高分辨率。</div>
+</div>
+
+<!-- 12 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">12. rowancheung：哪些 AI 整合是成功的、哪些是失败的</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★<span class="empty">★★</span></span>
+  </div>
+  <p class="text">真正好用的 AI 整合：Notion AI、Spotify AI DJ、Whoop、Slack Slackbot、X Grok。失败的：Instagram Meta AI、Apple Intelligence、DoorDash 客服 AI、Gmail「帮我写」、Google Meet 笔记。</p>
+  <div class="source">来源：<a href="https://x.com/rowancheung/status/2095176927879512455">@rowancheung</a></div>
+  <div class="apply"><strong>如何应用</strong>：成功的产品里 AI 是「藏在后台默默干活」，失败的产品里 AI 是「挂在前台当新功能」。做产品时拿这张清单对一遍。</div>
+</div>
+
+<!-- 13 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">13. zarazhangrui：会议记录不再是给人看的，是给 Agent 喂的</h3>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">★★★<span class="empty">★★</span></span>
+  </div>
+  <p class="text">我们不再为了人录会议了——没人读 AI 摘要、也没人回放录音。我们录的是喂给 Agent 的转录文本。</p>
+  <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2095375073381318656">@zarazhangrui</a></div>
+  <div class="apply"><strong>如何应用</strong>：把会议记录的目标读者从「团队成员」改成「Agent」，模板从「会议纪要」改成「结构化决策 + 待办 + 上下文」，喂自动化工作流。</div>
+</div>
+
+<!-- 14 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">14. midjourney：V8.2 编辑模型（参考图 / Inpaint / Outpaint）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★<span class="empty">★★</span></span>
+  </div>
+  <p class="text">Midjourney 灰度 V8.2 编辑模型：支持指令式编辑、多图参考（最多 4 张）、笔刷 inpainting、outpainting，兼容个性化、sref、moodboard。</p>
+  <div class="source">来源：<a href="https://x.com/midjourney/status/2093253371650031949">@midjourney</a></div>
+  <div class="apply"><strong>如何应用</strong>：拿到灰度后用「参考图 + 文字指令」做局部改图，省去 PS 步骤。一致性场景（角色 / 风格）比之前稳很多。</div>
+</div>
+
+<!-- 15 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">15. Hailuo_AI：H3 把参考图变成「制作过程」视频的 Prompt</h3>
+    <span class="tag tag-prompt">Prompt</span>
+    <span class="stars">★★★<span class="empty">★★</span></span>
+  </div>
+  <p class="text">用一个 Prompt，把任意参考图变成 15 秒的「幕后制作」视频——从草稿到成品全程在屏幕上完成。</p>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2095364148612010298">@Hailuo_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：复制 Prompt 套到自己的角色 / Logo / 产品图上，自动生成「制作过程」短片，30 秒出片，适合做品牌内容。</div>
+</div>
+
+<footer>
+  生成于 2026-09-03 · 数据源 G1–G5 全量<br/>
+  <a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-03.html">zxy114.github.io/influencer-daily</a>
+</footer>
+
+</div>
+</body>
+</html>
