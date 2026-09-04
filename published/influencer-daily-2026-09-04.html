@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 网红日报 · 2026-09-04</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --surface: #141821;
+    --surface-2: #1c2230;
+    --border: #262c3a;
+    --text: #e6e9ef;
+    --text-dim: #8a93a6;
+    --accent: #7c5cff;
+    --accent-2: #00d4ff;
+    --star: #ffd166;
+    --tag-tool: #00d4ff;
+    --tag-tutorial: #7c5cff;
+    --tag-prompt: #ff7eb6;
+    --tag-workflow: #06d6a0;
+    --tag-thinking: #ffd166;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 32px 20px 80px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .subtitle { color: var(--text-dim); font-size: 14px; margin: 0; }
+  .meta {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .meta-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .scope {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .scope strong { color: var(--text); }
+  .scope .warn { color: #ffb84d; }
+  .trend {
+    background: linear-gradient(135deg, rgba(124,92,126,0.1), rgba(0,212,255,0.08));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+  .trend h2 { margin: 0 0 12px; font-size: 18px; color: var(--accent-2); }
+  .trend ul { margin: 0; padding-left: 20px; }
+  .trend li { margin-bottom: 6px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+  }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .tag-tool { background: rgba(0,212,255,0.15); color: var(--tag-tool); }
+  .tag-tutorial { background: rgba(124,92,126,0.15); color: var(--tag-tutorial); }
+  .tag-prompt { background: rgba(255,126,182,0.15); color: var(--tag-prompt); }
+  .tag-workflow { background: rgba(6,214,160,0.15); color: var(--tag-workflow); }
+  .tag-thinking { background: rgba(255,209,102,0.15); color: var(--tag-thinking); }
+  .stars {
+    color: var(--star);
+    font-size: 14px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .stars .empty { color: var(--border); }
+  .text {
+    margin: 10px 0 14px;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .source {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .apply {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .apply strong {
+    color: var(--accent-2);
+    margin-right: 6px;
+  }
+  .section-title {
+    font-size: 22px;
+    margin: 32px 0 16px;
+    color: var(--text);
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  footer a { color: var(--accent-2); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>AI 网红日报</h1>
+  <p class="subtitle">2026-09-04 · 工具 / 教程 / Prompt / 工作流 / 思维</p>
+  <div class="meta">
+    <span class="meta-chip">📊 4/5 数据组（降级）</span>
+    <span class="meta-chip">🎯 Top 12 条</span>
+    <span class="meta-chip">⚡ 创作者可即学即用</span>
+  </div>
+</header>
+
+<div class="scope">
+  <strong>数据范围</strong>：G2 + G3 + G4 + G5 完成（G1 缺失）<br/>
+  <strong>覆盖账号</strong>：danshipper、trq212、alliekmiller、thenanyu、realmadhuguru、joshwoodward、Alibaba_Qwen、GoogleDeepMind、GoogleAI、MiniMax_AI、Hailuo_AI、zarazhangrui 等<br/>
+  <strong>筛选标准</strong>：工具 / 教程 / Prompt / 工作流 / AI 使用技巧（排除硬件、融资、纯基准、学术论文）<br/>
+  <span class="warn">⚠️ 本日 G1 数据组未完成，报告基于 4 组可用数据生成，质量门槛不降。</span>
+</div>
+
+<div class="trend">
+  <h2>📌 今日趋势速览</h2>
+  <ul>
+    <li><strong>OpenAI Astra 正式登场</strong>：danshipper + alliekmiller 双线第一手测评，整体顺手但推理重活仍差 Fable，Computer Use 是杀手锏。</li>
+    <li><strong>模型「性价比档」全面发力</strong>：Gemini 3.8 Flash（高质量 + 低价格）、Qwen3.8-Max-0902（#1 WebDev $5/MToken）、H3 Max（$0.02/sec）齐发，便宜档不再是「凑合用」。</li>
+    <li><strong>Agent UX 成产品层 next frontier</strong>：zarazhangrui「会议记录喂 Agent」、Claude Code Function Hooks——Agent 不再是黑盒，开始变成可插拔运行时。</li>
+    <li><strong>「制作过程」视频成新内容范式</strong>：Hailuo + MiniMax 双双放出「参考图 → 创作视频」的 prompt，30 秒做出品牌素材，IP / 电商 / 创作者立刻能用。</li>
+  </ul>
+</div>
+
+<h2 class="section-title">🏆 今日必看 Top 12</h2>
+
+<!-- 1 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">1. danshipper：GPT-6 Astra 第一手 Vibe Check</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★★</span>
+  </div>
+  <p class="text">OpenAI 刚刚发布 GPT-6 Astra。danshipper 团队在编码、写作、知识工作三大场景深度测试——整体比 5.6-Sol 是一次大升级，但顶尖表现还差 Fable 一截，有些坏习惯没改掉。</p>
+  <div class="source">来源：<a href="https://x.com/danshipper/status/2095593705214300394">@danshipper</a></div>
+  <div class="apply"><strong>如何应用</strong>：把 Astra 当作「日常编码 + 写作默认」，重推理 / 长文任务继续用 Claude Fable；用同一个 prompt 在两边跑一遍对比，能直观看到 Astra 的「顺手」边界。</div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">2. alliekmiller：GPT-6 Astra 商业用户该知道的事</h3>
+    <span class="tag tag-tutorial">教程</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">提前测了 Astra，所有商业人士都应该知道：1) Computer Use 和 Browser Use 已经强到任何稳定的电脑工作流都能让 AI 部分接手；2) 但敏感操作仍要人 review，别盲信。</p>
+  <div class="source">来源：<a href="https://x.com/alliekmiller/status/2095595935002742975">@alliekmiller</a></div>
+  <div class="apply"><strong>如何应用</strong>：拿每周最重复的 5 个浏览器/桌面流程（填表、跨系统搬运数据等），跑一遍 Astra Computer Use，把可自动化的列出来，先挑一个低风险流程跑通。</div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">3. GoogleDeepMind：Gemini 3.8 Flash 发布（编码 + Agent 大升级）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">两个新 Gemini 模型上线，帮 AI Agent 跑大规模 + 安全写代码：🔘 3.8 Flash——比 3.7 Flash 在软件工程、Agentic 任务、多步推理上大幅提升，是目前最聪明的 Flash；🔘 3.8 Flash Cyber——漏洞检测 + 自动修补能力顶尖。</p>
+  <div class="source">来源：<a href="https://x.com/GoogleDeepMind/status/2095175498967949359">@GoogleDeepMind</a></div>
+  <div class="apply"><strong>如何应用</strong>：把 Gemini 3.8 Flash 加进多模型路由——编码走 3.8 Flash，安全审计走 3.8 Flash Cyber，Astra/Fable 处理推理重活，按性价比挑模型。</div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">4. Alibaba_Qwen：Qwen3.8-Max-0902 登顶 Code Arena WebDev</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">Qwen3.8-Max-0902 在 Code Arena WebDev leaderboard 上从 1669 跃升到 1691，刷新 agentic coding（WebDev）工作流纪录，多步推理、工具调用、完整 App 生成能力突出。</p>
+  <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2094976556494209206">@Alibaba_Qwen</a></div>
+  <div class="apply"><strong>如何应用</strong>：做 Web 全栈生成 / vibe coding 项目时，把 Qwen3.8-Max-0902 作为 Claude 之外的备选——尤其在多步工具调用上，能省掉不少来回修补。</div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">5. trq212：Claude Fable 5.1 切换 effort 不再断 prompt cache</h3>
+    <span class="tag tag-tutorial">教程</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">Fable 5.1 是个非常好的模型。验证要求低、边界情况少的任务用 low effort 跑得快，关键是切换 effort 不再破坏 prompt cache。</p>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2094945951865520458">@trq212</a></div>
+  <div class="apply"><strong>如何应用</strong>：在 Claude Code / API 里把任务按「验证强度」分级——文案润色、批量改写、信息抽取这类低风险任务直接 low effort，cache 不重置，能省 30%+ token 成本。</div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">6. trq212：Claude Code 即将推出 Function Hooks（自定义扩展）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">Anthropic 正在把 Claude Code 做得更可 hack——Function Hooks 让你能在 Claude Code 流程里插入自定义函数，欢迎反馈试用体验。</p>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2095653053282292013">@trq212</a></div>
+  <div class="apply"><strong>如何应用</strong>：等 Function Hooks 上线后，把它接到你的 CI、linter、格式化器、自定义脚本上——Claude Code 不再是黑盒 IDE，而是可插拔的 agent 运行时。</div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">7. Hailuo_AI：H3 Max 加速降价（480p $0.02/sec）</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">H3 视频生成速度大幅提升！480p 起步价只要 $0.02/sec，9 月 3 日前注册送 3 次免费生成——从一段 prompt 到下一段，节奏不打断。</p>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2095731025901162990">@Hailuo_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：做短视频 / 演示素材时先用免费额度出 480p 草稿验证构图与节奏，再决定要不要升级高分辨率——$0.02/sec 的价格能让你跑 A/B 不心疼。</div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">8. Hailuo_AI：把任意参考图变成「制作过程」视频的 Prompt</h3>
+    <span class="tag tag-prompt">Prompt</span>
+    <span class="stars">★★★★★</span>
+  </div>
+  <p class="text">这个 Prompt 把任何参考图变成一段「手工制作过程」视频——屏幕上完整呈现从草稿到成品的全过程。Prompt：「A cinematic creation film follows one maker reconstructing the [主体描述] from raw materials in real time, hands shaping each component, textures forming layer by layer, ending with the finished piece held to camera — single continuous shot, studio lighting, shallow depth of field.」</p>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2095094950757380257">@Hailuo_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：把这个 Prompt 套到自己的 Logo / 角色 / 产品图上，自动生成「幕后制作」短片，30 秒出片，适合做品牌内容、电商主图视频、社交媒体开场。</div>
+</div>
+
+<!-- 9 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">9. MiniMax_AI：角色参考图 → 15 秒「制作过程」视频</h3>
+    <span class="tag tag-prompt">Prompt</span>
+    <span class="stars">★★★★★</span>
+  </div>
+  <p class="text">H3 视频生成的 Prompt 分享——只要你把角色参考图丢进去，H3 就能输出 15 秒「从草图到成品」的角色创作过程视频。完整 prompt 已开源。</p>
+  <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2095228354211594543">@MiniMax_AI</a></div>
+  <div class="apply"><strong>如何应用</strong>：用这个 prompt 跑你的 IP 角色 / 自定义 OC，得到 15 秒的角色「诞生过程」短视频，适合发抖音 / Reels / TikTok 的高转化内容。</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">10. zarazhangrui：会议记录不再是给「人」看的，是给 Agent 喂的</h3>
+    <span class="tag tag-workflow">工作流</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">我们不再为人类录会议了——没人读 AI 摘要，也没人回放录音。我们录的是喂给 Agent 的结构化转录文本。</p>
+  <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2095375073381318656">@zarazhangrui</a></div>
+  <div class="apply"><strong>如何应用</strong>：把会议记录的「目标读者」从「团队成员」改成「Agent」——模板从「会议纪要」改成「结构化决策 + 待办 + 上下文」，再喂自动化工作流（Linear / Slack / Notion DB）。</div>
+</div>
+
+<!-- 11 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">11. zarazhangrui：创始人该多录「真实录屏」，少做高完成度宣传片</h3>
+    <span class="tag tag-thinking">思维</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">希望更多创始人能录真实的屏幕操作 + 背后思考，而不是花大钱做高完成度宣传视频。</p>
+  <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2095416650401186288">@zarazhangrui</a></div>
+  <div class="apply"><strong>如何应用</strong>：下次要 demo 新功能时，先录一段 5 分钟 Loom 真实操作（含 bug、翻车、决策时刻），再决定要不要剪辑成 60 秒宣传片——前者更真实、更省时间。</div>
+</div>
+
+<!-- 12 -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">12. joshwoodward：Gemini 3.8 Flash = 高质量 + 低价格</h3>
+    <span class="tag tag-tool">工具</span>
+    <span class="stars">★★★★<span class="empty">★</span></span>
+  </div>
+  <p class="text">3.8 Flash 正在 AI Studio 全面铺开——great quality @ great price。</p>
+  <div class="source">来源：<a href="https://x.com/joshwoodward/status/2095178970912461279">@joshwoodward</a></div>
+  <div class="apply"><strong>如何应用</strong>：把 Gemini 3.8 Flash 加入你日常的「便宜档」模型池（与 GPT-4.1-mini、Claude Haiku 同级），跑批量任务、分类、抽取时默认走它。</div>
+</div>
+
+<footer>
+  AI 网红日报 · 自动生成 · 数据来自 AI 领域头部创作者推文<br/>
+  <a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-04.html">在线阅读</a>
+</footer>
+
+</div>
+</body>
+</html>
