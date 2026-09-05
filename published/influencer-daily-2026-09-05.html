@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-05</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #14171f;
+    --bg-card-hover: #1a1e29;
+    --border: #232733;
+    --text: #e6e8ec;
+    --text-dim: #9aa0ac;
+    --text-faint: #6b7280;
+    --accent: #7c9cff;
+    --accent-2: #95e6cb;
+    --warn: #f5b962;
+    --bad: #ef6f6c;
+    --good: #95e6cb;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 24px 16px 80px;
+    min-height: 100vh;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 32px 0 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .date { color: var(--text-dim); font-size: 14px; letter-spacing: 0.5px; }
+  header .source-banner {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 4px 12px;
+    background: rgba(245, 185, 98, 0.12);
+    color: var(--warn);
+    border: 1px solid rgba(245, 185, 98, 0.3);
+    border-radius: 999px;
+    font-size: 12px;
+  }
+  .intro {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .intro strong { color: var(--text); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .card-num {
+    background: var(--accent);
+    color: #0b0d12;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-tool    { background: rgba(124, 156, 255, 0.15); color: var(--accent); }
+  .tag-tut     { background: rgba(149, 230, 203, 0.15); color: var(--accent-2); }
+  .tag-prompt  { background: rgba(245, 185, 98, 0.15); color: var(--warn); }
+  .tag-workflow{ background: rgba(214, 167, 255, 0.15); color: #d6a7ff; }
+  .tag-mind    { background: rgba(239, 111, 108, 0.15); color: var(--bad); }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .card .quote {
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid var(--accent);
+    padding: 10px 12px;
+    margin: 10px 0;
+    border-radius: 0 6px 6px 0;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .card .meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-faint);
+    font-size: 12px;
+    margin: 8px 0;
+  }
+  .card .meta a { color: var(--accent); text-decoration: none; }
+  .card .meta a:hover { text-decoration: underline; }
+  .card .stars { color: var(--warn); font-size: 13px; letter-spacing: 1px; }
+  .card .apply {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    color: var(--text);
+    font-size: 13px;
+  }
+  .card .apply strong { color: var(--accent-2); }
+  .footer {
+    margin-top: 48px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .footer h3 { color: var(--text); margin-bottom: 12px; font-size: 15px; }
+  .footer table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .footer th, .footer td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  .footer th { color: var(--text); font-weight: 600; }
+  .status-ok   { color: var(--good); }
+  .status-warn { color: var(--warn); }
+  .status-bad  { color: var(--bad); }
+  @media (max-width: 600px) {
+    body { padding: 16px 12px 60px; }
+    header h1 { font-size: 24px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🤖 AI 网红日报</h1>
+  <div class="date">2026-09-05 · Saturday</div>
+  <div class="source-banner">⚠ 数据来源：G2 / G3 / G4 / G5（G1 缺失，降级生成）</div>
+</header>
+
+<div class="intro">
+  <strong>收录标准：</strong>工具推荐 · 教程 · Prompt 模板 · 工作流优化 · AI 使用技巧<br>
+  <strong>排除：</strong>硬件/基础设施 · 融资/收入 · 纯基准对比 · 学术论文<br>
+  <strong>质量门槛：</strong>内容创作者看完能立刻上手用
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-tags"><span class="tag tag-tut">教程</span><span class="tag tag-mind">思维</span></div>
+    </div>
+    <h3>Andrew Ng：AI 编程代理技能地图</h3>
+    <div class="quote">"使用 AI 编程代理最重要的技能"—— 发布 AI Engineering Skills Map，教你如何驱动代理写代码以及处理数据分析、系统管理等非编码任务。</div>
+    <div class="meta">📍 <strong>@AndrewYNg</strong> · <a href="https://x.com/An…1217" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>把"驱动 AI 代理"当作一项可训练的核心技能；先选一个非编码任务（比如自动整理周报），按 Skills Map 的框架拆解 prompt 步骤并迭代。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>Claude Code 即将上线 Function Hooks</h3>
+    <div class="quote">"我们正在探索一种扩展和定制 Claude Code 的新方式：Function Hooks"，附示例视频，已在 GitHub issue 开放反馈。</div>
+    <div class="meta">📍 <strong>@ClaudeDevs</strong> · <a href="https://x.com/ClaudeDevs/status/2095572891941351550" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>现在就去 GitHub issue 提你想 hook 的环节（提交前自动跑 lint、自动生成 PR 描述），先提意见的人会拿到首发适配。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-mind">思维</span></div>
+    </div>
+    <h3>Claude 模型 effort 切换不再破坏 prompt cache</h3>
+    <div class="quote">"试试在低 effort 下处理那些不需要大量验证、边缘 case 少的任务；切换 effort 不再破坏 prompt cache 了。"</div>
+    <div class="meta">📍 <strong>@trq212</strong> · <a href="https://x.com/trq212/status/2094945951865520458" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>对"分类、抽取、改写"这类标准任务切到低 effort 省钱不破坏 cache；"代码生成、长文推理"再切回高 effort——分级使用是隐性省钱关键。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div class="card-tags"><span class="tag tag-mind">思维</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>Allie K. Miller：AI 的四个核心组成</h3>
+    <div class="quote">"AI 核心其实只需要四块：① 一个做事的东西（agent）② 工具连接 ③ 一个存放数据的地方 ④ 一个分享/更新的位置。"</div>
+    <div class="meta">📍 <strong>@alliekmiller</strong> · <a href="https://x.com/alliekmiller/status/2095948761604427925" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>用这四象限盘点你当前的 AI 工具栈——只缺"存放数据的地方"或"工具连接"？补齐远比追"哪个模型更强"重要。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div class="card-tags"><span class="tag tag-prompt">Prompt</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>Astra "假设优先" 工作流</h3>
+    <div class="quote">"我最近在 Astra 上用的一个模式：先让模型给出多种假设，然后派出几十到几百个 agent 去研究、验证、发现。"</div>
+    <div class="meta">📍 <strong>@alliekmiller</strong> · <a href="https://x.com/alliekmiller/status/2095906826130711005" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>做市场调研/竞品分析时别直接问"答案是什么"，先写 prompt「列出 10 个可能假设，再让 5 个子 agent 各自验证」，输出质量跳一个台阶。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <div class="card-tags"><span class="tag tag-tool">工具</span><span class="tag tag-mind">思维</span></div>
+    </div>
+    <h3>模型选择器时代结束</h3>
+    <div class="quote">"模型 picker 时代即将结束。每个 prompt 进 Lovable，系统自动决定用哪个模型、工具、指令和上下文。"</div>
+    <div class="meta">📍 <strong>@antonosika</strong> · <a href="https://x.com/antonosika/status/2094790579469287450" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>作为创作者不必再追"今天哪个模型最强"——选会自动路由模型的产品，把精力放在需求描述上。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <div class="card-tags"><span class="tag tag-workflow">工作流</span><span class="tag tag-tut">教程</span></div>
+    </div>
+    <h3>这个周末练一项 AI 自动化</h3>
+    <div class="quote">"这个周末让自己 AI 能力变强的一个实操：挑一个你熟悉的流程，用 AI 把整个流程自动化。可能要试几次才能跑通，但效果会很爽。"</div>
+    <div class="meta">📍 <strong>@realmadhuguru</strong> · <a href="https://x.com/realmadhuguru/status/2095907570540335174" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>周末挑一个真实痛点（自动整理发票/自动剪辑会议高光/自动生成播客 show notes）从 0 跑通一遍，比读 10 篇评测更有用。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">8</div>
+      <div class="card-tags"><span class="tag tag-mind">思维</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>让 Agent 变"不那么烦人"是一门手艺</h3>
+    <div class="quote">"让你的 agent 少惹人烦，里面藏着大量 alpha。用户要抵达价值，前提是他们不再 rage-quit。UX 设计师的新机会是成为对话/修辞设计师。"</div>
+    <div class="meta">📍 <strong>@thenanyu</strong> · <a href="https://x.com/thenanyu/status/2094928205753040999" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>设计 agent prompt 时专门花时间调语气——加入"不要连续追问超过两次"、"不确定时给出选项而不是开放问题"这类约束，转化率立刻提升。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">9</div>
+      <div class="card-tags"><span class="tag tag-prompt">Prompt</span><span class="tag tag-tut">教程</span></div>
+    </div>
+    <h3>Hailuo H3「幕后制作」Prompt 模板</h3>
+    <div class="quote">参考图 → 视频的 prompt 模板："A cinematic creation film follows one maker reconstructing the [subject] from scratch..." 让任何参考图生成"幕后手工制作过程"视频。</div>
+    <div class="meta">📍 <strong>@Hailuo_AI</strong> · <a href="https://x.com/Hailuo_AI/status/2095364148612010298" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>把你的产品 logo、IP 角色照套进这个 prompt，立刻得到 15 秒"幕后制作"短片，适合品牌故事、产品发布预热。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">10</div>
+      <div class="card-tags"><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>把 Hailuo H3 当作"最终渲染器"</h3>
+    <div class="quote">"也许可以让 H3 成为工作流里的最终渲染器？"——先用本地跑方向，定了之后才丢给 API，省钱且少走弯路。</div>
+    <div class="meta">📍 <strong>@Hailuo_AI</strong> · <a href="https://x.com/Hailuo_AI/status/2095827843993489491" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>3D / 视觉内容创作时，前面用 Blender 或 ComfyUI 在本地跑构图，方向确定后再用 H3 出片，能省大量 API 成本。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">11</div>
+      <div class="card-tags"><span class="tag tag-tool">工具</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>Astra 自动修上游依赖 bug</h3>
+    <div class="quote">"用 Astra 几周下来，它非常主动。vitest、tsx、SwiftPM 上有一堆 PR，都是 Astra 调试 OC 时顺便发现并 patch 了上游依赖的问题。"</div>
+    <div class="meta">📍 <strong>@steipete</strong> · <a href="https://x.com/steipete/status/2095600786264973822" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>开发者可以试试让 Astra 跑完整 CI 失败调试，关注它会不会顺手定位到上游库 bug——这种深度排查是新模型最容易拉开差距的场景。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">12</div>
+      <div class="card-tags"><span class="tag tag-mind">思维</span><span class="tag tag-workflow">工作流</span></div>
+    </div>
+    <h3>录会议不是为了人，是为了喂 Agent</h3>
+    <div class="quote">"我们不再为了人录会议了。没人读 AI 摘要、没人回听。我们捕获 transcript 是为了喂给 agent。"</div>
+    <div class="meta">📍 <strong>@zarazhangrui</strong> · <a href="https://x.com/zarazhangrui/status/2095375073381318656" target="_blank">查看推文 ↗</a></div>
+    <div class="stars">⭐⭐⭐⭐</div>
+    <div class="apply"><strong>如何应用：</strong>下次开周会，直接让 Otter / 通义听悟 / 飞书妙记出结构化 transcript，然后喂给 Codex / Claude Code 让它产出"待办+风险+决议"，会议效率直接翻倍。</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <h3>📊 数据来源说明</h3>
+  <table>
+    <tr><th>组别</th><th>状态</th><th>备注</th></tr>
+    <tr><td>G1</td><td class="status-bad">❌ 缺失</td><td>本日未完成采集</td></tr>
+    <tr><td>G2</td><td class="status-ok">✅ 完成</td><td>含 Elon Musk（已过滤硬件）</td></tr>
+    <tr><td>G3</td><td class="status-ok">✅ 完成</td><td>模型发布为主</td></tr>
+    <tr><td>G4</td><td class="status-warn">⚠ 完成标记异常</td><td>JSON 完整可用</td></tr>
+    <tr><td>G5</td><td class="status-ok">✅ 完成</td><td>噪声较多，已筛选</td></tr>
+  </table>
+  <p style="margin-top: 12px;"><strong>降级说明：</strong>G1 数据缺失，仍基于 G2-G5 输出 12 条高质量条目；G4 完成标记异常但内容完整可用。</p>
+</div>
+
+</div>
+</body>
+</html>
