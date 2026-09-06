@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-09-06</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0a0a0f;
+  color: #e4e4e7;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.header h1 {
+  font-size: 2em;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 0.85em;
+  color: #94a3b8;
+}
+.meta-badge {
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: #93c5fd;
+}
+.card {
+  background: #16161d;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+.card-num {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  width: 32px; height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+.card h2 {
+  display: inline-block;
+  font-size: 1.25em;
+  color: #f1f5f9;
+  vertical-align: middle;
+}
+.tags { margin: 12px 0; }
+.tag {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #c4b5fd;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.78em;
+  margin-right: 6px;
+}
+.tag.workflow { background: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.35); color: #86efac; }
+.tag.prompt { background: rgba(249, 115, 22, 0.12); border-color: rgba(249, 115, 22, 0.35); color: #fdba74; }
+.tag.thinking { background: rgba(236, 72, 153, 0.12); border-color: rgba(236, 72, 153, 0.35); color: #f9a8d4; }
+.tag.tool { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.35); color: #93c5fd; }
+.tag.tutorial { background: rgba(20, 184, 166, 0.12); border-color: rgba(20, 184, 166, 0.35); color: #5eead4; }
+
+.score {
+  display: inline-block;
+  color: #fbbf24;
+  font-size: 0.95em;
+  margin-left: 8px;
+}
+.translation {
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid #60a5fa;
+  padding: 12px 16px;
+  margin: 14px 0;
+  border-radius: 4px;
+  color: #d4d4d8;
+  font-size: 0.95em;
+}
+.source {
+  font-size: 0.85em;
+  color: #94a3b8;
+  margin: 8px 0;
+}
+.source a { color: #60a5fa; text-decoration: none; }
+.source a:hover { text-decoration: underline; }
+.apply {
+  background: rgba(34, 197, 94, 0.06);
+  border-left: 3px solid #22c55e;
+  padding: 12px 16px;
+  margin-top: 14px;
+  border-radius: 4px;
+  font-size: 0.92em;
+  color: #d4d4d8;
+}
+.apply strong { color: #4ade80; }
+.summary {
+  background: #16161d;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-top: 32px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.summary h2 { color: #f1f5f9; margin-bottom: 16px; font-size: 1.3em; }
+.summary ul { list-style: none; padding: 0; }
+.summary li { padding: 6px 0; color: #cbd5e1; }
+.summary li::before { content: "▸ "; color: #60a5fa; }
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #64748b;
+  font-size: 0.82em;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🌟 AI 网红工具日报</h1>
+  <div style="color: #94a3b8; font-size: 0.95em;">2026-09-06 · 今日精选 12 条</div>
+  <div class="meta">
+    <span class="meta-badge">📊 数据来源：G2-G5</span>
+    <span class="meta-badge">🚫 缺 G1</span>
+    <span class="meta-badge">🛠 工具 · 教程 · Prompt</span>
+  </div>
+</div>
+
+<div class="card">
+  <span class="card-num">1</span><h2>MiniMax H3「幕后制作」视频 Prompt 模板</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag prompt">Prompt</span><span class="tag workflow">视频创作</span></div>
+  <div class="translation">这个 Prompt 能把任意参考图变成"手作过程"视频。拿自己头像试了下，所有主体都能用。Prompt 提示词：A cinematic creation film follows one maker reconstructing the...</div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2095141166962311555">@Hailuo_AI</a> · <a href="https://x.com/Hailuo_AI/status/2095141166962311555">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>把角色参考图丢进 Hailuo H3，配上电影感制作流程 prompt，一键生成"从草稿到成品"幕后感视频。适合做 IP 形象、表情包、3D 角色介绍的短视频开场。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">2</span><h2>Qwen3.8-Max-0902 登顶 Code Arena WebDev</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tool">工具</span><span class="tag workflow">编程助手</span></div>
+  <div class="translation">Qwen3.8-Max-0902 从 1669 跃升至 1691 分，刷新 Agentic Coding (WebDev) 纪录，多步推理、工具使用、完整 App 生成全面领先。综合 $5/MToken，性价比位居 Pareto 前沿。</div>
+  <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2094976556494209206">@Alibaba_Qwen</a> · <a href="https://x.com/Alibaba_Qwen/status/2094976556494209206">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>Web 开发项目预算敏感？在 QwenCloud 上跑一遍完整 App 生成。$5/MToken 对个人开发者和小型团队很友好，便宜模型跑通流程再考虑升级。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">3</span><h2>Gemini 3.8 Flash 发布 — 更聪明的"主力模型"</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tool">工具</span><span class="tag tool">模型更新</span></div>
+  <div class="translation">本周上新：Gemini 3.8 Flash（编程、Agent 工作流、多步推理全面升级）+ Gemini 3.8 Flash Cyber（最强网络安全模型）。</div>
+  <div class="source">来源：<a href="https://x.com/GoogleAI/status/2095922185139364267">@GoogleAI</a> · <a href="https://x.com/GoogleAI/status/2095922185139364267">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>在 Gemini App 里切换到 3.8 Flash 处理需要多步推理的复杂任务（数据分析、长文档、Agent 流程），比 3.7 显著增强，性价比高，是日常主力。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">4</span><h2>Claude Fable 5.1 实战技巧：低 Effort 用法</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag workflow">工作流</span><span class="tag thinking">技巧</span></div>
+  <div class="translation">非常强的模型。花了很多时间研究 —— 对于验证需求较低、边缘情况较少的任务，试试把 Effort 调低。另外，切换 Effort 不再破坏 prompt cache 了。</div>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2094945951865520458">@trq212</a> · <a href="https://x.com/trq212/status/2094945951865520458">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>写文案、改邮件、做摘要这类"出错代价低"的任务，把 Claude Effort 调低，速度更快、成本更低；切换 Effort 不再破坏缓存，长会话更省钱。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">5</span><h2>Claude Code 即将上线 Function Hooks</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tool">工具</span><span class="tag workflow">工作流</span></div>
+  <div class="translation">我们正在让 Claude Code 变得更可定制，欢迎反馈！ClaudeDevs 在探索 Function Hooks，能让你扩展和定制 Claude Code 行为。还没发布，想在 GitHub issue 上看你的反馈。</div>
+  <div class="source">来源：<a href="https://x.com/trq212/status/2095653053282292013">@trq212</a> · <a href="https://x.com/trq212/status/2095653053282292013">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>关注 ClaudeDevs 的 GitHub issue，提前规划你的自动化钩子（提交前自动 lint、写完代码自动通知 Slack）。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">6</span><h2>Hailuo H3 Max 入驻 MiniMax Design</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tool">工具</span><span class="tag workflow">视频创作</span></div>
+  <div class="translation">H3 Max 已在 MiniMax Design 上线！⚡ 生成更快 💰 480p 起步价 $0.02/秒 🆓 9月3日前免费 3 次。一个 prompt 接着一个场景，灵感不间断。</div>
+  <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2093977756648538465">@Hailuo_AI</a> · <a href="https://x.com/Hailuo_AI/status/2093977756648538465">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>高性价比短视频生成渠道。$0.02/秒 480p 适合社媒短片、广告素材预演、剧情短片原型。先用免费额度试场景再付费上量。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">7</span><h2>AI 产品设计哲学：把模型选择藏到背后</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag thinking">思维</span><span class="tag thinking">产品设计</span></div>
+  <div class="translation">每个 AI 产品都该把模型选择从用户视野里抽象掉。模型是底层引擎，用户只关心活儿干没干完。让他们选模型是认知负担。Lovable 累计 10 亿+ prompt，每个都帮我们学会哪个任务用哪个模型。</div>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2095174463696589223">@realmadhuguru</a> · <a href="https://x.com/realmadhuguru/status/2095174463696589223">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>做 AI 产品（Agent、写作工具、自动化流程）？把"选 Claude 还是 GPT"从 UI 拿掉，系统后台自动路由。降低决策成本 = 提升留存。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">8</span><h2>周末 AI 实战练习：把熟悉的工作流整个自动化</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tutorial">教程</span><span class="tag workflow">工作流</span></div>
+  <div class="translation">提升 AI 产品能力的实操建议：挑一个你熟的工作流（生活或工作中的都行），用 AI 整个自动化掉。用你顺手的 AI 产品 —— 大概率要试错 —— 但你会搞清楚自己领域里 AI 真正的边界在哪。</div>
+  <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2095907570540335174">@realmadhuguru</a> · <a href="https://x.com/realmadhuguru/status/2095907570540335174">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>周末选一个日常重复流程（周报生成、客户邮件分类、内容排期），用 Claude Code / Codex / Astra 端到端跑一遍。这是判断 AI 能力上限最快的方式。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">9</span><h2>18 个月迁移 5 个月完成的思维拆解</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag thinking">思维</span><span class="tag workflow">项目管理</span></div>
+  <div class="translation">18 个月的迁移，5 个月完成。不是运气，是思维转变。下面是详细拆解...</div>
+  <div class="source">来源：<a href="https://x.com/Ronald_vanLoon/status/2094445094363426960">@Ronald_vanLoon</a> · <a href="https://x.com/Ronald_vanLoon/status/2094445094363426960">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>复盘手上 AI 项目 —— 哪些环节是因"惯性"才拖了 18 个月？用 AI 重构协作后能否压缩到 5 个月？视频里的迁移框架值得借鉴。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">10</span><h2>AI Agent 核心四要素（极简框架）</h2>
+  <span class="score">⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag thinking">思维</span><span class="tag workflow">工作流</span></div>
+  <div class="translation">AI 的核心其实只需要四样：1) 一个干活的东西 2) 工具连接 3) 存放数据的地方 4) 协作共享和更新的位置。Slot 1 是 Agent（Codex / Claude Code / GrokBot）。</div>
+  <div class="source">来源：<a href="https://x.com/alliekmiller/status/2095948761604427925">@alliekmiller</a> · <a href="https://x.com/alliekmiller/status/2095948761604427925">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>用这个框架审计你的 AI 工具栈 —— 缺哪块补哪块。多数人卡在 Slot 3（数据存储），把内容/记忆/历史放 Notion 或本地文件，Agent 才能真正复用上下文。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">11</span><h2>AI 编程 Agent 技能图谱（Andrew Ng）</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag tutorial">教程</span><span class="tag tool">编程</span></div>
+  <div class="translation">使用 AI 编程 Agent 最关键的技能。介绍《AI 工程技能图谱：使用编程 Agent》。关键技能是驾驭 Agent 写代码以及执行非代码任务（数据分析、系统运维），决定你能放大多少生产力。</div>
+  <div class="source">来源：<a href="https://x.com/An…1217">@AndrewYNg</a> · <a href="https://x.com/i/article/2095890279865721217">文章</a></div>
+  <div class="apply"><strong>如何应用：</strong>吴恩达把"如何用好 Claude Code / Codex"拆成可学习的子技能。今晚读一遍，对照自己短板选 1-2 个重点练。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">12</span><h2>Astra 实战：先要假设，再放数百 Agent 去验证</h2>
+  <span class="score">⭐⭐⭐⭐⭐</span>
+  <div class="tags"><span class="tag workflow">工作流</span><span class="tag thinking">思维</span></div>
+  <div class="translation">我在 Astra 上用的一个模式：先让模型给出假设，然后启动几十到几百个 Agent 各自带不同 context window 去研究、验证、发现。如果我们相信 AI 会指数级加速研究...</div>
+  <div class="source">来源：<a href="https://x.com/alliekmiller/status/2095906826130711005">@alliekmiller</a> · <a href="https://x.com/alliekmiller/status/2095906826130711005">原推</a></div>
+  <div class="apply"><strong>如何应用：</strong>做调研类任务（市场分析、竞品扫描、用户访谈整理）时，先让模型列 5-10 个假设，再用 Agent 并行跑研究验证，比线性 Google 搜索快 10 倍。</div>
+</div>
+
+<div class="summary">
+  <h2>📌 今日小结</h2>
+  <ul>
+    <li><strong>工具上新</strong>：Gemini 3.8 Flash、Qwen3.8-Max-0902、Hailuo H3 Max（Design）</li>
+    <li><strong>技巧加分</strong>：Claude Fable 5.1 低 Effort 用法、Claude Code Function Hooks 预告</li>
+    <li><strong>Prompt 模板</strong>：H3 角色制作过程视频</li>
+    <li><strong>思维框架</strong>：AI 产品模型抽象、Agent 四要素、假设并行验证</li>
+    <li><strong>学习资料</strong>：Andrew Ng 编程 Agent 技能图谱</li>
+  </ul>
+</div>
+
+<div class="footer">
+  生成时间：2026-09-06 10:03 UTC · 数据来源：5 组缓存中的 4 组（G2-G5）
+</div>
+
+</div>
+</body>
+</html>
