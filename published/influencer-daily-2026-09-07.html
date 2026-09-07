@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-09-07</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0a0a0f;
+    color: #e4e4e7;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 32px 16px;
+    background: linear-gradient(135deg, #18181b 0%, #1f1f23 100%);
+    border-radius: 16px;
+    border: 1px solid #27272a;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f4f4f5 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  header .date { color: #a1a1aa; font-size: 14px; margin-bottom: 16px; }
+  header .scope {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 999px;
+    color: #fbbf24;
+    font-size: 12px;
+  }
+  .notice {
+    background: rgba(251, 191, 36, 0.05);
+    border-left: 3px solid #fbbf24;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: #fde68a;
+  }
+  .notice strong { color: #fbbf24; }
+  .card {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    border-color: #3f3f46;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f4f4f5;
+    flex: 1;
+    min-width: 0;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge-tool { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+  .badge-prompt { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+  .badge-workflow { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+  .badge-tutorial { background: rgba(251, 146, 60, 0.15); color: #fb923c; border: 1px solid rgba(251, 146, 60, 0.3); }
+  .badge-mindset { background: rgba(244, 114, 182, 0.15); color: #f472b6; border: 1px solid rgba(244, 114, 182, 0.3); }
+  .badge-tip { background: rgba(20, 184, 166, 0.15); color: #2dd4bf; border: 1px solid rgba(20, 184, 166, 0.3); }
+  .rating { color: #fbbf24; font-size: 13px; letter-spacing: 1px; }
+  .source {
+    font-size: 12px;
+    color: #71717a;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #27272a;
+  }
+  .source a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .source a:hover { text-decoration: underline; }
+  .quote {
+    color: #d4d4d8;
+    font-size: 14px;
+    font-style: italic;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #3f3f46;
+    border-radius: 6px;
+    margin-bottom: 14px;
+  }
+  .prompt-block {
+    background: #0f0f12;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-family: "SF Mono", Monaco, Consolas, monospace;
+    font-size: 13px;
+    color: #a5b4fc;
+    line-height: 1.55;
+    overflow-x: auto;
+  }
+  .apply {
+    background: rgba(74, 222, 128, 0.05);
+    border-left: 3px solid #4ade80;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #d4d4d8;
+  }
+  .apply strong { color: #4ade80; display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .apply ol { padding-left: 20px; }
+  .apply ol li { margin-bottom: 4px; }
+  footer {
+    margin-top: 48px;
+    padding: 24px;
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 14px;
+    font-size: 12px;
+    color: #71717a;
+  }
+  footer h3 { color: #a1a1aa; font-size: 14px; margin-bottom: 12px; }
+  footer ul { list-style: none; padding: 0; }
+  footer ul li { padding: 4px 0; }
+  .tag-num {
+    display: inline-block;
+    background: #27272a;
+    color: #a1a1aa;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="date">2026-09-07 · 周一</div>
+    <div class="scope">⚠️ G1 组未完成 · 本期降级为 G2/G3/G4/G5 四组合并</div>
+  </header>
+
+  <div class="notice">
+    <strong>📊 数据范围说明：</strong>本次基于 G2、G3、G4、G5 共 4 组缓存生成（<strong>G1 组未完成</strong>）。原始池约 84 条推文 → 严格筛选后保留 <strong>14 条</strong>。筛选标准：工具推荐、教程、Prompt 模板、工作流优化、AI 使用技巧；排除硬件、融资、纯基准对比、学术论文。
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">1</span>🎬 Prompt 模板：把任意参考图变成"手作过程"视频</div>
+      <div>
+        <span class="badge badge-prompt">Prompt</span>
+        <span class="rating">⭐⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@aimikoda</strong> (Kōda) 经 @Hailuo_AI 转发 · <a href="https://x.com/Hailuo_AI/status/2095364148612010298" target="_blank">查看原推 →</a></div>
+    <div class="quote">"这个 prompt 把参考图变成 15 秒的'从草稿到成品'创作过程视频。"</div>
+    <div class="prompt-block">A cinematic creation film follows one maker reconstructing the [subject] from scratch by hand, in a single continuous shot. The piece begins as a rough sketch, then materials and tools appear one by one as the maker works—cutting, assembling, painting, finishing. The lighting shifts naturally as the scene progresses. End on a hero shot of the finished [subject] held up to camera.</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>准备一张角色/产品/物品的参考图（PNG/JPG 都可）</li>
+        <li>把 <code>[subject]</code> 替换成具体对象（<code>ceramic teapot</code> / <code>paper airplane</code> / <code>my profile picture</code>）</li>
+        <li>喂给 H3 / Hailuo / Sora 等图生视频模型，duration 设为 14-15s</li>
+        <li>适合"产品幕后""手工 vlog""角色开发花絮"类短视频，B 站 / 小红书 / TikTok 通吃</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">2</span>🛠 工作流：周末把"你熟得不能再熟的事"用 AI 端到端跑一遍</div>
+      <div>
+        <span class="badge badge-workflow">工作流</span>
+        <span class="rating">⭐⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@realmadhuguru</strong> · <a href="https://x.com/realmadhuguru/status/2095907570540335174" target="_blank">查看原推 →</a></div>
+    <div class="quote">"想要把 AI 产品力真正练起来，这个周末就挑一个你闭着眼都能完成的工作流——生活或工作中的都行——然后用 AI 把整个流程从头到尾自动化一遍。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>候选清单：周报生成、客户邮件分桶、播客剪辑选题、Notion 周计划、Twitter 回复草稿</li>
+        <li>关键不是工具选得对不对，而是<strong>"端到端"</strong>——中间任何一环用 AI 顶不上来，就暴露了你对工作流颗粒度的盲区</li>
+        <li>建议用 Claude Code / Codex 这种 agent 框架跑，比 chat 模式更能暴露问题</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">3</span>🧠 Prompt 模式：先让 AI 列假设 → 再派 N 个 agent 去验证</div>
+      <div>
+        <span class="badge badge-prompt">Prompt</span>
+        <span class="badge badge-workflow">工作流</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@alliekmiller</strong> · <a href="https://x.com/alliekmiller/status/2095906826130711005" target="_blank">查看原推 →</a></div>
+    <div class="quote">"在 Astra 里我反复用这个套路：一上来先让模型给出 N 条假设（hypotheses），然后并行派出几十到几百个 agent，每个带着不同的上下文窗口去独立研究、验证、发现。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>研究类问题（如"竞品定价策略""用户流失归因"）一上来不要直接要答案</li>
+        <li>Prompt 第一段：<code>Before answering, list 5-10 distinct hypotheses. For each, note what evidence would confirm/refute it.</code></li>
+        <li>第二段再让模型分派子 agent 跑——Deep Research、Codex subagent、Claude Code Task 都支持</li>
+        <li>比单 agent 串行快 5-10 倍，且不易陷入"一个答案死磕"的陷阱</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">4</span>🚀 工具发布：OpenClaw v2026.9.2</div>
+      <div>
+        <span class="badge badge-tool">工具</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@steipete</strong> · <a href="https://x.com/steipete/status/2096400749869830325" target="_blank">查看原推 →</a></div>
+    <div class="quote">"OpenClaw 2026.9.2 上线 🦞 — 重启能从断点续上、长对话跑得更快、GPT-6 Astra 加入、Muse Spark 1.3 加入。少等待，多抓。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>如果你已经在 OpenClaw 里跑长任务（代码生成、长文写作、多 agent 编排），今晚就升一版</li>
+        <li>重启不掉状态是这次最实用的改进</li>
+        <li>GPT-6 Astra / Muse Spark 1.3 都进了模型池，复杂任务可以交叉用：先 Astra 推理、再 Muse 做文风润色</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">5</span>🎨 工作流：本地 H3 定方向 → API 出片，省算力省时间</div>
+      <div>
+        <span class="badge badge-workflow">工作流</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@mojon1</strong> 经 @Hailuo_AI 转发 · <a href="https://x.com/Hailuo_AI/status/2095827843993489491" target="_blank">查看原推 →</a></div>
+    <div class="quote">"我在试把 MiniMax H3 当产品 CG 的渲染器用。先在本地跑出方向，OK 了再丢 API 出成品——浪费少很多。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>适用：电商产品图、3D 概念稿、UI 动效草图</li>
+        <li>流程：FastH3（NVIDIA DGX Spark / Apple Silicon MLX 本地 8x 加速）→ 选最优构图 → 再调 API 出 4K 终稿</li>
+        <li>单张图成本可压到原来的 1/5 左右，特别适合一天要出 50+ 张变体的电商场景</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">6</span>🎥 教程：Blender 3D 模型 + H3 视频生成，一句话起手</div>
+      <div>
+        <span class="badge badge-tutorial">教程</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@0xvaibhav24</strong> 经 @Hailuo_AI 转发 · <a href="https://x.com/Hailuo_AI/status/2095731025901162990" target="_blank">查看原推 →</a></div>
+    <div class="quote">"跳过 47 小时的 Blender 教程，直接看 H3 生成的 timelapse 就能 get 到 3D 建模的感觉。"</div>
+    <div class="prompt-block">A first-person timelapse of a 3D artist modeling [object] in Blender. Soft mouse clicks, viewport rotation, smooth subdivision surface modifier applying. Soft ambient light. 12 seconds.</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>用 H3 生成 10-15s 的"伪屏幕录制"短视频 → 当作教程封面或缩略图，CTR 通常比静态截图高 2-3x</li>
+        <li>关键词堆：<code>first-person timelapse</code> / <code>screen recording</code> / <code>subdivision modifier</code> / <code>viewport rotation</code></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">7</span>⚙️ 技巧：动态切 effort 不断 prompt cache</div>
+      <div>
+        <span class="badge badge-tip">技巧</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@trq212</strong> · <a href="https://x.com/trq212/status/2094945951865520458" target="_blank">查看原推 →</a></div>
+    <div class="quote">"动态切换 effort 不再打断 prompt cache 了，可以放心在不同环节用不同 effort。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>之前你可能为了保 cache 死磕同一 effort → 现在可以"分类路由"：探索用 low / 终稿用 high</li>
+        <li>对长 pipeline（多步 agent、检索 + 生成）尤其有用，省 token 又省时间</li>
+        <li>实测：相同 prompt 切换 effort，单次成本可降 30-60%，质量基本不塌</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">8</span>🧱 思维框架：AI 产品的 4 个槽位</div>
+      <div>
+        <span class="badge badge-mindset">思维</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@alliekmiller</strong> · <a href="https://x.com/alliekmiller/status/2095948761604427925" target="_blank">查看原推 →</a></div>
+    <div class="quote">"AI 的本质只需要 4 个槽位：① 一个做事的东西（Codex / Claude Code / GrokBot）② 一组工具连接（MCP、API、函数调用）③ 一个存放东西的地方（memory、向量库、文件）④ 一个分享和更新的位置（Notion / Slack / GitHub）。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>用这个 4 槽框架给现有项目做体检——哪个槽薄弱就先补哪个，比追新模型 ROI 高得多</li>
+        <li>个人工作流同样适用：obsidian/记事本是槽 3、Slack/邮件是槽 4</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">9</span>🎮 工具：Diiverge.co —— 无限可点击的 AI 互动冒险</div>
+      <div>
+        <span class="badge badge-tool">工具</span>
+        <span class="rating">⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@charliie</strong> 经 @Hailuo_AI 转发 · <a href="https://x.com/Hailuo_AI/status/2095733485453680834" target="_blank">查看原推 →</a></div>
+    <div class="quote">"我们上线了！Diiverge.co —— 一个持续扩展、指向点击式的冒险游戏。每一张图都是一个分叉点，点什么就决定世界往哪长。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>不只是玩具，可以用来做"互动式品牌叙事""用户调研游戏化""AI 互动小说 demo"</li>
+        <li>后端基本是 H3 在实时生成图，文案/剧情用 LLM 串</li>
+        <li>想做类似产品的同学可以拆一下：图片生成 API + 状态机 + 选择节点</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">10</span>💡 思维：野心×AI 的不对称机会 —— 但"如何做"才是难题</div>
+      <div>
+        <span class="badge badge-mindset">思维</span>
+        <span class="rating">⭐⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@realmadhuguru</strong> · <a href="https://x.com/realmadhuguru/status/2095526844653302269" target="_blank">查看原推 →</a></div>
+    <div class="quote">"变大的真正难题不是'想多大'，而是'怎么做到'。AI 和市场环境让不对称回报变得前所未有的可能——规模、速度、产品广度、个人职业、财富目标都适用。你得把过去那套'合理'的想法丢掉。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>写 2026 H2 规划前先问：哪个环节我还在用"传统合理"压制"AI 不合理"？</li>
+        <li>工具选型不要纠结——把精力放在"如何用现有工具做出 10x 杠杆"</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">11</span>✍️ Vibe Coding 真相：CS 基础 + 写作能力 = 真功夫</div>
+      <div>
+        <span class="badge badge-mindset">思维</span>
+        <span class="badge badge-tutorial">教程</span>
+        <span class="rating">⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@DeepLearn007</strong> · <a href="https://x.com/DeepLearn007/status/2096546175608377354" target="_blank">查看原推 →</a></div>
+    <div class="quote">"ETH Zurich 控制实验：100 名开发者在商业级 vibe coding 环境下做项目。结论很残酷——计算机科学成绩 + 写作能力才是真正决定 vibe coding 能否交付的因素。CS 学位没死，只是需要现代化。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>别再追"prompt 速成"了，先把代码评审能力（CS 基础）+ 需求文档写作（写作能力）练硬</li>
+        <li>给团队的 vibe coding 培训里加这两块基础课，比教新框架回报高得多</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">12</span>🧠 思维：注意力危机 —— Agent 让分心更严重</div>
+      <div>
+        <span class="badge badge-mindset">思维</span>
+        <span class="rating">⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@zarazhangrui</strong> · <a href="https://x.com/zarazhangrui/status/2096824861108928701" target="_blank">查看原推 →</a></div>
+    <div class="quote">"当代最严重的危机之一是人类注意力跨度在变短。Agent 反而让事情更糟。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>给自己（或团队）设一个"无 agent 时段"——比如每天 14:00-16:00 纯手写、纯思考</li>
+        <li>工具层面：把 Codex / Claude Code 的 autopilot 关掉，改为 review-and-confirm 模式</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">13</span>🧭 思维：把模型选择藏到产品背后</div>
+      <div>
+        <span class="badge badge-mindset">思维</span>
+        <span class="rating">⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@realmadhuguru</strong> · <a href="https://x.com/realmadhuguru/status/2095174463696589223" target="_blank">查看原推 →</a></div>
+    <div class="quote">"每个 AI 产品都应该把'模型选择'从用户视野里藏起来。智能只是底层引擎，用户只关心活儿干没干完。挑模型这件事对用户的认知负担太重。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>自己做 AI 产品时：把"模型"从 UI 里拿掉，只暴露"任务类型"</li>
+        <li>内部工具同理：给同事/客户一个统一入口，路由层自己做</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><span class="tag-num">14</span>🤖 工具速报：Gemini 3.8 Flash 已全量上 Gemini App</div>
+      <div>
+        <span class="badge badge-tool">工具</span>
+        <span class="rating">⭐⭐⭐</span>
+      </div>
+    </div>
+    <div class="source">📍 <strong>@joshwoodward</strong> · <a href="https://x.com/joshwoodward/status/2095177483129917849" target="_blank">查看原推 →</a></div>
+    <div class="quote">"Gemini 3.8 Flash 正在向 @GeminiApp 全量推送。Google 官方说'高质量 + 好价格'。"</div>
+    <div class="apply">
+      <strong>如何应用</strong>
+      <ol>
+        <li>高频、低风险的任务（摘要、分类、翻译、初稿）可以先在 Gemini App 里跑一轮，省钱</li>
+        <li>复杂任务还是上 Pro / Ultra 或竞争对手——Flash 不是万能胶水</li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <h3>📌 数据覆盖范围</h3>
+    <ul>
+      <li><strong>G2 缓存</strong>：13 条推文 → 命中 6 条</li>
+      <li><strong>G3 缓存</strong>：16 条推文 → 命中 1 条（其余多为模型公告/基准对比，按规则排除）</li>
+      <li><strong>G4 缓存</strong>：28 条推文 → 命中 5 条</li>
+      <li><strong>G5 缓存</strong>：27 条推文 → 命中 4 条</li>
+      <li><strong>G1 缓存</strong>：⚠️ 未完成，本次降级</li>
+      <li><strong>合计</strong>：原始池 ~84 条 → 严格筛选后保留 <strong>14 条</strong></li>
+    </ul>
+    <p style="margin-top: 12px; color: #52525b;">评分按"创作者 5 分钟内能否上手用"打分：⭐⭐⭐⭐⭐ = 可用 Prompt/工作流模板；⭐⭐⭐⭐ = 高价值技巧/工具；⭐⭐⭐ = 思维框架</p>
+  </footer>
+
+</div>
+</body>
+</html>
