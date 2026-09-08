@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-08</title>
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-card: #131a26;
+    --bg-card-hover: #1a2333;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --text-dim: #9ca3af;
+    --text-faint: #6b7280;
+    --accent: #60a5fa;
+    --accent-2: #a78bfa;
+    --tag-tool: #34d399;
+    --tag-tutorial: #fbbf24;
+    --tag-prompt: #f472b6;
+    --tag-workflow: #60a5fa;
+    --tag-thinking: #a78bfa;
+    --warning-bg: #3b2f0a;
+    --warning-border: #f59e0b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    line-height: 1.7;
+    padding: 32px 16px 64px;
+    min-height: 100vh;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 8px;
+  }
+  .subtitle { color: var(--text-dim); font-size: 14px; }
+  .notice {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: #fde68a;
+  }
+  .notice strong { color: #fbbf24; }
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .stat { text-align: center; }
+  .stat-value { font-size: 24px; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .card:hover { background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .card-num {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .card-title { font-size: 18px; font-weight: 600; flex: 1; min-width: 0; }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .tag-工具 { background: rgba(52, 211, 153, 0.15); color: var(--tag-tool); border: 1px solid rgba(52, 211, 153, 0.3); }
+  .tag-教程 { background: rgba(251, 191, 36, 0.15); color: var(--tag-tutorial); border: 1px solid rgba(251, 191, 36, 0.3); }
+  .tag-Prompt { background: rgba(244, 114, 182, 0.15); color: var(--tag-prompt); border: 1px solid rgba(244, 114, 182, 0.3); }
+  .tag-工作流 { background: rgba(96, 165, 250, 0.15); color: var(--tag-workflow); border: 1px solid rgba(96, 165, 250, 0.3); }
+  .tag-思维 { background: rgba(167, 139, 250, 0.15); color: var(--tag-thinking); border: 1px solid rgba(167, 139, 250, 0.3); }
+  .tag-基准 { background: rgba(148, 163, 184, 0.15); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.3); }
+  .tag-协作 { background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+  .tag-视觉 { background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); }
+  .tag-产品 { background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+  .tag-实操 { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); }
+  .score {
+    background: rgba(96, 165, 250, 0.1);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+  }
+  .quote {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid var(--accent);
+    padding: 14px 16px;
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 15px;
+    margin: 12px 0;
+    white-space: pre-wrap;
+  }
+  .meta { color: var(--text-dim); font-size: 13px; margin: 8px 0; }
+  .meta a { color: var(--accent); text-decoration: none; }
+  .meta a:hover { text-decoration: underline; }
+  .apply {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: rgba(96, 165, 250, 0.08);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    font-size: 14px;
+  }
+  .apply-label {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .core-takeaway {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .core-takeaway h3 { color: var(--accent); margin-bottom: 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .core-takeaway p { font-size: 18px; color: var(--text); font-style: italic; }
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI 网红日报</h1>
+    <p class="subtitle">2026-09-08 · Top 10 AI 工具与工作流</p>
+  </header>
+
+  <div class="notice">
+    ⚠️ <strong>数据来源说明：</strong>本日报基于今日已完成的 <strong>G2 / G3 / G4 / G5</strong> 共 4 组缓存数据生成（<strong>G1 缺失</strong>）。在数据完整度上有所降级，但仍按既定筛选标准严格筛选，质量门槛未降低。
+  </div>
+
+  <div class="summary-card">
+    <div class="stat"><div class="stat-value">4/5</div><div class="stat-label">已完成缓存组</div></div>
+    <div class="stat"><div class="stat-value">G1</div><div class="stat-label">缺失组</div></div>
+    <div class="stat"><div class="stat-value">~85</div><div class="stat-label">候选推文</div></div>
+    <div class="stat"><div class="stat-value">10</div><div class="stat-label">入选 Top</div></div>
+  </div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">1</div>
+      <div class="card-title">Qwen3.8-Max-0902 登顶 CodeArena WebDev</div>
+      <div class="score">⭐ 9/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-基准">基准</span>
+    </div>
+    <div class="quote">Qwen3.8-Max-0902 在 CodeArena WebDev 榜单从 1669 跃升至 1691，刷新 Agentic Coding（WebDev）工作流记录，在多步推理、工具调用和完整应用生成方面表现尤为突出。性价比也达到 $5/MToken 的 Pareto 前沿。</div>
+    <div class="meta">来源：<a href="https://x.com/Alibaba_Qwen/status/2094976556494209206" target="_blank">@Alibaba_Qwen</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你在跑 WebDev 类 Agent 工作流，可以直接到 QwenCloud 试用 Qwen3.8-Max-0902；它的高性价比对长任务流尤其友好。
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">2</div>
+      <div class="card-title">Claude Code Function Hooks 正在路上</div>
+      <div class="score">⭐ 9/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-工作流">工作流</span>
+    </div>
+    <div class="quote">我们正在让 Claude Code 更具可扩展性。Anthropic 正在探索 Function Hooks，让你能在 Claude Code 中插入自定义逻辑。视频里展示了 hook 能做到的事情。虽然还未发布，欢迎到 GitHub Issue 提反馈。</div>
+    <div class="meta">来源：<a href="https://x.com/trq212/status/2095653053282292013" target="_blank">@trq212</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      持续关注 ClaudeDevs 的 GitHub Issue 进度。一旦 Function Hooks 上线，你可以把日志、测试、commit message、自定义 lint 等逻辑直接钩进 Claude Code 流程，减少人工兜底。
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">3</div>
+      <div class="card-title">Claude Fable 5.1 切换 effort 不再破坏 Prompt Cache</div>
+      <div class="score">⭐ 9/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工具">工具</span>
+      <span class="tag tag-Prompt">Prompt</span>
+    </div>
+    <div class="quote">这是一个非常强的模型。我花了很多时间深入测试——长文评测稍后放出。对验证成本较低、边界场景较少的任务，可以先用低 effort 试试。**重点更新**：切换 effort 不再破坏 prompt cache。</div>
+    <div class="meta">来源：<a href="https://x.com/trq212/status/2094945951865520458" target="_blank">@trq212</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你之前因为切换 effort 会丢 prompt cache 而被迫绑定单一 effort，现在可以在同一会话内灵活切换——低 effort 处理子任务、高 effort 处理关键决策，省钱又省时间。
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">4</div>
+      <div class="card-title">Gemini 3.8 Flash 上线 & 本周发布汇总</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="quote">本周发布汇总：
+- Gemini 3.8 Flash：迄今最聪明的工作马模型，在编程、Agent 工作流和关键多步推理上全面升级。
+- Gemini 3.8 Flash Cyber：最强网络安全模型，具备前沿级漏洞检测与自动修复能力。</div>
+    <div class="meta">来源：<a href="https://x.com/GoogleAI/status/2095922185139364267" target="_blank">@GoogleAI</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你的 Agent 流程对成本敏感且需要稳定的多步推理，把 Gemini 3.8 Flash 加到模型池里轮换测试，重点对比它和 Claude Fable 5.1 在你实际工作流上的表现。
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">5</div>
+      <div class="card-title">模型选择器的时代即将结束</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-思维">思维</span>
+      <span class="tag tag-产品">产品</span>
+    </div>
+    <div class="quote">每个 AI 产品都应该把"选择模型"这件事从用户手里抽象掉。在任何产品里，智能只是底层引擎——用户只关心任务有没有被完成。模型选择本身对用户的认知负担太大了。</div>
+    <div class="meta">来源：<a href="https://x.com/realmadhuguru/status/2095174463696589223" target="_blank">@realmadhuguru</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你正在做面向终端用户的 AI 产品，把模型选型交给后端路由——根据任务类型、上下文长度、实时成本自动切换。前端只暴露"开始"和"结果"。
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">6</div>
+      <div class="card-title">这个周末把一个真实工作流完全自动化</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-实操">实操</span>
+    </div>
+    <div class="quote">这周末提升 AI 产品能力的一个实操建议：选一个你熟悉的工作流——无论来自生活还是工作——用 AI 把它整个自动化。用你顺手的 AI 产品，多试几种组合。</div>
+    <div class="meta">来源：<a href="https://x.com/realmadhuguru/status/2095907570540335174" target="_blank">@realmadhuguru</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      今晚就列一个你每周都在做的工作流（周报、客户跟进、内容分发……），用 Claude Code 或 Codex 一次性跑通"输入 → 全自动 → 输出"，不要怕第一次跑砸。
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">7</div>
+      <div class="card-title">Agent 协作 PR 流程的摩擦</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-协作">协作</span>
+    </div>
+    <div class="quote">给我们一个上游项目提了 PR，他们要求做点小修改。这流程到底有什么意义？你已经写好了 prompt，为什么还要让我再喊一遍我的 agent，让你的 agent 再合并？</div>
+    <div class="meta">来源：<a href="https://x.com/steipete/status/2097091456234111377" target="_blank">@steipete</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你在用 Agent 协作提 PR，提前在 PR 描述里附上 agent 的 prompt、上下文和预期变更列表，让 reviewer 的 agent 能直接执行修改——减少人机往返。
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">8</div>
+      <div class="card-title">Astra 的"先列假设再分发"模式</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-Prompt">Prompt</span>
+    </div>
+    <div class="quote">我在 Astra 里反复使用的一个模式：先让它给出一组假设，然后开几十到几百个子 agent，各自带着不同的上下文窗口去研究、验证、发现。</div>
+    <div class="meta">来源：<a href="https://x.com/alliekmiller/status/2095906826130711005" target="_blank">@alliekmiller</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      把"直接给我答案"换成"先给我 5–10 个可能正确的假设，然后并行去验证"——尤其适合市场调研、竞品分析、内容选题这类需要广度+验证的任务。
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">9</div>
+      <div class="card-title">H3 + Astra + Blender 三件套工作流</div>
+      <div class="score">⭐ 8/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工作流">工作流</span>
+      <span class="tag tag-视觉">视觉</span>
+    </div>
+    <div class="quote">经典 M.C. Escher 图 → 让 GPT-6 Astra 在 Blender 里建出整个 3D 场景（含镜面球）→ 渲染视频 → 用 MiniMax H3 重新风格化。组合拳 = 视觉爆炸。</div>
+    <div class="meta">来源：<a href="https://x.com/Hailuo_AI/status/2097201502939234321" target="_blank">@bennash via @Hailuo_AI</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      如果你做视觉内容/短视频，先让 Astra（或 GPT-6）搭 3D 场景，再用 H3 做风格化重渲染——几分钟就能产出有质感的视觉素材，绕开传统 3D 流程的高门槛。
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-num">10</div>
+      <div class="card-title">Gemini 3.8 Flash 智能工作马</div>
+      <div class="score">⭐ 7/10</div>
+    </div>
+    <div>
+      <span class="tag tag-工具">工具</span>
+    </div>
+    <div class="quote">我们推出 Gemini 3.8 Flash ⚡️——为复杂 Agent 和多步任务而生。它不仅能写代码，还能……（智能、推理全面升级）</div>
+    <div class="meta">来源：<a href="https://x.com/GoogleAI/status/2095175759606231439" target="_blank">@GoogleAI</a></div>
+    <div class="apply">
+      <div class="apply-label">如何应用</div>
+      在 Gemini App 内可直接体验 3.8 Flash。建议把日常的多步任务（如"读 5 篇 PDF 并出对比表"）丢给它跑一遍，感受 reasoning 升级。
+    </div>
+  </div>
+
+  <div class="core-takeaway">
+    <h3>🎯 今日核心建议</h3>
+    <p>"先抽象掉模型选择，再抽象掉工作流拆解。"<br>把模型路由交给后端、把任务拆解交给 Agent 自己——你只负责定义输入和验收标准。</p>
+  </div>
+
+  <footer>
+    生成时间：2026-09-08 10:00 UTC · 数据源 G2-G5 · 由 AI 网红日报自动生成
+  </footer>
+</div>
+</body>
+</html>
