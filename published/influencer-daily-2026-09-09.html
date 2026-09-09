@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 网红日报 · 2026-09-09</title>
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-card: #141a26;
+    --bg-card-hover: #1a2233;
+    --border: #232a3a;
+    --text: #e6edf7;
+    --text-dim: #9aa6bd;
+    --accent: #6ee7b7;
+    --accent-2: #7c9eff;
+    --tag-tool: #3aa8ff;
+    --tag-tutorial: #ff9f43;
+    --tag-prompt: #c084fc;
+    --tag-workflow: #34d399;
+    --tag-mindset: #f472b6;
+    --gold: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin: 0;
+  }
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 12px;
+  }
+  .meta-bar span {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: var(--text-dim);
+  }
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.2s ease;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: #2f3a52;
+    transform: translateY(-1px);
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .card-rank {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0b0f17;
+    font-weight: 700;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-rank.top {
+    background: linear-gradient(135deg, var(--gold), #f59e0b);
+    color: #1a1a1a;
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .card-body {
+    color: var(--text);
+    font-size: 14px;
+    margin: 8px 0 14px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .tag-tool     { background: var(--tag-tool); }
+  .tag-tutorial { background: var(--tag-tutorial); }
+  .tag-prompt   { background: var(--tag-prompt); }
+  .tag-workflow { background: var(--tag-workflow); }
+  .tag-mindset  { background: var(--tag-mindset); }
+  .source {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin: 6px 0;
+  }
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+  .source a:hover { text-decoration: underline; }
+  .rating {
+    font-size: 13px;
+    color: var(--gold);
+    margin: 6px 0;
+  }
+  .how-to {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: rgba(110, 231, 183, 0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .how-to strong { color: var(--accent); }
+  .summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+  .summary h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+  }
+  .summary table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .summary td {
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary td:first-child { color: var(--text-dim); }
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  a.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #0b0f17;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>AI 网红日报 · 2026-09-09</h1>
+    <p class="subtitle">每日精选 AI 创作者圈可落地的工具、教程、工作流与思维方式</p>
+    <div class="meta-bar">
+      <span>📦 数据来源：G1 + G2 + G3 + G4 + G5</span>
+      <span>📝 入选 16 条</span>
+      <span>🎯 Top 工具 + 工作流 + Prompt + 教程 + 思维</span>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank top">1</span>
+        <h2 class="card-title">Rowancheung — Wispr Flow + Claude Cowork 打造 AI 日记流</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-workflow">#工作流</span>
+        <span class="tag tag-tool">#工具推荐</span>
+      </div>
+      <p class="card-body">把"碎碎念"变成结构化数据 + 待办事项。流程：会议/灵感冒出来时，打开手机对着 Wispr Flow 随便说一通，Claude Cowork 自动整理成可执行清单。</p>
+      <p class="source">来源：<a href="https://x.com/rowancheung/status/2095538308436914307">@rowancheung · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>装一个 Wispr Flow（语音转写），把音频丢给 Claude Cowork，prompt 写"按主题分类 + 提取行动项 + 标优先级"，周回顾直接拿来用。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank top">2</span>
+        <h2 class="card-title">realmadhuguru — 这个周末就能做的 AI 实战练习</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-mindset">#思维</span>
+        <span class="tag tag-workflow">#工作流</span>
+      </div>
+      <p class="card-body">想变强，这个周末就能上手的一件事：挑一个你自己最熟的工作流（生活里或工作里的都行），用你最顺手的 AI 工具把它整个跑通。踩完坑就是真本事。</p>
+      <p class="source">来源：<a href="https://x.com/realmadhuguru/status/2095907570540335174">@realmadhuguru · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>不要先看教程——先选一个"我已经能靠脑子做完"的任务（周报/报销/选题），用 Claude/Cursor/Codex 完整跑一遍，边做边记卡点。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank top">3</span>
+        <h2 class="card-title">trq212 / ClaudeDevs — Claude Code 即将上线 Function Hooks</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">#工具推荐</span>
+      </div>
+      <p class="card-body">我们正在探索一种新的方式来扩展和定制 Claude Code：Function Hooks。几个 demo 视频展示了它能做什么。还没上线，欢迎去 GitHub issue 提反馈。</p>
+      <p class="source">来源：<a href="https://x.com/ClaudeDevs/status/2095572891941351550">@trq212 · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>Hook 模式可拦截/增强指定环节（pre/post edit、test、commit）。现在去 GitHub issue 提你想 hook 的环节，影响开发优先级。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">4</span>
+        <h2 class="card-title">alliekmiller — AI 的四个核心组件，一张图记住</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-mindset">#思维</span>
+      </div>
+      <p class="card-body">AI 本质上只需要四样东西：1）干活的智能体（Codex/Claude Code/GrokBot）；2）连接工具的通道；3）存放状态的地方；4）共享和更新的位置。</p>
+      <p class="source">来源：<a href="https://x.com/alliekmiller/status/2095948761604427925">@alliekmiller · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>用这四象限审视你现在的 AI 栈——缺"状态层"（持久记忆）？缺"共享层"（结果自动落到 wiki）？补齐短板。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">5</span>
+        <h2 class="card-title">simonw — 用 coding agent 操控 Blender 的实战 TIL</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tutorial">#教程</span>
+        <span class="tag tag-workflow">#工作流</span>
+      </div>
+      <p class="card-body">macOS 上让 coding agent 控制 Blender 的新技巧：让 agent 直接调用已安装的 `/Applications/Blender` 来渲染场景。如"用 Blender 渲染一只鹈鹑骑自行车的场景"→"加背景"→"再优化一版"。</p>
+      <p class="source">来源：<a href="https://x.com/simonw/status/2096265759660142826">@simonw · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>把 Blender 的 Python 入口暴露给 agent（`/Applications/Blender` CLI + 文件 IO），agent 就能批量出图、做相机动画、改材质——全程不用点 UI。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">6</span>
+        <h2 class="card-title">Rowancheung — 真正"用得起来"的 AI 产品清单</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">#工具推荐</span>
+        <span class="tag tag-mindset">#思维</span>
+      </div>
+      <p class="card-body">我每天真用的：Notion AI、Spotify AI DJ、Whoop、Slackbot、X 的 Grok。失败的（装了从不打开）：Instagram Meta AI、Apple Intelligence、DoorDash 聊天、Gmail "帮我写"、Meet "记笔记"。</p>
+      <p class="source">来源：<a href="https://x.com/rowancheung/status/2095176927879512455">@rowancheung · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>挑 AI 工具的硬指标——能否融入现有动线、是否省去切换成本。别为"功能多"付费，要为"每天都会用"付费。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">7</span>
+        <h2 class="card-title">steipete — 给团队装一个"水文计"看代码质量拐点</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">#工具</span>
+        <span class="tag tag-workflow">#工作流</span>
+      </div>
+      <p class="card-body">我们在团队服务器里加了个 slopmeter，能清晰看到从哪个时间点开始我们为了让测试覆盖率上去而牺牲了代码质量。图表里那个拐点特别扎眼。</p>
+      <p class="source">来源：<a href="https://x.com/steipete/status/2096443715976089814">@steipete · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>在 CI 里跑一个"代码风格/重复度/复杂度"评分（lizard/radon/SonarQube），按 commit 时间画曲线——和测试覆盖率同图对比，立刻看到 tradeoff。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">8</span>
+        <h2 class="card-title">simonw — GPT-6 Astra 把 1977 年的 Zork 重做成 3D 游戏</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">#工具推荐</span>
+        <span class="tag tag-tutorial">#教程</span>
+      </div>
+      <p class="card-body">让 GPT-6 Astra 把经典文字冒险游戏 Zork 重做成完整 3D 动作冒险。保留了原剧情和解谜，加了战斗场景，用 Three.js 直接建出所有角色和场景。</p>
+      <p class="source">来源：<a href="https://x.com/simonw/status/2096253404398191102">@simonw · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>用 Three.js + coding agent 做小项目验证——把"已有 IP + 新载体"作为 prompt 框架，让 agent 在结构约束下发挥。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">9</span>
+        <h2 class="card-title">simonw — OpenAI 研究员们怎么用 coding agent</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-workflow">#工作流</span>
+        <span class="tag tag-mindset">#思维</span>
+      </div>
+      <p class="card-body">OpenAI 公布的内部数据显示，研究员重度使用 coding agent。有趣的细节：七月中旬 token 消耗出现陡增——可能正是 Astra 对内部开放的时间点。</p>
+      <p class="source">来源：<a href="https://x.com/simonw/status/2096647325049626918">@simonw · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>用"token 消耗周报"作为内部 AI 落地度的北极星指标，比"覆盖了多少部门"更真实。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">10</span>
+        <h2 class="card-title">jerrod_lew — 3D 模型 + 关键帧 + 视频工具的串联流水线</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-workflow">#工作流</span>
+        <span class="tag tag-tutorial">#教程</span>
+      </div>
+      <p class="card-body">GPT-6 Astra 配合 Blender 生成 3D 模型 + 相机关键帧动画，导出 MP4 后丢给 MiniMax H3 做参考视频，最后把成片丢给 Magnific 做放大增强。整条流水线效果惊艳。</p>
+      <p class="source">来源：<a href="https://x.com/jerrod_lew/status/2096344802371703116">@jerrod_lew · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>搭一条"Blender+agent 建模 → 相机动画 → H3 视频参考 → Magnific 高清放大"管线，十几分钟就能出广告级素材。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">11</span>
+        <h2 class="card-title">rasbt — 今天就检查一下你的设置（数据隐私 tip）</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-prompt">#Prompt</span>
+        <span class="tag tag-tool">#工具使用技巧</span>
+      </div>
+      <p class="card-body">鉴于今天的事件（疑似某 AI 服务数据泄漏），强烈建议大家去检查 Settings → Data Controls，把不需要的开关关掉。</p>
+      <p class="source">来源：<a href="https://x.com/rasbt/status/2097319324721557964">@rasbt · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>5 分钟动作清单——关掉"用我的对话训练改进模型"、关掉"数据共享给第三方"、关掉"对话保留超过必要时间"。每月一次。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">12</span>
+        <h2 class="card-title">MIT_CSAIL — 免费机器学习入门指南</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tutorial">#教程</span>
+      </div>
+      <p class="card-body">MIT CSAIL 推荐的免费机器学习入门指南（无门槛版本）。</p>
+      <p class="source">来源：<a href="https://x.com/MIT_CSAIL/status/2095904807248593374">@MIT_CSAIL · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>内容创作者补课用——理解 transformer / attention / 微调基本概念，下次和 AI 工具沟通时能写出更准的 prompt。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">13</span>
+        <h2 class="card-title">mezdez — Astra + Rhino + H3 Max + Magnific 出棚顶 3D 渲染</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-workflow">#工作流</span>
+        <span class="tag tag-tool">#工具推荐</span>
+      </div>
+      <p class="card-body">用 GPT-6 Astra 生成了 Rhino 3D 模型、图片和相机视角，再用 Magnific + MiniMax H3 Max 渲染出图。整个流程非常震撼，token 烧光了。</p>
+      <p class="source">来源：<a href="https://x.com/mezdez/status/2096721778651676991">@mezdez · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>建筑/室内方向创作者的福音——"自然语言→3D 模型→多视角渲染" 一气呵成，节省大量建模时间。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">14</span>
+        <h2 class="card-title">Hailuo_AI — H3 + Astra + Blender 三件套连招</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-tool">#工具推荐</span>
+        <span class="tag tag-workflow">#工作流</span>
+      </div>
+      <p class="card-body">H3 + Astra + Blender 组合拳 💥 几个工具串起来效果惊人。</p>
+      <p class="source">来源：<a href="https://x.com/Hailuo_AI/status/2097206409666679192">@Hailuo_AI · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>Astra 写 Blender Python 脚本建模 → 渲染关键帧 → H3 转视频，配上合适的 prompt 模板，可以批量做产品 demo。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">15</span>
+        <h2 class="card-title">nigewillson — 放下屏幕的"噪音断舍离"实验</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-mindset">#思维</span>
+      </div>
+      <p class="card-body">我大半辈子都在帮组织应对复杂性。最近做一件更简单的事：给人们"允许自己停下"的许可。昨天在树林里办了第一场 Step Away from the Noise 活动——没屏幕、没 KPI、没议程。</p>
+      <p class="source">来源：<a href="https://x.com/nigewillson/status/2097326221101035669">@nigewillson · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>每周给自己留 90 分钟纯放空。AI 焦虑的核心是"信息过载"，不是工具不够——刻意降噪反而能让 prompt 和想法都更准。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-rank">16</span>
+        <h2 class="card-title">zarazhangrui — Codex 彩蛋：让 agent 在聊天里放礼花</h2>
+      </div>
+      <div class="tags">
+        <span class="tag tag-prompt">#工具使用技巧</span>
+      </div>
+      <p class="card-body">刚发现可以让 Codex 在对话里放礼花 🎉——纯娱乐但能瞬间活跃气氛。</p>
+      <p class="source">来源：<a href="https://x.com/zarazhangrui/status/2097489234500390929">@zarazhangrui · 查看推文</a></p>
+      <p class="rating">实用性：⭐⭐⭐</p>
+      <div class="how-to"><strong>怎么用：</strong>在 Codex 里输入"放个 confetti 庆祝一下"或类似 prompt，能触发彩蛋动画。适合给团队群做"今日交付完成"的庆祝动作。</div>
+    </div>
+
+  </div>
+
+  <div class="summary">
+    <h2>📊 数据摘要</h2>
+    <table>
+      <tr><td>完成缓存组</td><td>G1 + G2 + G3 + G4 + G5（全量）</td></tr>
+      <tr><td>原始条目</td><td>约 105 条</td></tr>
+      <tr><td>筛选后入选</td><td>16 条</td></tr>
+      <tr><td>工具类</td><td>6 条</td></tr>
+      <tr><td>工作流类</td><td>6 条</td></tr>
+      <tr><td>教程类</td><td>2 条</td></tr>
+      <tr><td>Prompt/Tip 类</td><td>2 条</td></tr>
+      <tr><td>思维/方法论</td><td>4 条（含跨界）</td></tr>
+    </table>
+  </div>
+
+  <footer>
+    生成时间：2026-09-09 10:00 UTC · 数据范围：过去 24 小时 AI 网红圈优质内容
+  </footer>
+</div>
+</body>
+</html>
