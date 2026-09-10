@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-10</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --bg-card: #1a1d24;
+    --bg-card-hover: #22262f;
+    --border: #2a2f3a;
+    --text: #e6e8eb;
+    --text-dim: #9ba3af;
+    --accent: #f59e0b;
+    --accent-soft: #f59e0b20;
+    --tag-tool: #38bdf8;
+    --tag-tutorial: #a78bfa;
+    --tag-prompt: #f472b6;
+    --tag-workflow: #4ade80;
+    --tag-mindset: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f59e0b, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .subtitle { color: var(--text-dim); font-size: 14px; }
+  .meta-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .meta-box .label { color: var(--accent); font-weight: 600; }
+  .warning-box {
+    background: #422006;
+    border: 1px solid #f59e0b40;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #fbbf24;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .card:hover { background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card-rank {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .card .original {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--border);
+    font-style: italic;
+  }
+  .source-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .source { color: var(--tag-tool); }
+  .source a { color: var(--tag-tool); text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .tag-tool { background: #38bdf820; color: var(--tag-tool); }
+  .tag-tutorial { background: #a78bfa20; color: var(--tag-tutorial); }
+  .tag-prompt { background: #f472b620; color: var(--tag-prompt); }
+  .tag-workflow { background: #4ade8020; color: var(--tag-workflow); }
+  .tag-mindset { background: #fbbf2420; color: var(--tag-mindset); }
+  .rating { font-size: 14px; margin-bottom: 12px; color: var(--accent); }
+  .how-to {
+    background: #0f1115;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .how-to-label {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .summary {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .summary h3 { color: var(--accent); margin-bottom: 12px; font-size: 18px; }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .summary-item {
+    background: var(--bg);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .summary-item .k { color: var(--text-dim); font-size: 12px; }
+  .summary-item .v { color: var(--text); font-size: 18px; font-weight: 600; margin-top: 2px; }
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    padding: 32px 0 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  footer a { color: var(--tag-tool); text-decoration: none; }
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .card { padding: 18px; }
+    .card h2 { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🌟 AI 网红日报</h1>
+  <div class="subtitle">2026-09-10 · 每日精选 AI 网红圈实用工具与工作流</div>
+</header>
+
+<div class="meta-box">
+  <div><span class="label">数据来源</span>：G2 + G3 + G4 + G5（G1 组缺失，已降级运行）</div>
+  <div><span class="label">筛选口径</span>：工具推荐 / 教程 / Prompt / 工作流 / AI 使用技巧</div>
+  <div><span class="label">排除</span>：硬件/基础设施、融资/收入、纯基准对比、学术论文</div>
+</div>
+
+<div class="warning-box">
+  ⚠️ <strong>降级运行</strong>：今日 G1 组缓存缺失，日报基于 4 组数据生成。筛选标准未因数据量少而降低质量门槛。
+</div>
+
+<!-- Card 1 -->
+<div class="card">
+  <span class="card-rank">🏆 Top Pick · #1</span>
+  <h2>steipete：OpenClaw 云端会话终于"跑得动了"</h2>
+  <div class="original">"Finally got cloud sessions working fast in OpenClaw. Remote Terminal, WebVNC and CUA for computer use."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/steipete/status/2097935551735423464" target="_blank">@steipete</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    远程办公不再需要 VPN + SSH 跳板——直接浏览器开 WebVNC 接桌面、CUA 让 AI 替你点 UI/填表。今天就把本地能跑的工作流全部迁一份到云端试一下延迟。
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <span class="card-rank">#2</span>
+  <h2>Gradium × Matt Turck：Voice Design——一句 prompt 生成定制人声</h2>
+  <div class="original">"Build and customize any voice you'd like. Live today. Today, we're launching Voice Design. Write a prompt, create a voice. Describe the accent, age, gender, and pace your use case needs, and get new voices in seconds, ready to use. Live and free in the Gradium API and Studio."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/mattturck/status/2097386897018355769" target="_blank">@mattturck</a>（转推 @GradiumAI）</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-prompt">Prompt</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    短视频/播客创作者可以快速做"专属 AI 配音"——prompt 模板参考："中年男性播音腔，节奏稳，略带英式口音，语速中等"。免费档先出 3-5 条试效果再考虑付费。
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <span class="card-rank">#3</span>
+  <h2>steipete：团队协作正在从"自定义工具"迁移到"仪表盘 + 插件"</h2>
+  <div class="original">"Dashboards/Mini-Apps was something I pushed two months ago and now it replaced lots of custom tooling we built around OC. Everything's a sidebar entry, a dashboard or a plugin now for our team server."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/steipete/status/2097880507753382201" target="_blank">@steipete</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-mindset">思维</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    审计你团队现在的脚本/Notion 表格/Google Sheet——哪些其实只是"展示数据 + 一个按钮"？把它们全部下掉，换成一个 dashboard 框架（Retool / Appsmith / Streamlit），省维护 + 统一入口。
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="card">
+  <span class="card-rank">#4</span>
+  <h2>Hailuo_AI：GPT Image 2.5 登陆 MiniMax Design</h2>
+  <div class="original">"GPT Image 2.5 is now available on MiniMax Design! More precise edits. Better consistency. Richer details. Faster generation. Same price as Image 2."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/Hailuo_AI/status/2097705288036147314" target="_blank">@Hailuo_AI</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    做品牌内容时"局部修改"最头疼（改背景不动主体、改文字不动人物），Image 2.5 的编辑精度提升意味着迭代成本下降。今天就把要做的图换成 2.5 跑一次对比。
+  </div>
+</div>
+
+<!-- Card 5 -->
+<div class="card">
+  <span class="card-rank">#5</span>
+  <h2>claudedevs：Claude Code Function Hooks（即将上线）</h2>
+  <div class="original">"We're exploring a new way to let you extend and customize Claude Code: Function Hooks. Here's a couple videos showing what you'd be able to do. It hasn't shipped yet, we'd love feedback on this on our GitHub issue."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/claudedevs/status/2095572891941351550" target="_blank">@claudedevs</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    Hook 允许在 Claude Code 的关键节点（pre/post edit、test、commit）注入自定义行为。现在可以先去 GitHub issue 提你想 hook 的环节，影响开发优先级。
+  </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+  <span class="card-rank">#6</span>
+  <h2>Kimi Work Remote Control：手机远控桌面 AI 工作流</h2>
+  <div class="original">"Remote Control is now live in Kimi Work. Leave Kimi Work running on your computer and keep things moving from your phone. Work anywhere, anytime with Kimi Work."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2097636366544937067" target="_blank">@Kimi_Moonshot</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    适合"长任务"场景——睡前在桌面起一个批量跑数据的 agent，出门手机端监控进度/调整 prompt。远程办公 + AI agent 长任务的组合神器。
+  </div>
+</div>
+
+<!-- Card 7 -->
+<div class="card">
+  <span class="card-rank">#7</span>
+  <h2>alliekmiller：AI 本质上只需要四样东西</h2>
+  <div class="original">"At the core of AI, you really just need: 1) a thing that does 2) connections into tools 3) a place to hold stuff 4) a spot to share and update."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/alliekmiller/status/2095948761604427925" target="_blank">@alliekmiller</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-mindset">思维</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    用这四象限审视现在的 AI 栈——是不是缺"状态层"（没有持久记忆/上下文）？是不是缺"共享层"（成果没自动落到团队 wiki/Notion）？补齐最短的那块板收益最大。
+  </div>
+</div>
+
+<!-- Card 8 -->
+<div class="card">
+  <span class="card-rank">#8</span>
+  <h2>realmadhuguru：这个周末就能做的 AI 实战练习</h2>
+  <div class="original">"Here's one practical thing you can do this weekend to get better at building AI products. Pick a workflow you know well - from your personal life or your work. Automate the whole thing with AI."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/realmadhuguru/status/2095907570540335174" target="_blank">@realmadhuguru</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-mindset">思维</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    不要先看教程——先选一个"我已经能靠脑子做完"的任务（周报、报销整理、选题策划），用 Claude / Cursor / Codex 完整跑一遍，边做边记卡点。
+  </div>
+</div>
+
+<!-- Card 9 -->
+<div class="card">
+  <span class="card-rank">#9</span>
+  <h2>steipete：Agent 写 PR 时的人类"乒乓"摩擦</h2>
+  <div class="original">"Did a PR to one of our upstream projects and they requested some minor changes. What's even the point with this workflow? You already wrote the prompt, why make me ping my agent again so your agent then merges?"</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/steipete/status/2097091456234111377" target="_blank">@steipete</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-mindset">思维</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    提示我们——agent-to-agent 的协作流程需要"可重放 + 一次性 commit"。下次让 agent 提 PR 时，把 prompt + context 一次性打包好，让对方 agent 直接接手，避免来回 ping。
+  </div>
+</div>
+
+<!-- Card 10 -->
+<div class="card">
+  <span class="card-rank">#10</span>
+  <h2>zarazhangrui：Codex 彩蛋——让 agent 在聊天里放礼花</h2>
+  <div class="original">"Just realized you can ask Codex to fire a confetti in the chat 🎉"</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2097489234500390929" target="_blank">@zarazhangrui</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-prompt">Prompt</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    在 Codex 里输入"放个 confetti 庆祝一下"或类似 prompt，能触发彩蛋动画。适合用来给团队群做"今日交付完成"的庆祝动作，或在 demo 结尾留个惊喜。
+  </div>
+</div>
+
+<!-- Card 11 -->
+<div class="card">
+  <span class="card-rank">#11</span>
+  <h2>dan_shipper：评测 AI 经济模型前先问两个假设</h2>
+  <div class="original">"Two important assumptions in this Anthropic economic report that significantly change the analysis: 1. the report assumes that jobs can be decomposed into tasks 2. the report models human tasks created by automation always as 'replacement' tasks."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/danshipper/status/2097758891270697101" target="_blank">@danshipper</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-mindset">思维</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    下次看到"AI 替代多少岗位"的报告，先在脑子里走一遍这两个假设——是不是把工作过度原子化了？现实里你的工作流程能不能真拆？不能拆就别全信结论。
+  </div>
+</div>
+
+<!-- Card 12 -->
+<div class="card">
+  <span class="card-rank">#12</span>
+  <h2>zarazhangrui：Idea 是容易的，Conviction 才是难的</h2>
+  <div class="original">"Idea is easy. Conviction is hard."</div>
+  <div class="source-row">
+    <span class="source">来源：<a href="https://x.com/zarazhangrui/status/2097599758391255259" target="_blank">@zarazhangrui</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-mindset">思维</span>
+  </div>
+  <div class="rating">实用性：⭐⭐⭐</div>
+  <div class="how-to">
+    <div class="how-to-label">怎么用</div>
+    内容创作者的护城河不是"想到 10 个选题"——是"在第 3 个被骂的时候还愿意坚持写到第 30 个"。把每个想法落地的"信念清单"列出来，每天回看一次。
+  </div>
+</div>
+
+<div class="summary">
+  <h3>📊 数据摘要</h3>
+  <div class="summary-grid">
+    <div class="summary-item"><div class="k">完成缓存组</div><div class="v">G2+G3+G4+G5</div></div>
+    <div class="summary-item"><div class="k">原始条目</div><div class="v">~75</div></div>
+    <div class="summary-item"><div class="k">筛选后入选</div><div class="v">12 条</div></div>
+    <div class="summary-item"><div class="k">工具类</div><div class="v">5 条</div></div>
+    <div class="summary-item"><div class="k">工作流类</div><div class="v">4 条</div></div>
+    <div class="summary-item"><div class="k">Prompt/Tip</div><div class="v">2 条</div></div>
+    <div class="summary-item"><div class="k">思维/方法论</div><div class="v">4 条</div></div>
+  </div>
+</div>
+
+<footer>
+  <div>生成时间：2026-09-10 10:01 UTC · 数据范围：过去 24 小时 AI 网红圈优质内容</div>
+  <div style="margin-top:8px;">Markdown 版：<a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-10.html">https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-10.html</a></div>
+</footer>
+
+</div>
+</body>
+</html>
