@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-09-11</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  line-height: 1.7;
+  padding: 24px 16px 80px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 32px 28px;
+  margin-bottom: 28px;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #58a6ff, #bc8cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #8b949e;
+}
+.badge.warn { background: #3d2e1a; border-color: #6e4f24; color: #ffa657; }
+.filter-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: #1c2128;
+  border-left: 3px solid #ffa657;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #d0d7de;
+}
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: #58a6ff; transform: translateY(-2px); }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f0f6fc;
+  flex: 1;
+}
+.card-num {
+  display: inline-block;
+  background: linear-gradient(135deg, #58a6ff, #bc8cff);
+  color: #0d1117;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  min-width: 36px;
+  text-align: center;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+.tag-prompt { background: #1f3a5f; color: #79c0ff; }
+.tag-tool { background: #1f3f2f; color: #56d364; }
+.tag-workflow { background: #3d2e1a; color: #ffa657; }
+.tag-think { background: #3d1f3d; color: #d2a8ff; }
+.tag-tutorial { background: #1f3d3d; color: #39d5ff; }
+.source {
+  font-size: 13px;
+  color: #8b949e;
+  margin: 8px 0 14px;
+}
+.source a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+.source a:hover { text-decoration: underline; }
+.tweet-text {
+  background: #0d1117;
+  border-left: 3px solid #30363d;
+  padding: 12px 14px;
+  border-radius: 6px;
+  color: #c9d1d9;
+  font-size: 14.5px;
+  margin: 10px 0 14px;
+}
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #f0c674;
+  font-size: 13px;
+  margin: 8px 0;
+}
+.apply {
+  background: #1c2128;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: #d0d7de;
+  margin-top: 10px;
+}
+.apply strong { color: #58a6ff; }
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 32px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #30363d;
+  color: #f0f6fc;
+}
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.trend-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 16px;
+}
+.trend-card h4 {
+  color: #58a6ff;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.trend-card p {
+  color: #c9d1d9;
+  font-size: 13.5px;
+}
+.footer {
+  margin-top: 36px;
+  padding: 18px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #8b949e;
+  text-align: center;
+}
+.footer a { color: #58a6ff; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🤖 AI 网红工具日报</h1>
+  <div style="color:#8b949e;font-size:14px;">2026-09-11 · Friday · 创作者向</div>
+  <div class="meta">
+    <span class="badge warn">⚠️ 数据来源:G2+G3+G4+G5(G1 缺失,降级运行)</span>
+    <span class="badge">🎯 工具 / 教程 / Prompt / 工作流 / 思维</span>
+    <span class="badge">📊 精选 12 条</span>
+  </div>
+  <div class="filter-note">
+    🚫 已排除硬件/基础设施、融资/收入、纯基准对比、学术论文。质量门槛:内容创作者看完能立刻上手用。
+  </div>
+</header>
+
+<div class="section-title">🏆 今日 Top 12</div>
+
+<!-- 1 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">1</span><span class="card-title" style="margin-left:10px;">一句话 Prompt,让 Claude 主动"采访"你建立长期记忆</span></div>
+    <span class="tag tag-prompt">#Prompt</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/trq212/status/2098157600361861579">@trq212</a> · 157K ❤ · 1.4K 🔁</div>
+  <div class="tweet-text">
+    把这个 Prompt 丢给 Claude,让它用自由文本或 askuserquestion 工具深入采访你,把还不知道的、和你工作生活相关的部分都问一遍,然后存进记忆。我一直觉得 ChatGPT / Claude 如果能花 20 分钟真正"采访"我——深挖我的生活、思维方式、关心的事、目标——然后在我们后续协作中持续追问,会好用 10 倍。
+  </div>
+  <div class="rating">⭐⭐⭐⭐⭐ 实用性 9/10</div>
+  <div class="apply"><strong>如何应用:</strong>今天就在 Claude 里粘贴这段 Prompt 启动一次"自我采访"对话,把结果保存到 memory;后续所有任务都会基于你的真实背景给出定制化建议,大幅减少重复解释。</div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">2</span><span class="card-title" style="margin-left:10px;">评估"步骤"而非只评估"结果":Eval 系列 Part 10</span></div>
+    <span class="tag tag-workflow">#工作流</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/realmadhuguru/status/2098064969464217720">@realmadhuguru</a> · 8.8K ❤ · 127 🔁</div>
+  <div class="tweet-text">
+    要衡量步骤,而不只是结果。就像高中数学一样,光给出正确答案(42)是不够的,通往答案的步骤至关重要。两条 agent 轨迹可能产出同样的答案,但其中一条搜遍全网、另一条干净直击——必须分别打分。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>如何应用:</strong>如果你在做 AI 产品或自动化工作流,给你的 agent 加上"过程评分":把 trace(工具调用、检索路径、思考步骤)作为一等公民打分对象,而不仅是 final answer。</div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">3</span><span class="card-title" style="margin-left:10px;">Claude Code Function Hooks:让 Claude Code 变成可插拔平台</span></div>
+    <span class="tag tag-tool">#工具</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/trq212/status/2097522305916395786">@trq212</a> · 294K ❤ · 1.6K 🔁</div>
+  <div class="tweet-text">
+    Anthropic 正在探索一种新的方式来让你扩展和定制 Claude Code:Function Hooks。还没正式发布,他们在 GitHub issue 上征求反馈——想让你能在任意生命周期点插入自定义逻辑。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>如何应用:</strong>立刻去 Anthropic GitHub 看 Function Hooks 的 RFC 视频,提前构思你要挂的钩子(比如"每次 Bash 命令前自动扫一遍 prompt injection 风险"、"提交前自动跑 lint"),抢在 GA 前占位。</div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">4</span><span class="card-title" style="margin-left:10px;">Google Pics:用 Nano Banana 做精准图像编辑</span></div>
+    <span class="tag tag-tool">#工具</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/GoogleAI/status/2098072879480947085">@GoogleAI</a> · Google 官方</div>
+  <div class="tweet-text">
+    用 Google Pics 把想象力变成现实。Pics 基于 Nano Banana 构建,让你可以轻松生成、精修、协作编辑图像——能精准隔离并修改某个对象而不影响其他部分,还能修改或翻译图中的文字。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>如何应用:</strong>做内容创作时,直接上传原图,用 Pics 选中要改的物体局部替换;文字翻译场景下,选中图中文字直接改语种,不用重新出图。</div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">5</span><span class="card-title" style="margin-left:10px;">Kimi Work 远控:出门在外也能让 Agent 干活</span></div>
+    <span class="tag tag-tool">#工具</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/Kimi_Moonshot/status/2097636366544937067">@Kimi_Moonshot</a> · 月之暗面官方</div>
+  <div class="tweet-text">
+    Kimi Work 的"远程控制"功能上线。把 Kimi Work 留在电脑上运行,手机端继续推进任务。随时随地都能干活。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>如何应用:</strong>把长任务(数据清洗、长文写作、批量爬虫)丢给 Kimi Work 在电脑端跑,通勤路上用手机随时看进度 / 给新指令,告别"挂着电脑等任务完成"。</div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">6</span><span class="card-title" style="margin-left:10px;">OpenClaw 云端会话:CUA + WebVNC 终于跑顺了</span></div>
+    <span class="tag tag-tool">#工具</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/steipete/status/2097935551735423464">@steipete</a> · 56K views</div>
+  <div class="tweet-text">
+    终于让 OpenClaw 的云端会话跑得飞快了:远程终端、WebVNC、再加上给 computer-use 用的 CUA(Computer-Use Agent)全部到位。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>如何应用:</strong>如果你用 OpenClaw 在云端跑 agent 工作流,试试最新的云端会话链路——把 CUA 用起来可以让 agent 直接操作远程桌面,处理那些只有 GUI 没有 API 的老系统。</div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">7</span><span class="card-title" style="margin-left:10px;">周末练手:挑一个你熟的工作流,整体自动化掉</span></div>
+    <span class="tag tag-workflow">#工作流</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/realmadhuguru/status/2095907570540335174">@realmadhuguru</a> · 6.5K ❤ · 154 🔁</div>
+  <div class="tweet-text">
+    这个周末你想变强,只做一件事:挑一个你熟悉的工作流(生活或工作中的都行),用 AI 把整个流程自动化。用你顺手的 AI 产品——可能要试几种才能找到合适的。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>如何应用:</strong>本周末就动手——比如"周报自动汇总"、"会议录音→要点→行动项"、"客户邮件自动分类 + 起草回复",选一个,用 Claude/Codex/Kimi Work 端到端跑通。</div>
+</div>
+
+<!-- 8 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">8</span><span class="card-title" style="margin-left:10px;">Codex 小彩蛋:让它在对话里给你撒彩带</span></div>
+    <span class="tag tag-workflow">#工作流</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/zarazhangrui/status/2097489234500390929">@zarazhangrui</a> · 20K views</div>
+  <div class="tweet-text">
+    刚发现可以让 Codex 在聊天里放彩带🎉。
+  </div>
+  <div class="rating">⭐⭐⭐ 实用性 6/10</div>
+  <div class="apply"><strong>如何应用:</strong>虽然是趣味技巧,但本质是"Codex 支持富交互回复"。把这个能力扩展一下:让 Codex 完成长任务后主动放动画、跑完测试后放个火箭,日常 coding 反馈感拉满。</div>
+</div>
+
+<!-- 9 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">9</span><span class="card-title" style="margin-left:10px;">Stop token-maxing, Start LTV-maxing</span></div>
+    <span class="tag tag-think">#思维</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/Yu…4357">@YuHelenYu</a> · 780 ❤ · 19 🔁</div>
+  <div class="tweet-text">
+    AI 驱动的体验管理未来长什么样?在 Qualtrics Future of XM,CEO 把话说透了:别再优化 token 用量了,开始优化用户生命周期价值(LTV)。我职业生涯大半都在画客户旅程图,现在该转变范式了。
+  </div>
+  <div class="rating">⭐⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>如何应用:</strong>如果你在用 AI 做产品/客服,把考核指标从"少花 token"切到"提升 LTV":同样的成本下让用户多留存、多复购,而不是把 LLM 当省钱工具。</div>
+</div>
+
+<!-- 10 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">10</span><span class="card-title" style="margin-left:10px;">想法易得,信念难求</span></div>
+    <span class="tag tag-think">#思维</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/zarazhangrui/status/2097599758391255259">@zarazhangrui</a> · 11K views</div>
+  <div class="tweet-text">
+    Idea is easy. Conviction is hard.
+  </div>
+  <div class="rating">⭐⭐⭐ 实用性 6/10</div>
+  <div class="apply"><strong>如何应用:</strong>AI 时代 idea 的边际成本几乎为零,真正的稀缺是 conviction——你能不能在所有人都怀疑时坚持方向?列一个"我有 conviction 的 3 个方向",别再被新点子牵着走。</div>
+</div>
+
+<!-- 11 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">11</span><span class="card-title" style="margin-left:10px;">抽象仍然痛苦,但复制逻辑不再痛苦</span></div>
+    <span class="tag tag-think">#思维</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/steipete/status/2098089196800098798">@steipete</a> · 369K views</div>
+  <div class="tweet-text">
+    这事儿说得通。复制逻辑不再痛苦,但抽象仍然是。结合上下文是 Shopify 从 React Native 切回 Swift/Kotlin 的复盘——2020 年全力押注 RN 很成功,但时代变了。
+  </div>
+  <div class="rating">⭐⭐⭐ 实用性 6/10</div>
+  <div class="apply"><strong>如何应用:</strong>写代码时,大胆复用(AI 让 copy-paste 风险骤降),但在"该不该抽象"这个判断上仍要慎重——别为了 DRY 而抽象,只在该藏住复杂度时抽象。</div>
+</div>
+
+<!-- 12 -->
+<div class="card">
+  <div class="card-header">
+    <div><span class="card-num">12</span><span class="card-title" style="margin-left:10px;">GradiumAI:自定义你的 AI 声音</span></div>
+    <span class="tag tag-tool">#工具</span>
+  </div>
+  <div class="source">来源:<a href="https://x.com/mattturck/status/2097386897018355769">@mattturck</a> · 转发</div>
+  <div class="tweet-text">
+    Gradium——构建和定制任何你想要的语音。今日上线。
+  </div>
+  <div class="rating">⭐⭐⭐ 实用性 6/10</div>
+  <div class="apply"><strong>如何应用:</strong>做播客、短视频、品牌语音形象的内容创作者,去 Gradium 试训一个自己的音色——以后所有 AI 配音都用自己的"声纹",品牌一致性立刻拉满。</div>
+</div>
+
+<div class="section-title">📌 今日趋势速览</div>
+<div class="trend-grid">
+  <div class="trend-card">
+    <h4>Prompt 工程升级</h4>
+    <p>从"写好问题"进化到"让 AI 主动采访你"</p>
+  </div>
+  <div class="trend-card">
+    <h4>Agent 可控性</h4>
+    <p>Claude Code Hooks + Kimi Work 远控,agent 真正融入日常流</p>
+  </div>
+  <div class="trend-card">
+    <h4>评估方法论</h4>
+    <p>Eval 不只看答案,看 trace——agent 产品下一个分水岭</p>
+  </div>
+  <div class="trend-card">
+    <h4>思考拐点</h4>
+    <p>从省 token 转向提 LTV;从多 idea 转向高 conviction</p>
+  </div>
+</div>
+
+<div class="footer">
+  <div>📊 数据完整度:4/5(G2+G3+G4+G5,G1 缺失已降级)</div>
+  <div style="margin-top:6px;">✅ 质量门槛:内容创作者可立刻上手使用</div>
+  <div style="margin-top:6px;">🔗 <a href="https://zxy114.github.io/influencer-daily/">更多日报</a> · 生成时间 2026-09-11 10:00 UTC</div>
+</div>
+
+</div>
+</body>
+</html>
