@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 网红工具日报 · 2026-09-12</title>
+<style>
+:root{
+  --bg:#0f1115;--bg:#0b0d12;--card:#161a22;--card-hover:#1d2230;
+  --border:#222836;--text:#e8eaf0;--muted:#8b93a7;--accent:#7c9eff;
+  --accent-2:#5eead4;--tag-bg:#1f2536;--tag-text:#a8b3cf;
+  --star:#fbbf24;--shadow:0 8px 28px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:linear-gradient(180deg,#0a0c11 0%,#0f1219 100%);color:var(--text);line-height:1.65;
+  min-height:100vh;padding:0 0 80px;}
+.container{max-width:960px;margin:0 auto;padding:32px 20px;}
+header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.title{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px;}
+.title .accent{color:var(--accent);}
+.subtitle{color:var(--muted);font-size:14px;}
+.meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:var(--tag-bg);color:var(--tag-text);padding:4px 10px;border-radius:999px;font-size:12px;border:1px solid var(--border);}
+.chip.warn{background:#3a2a1a;color:#fbbf24;border-color:#5a3f1f;}
+.summary{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px;
+  margin-bottom:28px;box-shadow:var(--shadow);}
+.summary h3{font-size:14px;color:var(--accent);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;}
+.summary p{color:var(--muted);font-size:14px;}
+.summary strong{color:var(--text);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px;}
+@media(max-width:560px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;
+  transition:all .2s ease;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.card:hover{background:var(--card-hover);transform:translateY(-2px);}
+.card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);opacity:.5;}
+.card .rank{position:absolute;top:14px;right:16px;background:var(--tag-bg);color:var(--accent);
+  font-weight:700;font-size:12px;padding:3px 10px;border-radius:8px;}
+.card h2{font-size:17px;margin-bottom:8px;line-height:1.4;padding-right:50px;}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.tag{background:var(--tag-bg);color:var(--tag-text);padding:3px 9px;border-radius:6px;font-size:11px;}
+.tag.tool{background:#1a2f3a;color:#5eead4;}
+.tag.prompt{background:#2a1f3a;color:#c084fc;}
+.tag.workflow{background:#1f2e1a;color:#86efac;}
+.tag.tutorial{background:#2a2418;color:#fbbf24;}
+.tag.mindset{background:#1a1f2e;color:#7c9eff;}
+.card .source{font-size:12px;color:var(--muted);margin:10px 0 6px;}
+.card .source a{color:var(--accent);text-decoration:none;}
+.card .source a:hover{text-decoration:underline;}
+.card .meta-row{font-size:11px;color:var(--muted);margin-bottom:12px;}
+.card .meta-row span{margin-right:10px;}
+.card .original{background:#0d1119;border-left:3px solid var(--accent);padding:10px 14px;
+  border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:#c5cad8;font-style:italic;line-height:1.55;}
+.card .original-en{background:#0d1119;border-left:3px solid var(--accent-2);padding:10px 14px;
+  border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:#c5cad8;font-style:italic;line-height:1.55;}
+.card .rating{margin:10px 0;font-size:14px;letter-spacing:1px;}
+.card .rating .star{color:var(--star);}
+.card .rating .empty{color:#3a4055;}
+.card .apply{background:rgba(124,158,255,.08);border:1px solid rgba(124,158,255,.25);
+  padding:10px 14px;border-radius:8px;font-size:13px;color:#c8d4ff;margin-top:10px;}
+.card .apply::before{content:"💡 ";font-size:13px;}
+.section-title{font-size:20px;font-weight:600;margin:36px 0 18px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.extra-table{width:100%;border-collapse:collapse;margin-top:14px;}
+.extra-table th,.extra-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:13px;}
+.extra-table th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.5px;}
+.extra-table a{color:var(--accent);text-decoration:none;}
+.extra-table a:hover{text-decoration:underline;}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);
+  color:var(--muted);font-size:12px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="title">AI 网红工具日报 · <span class="accent">2026-09-12</span></div>
+    <div class="subtitle">🎯 内容创作者 · 工具党 · Prompt 工程师 的每日精选</div>
+    <div class="meta">
+      <span class="chip">📅 周六 · 2026-09-12</span>
+      <span class="chip">🕐 10:03 UTC</span>
+      <span class="chip">📊 90+ 候选 → 12 精选</span>
+      <span class="chip warn">⚠️ G1 缺失 · G2-G5 已覆盖</span>
+    </div>
+  </header>
+
+  <div class="summary">
+    <h3>本期速览</h3>
+    <p>本期数据来源 <strong>G2 / G3 / G4 / G5</strong>（G1 本轮缺失已降级运行）。重点信号：<strong>GPT-6 Astra</strong> 正式接入 MiniMax Design 工具链（Blender/PS/AE MCP）、<strong>Gemini 桌面端</strong>登陆 Windows、Kimi Work 上线<strong>手机远程控制</strong>、Claude 出 plugin eval 工具。往下看 12 条可直接上手的内容。</p>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <span class="rank">#1</span>
+      <h2>🎯 Claude「深度采访」Prompt</h2>
+      <div class="tags"><span class="tag prompt">Prompt 模板</span></div>
+      <div class="source">来源：<a href="https://x.com/trq212/status/2098157600361861579">@trq212</a></div>
+      <div class="meta-row"><span>❤️ 88</span><span>🔁 136</span><span>👁️ 341K</span></div>
+      <div class="original">让 Claude 主动挖出你的背景：使用自由文本深度采访我，必要时用 askuserquestion 工具做多选，把我生活中你还不知道的相关部分问清楚，全部存到 memory 里。</div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="apply">在 Claude 对话框直接粘贴这段 prompt，让它主动问你职业/技能/偏好并写入 memory，下次开新对话也能继承上下文。一次设置，长期收益。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#2</span>
+      <h2>🛠️ MiniMax Design 大升级：Astra + Blender/PS/AE 的 MCP 集成</h2>
+      <div class="tags"><span class="tag tool">工具推荐</span></div>
+      <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2098408580852641795">@Hailuo_AI</a></div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="original">MiniMax Design 大升级！GPT-6 Astra 已上线！新增 Blender / PS / AE 等 MCP 集成，支持协作项目；一条 prompt 出 3D 模型，AI 视频片段可直接拖进 AE 做二次剪辑。</div>
+      <div class="apply">在 MiniMax Design 里开启 MCP 连接 Blender/PS/AE，一条 prompt 出 3D 模型，或把 AI 视频片段直接拖进 AE 做二次剪辑。短视频创作者的剪辑流程会被压缩一半。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#3</span>
+      <h2>📱 Kimi Work 远程控制：电脑端跑，手机端指挥</h2>
+      <div class="tags"><span class="tag tool">工具推荐</span></div>
+      <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2097636366544937067">@Kimi_Moonshot</a></div>
+      <div class="meta-row"><span>❤️ 987</span><span>🔁 85</span><span>👁️ 71K</span></div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="original">Remote Control is now live in Kimi Work. Leave Kimi Work running on your computer and keep things moving from your phone. Work anywhere, anytime with Kimi Work.</div>
+      <div class="apply">把 Kimi Work 留在电脑端长时间跑任务，出门时用手机查看进度、修改指令、做 follow-up。适合跑长任务的开发者/创作者。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#4</span>
+      <h2>🎨 Google Pics（Nano Banana）：精细到物体的图像编辑</h2>
+      <div class="tags"><span class="tag tool">工具推荐</span></div>
+      <div class="source">来源：<a href="https://x.com/GoogleAI/status/2098072879480947085">@GoogleAI</a></div>
+      <div class="meta-row"><span>❤️ 693</span><span>🔁 75</span><span>👁️ 87K</span></div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="original">用 Google Pics 释放你的想象力。基于 Nano Banana 构建，Pics 可以高精准度地生成、迭代、共创图像：可单独抠出某个物体编辑而不影响整体、可修改或翻译图中文字……</div>
+      <div class="apply">用 Pics 单独抠出图片里的某个物体做二次编辑（不会影响背景），或者直接修改图内文字。做封面图、电商主图、自媒体配图效率翻倍。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#5</span>
+      <h2>🪟 Gemini 桌面版登陆 Windows（Alt+Space 唤起）</h2>
+      <div class="tags"><span class="tag tool">工具推荐</span></div>
+      <div class="source">来源：<a href="https://x.com/joshwoodward/status/2098131750660772342">@joshwoodward</a></div>
+      <div class="meta-row"><span>❤️ 69K</span><span>🔁 639</span></div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="original">Gemini 桌面版登陆 Windows！下载：gemini.google/desktop。按 Alt+Space 即可在任意应用旁润色文案、总结长文档、头脑风暴、生成图像和视频。</div>
+      <div class="apply">安装 Gemini 桌面端，按 Alt+Space 在任何应用里唤起浮窗润色文案/总结长文档/生成配图。Windows 用户的 Raycast-like AI 入口。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#6</span>
+      <h2>🚗 V2V 工作流：Street View → GPT Astra → H3 做出车流视频</h2>
+      <div class="tags"><span class="tag workflow">工作流</span></div>
+      <div class="source">来源：<a href="https://x.com/IsekaiBardGuild/status/2098323468425351341">@IsekaiBardGuild</a></div>
+      <div class="rating"><span class="star">★★★★★</span><span class="empty">★</span> 5/5</div>
+      <div class="original">用 GPT Astra 沿 Google 地图道路抓街景图，做成翻页动画视频；再用 MiniMax H3 ref2va 转成车载摄像头视角。整段流程一键出"任意地点开车兜风"视频。</div>
+      <div class="apply">用 GPT Astra 自动抓 Google 地图沿线街景→生成翻页动画→再用 H3 ref2va 转成车载摄像头视角。整段流程一键出"世界任意地点开车兜风"视频，做旅行/Vlog 类内容的素材库。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#7</span>
+      <h2>🧪 Claude Plugin Eval：模型升级前先跑一遍技能测试</h2>
+      <div class="tags"><span class="tag tutorial">教程</span><span class="tag tool">工具</span></div>
+      <div class="source">来源：<a href="https://x.com/trq212/status/2098531560643539440">@trq212</a></div>
+      <div class="meta-row"><span>❤️ 39</span><span>🔁 37</span><span>👁️ 100K</span></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">收到反馈说每次新模型发布都很难知道你的 skills 还能不能用——现在 plugin evals 来帮忙。在你的插件目录运行 `claude plugin eval init` 即可。</div>
+      <div class="apply">在 Claude Code 插件目录运行 `claude plugin eval init` 生成 eval 套件，每次升级模型前先跑一遍验证 prompt/技能有没有 regression。开发者必备。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#8</span>
+      <h2>🎉 Codex 小彩蛋：让 AI 在聊天里放烟花</h2>
+      <div class="tags"><span class="tag mindset">AI 使用技巧</span></div>
+      <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2097489234500390929">@zarazhangrui</a></div>
+      <div class="meta-row"><span>❤️ 21K</span><span>🔁 167</span></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">Just realized you can ask Codex to fire a confetti in the chat 🎉</div>
+      <div class="apply">在 Codex 里告诉它 "celebrate this" 或 "fire confetti"，它会用 ASCII art 在终端放烟花。适合做 demo 收尾、团队庆祝、或者单纯哄自己开心。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#9</span>
+      <h2>🎙️ Gradium Voice Design：用一句话 prompt 生成自定义语音</h2>
+      <div class="tags"><span class="tag tool">工具推荐</span></div>
+      <div class="source">来源：<a href="https://x.com/mattturck/status/2097386897018355769">@mattturck（via @GradiumAI）</a></div>
+      <div class="meta-row"><span>❤️ 7.2K</span><span>🔁 36</span></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">用 prompt 创造任意你想要的声音，今天已上线。描述口音、年龄、性别、语速，几秒即可生成新音色。Gradium API 和 Studio 免费可用。</div>
+      <div class="apply">在 Gradium Studio 用自然语言描述"年轻女性、语速偏快、带一点苏格兰口音"，几秒得到专属 TTS 音色。播客、有声书、短视频配音可以告别千篇一律的 ElevenLabs 预设。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#10</span>
+      <h2>📐 评估 Agent：测过程，不只看结果</h2>
+      <div class="tags"><span class="tag tutorial">教程</span></div>
+      <div class="source">来源：<a href="https://x.com/realmadhuguru/status/2098064969464217720">@realmadhuguru</a></div>
+      <div class="meta-row"><span>❤️ 15</span><span>🔁 8</span><span>👁️ 14K</span></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">如何构建好的 evals 第 10 篇：衡量步骤，不只是结果。两条 agent 轨迹可能都得到答案 42，但其中一条可能搜了 50 次网页——别只看 pass rate。</div>
+      <div class="apply">做 Agent prompt 时不要只看最终答案对错，记录中间步骤（搜了几次、调了哪些工具、推理路径）。两个 agent 都能得出 42，但其中一条可能搜了 50 次网页——别只看 pass rate。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#11</span>
+      <h2>🧠 AI Engineering 技能地图：别只做实现者，要"塑造构建"</h2>
+      <div class="tags"><span class="tag tutorial">教程</span><span class="tag mindset">思维</span></div>
+      <div class="source">来源：<a href="https://x.com/An…2916">@AndrewYNg</a></div>
+      <div class="meta-row"><span>❤️ 93</span><span>🔁 301</span><span>👁️ 203K</span></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">具备 AI Engineering 技能，你就能主动塑造构建过程：影响要造什么、驱动 build loop。本文给出关键技能清单。你最好的工作不应只是实现别人 spec 出来的产品。</div>
+      <div class="apply">把自己从"按 PRD 实现"的角色升级到"参与定义要做什么"的 co-pilot。读完整篇文章理一遍 AI Engineer 的能力图谱，找自己缺哪一块。</div>
+    </article>
+
+    <article class="card">
+      <span class="rank">#12</span>
+      <h2>🏠 Blender + H3 室内场景：先建模，再让 AI 接力</h2>
+      <div class="tags"><span class="tag workflow">工作流</span></div>
+      <div class="source">来源：<a href="https://x.com/Toshi_nyaruo_AI/status/2097957997763010993">@Toshi_nyaruo_AI</a></div>
+      <div class="rating"><span class="star">★★★★</span><span class="empty">★</span> 4/5</div>
+      <div class="original">用 MiniMax Design H3 + Blender 制作室内视频场景。传统做法很难做出从室外到室内的无缝过渡，但先在 Blender 里搭好场景再让 H3 参考，出来的效果很顺。</div>
+      <div class="apply">先用 Blender 把室内场景搭个大概（构图、灯光、道具），再让 H3 视频模型参考它生成最终镜头。可以做出"无缝从室外切到室内"的电影感转场。</div>
+    </article>
+
+  </div>
+
+  <h2 class="section-title">🎁 速览：另几条值得收藏</h2>
+  <table class="extra-table">
+    <thead>
+      <tr><th>作者</th><th>一句话</th><th>链接</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>@btibor91</td><td>ChatGPT Pro 20× 购买通道暂时关闭（抢购太火），现有订阅不受影响</td><td><a href="https://x.com/btibor91/status/2098057726295457975">查看 →</a></td></tr>
+      <tr><td>@steipete</td><td>Astra 在 OC 云会话里玩 Doom（不是 AGI，但已经能打游戏了）</td><td><a href="https://x.com/steipete/status/2098527519213604889">查看 →</a></td></tr>
+      <tr><td>@Hailuo_AI</td><td>"Astra 导航 + H3 开车"的另一个演示</td><td><a href="https://x.com/Hailuo_AI/status/2098326388763930859">查看 →</a></td></tr>
+      <tr><td>@JustinLin610</td><td>模型架构太复杂会带来 evals 测不出来的未知问题</td><td><a href="https://x.com/JustinLin610/status/2098262364323975393">查看 →</a></td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>报告由 AI 网红日报自动生成 · 数据来源：Twitter/X 公开时间线 · 部署：GitHub Pages</p>
+    <p style="margin-top:6px;">排除标准：硬件/基础设施、融资/收入、纯基准对比、学术论文 · 收录：工具推荐、教程、Prompt 模板、工作流优化、AI 使用技巧</p>
+  </footer>
+</div>
+</body>
+</html>
