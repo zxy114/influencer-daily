@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红工具日报 · 2026-09-13</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--card-hi:#1f232c;--fg:#e6e8eb;--muted:#9aa3ad;--accent:#7c9cff;--gold:#ffd166;--green:#5dd39e;--blue:#4ec1ff;--border:#262b35;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);line-height:1.65;padding:32px 20px 80px}
+.container{max-width:880px;margin:0 auto}
+h1{font-size:32px;font-weight:700;margin-bottom:8px;background:linear-gradient(90deg,var(--accent),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--muted);font-size:14px;margin-bottom:8px}
+.meta{color:var(--muted);font-size:13px;border-left:3px solid var(--accent);padding:6px 12px;background:var(--card);border-radius:0 6px 6px 0;margin:20px 0 32px}
+.cards{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;transition:transform .15s ease,border-color .15s ease}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.stars{color:var(--gold);font-size:14px;letter-spacing:2px}
+.tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:999px;background:var(--card-hi);color:var(--blue);border:1px solid var(--border);margin-right:4px}
+.card h3{font-size:18px;margin-bottom:8px;color:#fff}
+.card .original{color:var(--muted);font-size:14px;font-style:italic;margin-bottom:10px;padding-left:12px;border-left:2px solid var(--border)}
+.card .src{font-size:13px;color:var(--muted);margin-bottom:10px}
+.card .src a{color:var(--accent);text-decoration:none}
+.card .src a:hover{text-decoration:underline}
+.card .apply{margin-top:10px;padding:10px 12px;background:var(--card-hi);border-radius:6px;font-size:13px;color:var(--green)}
+.card .apply strong{color:var(--green);margin-right:6px}
+.summary{margin-top:48px;padding:18px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.summary table{width:100%;border-collapse:collapse;margin-top:8px}
+.summary td{padding:6px 8px;font-size:14px;border-bottom:1px solid var(--border)}
+.summary td:first-child{color:var(--muted);width:30%}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>AI 网红工具日报</h1>
+  <div class="subtitle">2026-09-13 · 内容创作者每日可上手的 AI 灵感</div>
+  <div class="meta">📦 数据源：G2 / G3 / G4 / G5（4 组缓存，G1 当日未产出，触发降级策略）<br>🎯 收录：工具推荐 / 教程 / Prompt 模板 / 工作流优化 / AI 使用技巧<br>🚫 排除：硬件基础设施、融资收入、纯基准对比、学术论文</div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-head"><span class="tag">Prompt 模板</span><span class="stars">★ ★ ★ ★ ★</span></div>
+      <h3>Claude「自我访谈」Prompt：让 AI 花 20 分钟深聊你的生活</h3>
+      <div class="original">让 Claude 用自由文本深度访谈你不知道的生活细节就问，可用 askuserquestion 工具做选择题，把结果全部存到 memory。</div>
+      <div class="src">来源：<a href="https://x.com/trq212/status/2098157600361861579">@trq212</a> （转发自 <a href="https://x.com/blakeir/status/2098096488811512295">@blakeir</a>）</div>
+      <div class="apply"><strong>如何应用：</strong>复制原句发给 Claude Code 或 Claude Chat，第一次跑会建立个人长期记忆，后续对话相关性显著提升。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">工作流</span><span class="tag">评测方法</span><span class="stars">★ ★ ★ ★ ★</span></div>
+      <h3>评估 Agent 不是看答案，要看「中间步骤」</h3>
+      <div class="original">评估 Agent 不能只看最终答案（两个轨迹都得出 42，但其中一条搜索路径更合理），像中学数学一样，步骤才是关键。</div>
+      <div class="src">来源：<a href="https://x.com/realmadhuguru/status/2098064969464217720">@realmadhuguru</a></div>
+      <div class="apply"><strong>如何应用：</strong>下次让 Claude Code / Cursor 跑复杂任务时，先看它的「思考链」截图，再判结果对错，不要被看似正确的最终输出骗到。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">工具推荐</span><span class="stars">★ ★ ★ ★</span></div>
+      <h3>MiniMax Design 大升级：MCP 直接打通 Blender / PS / AE</h3>
+      <div class="original">GPT-6 Astra 上线，新增 Blender、Photoshop、After Effects 的 MCP 集成；支持协作项目；一句话生成 3D 模型；AI 片段可直接转 AE 可编辑项目。</div>
+      <div class="src">来源：<a href="https://x.com/Hailuo_AI/status/2098408580852641795">@Hailuo_AI</a></div>
+      <div class="apply"><strong>如何应用：</strong>做短视频或动效的设计师可试 MiniMax Design 的 AE 直通，把 AI 草稿直接拿进工程文件再精修，省掉中间渲染步骤。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">思维</span><span class="tag">工作流</span><span class="stars">★ ★ ★ ★</span></div>
+      <h3>创意人的「分发思维」：把前沿 AI 能力铺开给普通人</h3>
+      <div class="original">对 Amodei「放慢节奏」一文的补充建议：分布式布局前沿 AI——网络安全的核心威胁是「前沿 AI 能做到」与「普通人/关键基础设施运营者能防御」之间的鸿沟，缩小鸿沟才是重点。</div>
+      <div class="src">来源：<a href="https://x.com/danshipper/status/2098812095093452969">@danshipper</a></div>
+      <div class="apply"><strong>如何应用：</strong>做 AI 内容时，与其讲「又出了多强的模型」，不如做「普通人 5 分钟就能上手」的教程——这才是缩小能力鸿沟的真正红利。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">工具推荐</span><span class="stars">★ ★ ★ ★</span></div>
+      <h3>Gemini 桌面版登陆 Windows：Alt+Space 一键唤起</h3>
+      <div class="original">Gemini 桌面应用正式上架 Windows，按 Alt + Space 即可润色文案、总结长文档、头脑风暴、出图出视频，无需离开当前应用。</div>
+      <div class="src">来源：<a href="https://x.com/joshwoodward/status/2098131750660772342">@joshwoodward</a>（Google Gemini）</div>
+      <div class="apply"><strong>如何应用：</strong>下载 gemini.google/desktop，写稿 / 做视频脚本时随时用全局快捷键调用，把 Gemini 变成第二大脑。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">思维</span><span class="tag">工作流</span><span class="stars">★ ★ ★ ★</span></div>
+      <h3>「远离噪音」工作坊：把休息当生产力工具</h3>
+      <div class="original">在树林里办了一场 Step Away from the Noise 活动——无屏幕、无 KPI、无报告，反而能让被技术噪音淹没的人重新对齐方向。</div>
+      <div class="src">来源：<a href="https://x.com/nigewillson/status/2097326221101035669">@nigewillson</a></div>
+      <div class="apply"><strong>如何应用：</strong>把「每天 1 小时无屏幕散步」写进日程，做 AI 创作者最容易陷入「一直刷推」陷阱，主动断网反而能产出好内容。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">教程</span><span class="tag">思维</span><span class="stars">★ ★ ★</span></div>
+      <h3>吴恩达：AI 工程师技能地图——塑造构建过程而非执行 spec</h3>
+      <div class="original">AI 工程师的核心技能是「影响要构建什么、推动构建闭环」，而不是照着别人写的 spec 实现。</div>
+      <div class="src">来源：<a href="https://x.com/An…2916">@AndrewYNg</a></div>
+      <div class="apply"><strong>如何应用：</strong>下次接到需求时，先问「我们为什么要做这个？假设用户是谁？能不能砍一半功能？」，用 AI 协助做「产品决策」而不是「代码实现」。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">工具教程</span><span class="stars">★ ★ ★</span></div>
+      <h3>Claude Code 新增 claude plugin eval：插件 A/B 测试</h3>
+      <div class="original">在新模型发布时很难判断你的 Skill 是否还生效，运行 claude plugin eval 即可建测试用例、跑插件、评分、对比去掉插件后的表现。</div>
+      <div class="src">来源：<a href="https://x.com/trq212/status/2098531560643539440">@trq212</a>（转发自 <a href="https://x.com/ClaudeDevs">@ClaudeDevs</a>）</div>
+      <div class="apply"><strong>如何应用：</strong>在插件目录下跑 claude plugin eval init，给自己的自定义 Skill 建一套回归测试，每次 Claude 模型升级后自动跑一遍。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">工具推荐</span><span class="tag">开源模型</span><span class="stars">★ ★ ★</span></div>
+      <h3>DeepSeek-V4.1-Flash：开源最强小模型 + 视觉原生</h3>
+      <div class="original">DeepSeek 推出 V4.1-Flash——家族中最小的模型，原生支持视觉理解，更快推理、更高吞吐、可扩展到更大模型。</div>
+      <div class="src">来源：<a href="https://x.com/deepseek_ai/status/2097930608790167907">@deepseek_ai</a></div>
+      <div class="apply"><strong>如何应用：</strong>跑本地小模型推理或做边缘端 AI 应用时，V4.1-Flash 是当前开源榜单首选，可直接替代部分闭源 API。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">思维</span><span class="tag">评测方法</span><span class="stars">★ ★ ★</span></div>
+      <h3>评估失败的真相：很多 benchmark 失败来自「过于严格的隐藏测试」</h3>
+      <div class="original">现在单看 pass/fail 已经无法解释评估结果——很多失败是评测集的隐藏测试太死板，模型的答案反而比期望值更合理。</div>
+      <div class="src">来源：<a href="https://x.com/trq212/status/2098490139798655427">@trq212</a></div>
+      <div class="apply"><strong>如何应用：</strong>写自己的评测集时，每个失败用例都人工 review 一次——很可能不是模型错，而是你的 expected answer 太死板。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">思维</span><span class="stars">★ ★ ★</span></div>
+      <h3>「单人公司」被高估了：AI 时代更需要同行者</h3>
+      <div class="original">一个人靠 AI 能做很多事，但创造新东西的本质孤独——需要有人一起头脑风暴、一起受苦、一起庆祝，否则很容易迷失方向。</div>
+      <div class="src">来源：<a href="https://x.com/zarazhangrui/status/2098483800456179923">@zarazhangrui</a></div>
+      <div class="apply"><strong>如何应用：</strong>做 AI 独立创业时，找 3-5 个同业者组一个「每周一小时无议程」小群，互相分享本周卡点和突破。</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="tag">AI 使用技巧</span><span class="stars">★ ★ ★</span></div>
+      <h3>Codex 也能放烟花：把干瘪的 AI 工具变好玩</h3>
+      <div class="original">发现可以让 Codex 在对话里放烟花彩屑——稍微给工具加点乐趣，用起来就不那么痛苦。</div>
+      <div class="src">来源：<a href="https://x.com/zarazhangrui/status/2097489234500390929">@zarazhangrui</a></div>
+      <div class="apply"><strong>如何应用：</strong>让 Codex / Claude Code 在跑完长任务时自动 echo "🎉 Done!" 加个小动画，长期使用能显著降低疲劳感。</div>
+    </div>
+
+  </div>
+
+  <div class="summary">
+    <h3 style="margin-bottom:10px">📊 今日速览</h3>
+    <table>
+      <tr><td>数据源</td><td>G2 / G3 / G4 / G5（4 组）</td></tr>
+      <tr><td>候选条目</td><td>88</td></tr>
+      <tr><td>入选 Top</td><td>12</td></tr>
+      <tr><td>⭐⭐⭐⭐⭐</td><td>2 条（Prompt + 评测）</td></tr>
+      <tr><td>⭐⭐⭐⭐</td><td>4 条（工具 / 思维）</td></tr>
+      <tr><td>⭐⭐⭐</td><td>6 条</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">自动生成于 2026-09-13 10:03 UTC · OpenClaw AI 网红日报</div>
+</div>
+</body>
+</html>
