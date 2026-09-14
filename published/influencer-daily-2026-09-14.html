@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-09-14</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .data-warning {
+            background-color: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--rating-gold);
+            padding: 12px 18px;
+            margin-top: 20px;
+            border-radius: 6px;
+            color: var(--rating-gold);
+            font-size: 0.95em;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-orange);
+        }
+
+        .card-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-purple));
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.35em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            font-size: 0.88em;
+            color: var(--text-secondary);
+            align-items: center;
+        }
+
+        .card-meta .source {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .card-meta .source:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .tag-tool { border-left: 3px solid var(--accent-orange); }
+        .tag-tutorial { border-left: 3px solid var(--accent-blue); }
+        .tag-prompt { border-left: 3px solid var(--accent-purple); }
+        .tag-workflow { border-left: 3px solid var(--accent-green); }
+        .tag-thinking { border-left: 3px solid var(--rating-gold); }
+
+        .rating {
+            color: var(--rating-gold);
+            font-weight: 600;
+        }
+
+        .card-section {
+            margin-top: 15px;
+        }
+
+        .card-section-title {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .card-section-content {
+            color: var(--text-primary);
+            font-size: 0.95em;
+            line-height: 1.65;
+        }
+
+        .card-section-content blockquote {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 3px solid var(--accent-blue);
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .translation {
+            color: var(--text-secondary);
+            font-style: normal;
+        }
+
+        .how-to-apply {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 3px solid var(--accent-green);
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-radius: 0 6px 6px 0;
+            color: var(--text-primary);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card .value {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--accent-orange);
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI网红工具日报</h1>
+            <div class="subtitle">
+                📅 2026-09-14 · 每日精选工具推荐、教程、Prompt模板、工作流优化与AI技巧<br>
+                🔍 筛选标准：质量门槛（能立刻上手用）、来源可信、实用性优先
+            </div>
+            <div class="data-warning">
+                ⚠️ 数据范围说明：G1 组未完成（无 G1 缓存数据），本日报基于 G2/G3/G4/G5 四组数据生成（4/5 完成率，80%）
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="value">12</div>
+                <div class="label">今日精选条目</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">4/5</div>
+                <div class="label">数据组完成率</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">9⭐</div>
+                <div class="label">最高评分</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">5类</div>
+                <div class="label">内容分类</div>
+            </div>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="card">
+            <span class="card-number">1️⃣ #1 推荐</span>
+            <h2 class="card-title">Claude 自我访谈 Prompt：让 AI 主动深度了解你</h2>
+            <div class="card-meta">
+                <a href="https://x.com/trq212/status/2098157600361861579" class="source">@trq212</a>
+                <span class="tag tag-prompt">💡 Prompt</span>
+                <span class="rating">⭐ 9/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Try this prompt in Claude chat to give it more context about yourself: Interview me in depth using free text, or askuserquestion tool when multiple choice works, about relevant parts of my life you don't know about yet and save it all to memory.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>在 Claude 对话中尝试这个 Prompt，让它对你有更深入的上下文：使用自由文本深度访谈我（如果选择题更合适也可以用 askuserquestion 工具），问那些你还不了解的、我生活中相关的部分，并把所有信息保存到记忆中。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">首次打开 Claude（新会话）时粘贴这段 Prompt，AI 会用苏格拉底式提问主动挖出你的职业背景、项目背景、沟通偏好；保存到 memory 后后续对话质量大幅提升，适合每天重度用 Claude 写代码/做决策的开发者与创作者。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <span class="card-number">2️⃣ #2 推荐</span>
+            <h2 class="card-title">steipete：用 AI Agent 修 Linux，你的电脑从此自己治自己</h2>
+            <div class="card-meta">
+                <a href="https://x.com/steipete/status/2099172248213225791" class="source">@steipete</a>
+                <span class="tag tag-workflow">🔧 工作流</span>
+                <span class="rating">⭐ 9/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>If you haven't given Linux a go lately, try with agents. You can fix anything with a prompt now. Got a Dell XPS. Webcam wasn't working, told codex, it rebooted and now things work.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>如果你最近没试过 Linux，可以和 AI Agent 一起用。现在你能用一段 Prompt 修任何东西。我有一台 Dell XPS，摄像头不工作，告诉 Codex（AI 编码助手），它重启了一次然后就好了。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">任何 Linux 系统问题（驱动、配置、性能调优）直接告诉 Codex / Claude Code / Cursor Agent，让它 SSH 上服务器/本机自检修复；不再需要查 stackoverflow、翻 GitHub issues，适合折腾本地开发环境或家用服务器的极客。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <span class="card-number">3️⃣</span>
+            <h2 class="card-title">MiniMax Design 大升级：GPT-6 Astra + MCP 直连 Blender/PS/AE</h2>
+            <div class="card-meta">
+                <a href="https://x.com/Hailuo_AI/status/2098408580852641795" class="source">@Hailuo_AI</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 8/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>💥 MiniMax Design Major Upgrade! 🤖 GPT-6 Astra is Now Live! 🔌 New MCP integrations for Blender, PS, AE and more 👥 Collaborative Projects for seamless teamwork Create 3D models with a single prompt; turn AI clips directly into editable AE projects...</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>💥 MiniMax Design 重大升级！🤖 GPT-6 Astra 上线！🔌 新增 Blender、Photoshop、After Effects 等 MCP 集成；👥 协作项目让团队无缝协作；用一段 Prompt 创建 3D 模型；把 AI 视频直接变成可编辑的 AE 工程文件。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">视频创作者现在可以一句话生成 3D 模型并通过 MCP 直接导入 Blender 调整，或把 AI 生成的视频片段直接转成 AE 可编辑时间线，无需手动转码/重做关键帧——显著缩短"AI 出图→精修上线"流程。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <span class="card-number">4️⃣</span>
+            <h2 class="card-title">高质量 Evals 构建指南 #10：衡量步骤，不只看结果</h2>
+            <div class="card-meta">
+                <a href="https://x.com/realmadhuguru/status/2098064969464217720" class="source">@realmadhuguru</a>
+                <span class="tag tag-tutorial">📘 教程</span>
+                <span class="rating">⭐ 8/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>How to build great evals - part 10: Measure the steps, not just the result. Much like high school math, it isn't sufficient just to get the right answer, the steps to get there are critical. Two agent trajectories might produce the same answer (42), but one of them searches the web and the other hallucinates.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>如何构建高质量 Evals 评估 - 第 10 部分：衡量步骤，而非只看结果。就像高中数学，只得到正确答案是不够的，到达答案的步骤至关重要。两条 Agent 轨迹可能产生相同的答案（42），但一条搜索了网页，另一条在幻觉。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">评估 AI Agent 输出时，记录"思考过程"快照而非仅检查最终答案；用工具调用日志、搜索步骤、文件访问次数作为子指标——帮你快速区分"真的推理对了"与"碰巧答对了"，对做 AI 产品的 PM/工程师极有用。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <span class="card-number">5️⃣</span>
+            <h2 class="card-title">Kimi Work 远程控制：手机端操控电脑 AI 任务</h2>
+            <div class="card-meta">
+                <a href="https://x.com/Kimi_Moonshot/status/2097636366544937067" class="source">@Kimi_Moonshot</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Remote Control is now live in Kimi Work. Leave Kimi Work running on your computer and keep things moving from your phone. Work anywhere, anytime with Kimi Work.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>远程控制已在 Kimi Work 上线。把 Kimi Work 留在电脑上运行，然后用手机随时推进任务。无论身处何地，随时随地用 Kimi Work 工作。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">通勤路上、出差时用手机查看电脑 Kimi 任务的进度、查看输出、发送补充指令——让"长时间运行的 AI 任务"不绑死在工位；适合需要长时间跑数据清洗/批量生成内容的运营/数据分析师。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+            <span class="card-number">6️⃣</span>
+            <h2 class="card-title">Google Pics × Nano Banana：精准物体级图像编辑</h2>
+            <div class="card-meta">
+                <a href="https://x.com/GoogleAI/status/2098072879480947085" class="source">@GoogleAI</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Bring your imagination to life with Google Pics. Built with Nano Banana, Pics makes it easy to generate, refine, and co-create images with unparalleled precision. You can: — Isolate and edit specific objects without altering the rest of your image — Modify or translate text</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>用 Google Pics 让想象力成真。基于 Nano Banana 构建，Pics 让生成、改进和共同创作图像变得前所未有的精准。你可以：—— 隔离并编辑特定物体而不改变图像其他部分 —— 修改或翻译文本</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">商品图/海报场景下用 Google Pics 单独替换主体、修改文字（如把英文 Slogan 换成中文）而不破坏背景与光影——免去重 PS 的时间，比传统 inpainting 更连贯，适合电商运营与社媒设计师。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card">
+            <span class="card-number">7️⃣</span>
+            <h2 class="card-title">DeepSeek V4.1-Flash：低成本高吞吐的小型模型</h2>
+            <div class="card-meta">
+                <a href="https://x.com/deepseek_ai/status/2097930608790167907" class="source">@deepseek_ai</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>🚀 Introducing DeepSeek-V4.1-Flash: smarter, faster, more efficient. 🔹 Introducing the smallest model in our new architecture family, with native visual understanding. 🔹 Designed for greater capability, faster inference, higher throughput, and scaling to larger models.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>🚀 推出 DeepSeek-V4.1-Flash：更智能、更快速、更高效。🔹 我们新架构家族中最小的一员，原生支持视觉理解。🔹 设计目标是更强能力、更快推理、更高吞吐，以及可扩展到更大的模型。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">在需要批量处理图片+文本的小型应用（自动化客服、文档摘要+图表识别、电商 SKU 自动化）里替换 GPT-4o-mini，推理成本可能下降 5-10x；通过 DeepSeek API 或本地部署，开发者可立即试用。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card">
+            <span class="card-number">8️⃣</span>
+            <h2 class="card-title">Qwen3.8-27B × Cerebras：开源模型跑出推理速度新极限</h2>
+            <div class="card-meta">
+                <a href="https://x.com/Alibaba_Qwen/status/2098676748972122394" class="source">@Alibaba_Qwen</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Fast meets open. 🚀 Qwen3.8-27B is now running on Cerebras with rapid inference. Try it now! The dense, open-weight model from Alibaba Qwen scores 34 on the Artificial Analysis Intelligence Index—making it comparable to models such as GPT-5.6 Luna, DeepseekV4 Pro, and Claude Sonnet 4.6.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>速度遇上开源。🚀 Qwen3.8-27B 已在 Cerebras 上以极速推理运行。立即试用！阿里通义千问的稠密开源权重模型在 Artificial Analysis 智能指数上得 34 分——可媲美 GPT-5.6 Luna、DeepSeek V4 Pro、Claude Sonnet 4.6。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">需要类 GPT-5 级别智能但希望免费/可控的场景（私有知识库、文档分析、代码助手）可在 Cerebras 推理平台上跑 Qwen3.8-27B，体验接近闭源旗舰模型的智能同时保持开源——适合注重数据合规的企业。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="card">
+            <span class="card-number">9️⃣</span>
+            <h2 class="card-title">Gemini Desktop 上线 Windows：原生桌面 AI 助手</h2>
+            <div class="card-meta">
+                <a href="https://x.com/joshwoodward/status/2098131750660772342" class="source">@joshwoodward</a>
+                <span class="tag tag-tool">🛠️ 工具</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Gemini, now on Windows! Get it: gemini.google/desktop</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>Gemini 现已登陆 Windows！下载：gemini.google/desktop</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">Windows 用户现在有了原生桌面 Gemini 应用——可全局快捷键唤起、截图提问、跨应用上下文对话，替代 ChatGPT 网页版做日常 AI 助手；尤其适合需要在写代码/写文档时随时提问的开发者与写作者。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="card">
+            <span class="card-number">🔟</span>
+            <h2 class="card-title">Andrew Ng：AI 工程师的技能图谱——主动塑造 Build</h2>
+            <div class="card-meta">
+                <a href="https://x.com/An…2916" class="source">@AndrewYNg</a>
+                <span class="tag tag-tutorial">📘 教程</span>
+                <span class="rating">⭐ 7/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>With AI Engineering skills, you actively shape the build: You influence what gets built, and drive the build loop. Here's key skills to do this. When you're skilled at AI Engineering, your best work won't be merely implementing a product that someone else spec'd out. Instead, you will actively shape the build.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>拥有 AI 工程师技能，你会主动塑造构建：你能影响构建什么，并驱动构建循环。这是做到这一点的关键技能。当你精通 AI 工程时，你最好的工作不是仅仅实现别人规划好的产品，而是主动塑造构建过程。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">不要把自己定位成"接收 PRD 的实现者"，而是"用 AI 能力主动探索可能性"——用 Notebook 快速 mock、用 Agent 跑实验、用 Eval 验证假设；适合想从普通开发晋升到 AI 时代核心岗位的工程师阅读。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="card">
+            <span class="card-number">1️⃣1️⃣</span>
+            <h2 class="card-title">街景 V2V + MiniMax H3 ref2va：在家"环游世界"</h2>
+            <div class="card-meta">
+                <a href="https://x.com/Hailuo_AI/status/2098326388763930859" class="source">@Hailuo_AI</a>
+                <span class="tag tag-workflow">🔧 工作流</span>
+                <span class="rating">⭐ 6/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>💡 Astra map the route 🗺️ ➕ H3 take you for a drive 🚗 GPT Astra に google map の道沿いにストリートビューの画像を取得させてパラパラ漫画の動画にして、「MiniMax H3 ref2va を使って車載カメラ風の映像にして」とお願いしてできたものが左の動画です</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>💡 Astra 规划路线 🗺️ ➕ H3 带你开车兜风 🚗 让 GPT Astra 沿着 Google 地图路径抓取街景图像做成翻页动画视频，然后说"用 MiniMax H3 的 ref2va 把它做成行车记录仪风格的影像"——结果就是左边的视频。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">旅行博主/虚拟旅游内容创作者可用此 workflow：Google Maps 街景 → GPT 翻页漫画 → MiniMax H3 转行车视角视频；低成本产出"在东京/巴黎开车"内容，无需实拍或昂贵的 3D 建模。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="card">
+            <span class="card-number">1️⃣2️⃣</span>
+            <h2 class="card-title">企业 AI 项目为何失败：还用旧组织 playbook</h2>
+            <div class="card-meta">
+                <a href="https://x.com/realmadhuguru/status/2098448235048378456" class="source">@realmadhuguru</a>
+                <span class="tag tag-thinking">💡 思维</span>
+                <span class="rating">⭐ 6/10</span>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">📝 推文原文</div>
+                <div class="card-section-content">
+                    <blockquote>Why most enterprise AI efforts fail. 1/ Using old-school playbooks for AI: The CEO picks a trusted lieutenant to lead a central AI team. That leader pulls in a group of trusted people from across the company. The problem here is the skill gap.</blockquote>
+                    <p class="translation"><strong>中文翻译：</strong>为什么大多数企业 AI 项目失败。1/ 用老式 playbook 做 AI：CEO 选信任的副手领导中央 AI 团队，那位领导从全公司挑一批信任的人。问题在于技能差距。</p>
+                </div>
+            </div>
+            <div class="card-section">
+                <div class="card-section-title">🚀 如何应用</div>
+                <div class="card-section-content">
+                    <div class="how-to-apply">如果你在公司推动 AI 落地，避免"抽调老员工组成中央 AI 团队"的经典陷阱；优先从具体业务场景反向倒推技能需求，外聘/培训补足短板——适合企业 AI 转型负责人/CTO 参考。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 数据范围：G2/G3/G4/G5 四组缓存完成 · 完成率 80%</p>
+            <p>🔍 筛选标准：工具/教程/Prompt/工作流/AI 技巧，排除硬件/融资/纯基准/学术论文</p>
+            <p>📧 订阅反馈：@AI_Influence_Digest</p>
+            <p style="margin-top: 15px;">生成时间：2026-09-14 10:00 UTC · 任务ID：cron:2a25fa8c-873a-4f64-9c28-4faef679b95d</p>
+        </div>
+    </div>
+</body>
+</html>
