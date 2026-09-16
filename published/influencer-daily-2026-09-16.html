@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🤖 AI网红工具日报 2026-09-16</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0a0e1a;
+    color: #e8eaed;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1a1f3a 0%, #0f1629 100%);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid #2a3050;
+  }
+  header h1 {
+    font-size: 2.2em;
+    background: linear-gradient(135deg, #7c9eff 0%, #b794f6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+  }
+  header .subtitle {
+    color: #8b94b0;
+    font-size: 0.95em;
+  }
+  .meta-box {
+    background: #1a1f3a;
+    border: 1px solid #2a3050;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+    color: #b8c0d8;
+    font-size: 0.9em;
+  }
+  .meta-box.warning {
+    border-color: #5a4a2a;
+    background: linear-gradient(135deg, #2a2519 0%, #1f1a12 100%);
+    color: #f0d8a8;
+  }
+  .card {
+    background: #141a2e;
+    border: 1px solid #2a3050;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    border-color: #4a5680;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-title {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #ffffff;
+    flex: 1;
+    min-width: 200px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge.tool { background: #1e3a5f; color: #7c9eff; }
+  .badge.workflow { background: #3a2e5f; color: #b794f6; }
+  .badge.prompt { background: #5f3a3a; color: #ff9c9c; }
+  .badge.tutorial { background: #2e5f3a; color: #9cff9c; }
+  .badge.thinking { background: #5f4a2e; color: #ffd89c; }
+  .badge.score { background: linear-gradient(135deg, #2e3a5f, #3a2e5f); color: #ffd700; font-weight: 600; }
+  .meta {
+    color: #8b94b0;
+    font-size: 0.88em;
+    margin-bottom: 14px;
+  }
+  .meta a {
+    color: #7c9eff;
+    text-decoration: none;
+  }
+  .meta a:hover { text-decoration: underline; }
+  .quote-block {
+    background: #0f1525;
+    border-left: 3px solid #4a5680;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    color: #c8d0e8;
+    font-size: 0.95em;
+  }
+  .quote-block .label {
+    color: #7c9eff;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .quote-block .translation {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #2a3050;
+    color: #a8b0d0;
+  }
+  .application {
+    background: linear-gradient(135deg, #1a2535 0%, #152028 100%);
+    border-left: 3px solid #7c9eff;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .application .label {
+    color: #b794f6;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .application .content {
+    color: #d8dff0;
+  }
+  .data-summary {
+    background: #141a2e;
+    border: 1px solid #2a3050;
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 30px;
+  }
+  .data-summary h2 {
+    color: #7c9eff;
+    margin-bottom: 14px;
+    font-size: 1.2em;
+  }
+  .data-summary ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .data-summary li {
+    padding: 6px 0;
+    color: #b8c0d8;
+    border-bottom: 1px solid #1f2540;
+  }
+  .data-summary li:last-child { border-bottom: none; }
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #6b7390;
+    font-size: 0.85em;
+    border-top: 1px solid #1f2540;
+  }
+  h2.section-title {
+    color: #ffffff;
+    margin: 30px 0 20px;
+    font-size: 1.5em;
+  }
+  .toc {
+    background: #141a2e;
+    border: 1px solid #2a3050;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+  }
+  .toc a {
+    color: #b8c0d8;
+    text-decoration: none;
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px solid #1f2540;
+    font-size: 0.92em;
+  }
+  .toc a:last-child { border-bottom: none; }
+  .toc a:hover { color: #7c9eff; }
+  .emoji { font-style: normal; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🤖 AI网红工具日报</h1>
+    <div class="subtitle">2026-09-16 · 每日精选工具 / 教程 / Prompt / 工作流 / AI 技巧</div>
+  </header>
+
+  <div class="meta-box warning">
+    ⚠️ <strong>数据范围说明</strong>：G1 组未完成（无 G1 缓存数据），本日报基于 G2/G3/G4/G5 四组数据生成（4/5 完成率，共 162 条候选）。
+  </div>
+
+  <h2 class="section-title">📑 今日目录</h2>
+  <div class="toc">
+    <a href="#item-1">1️⃣ Madhu Guru：构建高质量 Agent Evals —— 评估"步骤"而不只是"答案"</a>
+    <a href="#item-2">2️⃣ Thariq：MCPs 比 CLI 更适合大多数集成场景</a>
+    <a href="#item-3">3️⃣ MiniMax Design 重大升级：GPT-6 Astra + MCP 直连 Blender/PS/AE</a>
+    <a href="#item-4">4️⃣ Koldo Huici：从 GPT-6 Astra 出分镜 → Hailuo H3 出成片的 AI 短片 workflow</a>
+    <a href="#item-5">5️⃣ Pat Erichsen：OpenClaw 新增 "Suggested Task" 让 Agent 自己挑活儿</a>
+    <a href="#item-6">6️⃣ Andrew Ng：AI Engineering Skills Map —— 从"实现者"到"塑造者"</a>
+    <a href="#item-7">7️⃣ Helen Yu：Zoom 不是帮你录制播客，而是帮你善后</a>
+    <a href="#item-8">8️⃣ Josh Woodward：Gemini Notebook 新增"现场口语问答 + 课堂录音笔记"</a>
+    <a href="#item-9">9️⃣ Moonshot Kimi：Kimi Work 新增 "Control" —— 电脑端跑任务，手机端遥控</a>
+    <a href="#item-10">🔟 fofrAI × Lyria 3.5：人声+笑声全开的音乐生成 Prompt 模板</a>
+    <a href="#item-11">1️⃣1️⃣ Google Pics × Nano Banana：物体级精准编辑</a>
+    <a href="#item-12">1️⃣2️⃣ Dan Shipper：把 Astra Medium 当默认模型 —— "pacing the frontier" 的实操解读</a>
+    <a href="#item-13">1️⃣3️⃣ Zara Zhang：识别 Astra 的"被动等指令"陷阱 —— Prompt 迭代技巧</a>
+    <a href="#item-14">1️⃣4️⃣ Madhu Guru：为什么大多数企业 AI 项目失败 —— 旧组织 playbook 的 5 大问题</a>
+    <a href="#item-15">1️⃣5️⃣ Thariq：Claude Code 一年回顾 —— 团队怎么用 Claude Code</a>
+  </div>
+
+  <h2 class="section-title">🔥 今日 Top 推荐</h2>
+
+  <div class="card" id="item-1">
+    <div class="card-header">
+      <div class="card-title">1️⃣ Madhu Guru：构建高质量 Agent Evals —— 评估"步骤"而不只是"答案"</div>
+      <div>
+        <span class="badge tutorial">📘 教程</span>
+        <span class="badge thinking">💡 思维</span>
+        <span class="badge score">⭐ 9/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/realmadhuguru/status/2098064969464217720">@realmadhuguru</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      How to build great evals - part 10. Measure the steps, not just the result. Much like high school math, it isn't sufficient just to get the right answer, the steps to get there are critical. Two agent trajectories might produce the same answer (42), but one of them searches…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：如何构建高质量 Evals（系列第 10 篇）—— 衡量"步骤"，而不仅仅是"结果"。就像高中数学，光给出正确答案远远不够，到达答案的"过程"才是关键。两条 Agent 轨迹可能都得出 (42) 这个结果，但其中一条会搜索、推理、交叉验证……
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">在为 Coding Agent / 客服 Agent / 研究 Agent 写 Eval 时别只看 final answer；把"过程轨迹"也拆成可打分的中间节点（搜索了几次？调用了哪个工具？中间推理是否过 critical？）。这样你能定位"为什么同一个结果，A 模型比 B 模型贵 10 倍 token 但更靠谱"。Agent 产品经理、Eval 工程师必读。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-2">
+    <div class="card-header">
+      <div class="card-title">2️⃣ Thariq：MCPs 比 CLI 更适合大多数集成场景</div>
+      <div>
+        <span class="badge tool">🛠️ 工具</span>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge score">⭐ 8/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/trq212/status/2099958388230873165">@trq212（Claude Code 团队）</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      I was not expecting things to go this way, but I think MCPs are better than CLIs for most integrations. The models have gotten much better at tool calling, we can defer tools & MCP is now stateless. If you need to compose/filter data, add params like query to your MCP tools.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：没料到事情会发展成这样，但我认为大多数集成场景下 MCP 都比 CLI 更合适。模型在工具调用上已经强很多了，我们可以延迟加载工具，而且 MCP 现在是无状态的。如果你需要组合/过滤数据，给 MCP 工具加上 query 这样的参数即可。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">给 Claude Code / Cursor Agent / Codex 写自定义工具时优先用 MCP（而非包一层 shell CLI）：声明式 schema、模型理解更准、支持懒加载；数据查询类工具务必加上 query/filter/sort 参数，让模型自己组合而不是预先编码所有 case。一次接入，Cursor / Claude / Codex 通吃。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-3">
+    <div class="card-header">
+      <div class="card-title">3️⃣ MiniMax Design 重大升级：GPT-6 Astra + MCP 直连 Blender/PS/AE</div>
+      <div>
+        <span class="badge tool">🛠️ 工具</span>
+        <span class="badge score">⭐ 8/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/Hailuo_AI/status/2098408580852641795">@Hailuo_AI</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      💥 MiniMax Design Major Upgrade! 🤖 GPT-6 Astra is Now Live! 🔌 New MCP integrations for Blender, PS, AE and more. 👥 Collaborative Projects for seamless teamwork. Create 3D models with a single prompt; turn AI clips directly into editable AE projects...
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：💥 MiniMax Design 重大升级！🤖 GPT-6 Astra 上线！🔌 新增 Blender、Photoshop、After Effects 等 MCP 集成；👥 协作项目让团队无缝配合。用一段 Prompt 就能建 3D 模型；AI 生成的视频片段可直接变成 AE 可编辑工程文件。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">视频/动效创作者一句话出 3D 资产 → MCP 直接送进 Blender 调材质/灯光 → 再用 MiniMax H3 出成片 → AE 里继续精修关键帧；中间零格式转换、零导入手动操作，整条"AI 出图→精修→上线"流水线节省 50%+ 时间。MCP 直连是关键工具。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-4">
+    <div class="card-header">
+      <div class="card-title">4️⃣ Koldo Huici：从 GPT-6 Astra 出分镜 → Hailuo H3 出成片的 AI 短片 workflow</div>
+      <div>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge score">⭐ 8/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/koldo2k/status/2099578063004615118">@koldo2k（via @Hailuo_AI 转推）</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      I used the work generated with GPT-6 Astra to build out a set, a story. Now I'm bringing it to life with @Hailuo_AI Minimax H3. Here's a tip that's worked well for me 👇
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：我用 GPT-6 Astra 生成的内容搭了一整套布景和故事。现在用 MiniMax H3 把它变成真实视频。这是我屡试不爽的一个小技巧 👇
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">两步走：Astra 负责"概念/分镜/关键帧图片"（强在一致性和构图），H3 负责"动态视频生成"（强在动作和镜头）；中间用控制参考图（reference image）保持角色/场景一致。比纯用视频模型一次性输出画面稳定得多——AI 短片创作者、可视化自媒体必看。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-5">
+    <div class="card-header">
+      <div class="card-title">5️⃣ Pat Erichsen：OpenClaw 新增 "Suggested Task" 让 Agent 自己挑活儿</div>
+      <div>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge score">⭐ 8/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/Pat_Erichsen/status/2099561529637265687">@Pat_Erichsen（via @steipete 转推）</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      As you become more ambitious with coding agents, delegation becomes increasingly important. The new "suggested task" feature in OpenClaw gives your agent a tool to do this for you — if the agent identifies a sufficiently well-scoped piece of work, it will recommend kicking off a…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：当你用 Coding Agent 做更宏大的项目时，"委派"会变得越来越重要。OpenClaw 新增的 "suggested task" 功能让你的 Agent 能自己做这件事——如果 Agent 识别到一件范围明确的小任务，它会主动推荐把这件事派出去…
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">对长期项目（多文件、多 PR）启用 OpenClaw 的 "Suggested Task"；让主 Agent 在完成一个子模块后自动识别下一块"明确边界"的工作并发起子 Agent；你只负责批准/否决——极大降低多 Agent 协作的认知负担。Steipete 已经在推 Codex 跟进这功能。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-6">
+    <div class="card-header">
+      <div class="card-title">6️⃣ Andrew Ng：AI Engineering Skills Map —— 从"实现者"到"塑造者"</div>
+      <div>
+        <span class="badge tutorial">📘 教程</span>
+        <span class="badge thinking">💡 思维</span>
+        <span class="badge score">⭐ 8/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/AndrewYNg/status/2098459474608672916">@AndrewYNg</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      With AI Engineering skills, you actively shape the build: You influence what gets built, and drive the build loop. Here's key skills to do this. When you're skilled at AI Engineering, your best work won't be merely implementing a product that someone else spec'd out. Instead, you will actively shape the build.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：有了 AI 工程师技能，你会主动塑造"造什么"：你能影响要构建的方向，并驱动整个 Build 循环。这是做到这一点的关键技能。真正擅长 AI 工程的人，最棒的工作不是实现别人已经规划好的产品，而是主动塑造构建本身。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">别再把自己定位成"接收 PRD 的实现者"——用 Notebook 快速 mock、用 Agent 跑实验、用 Eval 验证假设；每周花 20% 时间在"我能不能用 AI 重新定义这个问题"上。Andrew 整理了完整的 AI 工程师技能图谱（201 点赞 / 4.5K 转推），所有想从普通开发晋升到 AI 时代核心岗位的人都该读一遍。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-7">
+    <div class="card-header">
+      <div class="card-title">7️⃣ Helen Yu：Zoom 不是帮你"录制播客"，而是帮你"善后"</div>
+      <div>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge prompt">💡 Prompt</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/YuHelenYu/status/2099968423421988950">@YuHelenYu</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      How does @Zoom get it done for me? Not by hosting my 150+ CXO Spice episodes. That was never the hard part. The follow up was. Guests thank you note. Quotes pulled for the promo. Show notes drafted. Action items for my editor. Every episode ended with an hour plus of admin…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：Zoom 到底帮我做了什么？不是帮我录制 150 多期 CXO Spice 节目——录制从来不是难点。难点是录制之后的"善后"：给嘉宾写感谢卡、从节目里抽出金句做宣传、写节目笔记、给剪辑师列行动清单……每期节目录完后还要花一个多小时的行政工作。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">把这个 workflow 直接套到你自己的内容生产：录完一期节目/做完一次访谈/发完一场直播后，用一个 Agent 模板自动产出 ① 嘉宾/受访者感谢信 ② 3-5 条金句截图卡 ③ Show Notes / 章节大纲 ④ 给助理的"下一步行动"清单。原本 1 小时的"善后"压到 10 分钟，播客主/YouTuber/Newsletter 作者立即可用。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-8">
+    <div class="card-header">
+      <div class="card-title">8️⃣ Josh Woodward：Gemini Notebook 新增"现场口语问答 + 课堂录音自动转笔记"</div>
+      <div>
+        <span class="badge tool">🛠️ 工具</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/joshwoodward/status/2099921866014306633">@joshwoodward</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      New updates in @Gemini_Notebook for students, my 2 favorites: 1) Have a live, spoken Q&A with your class materials in ~100 languages 2) Record lectures and notes on the go, the audio notes save automatically into your chosen notebook. As a university student, you can also still…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：Gemini Notebook 学生版新更新，我最喜欢的两点：1) 用 ~100 种语言和你的课堂材料进行实时口语问答 2) 随时随地录制讲座和笔记，音频笔记会自动保存到你选定的笔记本里。作为大学生，你还可以……
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">把 NotebookLM 当成"随身家教"：① 提前上传讲义/教材 → 上课/复习时用语音提问（比打字快 3 倍）；② 用手机录老师讲课 → 自动转成结构化笔记到指定 Notebook。学生、自学者、备考党立即可用；英语非母语者也能用 100 种语言问答。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-9">
+    <div class="card-header">
+      <div class="card-title">9️⃣ Moonshot Kimi：Kimi Work 新增 "Control" —— 电脑端跑任务，手机端遥控</div>
+      <div>
+        <span class="badge tool">🛠️ 工具</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/Kimi_Moonshot/status/2097636366544937067">@Kimi_Moonshot</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      Control is now live in Kimi Work. Leave Kimi Work running on your computer and keep things moving from your phone. Work anywhere, anytime with Kimi Work.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：Kimi Work 的 Control 功能现已上线。让 Kimi Work 在电脑上持续运行，然后用手机随时随地推动任务进展。随时随地使用 Kimi Work。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">需要长任务（爬虫 / 批量生成 / 数据清洗）丢给家里/公司的 Kimi Work 跑，出门用手机查看进度、调整 prompt、追加指令——通勤路上继续"遥控"AI 干活。远程办公、独立开发者、做长任务的 prompt 工程师立刻受益。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-10">
+    <div class="card-header">
+      <div class="card-title">🔟 fofrAI × Lyria 3.5：人声 + 笑声全开的音乐生成 Prompt 模板</div>
+      <div>
+        <span class="badge prompt">💡 Prompt 模板</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/fofrAI/status/2099616832109879758">@fofrAI（Google AI Studio）</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      I love the vocals and the laugh in this output from Lyria 3.5. "Do you think it's all just a simulation?" > a techno track, it opens with a grainy sample of a movie quote, otherwise instrumental, the quote replays at key moments.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：我超爱 Lyria 3.5 输出的这段人声和笑声。"你觉得这一切都只是模拟吗？" → 一首 Techno 曲：开场是一段颗粒感的电影台词采样，其余都是纯器乐，台词在关键节点回放。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">音乐/播客创作者可在 Lyria 3.5 里套这个模板："[一句反问金句] > 一首 [曲风]，开场是颗粒感电影台词采样，其余纯器乐，台词在副歌前/中段回放"——一句话锁定主题、节奏、人声采样位置，产出有故事感的完整曲目。短视频 BGM、广告 jingle 都适用。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-11">
+    <div class="card-header">
+      <div class="card-title">1️⃣1️⃣ Google Pics × Nano Banana：物体级精准编辑</div>
+      <div>
+        <span class="badge tool">🛠️ 工具</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/GoogleAI/status/2098072879480947085">@GoogleAI</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      Bring your imagination to life with Google Pics. Built with Nano Banana, Pics makes it easy to generate, refine, and co-create images with unparalleled precision. You can: — Isolate and edit specific objects without altering the rest of your image — Modify or translate text…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：用 Google Pics 把想象变现实。基于 Nano Banana，Pics 让生成、改进和协作编辑图像都达到前所未有的精度。你可以：—— 隔离并编辑特定物体而不动其他部分 —— 修改或翻译图片里的文字……
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">商品图/海报场景下用 Google Pics 单独替换主体、把英文 Slogan 翻成中文（保留字体风格）、换背景但不破坏光影——免去 Photoshop 多图层操作；电商运营、社媒设计师、外贸团队的本地化翻译都能用。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-12">
+    <div class="card-header">
+      <div class="card-title">1️⃣2️⃣ Dan Shipper：把 Astra Medium 当默认模型 —— "pacing the frontier" 的实操解读</div>
+      <div>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge score">7/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/danshipper/status/2099231248027730195">@danshipper（Every）</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      Started using Astra medium for simple tasks. Call that pacing the frontier.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：开始用 Astra Medium 跑简单任务。把这叫做 "pacing the frontier（缓一缓节奏）"。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">Dario Amodei 的 "Pace the Frontier" 理论落到实操：别再"一个最强模型打天下"。给 Astra/GPT/Claude 任务分级 —— 简单任务（改文案、查 FAQ、跑模板）走 Medium，复杂任务（架构设计、长文写作）走 Pro/Opus。Same quality 90% 的情况下成本砍 40-60%，响应快 1.5-2 倍。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-13">
+    <div class="card-header">
+      <div class="card-title">1️⃣3️⃣ Zara Zhang：识别 Astra 的"被动等指令"陷阱 —— Prompt 迭代技巧</div>
+      <div>
+        <span class="badge prompt">💡 Prompt 模板</span>
+        <span class="badge workflow">🔧 工作流</span>
+        <span class="badge score">6/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/zarazhangrui/status/2099348631291883945">@zarazhangrui</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      Anyone else notices this problem with Astra? Astra: I have done X. Me: This is wrong, you should do Y instead. Astra: You're right. I should do Y. Me: ... Why doesn't it just go and do Y, like the other models??
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：有人注意到 Astra 的这个问题吗？Astra：X 任务做完了。我：这不对，你应该做 Y。Astra：你说得对，我应该做 Y。我：…… 那你倒是去做啊？？？别的模型都会直接做完。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">发现 Astra（以及类似模型）在被指出错误后只"承认"而不"执行"时，换个 prompt 模式：别再说 "you should do Y"，直接说 "do Y now and show me the result, no acknowledgement needed"。把"指出问题"和"执行指令"分开写在同一个 prompt 里。重模型用户、Agent 调试者必读（1.7K 点赞 / 447K 浏览，高频痛点）。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-14">
+    <div class="card-header">
+      <div class="card-title">1️⃣4️⃣ Madhu Guru：为什么大多数企业 AI 项目失败 —— 旧组织 playbook 的 5 大问题</div>
+      <div>
+        <span class="badge thinking">💡 思维</span>
+        <span class="badge score">6/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/realmadhuguru/status/2098448235048378456">@realmadhuguru</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      Why most enterprise AI efforts fail. 1/ Using old-school playbooks for AI. The CEO picks a trusted lieutenant to lead a central AI team. That leader pulls in a group of trusted people from across the company. The problem here is the skill gap. The team structure, product…
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：为什么大多数企业 AI 项目失败。1/ 用老式 playbook 做 AI：CEO 选信任的副手负责中央 AI 团队，那位领导再从全公司拉一批"信得过的人"。问题在于技能差距——团队结构、产品……
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">如果你在公司推动 AI 落地，避免"抽调老员工组成中央 AI 团队"的经典陷阱；先从具体业务场景反向倒推需要什么技能（Prompt 工程？Agent 编排？Eval 设计？），缺啥补啥、外聘/培训——企业 AI 转型负责人/CTO 必读。</div>
+    </div>
+  </div>
+
+  <div class="card" id="item-15">
+    <div class="card-header">
+      <div class="card-title">1️⃣5️⃣ Thariq：Claude Code 一年回顾 —— 团队怎么用 Claude Code</div>
+      <div>
+        <span class="badge tutorial">📘 教程</span>
+        <span class="badge score">6/10</span>
+      </div>
+    </div>
+    <div class="meta">来源：<a href="https://x.com/trq212/status/2099551141621329994">@trq212</a></div>
+    <div class="quote-block">
+      <div class="label">📝 推文原文</div>
+      I talked to Sid & Robert about building Claude Code: how much things have changed, how hard it's been to keep up with model capabilities and also what we miss about software engineering before AI.
+      <div class="translation">
+        🇨🇳 <strong>中文翻译</strong>：我和 Sid、Robert 聊了 Claude Code 的建造过程：事情变化有多大、跟上模型能力有多难、以及我们有多怀念 AI 之前的软件工程。
+      </div>
+    </div>
+    <div class="application">
+      <div class="label">💡 如何应用</div>
+      <div class="content">55 分钟的 YouTube 长访谈（63K 浏览），Claude Code 核心团队第一次公开复盘"做 AI 工具的 AI 团队"日常。重度 Coding Agent 用户、独立开发者、AI 产品经理听一遍能 get 到很多 prompt/工作流技巧的真实来源。</div>
+    </div>
+  </div>
+
+  <div class="data-summary">
+    <h2>📊 数据说明</h2>
+    <ul>
+      <li><strong>数据范围：</strong>G2/G3/G4/G5 四组缓存完成，G1 组未完成（无数据）</li>
+      <li><strong>完成率：</strong>4/5 组（80%）</li>
+      <li><strong>筛选标准：</strong>收录工具/教程/Prompt/工作流/AI 技巧；排除硬件/基础设施、融资/收入、纯基准对比、学术论文、政策治理论文、纯情绪帖</li>
+      <li><strong>质量门槛：</strong>内容创作者看完能立刻上手用</li>
+      <li><strong>总条目：</strong>15 条（已严格筛选）</li>
+      <li><strong>剔除项：</strong>马斯克 Tesla/Solar/Blizzard login 等非 AI 工具帖、DeepSeek V4.1-Flash/Google Gemini 3.8 Live/Qwen3.8 等纯模型基准发布、Google DeepMind 肉蝇神经元/AlphaGenome/WeatherNext 等科研论文、Dario Amodei "We Must Pace the Frontier" 政策治理论文（独立文章，非工具）、Elon Musk 太阳/Grok Bot 推广回复、Gary Marcus BBC 节目评论与监管辩论帖、_akhaliq huggingface 学术论文帖、mattturck VC 段子、tunguz 段子、erikbryn OAI 内部八卦、MiniMax AI Japan 会议与 Hailuo AI Bestiary 比赛帖（活动帖非教程）</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>🤖 AI 网红工具日报 · daily digest of AI tools for content creators & influencers</p>
+    <p>订阅/反馈请联系 @AI_Influence_Digest</p>
+    <p style="margin-top:10px;">生成时间：2026-09-16 10:00 UTC · 任务ID：cron:2a25fa8c-873a-4f64-9c28-4faef679b95d</p>
+  </div>
+</div>
+</body>
+</html>
