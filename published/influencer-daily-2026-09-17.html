@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-17</title>
+<style>
+:root{
+  --bg:#0b0e14;
+  --bg-card:#141821;
+  --bg-card-hover:#1a1f2b;
+  --border:#222837;
+  --text:#e6e9ef;
+  --text-dim:#9aa3b2;
+  --accent:#7c5cff;
+  --accent-2:#00d4aa;
+  --tag-tool:#7c5cff;
+  --tag-tutorial:#00d4aa;
+  --tag-prompt:#ffb454;
+  --tag-workflow:#ff6b9d;
+  --tag-mind:#5cb8ff;
+  --shadow:0 4px 20px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  padding:32px 16px 64px;
+}
+.wrap{max-width:920px;margin:0 auto}
+header{
+  text-align:center;
+  padding:32px 0 24px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:32px;
+}
+h1{
+  font-size:32px;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+}
+.subtitle{color:var(--text-dim);font-size:14px}
+.meta{
+  margin-top:12px;
+  display:inline-block;
+  background:rgba(255,180,84,.08);
+  border:1px solid rgba(255,180,84,.3);
+  color:#ffb454;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+}
+.grid{display:grid;gap:20px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  transition:all .25s ease;
+  box-shadow:var(--shadow);
+}
+.card:hover{
+  background:var(--bg-card-hover);
+  transform:translateY(-2px);
+  border-color:var(--accent);
+}
+.card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.card-title{
+  font-size:18px;
+  font-weight:600;
+  color:var(--text);
+  flex:1;
+  min-width:0;
+}
+.tag{
+  display:inline-block;
+  font-size:11px;
+  padding:3px 10px;
+  border-radius:12px;
+  font-weight:500;
+  white-space:nowrap;
+}
+.tag-工具{background:rgba(124,92,255,.15);color:var(--tag-tool);border:1px solid rgba(124,92,255,.4)}
+.tag-教程{background:rgba(0,212,170,.15);color:var(--tag-tutorial);border:1px solid rgba(0,212,170,.4)}
+.tag-Prompt{background:rgba(255,180,84,.15);color:var(--tag-prompt);border:1px solid rgba(255,180,84,.4)}
+.tag-工作流{background:rgba(255,107,157,.15);color:var(--tag-workflow);border:1px solid rgba(255,107,157,.4)}
+.tag-思维{background:rgba(92,184,255,.15);color:var(--tag-mind);border:1px solid rgba(92,184,255,.4)}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.original{
+  background:rgba(255,255,255,.03);
+  border-left:3px solid var(--accent);
+  padding:12px 16px;
+  border-radius:0 8px 8px 0;
+  font-size:14px;
+  color:var(--text-dim);
+  margin:14px 0;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+.source{
+  font-size:13px;
+  color:var(--text-dim);
+  margin:8px 0;
+}
+.source a{color:var(--accent-2);text-decoration:none}
+.source a:hover{text-decoration:underline}
+.score{
+  display:inline-flex;
+  gap:2px;
+  color:var(--tag-prompt);
+  font-size:14px;
+  margin:4px 0 8px;
+  letter-spacing:1px;
+}
+.howto{
+  background:rgba(0,212,170,.06);
+  border:1px solid rgba(0,212,170,.25);
+  border-radius:8px;
+  padding:12px 16px;
+  font-size:14px;
+  color:var(--text);
+  margin-top:10px;
+}
+.howto::before{
+  content:"💡 如何应用";
+  display:block;
+  font-size:12px;
+  color:var(--accent-2);
+  margin-bottom:6px;
+  font-weight:600;
+}
+.trend{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-top:32px;
+}
+.trend h2{
+  font-size:20px;
+  margin-bottom:16px;
+  color:var(--accent-2);
+}
+.trend ol{padding-left:20px;color:var(--text)}
+.trend li{margin-bottom:10px;color:var(--text)}
+.note{
+  text-align:center;
+  margin-top:32px;
+  font-size:12px;
+  color:var(--text-dim);
+}
+@media(max-width:600px){
+  body{padding:16px 12px 48px}
+  .card{padding:18px}
+  h1{font-size:26px}
+  .card-title{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>AI 网红日报</h1>
+  <div class="subtitle">2026-09-17 · 工具 / 教程 / Prompt / 工作流 / 思维</div>
+  <div class="meta">⚠️ 数据范围：G2 / G3 / G4 / G5（G1 当日未产出，已降级生成）· 共 11 条</div>
+</header>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">1. Hailuo Design 重大升级：GPT-6 Astra + Blender/PS/AE 全套 MCP 集成</div>
+      <div class="tags"><span class="tag tag-工具">工具</span><span class="tag tag-工作流">工作流</span></div>
+    </div>
+    <div class="original">💥 Hailuo Design Major Upgrade! 🤖 GPT-6 Astra is Now Live! 🔌 New MCP integrations for Blender, PS, AE and more 👥 Collaborative Projects for seamless teamwork — Create 3D models with a single prompt; turn AI clips directly into editable AE projects.</div>
+    <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2098408580852641795" target="_blank">@Hailuo_AI</a></div>
+    <div class="score">⭐⭐⭐⭐⭐</div>
+    <div class="howto">直接打开 Hailuo Design，一个 prompt 出 3D 模型 / 把 AI 视频拖进 AE 当可编辑图层；Blender / PS / AE 三件套 MCP 联通意味着你可以在本地 DCC 里直接调用 Hailuo 能力，单人就能跑完"分镜—建模—后期"全链路。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">2. DeepSeek-V4.1-Flash：原生视觉理解的小尺寸新架构</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">🚀 Introducing DeepSeek-V4.1-Flash: smarter, faster, more efficient. The smallest model in the new architecture family, with native visual understanding. Designed for greater capability, faster inference, higher throughput, and scaling to larger models.</div>
+    <div class="source">来源：<a href="https://x.com/deepseek_ai/status/2097930608790167907" target="_blank">@deepseek_ai</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">Flash 级别意味着低成本，可以作为内容流水线里的视觉理解子模块（截图 OCR、UI 草图理解、素材分类）；等到 API/本地权重放出来，可直接挂到批量内容工作流里替代部分 GPT-4o-mini 类视觉任务。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">3. StepAudio 3 Realtime 技术报告</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">StepAudio 3 Realtime Technical Report paper (huggingface.co/papers/2609.14005)</div>
+    <div class="source">来源：<a href="https://x.com/_akhaliq/status/2100257483675873481" target="_blank">@_akhaliq</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">关注实时语音生成方向的内容创作者可以先收藏技术报告；如果做播客 / 短视频配音 / 有声书，等开源权重或 API 出来后试接进自己的 TTS 流水线，可能替代目前多段拼接的方案。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">4. Google Pics：Nano Banana 加持的精细图像编辑</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">Bring your imagination to life with Google Pics. Built with Nano Banana, Pics makes it easy to generate, refine, and co-create images with unparalleled precision. Isolate and edit specific objects without altering the rest of your image; modify or translate text.</div>
+    <div class="source">来源：<a href="https://x.com/GoogleAI/status/2098072879480947085" target="_blank">@GoogleAI</a></div>
+    <div class="score">⭐⭐⭐⭐⭐</div>
+    <div class="howto">做封面 / 配图 / 海报时，可以"局部重画 + 文本翻译/替换"而不破坏原图——尤其适合需要多语种版本素材的跨境内容；试一下"只改杯子不改桌面"这类局部编辑的稳定性。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">5. Higgsfield：一个 API 调用 50+ 前沿模型</div>
+      <div class="tags"><span class="tag tag-工具">工具</span><span class="tag tag-工作流">工作流</span></div>
+    </div>
+    <div class="original">One API, 50+ frontier models, lower prices than a subscription! 居然能比订阅还便宜——非常看好 Higgsfield 这次的发布。</div>
+    <div class="source">来源：<a href="https://x.com/Samann_ai/status/2100337874080030881" target="_blank">@Samann_ai</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">如果你需要"同一脚本里按任务自动切不同模型（视频/图像/语音）"——Higgsfield 这种聚合 API 比逐家开 key 省事；拿来做 A/B 内容生成流水线时，单价对比订阅模式通常更划算。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">6. 吴恩达：AI Engineering Skills Map</div>
+      <div class="tags"><span class="tag tag-教程">教程</span><span class="tag tag-思维">思维</span></div>
+    </div>
+    <div class="original">With AI Engineering skills, you actively shape the build: you influence what gets built, and drive the build loop. Key skills to do this — AI Engineering Skills Map: Shaping the build.</div>
+    <div class="source">来源：<a href="https://x.com/AndrewYNg/status/2098459474608672916" target="_blank">@AndrewYNg</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">把"AI Engineer"从"接到 PRD 后实现"升级为"主动影响要造什么 + 推动 build loop"。读完文章后，先盘一下自己当前最缺的两块能力（评测 / 工具调用编排 / 数据飞轮），写进下季度 OKR。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">7. trq212：MCP 优于 CLI 的实战经验</div>
+      <div class="tags"><span class="tag tag-工作流">工作流</span><span class="tag tag-思维">思维</span></div>
+    </div>
+    <div class="original">I was not expecting things to go this way, but I think MCPs are better than CLIs for most integrations. The models have gotten much better at tool calling, we can defer tools & MCP is now stateless. If you need to compose/filter data, add params like query to your MCP tools.</div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2099958388230873165" target="_blank">@trq212</a></div>
+    <div class="score">⭐⭐⭐⭐⭐</div>
+    <div class="howto">如果你正打算给内容工具（Notion / Airtable / Slack / 自家 CMS）接 AI，把旧 CLI shell 改成 MCP server；"无状态 + 加 query 参数做组合/过滤"是当下 MCP 的最佳实践，能显著降低 token 消耗。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">8. Gemini Notebook for Students：语音 Q&amp;A + 课堂录音自动归档</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">New updates in Gemini Notebook for students: 1) Have a live, spoken Q&amp;A with your class materials in ~100 languages 2) Record lectures and notes on the go, the audio notes save automatically into your chosen notebook.</div>
+    <div class="source">来源：<a href="https://x.com/joshwoodward/status/2099921866014306633" target="_blank">@joshwoodward</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">经常上课 / 听讲座 / 采访的人，可以把录音直接落进 Notebook，省去"录音—转写—整理"的三段流程；100 种语言口语问答对跨语种学习者也很香，可直接做"边听边问"的复习闭环。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">9. Teknium：1,393 个 subagent 协同，代码库减少 34.4%</div>
+      <div class="tags"><span class="tag tag-工作流">工作流</span></div>
+    </div>
+    <div class="original">"1,393 subagents and nineteen hours later, the codebase was 34.4% smaller, saving us nearly $2m in engineering hours."</div>
+    <div class="source">来源：<a href="https://x.com/DeepLearn007/status/2100017885426926033" target="_blank">@DeepLearn007</a> · 原推 <a href="https://x.com/Teknium" target="_blank">@Teknium</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">大规模 agent 协同（千级别 subagent）压缩遗留代码库已经可行——做 SaaS / 工具产品的团队可以立项一个"agent 重构老代码"专项，定一个"30 天内减 20% 行数 + 零功能回归"的硬指标。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">10. Qwen3.8-27B 在 Cerebras 上极速推理</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">Qwen3.8-27B is now running on Cerebras with rapid inference. The dense, open-weight model scores 34 on the Artificial Analysis Intelligence Index — comparable to GPT-5.6 Luna, DeepseekV4 Pro, and Claude Sonnet 4.6.</div>
+    <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2098676748972122394" target="_blank">@Alibaba_Qwen</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">需要"强模型 + 超低延迟"的内容实时生成场景（直播字幕、智能 NPC、互动剧情），可以评估 Qwen3.8-27B + Cerebras 的组合；27B 级别 + 开源权重也意味着可以在自家机房部署，避免 API 数据合规问题。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">11. Gemini 3.8 Live：边说边想、不打断思路的对话 AI</div>
+      <div class="tags"><span class="tag tag-工具">工具</span></div>
+    </div>
+    <div class="original">We're introducing Gemini 3.8 Live and 3.8 Live Extended Thinking — our best conversational AI. The models talk, think, and handle tasks in the background without breaking your flow.</div>
+    <div class="source">来源：<a href="https://x.com/GoogleDeepMind/status/2099907440422830269" target="_blank">@GoogleDeepMind</a></div>
+    <div class="score">⭐⭐⭐⭐</div>
+    <div class="howto">做播客 / 直播 / 视频脚本演练时，让 3.8 Live 在你说话的间隙后台跑"思考任务"，免去"我先停一下等它答完"的尴尬；Extended Thinking 版本更适合需要深度推理的创作选题会。</div>
+  </div>
+
+</div>
+
+<div class="trend">
+  <h2>📈 今日趋势小结</h2>
+  <ol>
+    <li><strong>MCP 正在吃掉 CLI</strong>：trq212 的判断被 Hailuo Design 用 Blender/PS/AE 集成印证，工具调用标准化是本月最强信号。</li>
+    <li><strong>实时 / 多模态齐发</strong>：StepAudio 3 Realtime、Gemini 3.8 Live、Hailuo Design 把"语音—视觉—视频"实时管线推到可生产级别。</li>
+    <li><strong>聚合 API 经济</strong>：Higgsfield "一个 API 50+ 模型" + Cerebras + DeepSeek-Flash 都在压低单任务成本，单兵创作者可以开始搭"按任务自动选模型"的中台。</li>
+    <li><strong>Agent 规模继续放大</strong>：Teknium 的 1,393 subagent 是工业级案例，但中小团队也可以先从"5–10 agent 重构一个小模块"开始试水。</li>
+  </ol>
+</div>
+
+<div class="note">
+  G1 当日未产出缓存，已基于 G2–G5 降级生成 · 排除：Dario 节奏调控、纯基准、融资/收购、招聘、未带实操价值的情绪贴
+</div>
+
+</div>
+</body>
+</html>
