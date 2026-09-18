@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-18</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg-card: #131826;
+  --bg-card-hover: #1a2138;
+  --border: #1f2940;
+  --accent: #6c8eff;
+  --accent-2: #a78bfa;
+  --text: #e6ebf5;
+  --text-dim: #94a3b8;
+  --text-mute: #64748b;
+  --gold: #fbbf24;
+  --green: #4ade80;
+  --orange: #fb923c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0a0e1a 0%, #131826 100%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px 80px;
+  line-height: 1.6;
+}
+.wrap { max-width: 920px; margin: 0 auto; }
+header {
+  text-align: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.subtitle { color: var(--text-dim); font-size: 14px; }
+.meta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+.meta-tag {
+  padding: 4px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 36px 0 18px;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+}
+.section-title.top3 {
+  border-left-color: var(--gold);
+  background: linear-gradient(90deg, rgba(251,191,36,0.08) 0%, transparent 60%);
+}
+.section-title.tools { border-left-color: var(--accent-2); }
+.section-title.workflow { border-left-color: var(--green); }
+.section-title.thinking { border-left-color: var(--orange); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: transform .15s, border-color .15s, background .15s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+.card-num {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card-top3 .card-num {
+  background: linear-gradient(135deg, var(--gold), #f59e0b);
+}
+.card h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.quote {
+  background: rgba(108,142,255,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.meta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.meta-row a { color: var(--accent); text-decoration: none; }
+.meta-row a:hover { text-decoration: underline; }
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent-2);
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.tag-tool { background: rgba(108,142,255,0.15); color: var(--accent); border-color: rgba(108,142,255,0.3); }
+.tag-workflow { background: rgba(74,222,128,0.15); color: var(--green); border-color: rgba(74,222,128,0.3); }
+.tag-thinking { background: rgba(251,146,60,0.15); color: var(--orange); border-color: rgba(251,146,60,0.3); }
+.score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.apply {
+  background: rgba(74,222,128,0.06);
+  border: 1px dashed rgba(74,222,128,0.3);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.apply strong { color: var(--green); margin-right: 6px; }
+.prompt-box {
+  background: #0d1322;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  color: #c4d2f0;
+  white-space: pre-wrap;
+  margin-top: 8px;
+}
+.insight-card {
+  background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(108,142,255,0.05));
+  border: 1px solid rgba(167,139,250,0.25);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.insight-card strong { color: var(--accent-2); }
+footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+footer a { color: var(--accent); text-decoration: none; }
+.notice {
+  background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #fde68a;
+  margin-bottom: 24px;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  h1 { font-size: 24px; }
+  .card { padding: 18px 16px; }
+  .card h2 { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌟 AI 网红日报</h1>
+  <div class="subtitle">2026-09-18 · 内容创作者的 AI 实战情报</div>
+  <div class="meta">
+    <span class="meta-tag">📊 数据源: G2 / G3 / G4 / G5</span>
+    <span class="meta-tag">🎯 筛选后: 12 条</span>
+    <span class="meta-tag">📅 每日 10:00 UTC</span>
+  </div>
+  <div class="notice">⚠️ G1 缓存缺失,本次基于 G2-G5 4 组数据生成,筛选更严格以保证质量</div>
+</header>
+
+<h2 class="section-title top3">🥇 今日必看 TOP 3</h2>
+
+<div class="card card-top3">
+  <span class="card-num">#1</span>
+  <h2>Claude Cowork + Chat + Design 三合一:Cowork 告别"多 Tab 时代"</h2>
+  <div class="quote">"Today, we are merging Claude Cowork and chat to simplify how you use Claude! We are also integrating Claude Design so that you can ask Claude to make a Slide, Design, or Doc without needing to switch tabs or apps."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/_catwu/status/2100260655312089562">@_catwu</a></span>
+    <span>❤️ 163K</span>
+    <span>🔁 1.3K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 10/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>在同一个 Claude 对话里直接出 Slide / Doc / Design,不用再开多个 Tab。内容创作者的产品发布稿可以直接让 Claude 先写 Doc,再一键转成演示 Deck,接着出配图 Design,一条龙完成。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#2</span>
+  <h2>Claude Projects:一项目一 Agent,自动管记忆 + 派生子任务</h2>
+  <div class="quote">"Projects brings the architecture of Claude Tag to Claude Code. It has one agent per project that manages memory and spins off subagents for tasks. You can ask it to be proactive, to do things on a schedule, etc."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2100638355872706571">@trq212</a></span>
+    <span>❤️ 97K</span>
+    <span>🔁 927</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把一个长期项目(比如一个 YouTube 系列、一个 SaaS 产品)挂在 Project 里,Claude 自动维护上下文,你可以同时甩一批子任务过去,然后去干别的。建议创作者按"内容系列"建项目,而不是按"单条视频"建。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#3</span>
+  <h2>MCP 工具调用 &gt; CLI:工程师都在切换的工具整合方式</h2>
+  <div class="quote">"I was not expecting things to go this way, but I think MCPs are better than CLIs for most integrations. The models have gotten much better at tool calling, we can defer tools & MCP is now stateless."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2099958388230873165">@trq212</a></span>
+    <span>❤️ 884K</span>
+    <span>🔁 3.5K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-thinking">思维</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>如果你正在搭 Agent 工作流,优先用 MCP 而不是 CLI 包装 shell。给 MCP 工具加 query 等参数让模型自己筛选数据,而不是返回全量让模型处理。Trq 明确说:"Bash is no longer all you need"。</div>
+</div>
+
+<h2 class="section-title tools">🛠️ 工具与平台</h2>
+
+<div class="card">
+  <span class="card-num">#4</span>
+  <h2>MiniMax Design 大版本升级:GPT-6 Astra + Blender/PS/AE 全套 MCP</h2>
+  <div class="quote">"💥 MiniMax Design Major Upgrade! 🤖 GPT-6 Astra is Now Live! 🔌 New MCP integrations for Blender, PS, AE and more 👥 Collaborative Projects..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Hailuo_AI/status/2098408580852641795">@Hailuo_AI</a></span>
+    <span>🔁 790</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>短视频创作者可以一句话生成 3D 模型 + AE 可编辑时间线,Blender 场景通过官方 MCP connector 同步进画板。Stefan 3D 演示:一个 brief 进去,相机方向都给你布好。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#5</span>
+  <h2>Grok 接入语音功能:马斯克的实时语音 AI</h2>
+  <div class="quote">"Grok now has a voice"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/elonmusk/status/2100698004210475317">@elonmusk</a></span>
+    <span>❤️ 2M</span>
+    <span>🔁 7.5K</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>X 平台用户可以在 App 内直接语音对话 Grok。对内容创作者是新的语音创作/调研入口,但目前只有 X 生态内可用,跨平台工作流尚未打通。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#6</span>
+  <h2>Gemini 3.8 Live + Extended Thinking:语音 + 后台推理</h2>
+  <div class="quote">"We're introducing Gemini 3.8 Live and 3.8 Live Extended Thinking – our best conversational AI. The models talk, think, and handle tasks in the background without breaking your flow."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/GoogleDeepMind/status/2099907440422830269">@GoogleDeepMind</a></span>
+    <span>❤️ 3.5K</span>
+    <span>👁️ 618K</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>适合"边说边想边执行任务"的实时场景,比如直播脚本演练、采访 AI 嘉宾。普通创作者目前可在 Gemini App 直接试用。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#7</span>
+  <h2>Qwen3.8-Omni-Flash:Qwen 首个 Omni 全模态 Agent 模型</h2>
+  <div class="quote">"🚀 Meet Qwen3.8-Omni-Flash, Qwen's first omni-modal model built around agentic capabilities! Native audio-video understanding, reasoning, and tool use come together in one model..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Alibaba_Qwen/status/2100785962414702599">@Alibaba_Qwen</a></span>
+    <span>❤️ 919</span>
+    <span>👁️ 39K</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>一个模型同时处理音视频理解 + 推理 + 工具调用。对需要"看视频 + 总结 + 自动发邮件/排版"等串联任务的中国创作者尤其有用,等 API 开放后可以直接接入工作流。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#8</span>
+  <h2>Higgsfield API:50+ 前沿模型一站式接入,价格低于订阅</h2>
+  <div class="quote">"One API, 50+ frontier models, lower prices than a subscription !!!! love this launch from Higgsfield 🔥"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Samann_ai/status/2100337874080030881">@Samann_ai</a> → <a href="https://x.com/higgsfield">@higgsfield</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>如果你的工作流要在 Veo / Sora / Runway / Kling / Midjourney 多个模型间切换,可以用 Higgsfield API 统一接口 + 按量付费,锁价 7 天可拿最高 50% 折扣。适合模型对比类内容创作者。</div>
+</div>
+
+<h2 class="section-title workflow">🔄 工作流与技巧</h2>
+
+<div class="card">
+  <span class="card-num">#9</span>
+  <h2>"我不再用浏览器了":ChatGPT 桌面化接管所有 Web 工作</h2>
+  <div class="quote">"I swear I'm not trolling: I've stopped using a browser. I'm only using ChatGPT desktop now. For Claude, Notion, Figma, all of it."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/danshipper/status/2100587802748440581">@ben_issen via @danshipper</a></span>
+    <span>❤️ 82K</span>
+    <span>🔁 442</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-thinking">思维</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把 Claude / ChatGPT Desktop 当成新的"浏览器入口",所有 SaaS(Figma、Notion、Linear)通过 MCP 或 Agent 连接,而不是手动切换网页。适合愿意重塑工作流的早期采用者。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#10</span>
+  <h2>Claude Code 直接产 doc / slide / spec artifact 协作</h2>
+  <div class="quote">"Claude Code can now make docs and slides as artifacts, so you can share and collaborate with other people on your team. For example, ask Claude to make a spec as a doc, share it to your teammates for feedback, and when it's ready ask Claude to implement."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2100270818433643000">@trq212</a></span>
+    <span>❤️ 197K</span>
+    <span>🔁 1.2K</span>
+  </div>
+  <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>产品 Spec → 团队反馈 → Claude 实现的循环现在是单工具闭环。内容创作者可借鉴:先让 Claude 写大纲 Doc → 团队/朋友评论 → 用 Claude 自动产出成稿或脚本。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#11</span>
+  <h2>Gemini Notebook 相机即研究工具:实地调研的杀手锏</h2>
+  <div class="quote">"The camera feature in the Gemini Notebook mobile app is so transformative for on-the-go research. I was up in the Sierras working on a new project, and I just took photos of everything, like this museum display. Then I asked for a detailed report of all the info in the image."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/joshwoodward/status/2100616682431807860">@stevenbjohnson via @joshwoodward</a></span>
+    <span>❤️ 14K</span>
+    <span>🔁 136</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">教程</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>旅游 / 测评 / Vlog 创作者去现场时直接用 Gemini Notebook 拍照,App 自动给详细资料报告。学生党可以"记录讲座 + 自动保存到 Notebook"。</div>
+</div>
+
+<h2 class="section-title thinking">🧠 思维与方法论</h2>
+
+<div class="card">
+  <span class="card-num">#12</span>
+  <h2>Andrew Ng"AI 工程师技能地图":别只当实现者,要当"塑造者"</h2>
+  <div class="quote">"With AI Engineering skills, you actively shape the build: You influence what gets built, and drive the build loop. AI Engineering Skills Map: Shaping the build..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/AndrewYNg/status/2098459474608672916">@AndrewYNg</a></span>
+    <span>❤️ 839K</span>
+    <span>🔁 4.5K</span>
+  </div>
+  <div class="tags"><span class="tag tag-thinking">思维</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>吴恩达区分了"被动实现别人 Spec 的工程师"vs"主动塑造产品的 AI 工程师"。内容创作者同理:不要只做 AI 给你的脚本,要主动定选题、问 AI 角度、推翻初稿,把 AI 当杠杆而不是替代品。</div>
+</div>
+
+<h2 class="section-title">💡 一句话灵感</h2>
+
+<div class="insight-card"><strong>DeepLearn007</strong> 摘录 LeCun:"AI 早就在弯曲几何里思考世界模型,我们一直在用扁平 RL 算法跟它打架。" 启示:别再用 2D 思维训 3D 任务的模型。</div>
+<div class="insight-card"><strong>danshipper</strong>:"LLM 本质就是 JSON 自动补全分类器 🤝 🚩"——越简单的认知,越接近真相。</div>
+<div class="insight-card"><strong>@yuHelenYu</strong>(Zoom 播客案例):"录制 150+ 期 CXO 访谈不难;真正难的是播后 1 小时行政工作(感谢卡、show notes、action items)。" AI 自动化的最大投资在创始人。</div>
+
+<h2 class="section-title">🔧 速用 Prompt 模板</h2>
+
+<div class="card">
+  <h2>让 Claude Code 帮你从研究到成稿一条龙</h2>
+  <div class="prompt-box">Read this research doc, write a 1-page spec as a doc, then turn it into a 5-slide deck, and finally make a matching cover image in Design. Use our brand voice (casual, technical, second-person).</div>
+</div>
+
+<div class="card">
+  <h2>让 MCP 工具只返回模型需要的字段</h2>
+  <div class="prompt-box">在你的 MCP 服务定义里加 query 参数,让模型自己传过滤条件,而不是返回全量让模型筛。</div>
+</div>
+
+<footer>
+  📌 数据范围:G2-G5 共 4 组缓存,G1 缺失。已严格筛选保证质量<br>
+  🌐 线上访问:<a href="https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-18.html">https://zxy114.github.io/influencer-daily/published/influencer-daily-2026-09-18.html</a><br>
+  📅 生成时间:2026-09-18 10:00 UTC · AI 网红日报自动生成
+</footer>
+
+</div>
+</body>
+</html>
