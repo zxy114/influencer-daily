@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-19</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg-card: #131826;
+  --bg-card-hover: #1a2138;
+  --border: #1f2940;
+  --accent: #6c8eff;
+  --accent-2: #a78bfa;
+  --text: #e6ebf5;
+  --text-dim: #94a3b8;
+  --text-mute: #64748b;
+  --gold: #fbbf24;
+  --green: #4ade80;
+  --orange: #fb923c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0a0e1a 0%, #131826 100%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px 80px;
+  line-height: 1.6;
+}
+.wrap { max-width: 920px; margin: 0 auto; }
+header {
+  text-align: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.subtitle { color: var(--text-dim); font-size: 14px; }
+.meta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+.meta-tag {
+  padding: 4px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 36px 0 18px;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+}
+.section-title.top3 {
+  border-left-color: var(--gold);
+  background: linear-gradient(90deg, rgba(251,191,36,0.08) 0%, transparent 60%);
+}
+.section-title.tools { border-left-color: var(--accent-2); }
+.section-title.prompt { border-left-color: #f472b6; }
+.section-title.workflow { border-left-color: var(--green); }
+.section-title.thinking { border-left-color: var(--orange); }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: transform .15s, border-color .15s, background .15s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+.card-num {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card-top3 .card-num {
+  background: linear-gradient(135deg, var(--gold), #f59e0b);
+}
+.card h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.quote {
+  background: rgba(108,142,255,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.meta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.meta-row a { color: var(--accent); text-decoration: none; }
+.meta-row a:hover { text-decoration: underline; }
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent-2);
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.tag-tool { background: rgba(108,142,255,0.15); color: var(--accent); border-color: rgba(108,142,255,0.3); }
+.tag-workflow { background: rgba(74,222,128,0.15); color: var(--green); border-color: rgba(74,222,128,0.3); }
+.tag-thinking { background: rgba(251,146,60,0.15); color: var(--orange); border-color: rgba(251,146,60,0.3); }
+.tag-prompt { background: rgba(244,114,182,0.15); color: #f472b6; border-color: rgba(244,114,182,0.3); }
+.score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.apply {
+  background: rgba(74,222,128,0.06);
+  border: 1px dashed rgba(74,222,128,0.3);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.apply strong { color: var(--green); margin-right: 6px; }
+footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+footer a { color: var(--accent); text-decoration: none; }
+.notice {
+  background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #fde68a;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.appendix {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 36px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.appendix h3 { color: var(--text); font-size: 15px; margin-bottom: 10px; }
+.appendix ul { list-style: none; padding-left: 0; }
+.appendix li { margin-bottom: 6px; }
+.appendix a { color: var(--accent); text-decoration: none; }
+.appendix a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  h1 { font-size: 24px; }
+  .card { padding: 18px 16px; }
+  .card h2 { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌟 AI 网红日报</h1>
+  <div class="subtitle">2026-09-19 · 内容创作者的 AI 实战情报</div>
+  <div class="meta">
+    <span class="meta-tag">📊 数据源: G2 / G3 / G4 / G5</span>
+    <span class="meta-tag">🎯 筛选后: 13 条</span>
+    <span class="meta-tag">📅 每日 10:00 UTC</span>
+  </div>
+  <div class="notice">⚠️ G1 缓存缺失,本次基于 G2-G5 4 组 162 条候选生成,筛选标准未降低</div>
+</header>
+
+<h2 class="section-title top3">🥇 今日必看 TOP 3</h2>
+
+<div class="card card-top3">
+  <span class="card-num">#1</span>
+  <h2>Nano Banana Pro AGE CHECKER:一张照片 + Prompt = AI 帮你做年龄分析</h2>
+  <div class="quote">"Nano Banana Pro AGE CHECKER 👶🏻👨🏻🦳 Upload your photo & let the AI estimate your real age based on full facial analysis! Prompt👇🏻 A hyper-realistic, high-resolution portrait infographic based on (your photo). Keep the same..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Samann_ai/status/1992901987805835279">@Samann_ai</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-prompt">Prompt 模板</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>直接把 Samann 的 prompt 复制到 Nano Banana Pro / Midjourney / GPT Image,先做"面部信息图"再叠加文字标签。你做美妆/穿搭内容时,可以直接复用这套"AI 帮你分析长相"系列模板。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#2</span>
+  <h2>Yann LeCun 新发现:AI 一直在"用曲面思考",是我们逼它想成平面</h2>
+  <div class="quote">"The key takeaway — Vast sums of money have been expended attempting to 'brute-force AI into understanding our physical world.' It turns out, the AI already understood it perfectly. We were just forcing it to think flat."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/DeepLearn007/status/2100657887706005817">@DeepLearn007</a></span>
+    <span>❤️ 1.6K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-thinking">思维</span>
+    <span class="tag tag-prompt">Prompt 观</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把这条观点迁移到内容创作 —— AI 不是"不会",是我们用错 prompt 让它出"扁平内容"。下次写 prompt 时,告诉模型场景的物理/情感/文化"曲面",而不是只列要点;画面 prompt 加材质、景深、空间关系,而不是只写主体物。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#3</span>
+  <h2>MCP 工具调用 &gt; CLI:AI 整合方式正在悄悄换底盘</h2>
+  <div class="quote">"I was not expecting things to go this way, but I think MCPs are better than CLIs for most integrations. The models have gotten much better at tool calling, we can defer tools & MCP is now stateless. If you need to compose/filter data, add params like query to your MCP tools."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2099958388230873165">@trq212</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-thinking">思维</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>如果你搭 Agent 工作流或者本地工具脚本,优先把"套壳 CLI"改成"MCP server + 工具描述";给 MCP 工具加 query / filter 等参数,让模型自己裁数据,而不是返回全量让模型再处理。Trq 同账号另一条:"bash is no longer all you need"。</div>
+</div>
+
+<h2 class="section-title tools">🛠️ 工具与平台</h2>
+
+<div class="card">
+  <span class="card-num">#4</span>
+  <h2>MiniMax Design 大版本升级:GPT-6 Astra + Blender/PS/AE 全套 MCP</h2>
+  <div class="quote">"💥 MiniMax Design Major Upgrade! 🤖 GPT-6 Astra is Now Live! 🔌 New MCP integrations for Blender, PS, AE and more 👥 Collaborative Projects for seamless teamwork — Create 3D models with a single prompt; turn AI clips directly into editable AE projects..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Hailuo_AI/status/2098408580852641795">@Hailuo_AI</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>做短视频/MV 的创作者现在可以一句话生成 3D 场景,然后直接在 After Effects 里打开对应时间线继续精修;Blender/PS 的官方 MCP connector 让"AI 出图 → 软件打开 → 二次编辑"形成闭环,告别导出再导入。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#5</span>
+  <h2>MiniMax Code CLI v0.4.12 开源(MIT)</h2>
+  <div class="quote">"MiniMax Code CLI is open now: github.com/MiniMax-AI/minimax-code — On FrontierHarness Eval, MiniMax Code achieved a state-of-the-art pass rate..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/MiniMax_AI/status/2100930515058753830">@MiniMax_AI</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>又一款对标 Claude Code 的开源 CLI Agent,可以直接 npm i -g 或者 clone 下来魔改 prompt / 接自家 MCP。技术创作者可以把它的 harness 当参考模板,套到自己的内部代码 Agent 上。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#6</span>
+  <h2>Qwen3.8-Omni-Flash:首个 Omni 全模态 Agent 模型</h2>
+  <div class="quote">"🚀 Meet Qwen3.8-Omni-Flash, Qwen's first omni-modal model built around agentic capabilities! Native audio-video understanding, reasoning, and tool use come together in one model: understand the content, plan the task, execute with tools, and deliver the result."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Alibaba_Qwen/status/2100785962414702599">@Alibaba_Qwen</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>以前要做"看视频 → 写文案 → 出图 → 配音"得串 4 个模型,现在一个 Omni 就能跑完整链路。内容流水线可以直接把"选题→生成→分发"压成单 Agent 循环;带原生 audio 理解也省了 Whisper 这一步。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#7</span>
+  <h2>Gemini Notebook 新功能:课堂材料实时语音 Q&amp;A + 100 种语言</h2>
+  <div class="quote">"New updates in @Gemini_Notebook for students — 1) Have a live, spoken Q&A with your class materials in ~100 languages 2) Record lectures and notes on the go, the audio notes save automatically into your chosen notebook."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/joshwoodward/status/2099921866014306633">@joshwoodward</a></span>
+    <span>❤️ 21K</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>知识类/教程类博主可以用它做"语音版 FAQ"——把你过去 50 期脚本喂进 Notebook,粉丝直接用语音问"上期讲的 X 怎么操作",Notebook 答出来,等于免费的语音客服/课程助理。多语言支持对出海创作者特别友好。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#8</span>
+  <h2>Gemini 3.8 Live + Extended Thinking:边说边想边执行</h2>
+  <div class="quote">"It's time for our end-of-week recap 👇 — Gemini 3.8 Live and 3.8 Live Extended Thinking, our most advanced live dialogue audio models yet — Dreambeans, an experiment from @GoogleLabs that curates a daily personalized collection of stories, is now GA"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/GoogleAI/status/2101008284010602924">@GoogleAI</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>适合"边说边想边执行任务"的实时场景——直播脚本演练、采访 AI 嘉宾、Pomodoro 边干边聊。普通创作者目前可在 Gemini App 直接试用 Extended Thinking 模式。</div>
+</div>
+
+<h2 class="section-title prompt">🎨 Prompt 模板与创作技巧</h2>
+
+<div class="card">
+  <span class="card-num">#9</span>
+  <h2>Beauty Checker:脸部分析 Prompt(同 Samann 系列)</h2>
+  <div class="quote">"Beauty Checker 🔥✨ Drop your photo & let NANO BANANA PRO rate your face symmetry 👇 Prompt: Use the provided portrait photo <YOUR PHOTO> as the base. Do NOT change the person's face, expression, age, skin tone or gender. Just overlay a clean..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Samann_ai/status/1992171138730885618">@Samann_ai</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-prompt">Prompt 模板</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>和 AGE CHECKER 同套思路,只是这次分析"对称性/比例"。要点是 prompt 里显式禁止模型改脸(Do NOT change the person's face...),只允许叠加信息图层——这是"AI 帮你分析你自己"系列内容的关键 prompt 写法,做美妆/颜值内容的可以直接套。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#10</span>
+  <h2>ChatGPT Images 2.5:出图更快更聪明</h2>
+  <div class="quote">"ChatGPT Images 2.5 — faster, sharper, smarter, with better tools for creating whatever yo..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/OpenAI/status/2097394956457623964">@OpenAI</a> · 转载 <a href="https://x.com/Samann_ai/status/2097448287250886839">@Samann_ai</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把 ChatGPT Images 2.5 当做"快速验证画面概念"的工具——它的更新点是速度与多步编辑能力,适合创作者每天批量出十几张概念稿再挑一张精修,而不是一次性死磕一张图。</div>
+</div>
+
+<h2 class="section-title workflow">🔄 工作流优化</h2>
+
+<div class="card">
+  <span class="card-num">#11</span>
+  <h2>不再开浏览器:ChatGPT 桌面端 = Claude / Notion / Figma 全替代</h2>
+  <div class="quote">"I swear I'm not trolling: I've stopped using a browser. I'm only using ChatGPT desktop now. For Claude, Notion, Figma, all of it."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/ben_issen/status/2100337229893923290">@ben_issen</a> · 转载 <a href="https://x.com/danshipper/status/2100587802748440581">@danshipper</a></span>
+    <span>❤️ 88K</span>
+  </div>
+  <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>试一天"AI 桌面客户端当主力"——打开 ChatGPT Desktop / Claude Desktop,让 Agent 直接接管 Notion / Figma / Linear 等 SaaS 的网页操作,看一天下来浏览器开了几次。如果你能做到 50% 任务不出浏览器,你的"个人 AI 工作台"就算搭起来了。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#12</span>
+  <h2>Claude 画 doodle:让它搜图→下载→用 JS 在图上乱画</h2>
+  <div class="quote">"I asked Claude to search the web, download images it liked, and then doodle on them. Every doodle was drawn by Claude Opus 5 using JavaScript."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/kevin_t_ngo/status/2100601972902842517">@kevin_t_ngo</a> · 转载 <a href="https://x.com/fofrAI/status/2100611647215738880">@fofrAI</a></span>
+    <span>👁️ 40K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-prompt">玩法</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>让 Claude/Agent "上网搜 → 选图 → 在浏览器里用 JS Canvas 涂鸦" 是一条很新的"AI 既是用户也是创作者"工作流。内容创作者可以做"AI 给我的粉丝画头像"、"AI 给我 remux 经典名画"这种系列,产出高度个人化。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#13</span>
+  <h2>要修输出,先修输入:给 AI 喂什么决定它吐什么</h2>
+  <div class="quote">"It's hard not to create slop when most things you consume are slop. To fix output, first fix input."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/zarazhangrui/status/2101123389528457596">@zarazhangrui</a></span>
+    <span>❤️ 9.5K</span>
+  </div>
+  <div class="tags"><span class="tag tag-thinking">思维</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把这一条做成你 prompt 的"上游清单"——下次你给 AI 喂资料时,先问自己:我的 reference 里有没有给到至少 3 个高质量样本?如果全是 GPT 写的"AI 八股",输出大概率也是 AI 八股。创作者的解药是建立自己的"一手素材 inbox"(用户访谈、田野录音、自己拍的原图),不要用 AI 总结当输入再喂 AI。</div>
+</div>
+
+<div class="appendix">
+  <h3>📌 附:今日其他可关注信号(未入选主榜)</h3>
+  <ul>
+    <li>• <strong>[@8co28 + Hailuo AI]</strong> — 用 r2v 把 3x3 网格图直接变成 AI 视频的脚本设置技巧(分镜工作流) · <a href="https://x.com/8co28/status/2099171324568760589">链接</a></li>
+    <li>• <strong>[@DarioAmodei]</strong> — Anthropic 发布"We Must Pace the Frontier"长文,提出第三方评测机制 · <a href="https://x.com/DarioAmodei/status/2098773920774074715">链接</a></li>
+    <li>• <strong>[@MiniMax_AI]</strong> — Japan IP AI 共创大会落幕,150+ 公司参与(出海合作信号) · <a href="https://x.com/MiniMax_AI/status/2100026646665568596">链接</a></li>
+    <li>• <strong>[@Samann_ai]</strong> — Samann 系列 prompt 持续在出"AI 帮你分析你自己"模板,可关注 · <a href="https://x.com/Samann_ai">@Samann_ai</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>📅 下一份日报:2026-09-20 · 由 cron 自动生成</p>
+  <p>📂 历史归档:<a href="https://zxy114.github.io/influencer-daily/">https://zxy114.github.io/influencer-daily/</a></p>
+  <p style="margin-top: 8px; opacity: 0.6;">© 2026 AI Daily · 仅供内容创作者参考</p>
+</footer>
+
+</div>
+</body>
+</html>
