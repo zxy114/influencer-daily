@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 网红日报 · 2026-09-21</title>
+<style>
+:root {
+  --bg: #0a0e1a;
+  --bg-card: #131826;
+  --bg-card-hover: #1a2138;
+  --border: #1f2940;
+  --accent: #6c8eff;
+  --accent-2: #a78bfa;
+  --text: #e6ebf5;
+  --text-dim: #94a3b8;
+  --text-mute: #64748b;
+  --gold: #fbbf24;
+  --green: #4ade80;
+  --orange: #fb923c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0a0e1a 0%, #131826 100%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px 80px;
+  line-height: 1.6;
+}
+.wrap { max-width: 920px; margin: 0 auto; }
+header {
+  text-align: center;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.subtitle { color: var(--text-dim); font-size: 14px; }
+.meta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+.meta-tag {
+  padding: 4px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 36px 0 18px;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+}
+.section-title.top3 {
+  border-left-color: var(--gold);
+  background: linear-gradient(90deg, rgba(251,191,36,0.08) 0%, transparent 60%);
+}
+.section-title.tools { border-left-color: var(--accent-2); }
+.section-title.prompt { border-left-color: #f472b6; }
+.section-title.workflow { border-left-color: var(--green); }
+.section-title.thinking { border-left-color: var(--orange); }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: transform .15s, border-color .15s, background .15s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+.card-num {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card-top3 .card-num {
+  background: linear-gradient(135deg, var(--gold), #f59e0b);
+}
+.card h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.quote {
+  background: rgba(108,142,255,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.meta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.meta-row a { color: var(--accent); text-decoration: none; }
+.meta-row a:hover { text-decoration: underline; }
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: rgba(167,139,250,0.15);
+  color: var(--accent-2);
+  border: 1px solid rgba(167,139,250,0.3);
+}
+.tag-tool { background: rgba(108,142,255,0.15); color: var(--accent); border-color: rgba(108,142,255,0.3); }
+.tag-workflow { background: rgba(74,222,128,0.15); color: var(--green); border-color: rgba(74,222,128,0.3); }
+.tag-thinking { background: rgba(251,146,60,0.15); color: var(--orange); border-color: rgba(251,146,60,0.3); }
+.tag-prompt { background: rgba(244,114,182,0.15); color: #f472b6; border-color: rgba(244,114,182,0.3); }
+.score {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.apply {
+  background: rgba(74,222,128,0.06);
+  border: 1px dashed rgba(74,222,128,0.3);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.apply strong { color: var(--green); margin-right: 6px; }
+footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-mute);
+}
+footer a { color: var(--accent); text-decoration: none; }
+.notice {
+  background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #fde68a;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.appendix {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 36px;
+  font-size: 13.5px;
+  color: var(--text-dim);
+}
+.appendix h3 { color: var(--text); font-size: 15px; margin-bottom: 10px; }
+.appendix ul { list-style: none; padding-left: 0; }
+.appendix li { margin-bottom: 6px; }
+.appendix a { color: var(--accent); text-decoration: none; }
+.appendix a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  h1 { font-size: 24px; }
+  .card { padding: 18px 16px; }
+  .card h2 { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌟 AI 网红日报</h1>
+  <div class="subtitle">2026-09-21 · 内容创作者的 AI 实战情报</div>
+  <div class="meta">
+    <span class="meta-tag">📊 数据源: G2 / G3 / G4 / G5</span>
+    <span class="meta-tag">🎯 筛选后: 13 条</span>
+    <span class="meta-tag">📅 每日 10:00 UTC</span>
+  </div>
+  <div class="notice">⚠️ G1 缓存缺失,本次基于 G2-G5 4 组 ~120 条候选生成,筛选标准未降低</div>
+</header>
+
+<h2 class="section-title top3">🥇 今日必看 TOP 3</h2>
+
+<div class="card card-top3">
+  <span class="card-num">#1</span>
+  <h2>Qwen-Image-2.1 一天打通 ComfyUI + vLLM + SGLang + HuggingFace Spaces 全套生态</h2>
+  <div class="quote">"Qwen-Image-2.1 × @HuggingApps: live demo on Spaces! 🖼 One single checkpoint for generation and editing. Try it in your browser, no setup needed." —— 同时 ComfyUI 原生支持、vLLM-Omni day-0、SGLang-Diffusion day-0、HuggingFace Spaces 在线 demo。</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Alibaba_Qwen/status/2101670814953455780">@Alibaba_Qwen (ComfyUI)</a> · <a href="https://x.com/Alibaba_Qwen/status/2101670804794884242">vLLM</a> · <a href="https://x.com/Alibaba_Qwen/status/2101866688425984233">SGLang</a> · <a href="https://x.com/Alibaba_Qwen/status/2101866671900401913">HF Spaces</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>一张图、一个 7B checkpoint,横跨"本地 ComfyUI 节点编辑 → 服务端 vLLM 高并发 → 浏览器 HF Spaces 零门槛演示 → SGLang-Diffusion 单 4090 跑 1024×1024 18.7 秒"。内容创作者做产品图、教程封面、品牌物料时,可以一次性挑最合适的部署形态,不再被"本地 vs 云端"绑死。RGBA 输出尤其适合贴纸 / Logo / 透明背景叠加场景。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#2</span>
+  <h2>Claude Code 2.1.277 原生支持 AGENTS.md + Claude Projects 一个会话通揽所有任务</h2>
+  <div class="quote">"We're adding support for AGENTS.md to Claude Code. Starting today in version 2.1.277, if there is no CLAUDE.md in a folder, Claude will check for and use AGENTS.md. You can toggle this behavior in /config." + "Projects brings the architecture of Claude Tag to Claude Code. It has one agent per project that manages memory and spins off subagents for tasks."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2101009392611278961">@trq212 · AGENTS.md</a> 30K ❤️ + <a href="https://x.com/trq212/status/2100638355872706571">Projects</a> 1.2K ❤️ + <a href="https://x.com/_catwu/status/2100641163120423057">@_catwu</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-workflow">工作流</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>项目规则只写一份 AGENTS.md(OpenAI Codex 标准),Claude Code 2.1.277+ 自动捡起来用,不用再复制粘贴 CLAUDE.md。配合 Claude Projects:把"周更视频脚本"做成一个 Project,Agent 自己拆子任务(脚本、配图、字幕、封面),关电脑后台跑,跨 session 共享记忆 —— 真正一条流水线打通。</div>
+</div>
+
+<div class="card card-top3">
+  <span class="card-num">#3</span>
+  <h2>Unsloth Studio 免费微调 500+ 开源模型:PDF/CSV 直接变合成数据集</h2>
+  <div class="quote">"Friendly reminder that you can fine tune 500+ open source models in a free Google Colab. You can even upload PDFs/CSVs and turn them into usable synthetic datasets. 1. Open the Google Colab below 2. Run the blocks to install Unsloth Studio 3. Choose a model 4. Upload a dataset."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/itsPaulAi/status/2100327532180463689">@itsPaulAi</a></span>
+    <span>❤️ 42K · 🔁 588</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-tool">工具</span>
+    <span class="tag tag-prompt">教程</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把过去 50 期公众号文章 / 课程讲义 / 客户 FAQ PDF 拖进 Colab,Unsloth 自动合成训练集,挑一个 Qwen3.8 27B 或 Mistral 微调出"自己声音"的专属模型,免费算力就能跑。对知识型博主 = "用我自己的内容训一个永远在线的 me";对企业 = "把内部手册训成内部客服 Bot",门槛比想象中低 10 倍。</div>
+</div>
+
+<h2 class="section-title tools">🛠️ 工具与平台</h2>
+
+<div class="card">
+  <span class="card-num">#4</span>
+  <h2>MiniMax Code CLI v0.4.12 开源 (MIT 协议)</h2>
+  <div class="quote">"MiniMax Code CLI is open now: github.com/MiniMax-AI/minimax-code — On FrontierHarness Eval, MiniMax Code achieved a state-of-the-art pass rate..."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/MiniMax_AI/status/2100930515058753830">@MiniMax_AI</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>又一款对标 Claude Code 的开源 CLI Agent,MIT 协议。可直接 git clone 下来魔改 prompt 模板、接自家 MCP server;开发者把它当 harness 参考模板,套到内部代码 Agent 上比从零写省一周。对内容创作者则是"可定制、可自部署"的本地编码助手,不再被闭源 CLI 绑死。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#5</span>
+  <h2>MiniMax Design 重大更新:支持自定义模型 + 年付 8 折</h2>
+  <div class="quote">"🎉 MiniMax Design Update — 💸 Save 20% on annual plans. 🛠️ Custom model support is now live. Create with your preferred models now>> design.minimax.io"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Hailuo_AI/status/2100878688376283401">@Hailuo_AI</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>之前 MiniMax Design 只用 MiniMax 自家模型,现在可以接你惯用的第三方模型(比如 Midjourney / Sora / 自训 LoRA)进同一画布。对 hybrid 工作流的创作者特别友好 —— "一个画布里调用不同模型"成了真,做品牌物料时不再切 5 个工具。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#6</span>
+  <h2>Higgsfield API:一个 API 接 50+ 前沿模型,价格低于订阅</h2>
+  <div class="quote">"One API, 50+ frontier models, lower prices than a subscription. love this launch from Higgsfield 🔥 — > Get up to 50% OFF discount on your 3 favorite models > Lock in your max-discount within 7 days > Pay per use with no commitment"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Samann_ai/status/2100337874080030881">@Samann_ai 转载 Higgsfield</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>不用再单独订 Midjourney / Runway / Kling / Sora,一个 Higgsfield API 覆盖;前 7 天锁住你最常用的 3 个模型的 50% OFF,按调用计费、无承诺。对中小创作者 = 真正按需付费;对开发者 = 一个 endpoint 切换模型做 A/B test,延迟和成本都优化。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#7</span>
+  <h2>Gemini Notebook 新功能:课堂材料实时语音 Q&amp;A + 100 种语言</h2>
+  <div class="quote">"New updates in @Gemini_Notebook for students — 1) Have a live, spoken Q&A with your class materials in ~100 languages 2) Record lectures and notes on the go, the audio notes save automatically into your chosen notebook."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/joshwoodward/status/2099921866014306633">@joshwoodward</a></span>
+    <span>❤️ 21K · 🔁 439</span>
+  </div>
+  <div class="tags"><span class="tag tag-tool">工具</span></div>
+  <div class="score">⭐⭐⭐ 实用性 7.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>知识类/教程类博主可以用它做"语音版 FAQ"——把你过去 50 期脚本喂进 Notebook,粉丝直接用语音问"上期讲的 X 怎么操作",Notebook 答出来,等于免费的语音客服/课程助理。多语言支持对出海创作者尤其友好,英文教程自动适配中文/日文/西语听众。</div>
+</div>
+
+<h2 class="section-title workflow">🔄 工作流优化</h2>
+
+<div class="card">
+  <span class="card-num">#8</span>
+  <h2>分镜工作流黑魔法:一张 3x3 网格图 → AI 视频脚本</h2>
+  <div class="quote">"この3x3画像を1枚 r2v でAI動画化すると以下の設定でおおよそそのまま映像になる — Hailuo H3 Max · r2v · 480p · 15秒 — Prompt調整:Quality 参照強度:標準 — 「左上から右下のパネルにカットが切り替わる2Dアニメーション、複数パネル禁止、BGM禁止」"</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/Hailuo_AI/status/2100889471218831450">@8co28 + @Hailuo_AI</a></span>
+    <span>👁️ 6.3K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-prompt">Prompt 模板</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐⭐ 实用性 9/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>漫画/分镜博主可直接套这套"九宫格 → AI 视频"的流水线 —— 先用任意文生图模型画一张 3x3 网格分镜,丢进 Hailuo H3 Max 的 image-to-video(r2v 模式,480p,15 秒),Prompt 强制"左上→右下镜头切换、多面板禁止、BGM 禁止",出来的就是一条真正的分镜动画。比起逐镜生成再拼接,效率 3-5 倍。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#9</span>
+  <h2>Claude 画 doodle:让它搜图→下载→用 JS 在图上乱画</h2>
+  <div class="quote">"I asked Claude to search the web, download images it liked, and then doodle on them. Every doodle was drawn by Claude Opus 5 using JavaScript."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/kevin_t_ngo/status/2100601972902842517">@kevin_t_ngo</a> · 转载 <a href="https://x.com/fofrAI/status/2100611647215738880">@fofrAI</a></span>
+    <span>👁️ 40K</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-prompt">玩法</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>让 Claude/Agent "上网搜 → 选图 → 在浏览器里用 JS Canvas 涂鸦" 是一条很新的"AI 既是用户也是创作者"工作流。内容创作者可以做"AI 给我的粉丝画头像"、"AI remux 经典名画"这种高度个人化的系列;也适合做互动式落地页 —— 用户上传图,Claude 现场乱画。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#10</span>
+  <h2>OpenClaw 新功能:本地 → Crabbox 一键迁移 + VNC/Portal 远程看</h2>
+  <div class="quote">"Just landed a new feature, in the latest OC you can now ask your agent 'Run this [web app] in crabbox and show me [vnc / a portal]' — This was already working for cloud sessions, but often you start local and then later figure out you need a box to test, now it just works."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/steipete/status/2101114996629570013">@steipete</a></span>
+  </div>
+  <div class="tags"><span class="tag tag-workflow">工作流</span></div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>写完一个 web 应用原型,直接让 Agent "跑在 crabbox,给我开个 portal",你不用再装环境、不用 ngrok、不用切 SSH。创作者做交互 demo / 实时网页产品时特别省事 —— Agent 帮你在云上跑起来,你专注内容。本地开发 → 远程演示无缝切换。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#11</span>
+  <h2>MCP 工具调用 &gt; CLI:AI 整合方式正在悄悄换底盘</h2>
+  <div class="quote">"I was not expecting things to go this way, but I think MCPs are better than CLIs for most integrations. The models have gotten much better at tool calling, we can defer tools &amp; MCP is now stateless. If you need to compose/filter data, add params like query to your MCP tools."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/trq212/status/2099958388230873165">@trq212</a></span>
+    <span>❤️ 469</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-thinking">思维</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>如果你搭 Agent 工作流或本地工具脚本,优先把"套壳 CLI"改成"MCP server + 工具描述";给 MCP 工具加 query / filter 等参数,让模型自己裁数据,而不是返回全量再让模型二次处理。Trq 同账号另一条:"bash is no longer all you need" —— 这是 2026 下半年 Agent 架构选型的关键拐点。</div>
+</div>
+
+<h2 class="section-title thinking">🧠 思维 / Prompt 观</h2>
+
+<div class="card">
+  <span class="card-num">#12</span>
+  <h2>反 Slop 第一性原则:修输出,先修输入</h2>
+  <div class="quote">"It's hard not to create slop when most things you consume are slop. To fix output, first fix input."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/zarazhangrui/status/2101123389528457596">@zarazhangrui</a></span>
+    <span>❤️ 21K · 🔁 352</span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-thinking">思维</span>
+    <span class="tag tag-prompt">Prompt 观</span>
+  </div>
+  <div class="score">⭐⭐⭐⭐ 实用性 8.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>创作者最常踩的坑 —— "AI 生成的内容越来越水",但根因是喂给 AI 的输入本身就水。一周做一次"输入审计":清理信息源 RSS 列表、退出低质 Discord/X 关注、拉黑 AI Slop 账号。喂干净的输入,模型才吐得出有质感的内容。比任何 Prompt 优化都有效。</div>
+</div>
+
+<div class="card">
+  <span class="card-num">#13</span>
+  <h2>roboclaw 团队服务器:挂 Discord + GPT-Live,会议里直接问上下文</h2>
+  <div class="quote">"The coolest part: roboclaw runs our team server, is live on Discord, talks with gpt-live and knows about all the sessions it's juggling. We can ask it about context to current and past sessions right while we have meetings."</div>
+  <div class="meta-row">
+    <span>📍 <a href="https://x.com/steipete/status/2101141707375227372">@steipete</a></span>
+  </div>
+  <div class="tags">
+    <span class="tag tag-workflow">工作流</span>
+    <span class="tag tag-thinking">协作</span>
+  </div>
+  <div class="score">⭐⭐⭐ 实用性 7.5/10</div>
+  <div class="apply"><strong>💡 如何应用:</strong>把团队的 Agent 接到 Discord,开会时直接 @ 它 问"上周那条 bug 修了吗"、"上个月我们定的 OKR 进度",GPT-Live 边听边答。对内容团队特别合适 —— 周会不用再翻文档,Agent 当"团队记忆层"。配合 steipete 同账号另外两条:用 OpenClaw 让 Agent 帮你整理 session 列表,侧栏更整洁。</div>
+</div>
+
+<div class="appendix">
+  <h3>📌 附:今日其他可关注信号(未入选主榜)</h3>
+  <ul>
+    <li>• <strong>[@_catwu]</strong> — Claude Cowork 和 chat 合并为一个 Claude,Pro/Max 用户陆续开放 · <a href="https://x.com/_catwu/status/2100260655312089562">链接</a></li>
+    <li>• <strong>[@trq212]</strong> — "bash is no longer all you need" — 可靠的工具调用不再必须走 bash · <a href="https://x.com/trq212/status/2100315535758217422">链接</a></li>
+    <li>• <strong>[@alliekmiller]</strong> — Mac mini 买家其实更愿意为"永远在线的 Codex/Claude Code 云端版"付费 · <a href="https://x.com/alliekmiller/status/2101726481374408843">链接</a></li>
+    <li>• <strong>[@alliekmiller]</strong> — Instinct/Muse/Grokbot 等"会主动说话的 Agent"体验已优于标准 ChatGPT/Claude · <a href="https://x.com/alliekmiller/status/2101410107594871252">链接</a></li>
+    <li>• <strong>[@alliekmiller]</strong> — 语音是当下和未来的接口形态,Google 别错过 · <a href="https://x.com/alliekmiller/status/2100590464412033392">链接</a></li>
+    <li>• <strong>[@OpenAI]</strong> — Astra for Law:GPT-6 Astra 法律行业专用版本 · <a href="https://x.com/OpenAI/status/2100679992720142459">链接</a></li>
+    <li>• <strong>[@GoogleAI]</strong> — Gemini 3.8 Live + Extended Thinking 正式发布 · <a href="https://x.com/GoogleAI/status/2099908000924193124">链接</a></li>
+    <li>• <strong>[@GoogleAI]</strong> — Dreambeans 个性化故事 GA · <a href="https://x.com/GoogleAI/status/2099489445846126676">链接</a></li>
+    <li>• <strong>[@Hailuo_AI]</strong> — "一句话 = 整个制作团队" 用 Astra + Blender MCP 出片 · <a href="https://x.com/Hailuo_AI/status/2099764177036583304">链接</a></li>
+    <li>• <strong>[@GoogleLabs]</strong> — CC 家庭 AI 助手上线:多成员共享"今日简报" · <a href="https://x.com/joshwoodward/status/2100665648825483726">链接</a></li>
+    <li>• <strong>[@Alibaba_Qwen]</strong> — Qwen3.8-Omni-Flash 原生全模态 Agent 模型 · <a href="https://x.com/Alibaba_Qwen/status/2100785962414702599">链接</a></li>
+  </ul>
+</div>
+
+<footer>
+  <p>📅 下一份日报:2026-09-22 · 由 cron 自动生成</p>
+  <p>📂 历史归档:<a href="https://zxy114.github.io/influencer-daily/">https://zxy114.github.io/influencer-daily/</a></p>
+  <p style="margin-top: 8px; opacity: 0.6;">© 2026 AI Daily · 仅供内容创作者参考</p>
+</footer>
+
+</div>
+</body>
+</html>
