@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI网红工具日报 2026-09-22</title>
+    <style>
+        :root {
+            --bg-color: #0f1117;
+            --card-bg: #1a1d24;
+            --card-border: #2a2e38;
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a7b3;
+            --accent-orange: #f97316;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --rating-gold: #fbbf24;
+            --tag-bg: #2d3748;
+            --tag-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .header .meta {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .filter-notes {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .filter-notes h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .filter-notes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .filter-notes li {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-orange);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .card-category {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag[data-category="工具"] { border-left: 3px solid var(--accent-blue); }
+        .tag[data-category="工作流"] { border-left: 3px solid var(--accent-green); }
+        .tag[data-category="思维"] { border-left: 3px solid var(--accent-purple); }
+        .tag[data-category="Prompt"] { border-left: 3px solid var(--accent-orange); }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            color: var(--rating-gold);
+            font-weight: 600;
+        }
+
+        .source-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .source-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .card-content {
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .card-content p {
+            margin-bottom: 12px;
+        }
+
+        .card-content h3 {
+            color: var(--accent-green);
+            margin: 15px 0 8px;
+            font-size: 1.1rem;
+        }
+
+        .how-to-use {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent-green);
+        }
+
+        .how-to-use h4 {
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .card-source {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .data-scope {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 4px solid var(--accent-orange);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .data-scope h3 {
+            color: var(--accent-orange);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .data-scope p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .card { padding: 20px; }
+            .card-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🤖 AI网红工具日报</h1>
+        <div class="subtitle">2026年9月22日 · 每日精选工具推荐、教程、Prompt模板、工作流优化与AI技巧</div>
+        <div class="meta">📅 生成时间：2026-09-22 10:00 UTC</div>
+    </div>
+
+    <div class="data-scope">
+        <h3>📊 数据范围说明</h3>
+        <p>今日 G1 缓存未完成，已从 G2-G5 (4组) 提取内容并按完整质量门槛筛选。今日共 15 条高质量条目（≥7分）。</p>
+    </div>
+
+    <div class="filter-notes">
+        <h3>📋 筛选说明</h3>
+        <ul>
+            <li>✅ 收录标准：工具推荐 / 教程 / Prompt模板 / 工作流优化 / AI使用技巧</li>
+            <li>❌ 排除内容：硬件/基础设施 / 融资/收入 / 纯基准对比 / 学术论文 / 政治观点</li>
+            <li>🎯 质量门槛：内容创作者看完能立即上手用（评分 ≥ 7）</li>
+        </ul>
+    </div>
+
+    <div id="content">
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣ AI入门最快的方式：抱怨+语音"采访"自己</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="思维">💡 思维</span>
+                        <span class="rating">⭐ 9/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我所知道的最简单的AI起点，适合任何面对空白聊天窗口的人：点击麦克风。对你的业务、日程、孩子学校安排等抱怨几分钟。然后说"帮我采访一下我"。语音速度大约是打字的4倍……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>面对AI不知道问什么时，打开语音模式，先把脑子里的混乱思绪倒出来，再让AI反过来结构化提问你。完美解决"不知道怎么写prompt"的痛点，适合非技术背景的内容创作者、运营、独立工作者。</p>
+                </div>
+                <span class="card-source">来源：@alliekmiller - <a href="https://x.com/alliekmiller/status/2102118282346278917" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">2️⃣ Prompt万能短语："用大图+少文字"</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="Prompt">📝 Prompt</span>
+                        <span class="rating">⭐ 9/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>我现在每天要打好几次"用大图和少量文字"这句话。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>Claude官方工程师@trq212每天必用的指令。无论你是做PPT、写文档还是生成社交媒体内容，加入"use big pictures and few words"会让AI输出更清爽直观，直接复制粘贴到你的prompt末尾即可。</p>
+                </div>
+                <span class="card-source">来源：@trq212 - <a href="https://x.com/trq212/status/2102186805034635576" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">3️⃣ Claude Projects：1个对话，AI帮你拆分并行任务</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 9/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Projects 把 Claude Tag 的架构带到了 Claude Code。每个项目有一个agent管理记忆，并派生子agent处理任务。你可以让它主动做事、按计划执行等。比一堆分散的session体验好太多了，强烈建议试试！</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>打开 Claude Code 中的 Projects 功能，描述"需要完成的工作"，Claude 会自动拆分为并行线程，即使你关闭电脑也在云端跑。适合需要并行处理多份报告/研究/代码任务的内容创作者。</p>
+                </div>
+                <span class="card-source">来源：@trq212 - <a href="https://x.com/trq212/status/2100638355872706571" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">4️⃣ AI不是生产力工具，而是流程管理工具</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>公司在AI上的投入不够重视流程管理。他们太关注产品或个人生产力，而忽略了协作衔接。会议刚结束，我在Slack上所有后续跟进消息都已经自动写好了。我会告诉某人我会……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>别只把AI当写作工具用——用它自动化会议跟进、Slack消息草稿、跨团队handoff。让AI在"对话衔接"环节工作，节省的不只是写作时间，更是上下文切换的心智成本。</p>
+                </div>
+                <span class="card-source">来源：@alliekmiller - <a href="https://x.com/alliekmiller/status/2102156570847220058" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">5️⃣ Claude Code 新增 AGENTS.md 标准支持</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Claude Code 现在支持 AGENTS.md。从2.1.277版本起，如果文件夹中没有 CLAUDE.md，Claude 会检查并使用 AGENTS.md。你可以在 /config 中切换此行为。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>在你的项目根目录创建 <code>AGENTS.md</code>，写入"这个项目做什么"、"用什么技术栈"、"代码风格约定"，Claude Code 会自动加载作为上下文。适合跨多个AI agent工具协作的开源维护者。</p>
+                </div>
+                <span class="card-source">来源：@trq212 - <a href="https://x.com/trq212/status/2101009392611278961" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">6️⃣ Claude Cowork + 聊天合并 + Design 集成</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>今天起，Claude Cowork 和聊天合并，使用更简洁。同时集成 Claude Design，你可以让 Claude 直接生成幻灯片、设计稿或文档，无需切换标签页或应用。很多人反馈不想在"用哪种Claude"之间做选择……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>用 Claude 直接生成 Slide/Design/Doc，不再切换工具。一个入口搞定问问题、长任务、视觉产出，对内容创作者和咨询顾问尤其友好。</p>
+                </div>
+                <span class="card-source">来源：@_catwu - <a href="https://x.com/_catwu/status/2100260655312089562" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">7️⃣ Projects 体验：让 Claude 协调你的所有 session</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>在新的 Projects 体验中，Claude 协调你的所有 session。我每天都在用，让我能在更高抽象层级工作。我扔出一批任务然后继续做别的。Claude 知道我所有工作的上下文，可以给我……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>用 Projects 同时管理多个并行任务（写文章 + 做幻灯片 + 整理资料），Claude 自动保持上下文一致。适合需要"批量任务管理"的内容创作者、顾问、产品经理。</p>
+                </div>
+                <span class="card-source">来源：@_catwu - <a href="https://x.com/_catwu/status/2100641163120423057" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">8️⃣ Higgsfield Genjutsu 角色替换 Prompt 模板</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="Prompt">📝 Prompt</span>
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>用 Higgsfield Genjutsu 做的。Prompt 模板：仅替换图中两个男性为我的两个角色。左边男人（灰发、白衬衫、黑色马甲）→ 参考图1中的角色。右边男人（光头、眼镜、纯黑西装）→ ……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>Genjutsu 的角色替换 prompt 结构：[动作描述] + 替换参考图1/参考图2。创作者可以用同一张模板照（场景）批量换不同主角，快速产出系列化内容。</p>
+                </div>
+                <span class="card-source">来源：@Samann_ai - <a href="https://x.com/Samann_ai/status/2101987279828844804" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">9️⃣ MiniMax H3 + Jev 加速：视频生成快41.7%</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>把流行的Jev集成到 MiniMax H3 中，视频生成加速了！用 Jev 做注意力处理的稀疏化——每层由 Jev 判断重要性（4步49层），Jev自动选择1%/3%/5%/10%的稀疏率。RTX4070 上从6分7秒缩短到3分34秒，提速41.7%！视频生成时虽然还要问Jevcloud，但依然很快！</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>如果你本地有 RTX4070+ 显卡跑 MiniMax H3，开 Jev 稀疏化插件可将6分钟视频生成压到3分半。适合需要批量产出AI视频的创作者。</p>
+                </div>
+                <span class="card-source">来源：@Hailuo_AI - <a href="https://x.com/Hailuo_AI/status/2101939229018497239" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">🔟 Storyboard 快进按钮：3x3网格 → r2v AI视频</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>把这3x3网格图用 r2v 一键AI视频化，设置如下：MiniMax H3 Max、r2v模式、480p、15秒。Prompt 调整：Quality 参考强度：标准。"从左上面板切换到右下的2D动画，禁止多面板'"</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>先用3x3分镜图（每格画一个镜头），再用 MiniMax H3 r2v 模式+标准化 prompt "按从左到右、从上到下顺序切换的2D动画"，一张图变一段动画。分镜 → 视频一气呵成。</p>
+                </div>
+                <span class="card-source">来源：@Hailuo_AI - <a href="https://x.com/Hailuo_AI/status/2100889471218831450" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣1️⃣ Gemini Notebook 手机摄像头：边走边研究</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工作流">🔧 工作流</span>
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 8/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Gemini Notebook 手机 App 的摄像头功能对移动研究来说太革命性了。我在 Sierra 山上做新项目，把所有东西都拍了照，比如这个博物馆展品。然后我让它生成图片中所有信息的详细报告。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>出门调研时（旅行/展会/博物馆），随手拍展品/海报/说明书，丢给 Gemini Notebook 直接生成结构化研究报告。适合记者、自媒体、独立研究者现场采集信息。</p>
+                </div>
+                <span class="card-source">来源：@stevenbjohnson - <a href="https://x.com/stevenbjohnson/status/2100612880047767553" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣2️⃣ Gemini Notebook 学生更新：100+语言语音问答</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Gemini Notebook 学生版新更新，我最爱的两点：1) 用~100种语言与课件进行实时语音问答 2) 边走边录讲座和笔记，录音自动保存到指定笔记</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>上传课件/论文/讲义到 Gemini Notebook，用母语（或外语）语音提问，自动得到基于原文的回答。适合跨语言学习者、研究者、内容创作者。</p>
+                </div>
+                <span class="card-source">来源：@joshwoodward - <a href="https://x.com/joshwoodward/status/2099921866014306633" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣3️⃣ Google CC：家庭日程AI助手（最多5人）</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>让全家都用 CC！今天推出新版 CC —— 为家庭打造的 AI agent，让家人少花时间在事务上、多花时间在一起。你可以：添加最多5名成员 / 每天早晨收到共享的"今日预告"邮件 / ……</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>邀请家人加入 CC，AI 自动同步全家日程、早上发"今日预告"邮件、协商聚餐/出行时间。把家庭协调的"群聊扯皮"变成自动结构化安排。</p>
+                </div>
+                <span class="card-source">来源：@GoogleLabs - <a href="https://x.com/GoogleLabs/status/2100653821907366366" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣4️⃣ Qwen-Image-2.1 ComfyUI / HuggingFace Spaces 上线</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="工具">🛠️ 工具</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>Qwen-Image-2.1 现已支持 ComfyUI！立即试用并分享你的作品！</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>在 ComfyUI（开源AI图像工作流）里直接接入 Qwen-Image-2.1，单个checkpoint同时支持文生图和多图编辑，零代码搭图生视频/编辑流水线。</p>
+                </div>
+                <span class="card-source">来源：@Alibaba_Qwen - <a href="https://x.com/Alibaba_Qwen/status/2101670814953455780" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h2 class="card-title">1️⃣5️⃣ 创作者心法：输入决定输出</h2>
+                    <div class="card-category">
+                        <span class="tag" data-category="思维">💡 思维</span>
+                        <span class="rating">⭐ 7/10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <h3>推文原文（中文翻译）</h3>
+                <p>当你消费的大多是低质内容时，很难不产出低质作品。要改进输出，先改进输入。</p>
+                <div class="how-to-use">
+                    <h4>如何应用</h4>
+                    <p>每天刷的低质信息会污染你的判断力和审美。刻意清理信息源（取关低质账号、订阅高质量Newsletter、读经典书），两周后你会发现自己的产出质量自然提升。</p>
+                </div>
+                <span class="card-source">来源：@zarazhangrui - <a href="https://x.com/zarazhangrui/status/2101123389528457596" target="_blank" class="source-link">查看推文</a></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>生成时间：2026-09-22 10:00 UTC · 任务ID：cron:2a25fa8c-873a-4f64-9c28-4faef679b95d</p>
+        <p style="margin-top: 8px;">数据范围：G2/G3/G4/G5（4/5 组）· 15 条高质量条目</p>
+    </div>
+</div>
+</body>
+</html>
