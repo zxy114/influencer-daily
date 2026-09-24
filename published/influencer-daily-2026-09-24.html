@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI网红工具日报 · 2026-09-24</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #141821;
+    --bg-card-hover: #1a1f2c;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-muted: #8a92a6;
+    --accent: #6ee7b7;
+    --accent-2: #7dd3fc;
+    --warn: #fbbf24;
+    --tag-tool: #38bdf8;
+    --tag-tutorial: #a78bfa;
+    --tag-prompt: #f472b6;
+    --tag-workflow: #34d399;
+    --tag-mindset: #fbbf24;
+    --gradient: linear-gradient(135deg, #6ee7b7 0%, #7dd3fc 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    padding: 24px 16px 80px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header.hero {
+    text-align: center;
+    padding: 48px 20px 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header.hero h1 {
+    font-size: 2.4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  header.hero .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  header.hero .meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+
+  .notice {
+    background: rgba(251, 191, 36, 0.08);
+    border-left: 3px solid var(--warn);
+    color: #fde68a;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 28px;
+    font-size: 0.92rem;
+  }
+
+  .notice strong { color: var(--warn); }
+
+  .section-title {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin: 32px 0 18px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    transition: all 0.2s ease;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: #2d3548;
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .card-title .num {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 6px;
+    color: #0b0d12;
+  }
+
+  .tag-tool { background: var(--tag-tool); }
+  .tag-tutorial { background: var(--tag-tutorial); }
+  .tag-prompt { background: var(--tag-prompt); }
+  .tag-workflow { background: var(--tag-workflow); }
+  .tag-mindset { background: var(--tag-mindset); }
+
+  .score {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(110, 231, 183, 0.1);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .source {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+
+  .source a:hover { text-decoration: underline; }
+
+  .tweet-original,
+  .tweet-translation,
+  .application {
+    margin: 12px 0;
+    font-size: 0.95rem;
+  }
+
+  .tweet-original {
+    border-left: 2px solid var(--tag-tutorial);
+    padding-left: 14px;
+    color: #c7d2fe;
+    background: rgba(167, 139, 250, 0.05);
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .tweet-translation {
+    border-left: 2px solid var(--accent);
+    padding-left: 14px;
+    background: rgba(110, 231, 183, 0.04);
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .application {
+    border-left: 2px solid var(--warn);
+    padding-left: 14px;
+    background: rgba(251, 191, 36, 0.05);
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: #fde68a;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .trends {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .trends ol {
+    padding-left: 22px;
+    color: var(--text);
+  }
+
+  .trends li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    header.hero h1 { font-size: 1.8rem; }
+    .card { padding: 18px; }
+    .card-title { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle">每日精选 · 工具 · 教程 · Prompt · 工作流 · 思维</div>
+    <div class="meta">2026-09-24 · 共收录 15 条高质量条目</div>
+  </header>
+
+  <div class="notice">
+    <strong>⚠️ 数据来源说明：</strong>
+    今日 <strong>G1 缓存缺失</strong>，已从 <strong>G2 / G3 / G4 / G5</strong>（共 4 组）提取内容并按完整质量门槛筛选。
+  </div>
+
+  <h2 class="section-title">🔥 今日 Top 推荐</h2>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣</span>Kimi K3 正式登陆 Amazon Bedrock：显式 Prompt 缓存开箱即用</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2102244258531213596">@Kimi_Moonshot</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Kimi K3 is now on Amazon Bedrock. Run coding, document analysis, and extended agent workflows with Bedrock's access, encryption, and auditing controls. Explicit prompt caching supported.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Kimi K3 现已上线 Amazon Bedrock。借助 Bedrock 的访问控制、加密与审计能力，跑编码、文档分析与长链路 Agent 工作流；支持显式 Prompt 缓存。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你已经在用 AWS Bedrock，把模型切到 K3 即可——尤其在"长 system prompt + 长文档"场景，显式缓存能显著降本；企业级合规需求（审计、加密、VPC）一并满足。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">2️⃣</span>Kimi 浏览器插件：把重复操作录成"技能"，下次 AI 自动重放</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Kimi_Moonshot/status/2102372557190230244">@Kimi_Moonshot</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Meet the new Kimi Browser Extension (formerly Kimi WebBridge). From your browser sidebar, you can chat with Kimi to navigate websites, fill out forms, and get things done. For repetitive tasks, record your steps once and save them as a skill. Kimi can take it from there next time.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Kimi 浏览器插件（原 Kimi WebBridge）正式上线。从浏览器侧边栏就能让 Kimi 帮你浏览网页、填表、完成操作。对重复任务，只需录制一次步骤并保存为 skill，下次 Kimi 就能自动执行。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      把每周固定的事（拉报表、批量改文件名、提交固定格式表单）录一次，Kimi 会把流程变成可重放的 skill。运营、电商、客服、内容编辑等每天处理大量重复网页任务的人，立刻上手。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">3️⃣</span>trq212 揭穿 prompt one-shot 神话：背后其实是 1 万字符 + 技能 + API key</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2102870353781641416">@trq212</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+      <span class="tag tag-prompt">📝 Prompt</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      "Claude one-shot this" — the prompt: 10k characters with good takes plus skills, examples and API keys.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      推文说"Claude 一发命中"，但实际上 prompt 写了 1 万字符，还塞了 skills、examples 和 API key。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      打破"AI 一句话搞定一切"的幻想。真正稳定复用的 prompt 至少要 5k-10k 字符，包含背景、规则、示例、工具调用说明。下次看到"one-shot 奇迹"先去看作者完整 prompt——少看结果，多看工程。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">4️⃣</span>Claude Devs 两周让 claude.ai 快 3 倍：用案例讲 prompt 工程实战</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2102857025206255902">@trq212</a></div>
+    <div>
+      <span class="tag tag-workflow">🔧 工作流</span>
+      <span class="tag tag-prompt">📝 Prompt</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      This is a new type of post we're trying where we share in-depth about how we do work using specific prompts and techniques you should be able to replicate.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我们在尝试一种新的帖子形式——深入分享我们做事的具体 prompt 和技巧，你可以直接复刻。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      关注 Anthropic 官方 @ClaudeDevs 这个系列——内容是"实战 prompt 拆解"，不是 PR 通稿。任何想深挖 Claude 用法的人都该订阅。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">5️⃣</span>Claude Opus 5.5 + Lean：几条 Prompt 修 16 个 SDK Bug 和竞态</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/_catwu/status/2102569951974584612">@_catwu</a></div>
+    <div>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      I used Opus 5.5 to formally verify the Claude Agent SDK using Lean. A couple short prompts = 16 PRs fixing various bugs and race conditions. I sometimes combine Lean and TLA+ to look for issues around data flow, concurrency, and state mgmt.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我用 Opus 5.5 配合 Lean 对 Claude Agent SDK 做形式化验证。几条简短的 prompt = 16 个 PR，修了一堆 bug 和竞态条件。我有时把 Lean 和 TLA+ 结合起来定位数据流、并发、状态管理问题。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      不必是形式化验证专家，这套"AI 写代码 + AI 写证明"的范式可以借鉴：把"代码 + 一段自然语言规约"丢给模型，让它同时给实现和验证脚本。独立开发者写复杂工具，能省下大量调试时间。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">6️⃣</span>Allie Miller 2026 团队目标：停止写 prompt、停止打字、减少看屏幕</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/alliekmiller/status/2102457992583246334">@alliekmiller</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      My three team goals right now: 1) stop prompting 2) stop typing 3) reduce desktop screen time. Can we have a no-prompt, keyboard-free, desk-free day this year?
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我给团队定的三个目标：1）停止写 prompt 2）停止打字 3）减少桌面屏幕时间。今年能不能实现一天"无 prompt、无键盘、无桌子"？
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      提醒我们：prompt 是过渡态，不是终态。真正成熟的 AI 使用方式应该是"语音 / 视觉 / Agent 全自动"。从今天起，试试把常用的几条 prompt 录成自然语言意图，或者直接让 Agent 跑。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">7️⃣</span>Grok 4.7 排名上升：SWE-Together 榜全模型重新审计</div>
+      <span class="score">7/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/elonmusk/status/2102873022789283985">@elonmusk</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Grok 4.7 moves up in ranking. After we fixed the weak spots exposed by Grok 4.7, we audited every model we have run on the SWE-Together leaderboard for the same behavior, re-ran every trial that got through, and updated the rows.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Grok 4.7 排名上升。我们修复了 Grok 4.7 暴露的弱点后，对 SWE-Together 榜单上所有模型做了同类行为审计，重新跑通所有试验并更新了榜单行。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      SWE-Together 是新晋的"工程任务"基准榜，比 SWE-Bench 更贴近真实开发场景。选 Coding Agent 时可以多看一眼这个榜，避免只看老牌 benchmark 出现"过拟合式"误判。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">8️⃣</span>Higgsfield Genjutsu 角色替换 Prompt：分左右定位 + 参考图编号</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Samann_ai/status/2101987279828844804">@Samann_ai</a></div>
+    <div>
+      <span class="tag tag-prompt">📝 Prompt</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Made with Genjutsu on Higgsfield. Prompt: Replace only the two men with my two characters. LEFT man (grey hair, white shirt, black waistcoat) → character in reference image 1. RIGHT man (bald, glasses, all-black suit) → character in reference image 2.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      用 Higgsfield 的 Genjutsu 做的。Prompt：只把视频里这两个男人换成我的两个角色。左边那个（灰发、白衬衫、黑马甲）→ 参考图 1 的角色；右边那个（秃顶、眼镜、全黑西装）→ 参考图 2 的角色。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      复刻这套"局部替换 + 左右定位 + 参考图编号"的 prompt 模板，几乎可以套到任何"换脸 / 换角色 / 换装"类工具。先用文字清楚描述原视频每个目标位置的视觉特征，再映射到参考图，比一句"换成我"效果好 10 倍。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">9️⃣</span>Jev 接入 MiniMax H3：视频生成提速 41.7%（RTX 4070 实测）</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2101939229018497239">@Hailuo_AI</a></div>
+    <div>
+      <span class="tag tag-tutorial">📘 教程</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Community integrated Jev into MiniMax H3 — speeding up video generation. Attention sparsity via Jev: layer-by-layer importance scoring (4-step, 49 layers), sparsity rate picks 1/3/5/10%. RTX 4070: 6m07s → 3m34s (41.7% faster). And it's fast even while Jev cloud is being queried during generation.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      社区把 Jev 集成进了 MiniMax H3 — 大幅加速视频生成。通过 Jev 做 Attention 稀疏化：按层打分（4 step × 49 层），稀疏率可选 1% / 3% / 5% / 10%。RTX 4070 实测：6 分 7 秒 → 3 分 34 秒（快 41.7%）。即便生成期间向 Jev 云查询，依然比原版快。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你是 MiniMax H3 的重度用户，跑长视频任务时开启 Jev 加速模式（稀疏率从 1% 试起，再视效果往上加）。消费级显卡也能把生成时间砍掉近一半。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">🔟</span>3×3 分镜一键变视频：MiniMax H3 r2v 工作流示范</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Hailuo_AI/status/2100889471218831450">@Hailuo_AI</a></div>
+    <div>
+      <span class="tag tag-tutorial">📘 教程</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Take a 3×3 image and r2v it → almost becomes the actual video. Settings: MiniMax H3 Max r2v, 480p, 15s. Prompt: "2D animation switching cuts from top-left to bottom-right panels, no multi-panel, no BGM."
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      把一张 3×3 图片 r2v 后，几乎能 1:1 还原成视频。设置：MiniMax H3 Max r2v、480p、15 秒。Prompt："左上到右下面板依次切换的 2D 动画，禁止多面板，禁止 BGM。"
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      做漫画 / 表情包 / 短动画的"九宫格分镜 → 自动成片"工作流：先在 PS 或 Midjourney 出 9 张关键帧，扔进 MiniMax H3 r2v，prompt 写清楚"切换方向 + 禁止项"，成片基本不用二次剪辑。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣1️⃣</span>Gemini 3.8 Flash TTS 会唱歌：Style: Singing 自动谱曲</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/fofrAI/status/2102790040011395086">@fofrAI</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Gemini 3.8 Flash TTS is out, and it can sing (a bit) too. It works out the tune by itself. Style: Singing. Transcript: "Happy release day to you, Happy release day to you, Happy release day, dear Logan, Happy release day to you."
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Gemini 3.8 Flash TTS 上线，还能唱歌（一点点）。它会自动谱曲。Style 设为 Singing。文本："祝你发布日快乐，祝你发布日快乐，祝 Logan 发布日快乐，祝你发布日快乐。"
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      在 Google AI Studio 选 Gemini 3.8 Flash TTS，把 Style 设成 Singing，丢一段祝福 / 广告词 / 童谣歌词，30 秒出一段能听出调子的配音。短视频博主、广告片头、Jingle 试做直接拿来用。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣2️⃣</span>浏览器代替 VNC：随时随地远程控制桌面</div>
+      <span class="score">7/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/steipete/status/2102990776439636089">@steipete</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Who needs VNC when there's browsers.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      有了浏览器，谁还需要 VNC？
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      远程办公、远程修服务器、临时调同事电脑……只要目标机器有浏览器 + 公网入口，就能省去端口映射 / VPN 配置。WebRTC / RustDesk / Apache Guacamole 等方案都基于这个思路。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣3️⃣</span>AI 自动化不会让你失业，反而让你做"更有价值"的事</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/danshipper/status/2102556723244564715">@danshipper</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      After automation, my take on why AI automation creates more good work to do for human experts.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      关于"AI 自动化"——我的看法是，它反而给人类专家创造了更多有价值的工作。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      无论你是写代码、做设计、写文案，AI 不会让你失业，但会重新分配你的时间。把"机械执行"让给 Agent，把精力留给"判断、审美、客户沟通、复杂决策"——这些是 2026 年最值钱的能力。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣4️⃣</span>AI 不能直接创造商业价值：编排才是企业级落地的关键</div>
+      <span class="score">7/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/YuHelenYu/status/2102913433952022778">@YuHelenYu</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      At UiPath FUSION, Daniel Dines made the case that AI alone does not create business value. Orchestration provides the context, coordination, and governance enterprises need. The shift is from disconnected AI tools to coordinated, end-to-end workflows.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      在 UiPath FUSION 上，Daniel Dines 提出：单靠 AI 本身并不创造商业价值。企业需要的是编排（Orchestration）——它提供上下文、协调与治理。趋势是从"互不联通的 AI 工具"转向"端到端协调工作流"。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你是做 To B / 企业级 AI 产品，光给模型不够——必须有"流程编排 + 权限 + 上下文管理"。可以参考 UiPath、n8n、Apache Airflow 这类编排框架，把 AI 当作节点，而不是全部。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣5️⃣</span>Claude Opus 5.5 成为 Pro/Max/Team 默认模型</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/_catwu/status/2102437713781944397">@_catwu</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Claude Opus 5.5 is now the default model in Claude Code and the Claude app, including Cowork, for Pro, Max, and Team plans. I've been using Opus 5.5 as a daily driver and love its clear communication skills and ability to write in my style.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Claude Opus 5.5 现在是 Claude Code、Claude App（含 Cowork）的默认模型，覆盖 Pro / Max / Team 套餐。我每天用 Opus 5.5，喜欢它清晰的沟通和模仿我写作风格的能力。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你用 Claude 写东西、写代码，直接用默认 Opus 5.5——它比 5.0 更省 token（同样任务便宜 40%），沟通风格更清爽。不用纠结选哪个模型，开箱即用。
+    </div>
+  </div>
+
+  <h2 class="section-title">📊 今日统计</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num">15</div>
+      <div class="stat-label">收录总数</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">覆盖分组 (G2-G5)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">6</div>
+      <div class="stat-label">工具类条目</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Prompt 模板</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">5</div>
+      <div class="stat-label">工作流优化</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">🎯 今日趋势速览</h2>
+  <div class="trends">
+    <ol>
+      <li><strong>Kimi 双弹：</strong>K3 上 Bedrock + 浏览器插件 — 月之暗面从"对话"走向"生态"。</li>
+      <li><strong>Claude Opus 5.5 默认化：</strong>Anthropic 把最强模型下放到所有付费档，省 token 40%。</li>
+      <li><strong>Gemini 3.8 Flash TTS：</strong>100+ 语言、2000+ 预设声音、可"唱歌"——内容创作者的免费配音库。</li>
+      <li><strong>r2v / Jev 加速：</strong>视频生成从"分钟级"迈向"消费显卡也能跑"。</li>
+      <li><strong>Prompt 真相：</strong>真正稳定的 one-shot 背后是 1 万字符的工程量，trq212 戳破幻觉。</li>
+    </ol>
+  </div>
+
+  <footer>
+    生成时间：2026-09-24 10:00 UTC ｜ 数据范围：G2 + G3 + G4 + G5 ｜ G1 数据缺失已标注
+  </footer>
+
+</div>
+</body>
+</html>
