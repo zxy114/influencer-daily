@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI网红工具日报 · 2026-09-25</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --bg-card: #141821;
+    --bg-card-hover: #1a1f2c;
+    --border: #232a38;
+    --text: #e6e9ef;
+    --text-muted: #8a92a6;
+    --accent: #6ee7b7;
+    --accent-2: #7dd3fc;
+    --warn: #fbbf24;
+    --tag-tool: #38bdf8;
+    --tag-tutorial: #a78bfa;
+    --tag-prompt: #f472b6;
+    --tag-workflow: #34d399;
+    --tag-mindset: #fbbf24;
+    --gradient: linear-gradient(135deg, #6ee7b7 0%, #7dd3fc 100%);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    padding: 24px 16px 80px;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; }
+
+  header.hero {
+    text-align: center;
+    padding: 48px 20px 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  header.hero h1 {
+    font-size: 2.4rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  header.hero .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  header.hero .meta {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+
+  .notice {
+    background: rgba(251, 191, 36, 0.08);
+    border-left: 3px solid var(--warn);
+    color: #fde68a;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 28px;
+    font-size: 0.92rem;
+  }
+
+  .notice strong { color: var(--warn); }
+
+  .section-title {
+    font-size: 1.3rem;
+    color: var(--text);
+    margin: 32px 0 18px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+    transition: all 0.2s ease;
+  }
+
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: #2d3548;
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .card-title .num {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 6px;
+    color: #0b0d12;
+  }
+
+  .tag-tool { background: var(--tag-tool); }
+  .tag-tutorial { background: var(--tag-tutorial); }
+  .tag-prompt { background: var(--tag-prompt); }
+  .tag-workflow { background: var(--tag-workflow); }
+  .tag-mindset { background: var(--tag-mindset); }
+
+  .score {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(110, 231, 183, 0.1);
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .source {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .source a {
+    color: var(--accent-2);
+    text-decoration: none;
+  }
+
+  .source a:hover { text-decoration: underline; }
+
+  .tweet-original,
+  .tweet-translation,
+  .application {
+    margin: 12px 0;
+    font-size: 0.95rem;
+  }
+
+  .tweet-original {
+    border-left: 2px solid var(--tag-tutorial);
+    padding-left: 14px;
+    color: #c7d2fe;
+    background: rgba(167, 139, 250, 0.05);
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .tweet-translation {
+    border-left: 2px solid var(--accent);
+    padding-left: 14px;
+    background: rgba(110, 231, 183, 0.04);
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .application {
+    border-left: 2px solid var(--warn);
+    padding-left: 14px;
+    background: rgba(251, 191, 36, 0.05);
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: #fde68a;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .trends {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .trends ol {
+    padding-left: 22px;
+    color: var(--text);
+  }
+
+  .trends li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    header.hero h1 { font-size: 1.8rem; }
+    .card { padding: 18px; }
+    .card-title { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <h1>🤖 AI 网红工具日报</h1>
+    <div class="subtitle">每日精选 · 工具 · 教程 · Prompt · 工作流 · 思维</div>
+    <div class="meta">2026-09-25 · 共收录 14 条高质量条目</div>
+  </header>
+
+  <div class="notice">
+    <strong>⚠️ 数据来源说明：</strong>
+    今日 <strong>G1 缓存缺失</strong>，已从 <strong>G2 / G3 / G4 / G5</strong>（共 4 组）提取内容并按完整质量门槛筛选。
+  </div>
+
+  <h2 class="section-title">🔥 今日 Top 推荐</h2>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣</span>Qwen Intelligence：三 Agent 套件拿下 MobilePA-Bench 三榜第一</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2102727405198876753">@Alibaba_Qwen</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Introducing Qwen Intelligence, bringing personal intelligence within everyone's reach. It launches with three SOTA agents: Mobile Planner Agent (plans, decomposes & orchestrates complex tasks, #1 on MobilePA-Bench, MobilePA-Bench Business & Memory), Mobile-Use Agent ...
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Qwen Intelligence 正式发布——把"个人智能"带给每个人。首发三个 SOTA Agent：Mobile Planner Agent（任务规划、拆解、编排，在 MobilePA-Bench、Business、Memory 三榜都拿第一）、Mobile-Use Agent……
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你做的是 App / 网页端的"AI 操作手"类产品，Qwen 这套 Mobile Planner + Mobile-Use 是当下开源端能直接对标的方案。先用 Planner 拆任务、再用 Use Agent 操作 UI，比单一 Agent 鲁棒得多。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">2️⃣</span>Qwen-Audio-3.1：ASR + TTS 全线升级，新增 TTS-Next/ASR-Next，全系降价</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Alibaba_Qwen/status/2102687258990026993">@Alibaba_Qwen</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Meet Qwen-Audio-3.1. ASR, TTS & Realtime are fully upgraded, joined by two new models: TTS-Next for audio creation and ASR-Next for audio understanding. Five models, one complete audio stack: understanding, generation, interaction & creation. Plus big price cuts across the board.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Qwen-Audio-3.1 上线。ASR、TTS、Realtime 全面升级，新增两款模型：TTS-Next（音频创作）、ASR-Next（音频理解）。五款模型组成完整的音频栈——理解、生成、交互、创作全覆盖，全线大幅降价。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      做播客、有声书、视频配音、客服语音机器人的团队，把 ASR/TTS 切到 Qwen-Audio-3.1 + TTS-Next + ASR-Next。开源 + 降价 = 自部署成本几乎砍半，可以直接对标 ElevenLabs / Whisper。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">3️⃣</span>MiniMax-H3 跑上 AMD MI355X：视频生成 26.7× 加速，可中途改 prompt</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/MiniMax_AI/status/2102993504041599271">@MiniMax_AI</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      More ways to build with MiniMax-H3. Model optimization + AMD inference engineering come together. Nunchux brings MiniMax-H3 to AMD MI355X with up to 26.7× faster inference than SGLang on 8 GPUs. With streaming generation, you can change the prompt as the video plays, steering what happens next.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      MiniMax-H3 有了更多构建方式。模型优化 + AMD 推理工程双剑合璧：Nunchux 把 MiniMax-H3 跑在 AMD MI355X 上，相比 SGLang 8 卡方案推理加速最高 26.7 倍。支持流式生成——视频播放中可以改 prompt，实时引导下一段剧情。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      做长视频 / 实时互动叙事 / 直播式 AI 内容的团队，这是当下最值得试的组合。重点是"中途改 prompt"——这意味着你不用一次写到底，可以像导演一样即兴喊 CUT。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">4️⃣</span>Midjourney 新版 Edit 模型：官方发教程视频，专注"一致角色"</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/midjourney/status/2103208764648419598">@midjourney</a></div>
+    <div>
+      <span class="tag tag-tutorial">📘 教程</span>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      A lot of people are wondering how to use our new edit model for consistent characters and more — so we made a video for you.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      很多人想知道怎么用我们新的 edit 模型做出"一致角色"和其他效果——所以我们专门做了一支教程视频。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      Midjourney 终于把"跨帧角色一致性"做成了一等公民。点开官方视频跟着做，比自己摸索 prompt 快 10 倍。做连载漫画、品牌 IP、短视频固定角色的创作者，先跑一遍这个教程再开工。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">5️⃣</span>Midjourney v8.1/v8.2 更新：无缝平铺 + 选区 inpainting + 实时模型预览</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/midjourney/status/2103202967025549528">@midjourney</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      A few quick updates today. We're releasing a new version of --tile for seamless patterns in v8.1 and v8.2. We're releasing a new version of inpainting that only changes pixels you select and we're previewing an early look at real-time models on our alpha site.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      今天几则快讯：v8.1 / v8.2 上线新版 --tile（无缝平铺图案）；新 inpainting 只改你选中的像素；alpha 站放出实时模型的早期预览。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      做布料、包装、壁纸、网页底纹的：--tile 新版无缝拼接质量更高；做局部修改的：新 inpainting 终于不会"扩散到选区外"；想尝鲜实时生成：进 alpha 站排队。三件事一次到手。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">6️⃣</span>GPT-6 Sol + Luna 上线：更快更便宜，专门支持"规模化生产"</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI/status/2102460975790137662">@OpenAI</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Please welcome GPT-6 Sol and GPT-6 Luna to the GPT-6 universe. They build on the advances behind GPT-6 Astra, bringing much of its strengths into faster and more affordable models to support work at scale. Caching and inference are also more efficient.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      欢迎 GPT-6 Sol 和 GPT-6 Luna 加入 GPT-6 宇宙。它们继承了 GPT-6 Astra 的核心能力，但更快、更便宜，专门为"规模化生产"打造。缓存和推理效率也更高。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      跑批处理、批量生成、长流程自动化的团队，把主力切到 Sol/Luna——API 成本能砍 30-60%。对话质量要求高的场景仍用 Astra，做"量大、可接受稍降质"的活交给 Sol/Luna 性价比最高。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">7️⃣</span>ChatGPT Voice 大升级：可调插件、可换模型、可在 Work 里干活</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/OpenAI/status/2102808325742322002">@OpenAI</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      We heard you loud and clear. ChatGPT Voice can now: Use plugins like your email, calendar, and Slack. Be powered by GPT-6 Astra, Sol, and Luna. Be used in ChatGPT Work on web and mobile, so you can create docs, decks, sites, and spreadsheets or tackle complex tasks in conversation.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      用户呼声我们听到了。ChatGPT 语音现在：①可调用 Gmail/日历/Slack 等插件；②可切换 GPT-6 Astra/Sol/Luna；③可在 ChatGPT Work（网页+手机）里通过语音创建文档、幻灯片、网页、电子表格，或边聊边处理复杂任务。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你日常在通勤、做饭、跑步时产出 idea，Voice + 插件 + Work 的组合可以做到"说话 = 干活"。直接一句"用 Astra 把我的草稿做成 PPT，发到 Slack 的 #季度汇报"就能跑通。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">8️⃣</span>Higgsfield API 一口打通 Genjutsu + Cinema Studio 4.0 + Soul</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/Samann_ai/status/2102463578276003967">@Samann_ai</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Higgsfield API is a serious shortcut for builders. Genjutsu, Cinema Studio 4.0, Soul and frontier video models, all through one API, with Seedance 2.5 faces available in the US. Skip the model R&D and go straight to shipping creative AI apps.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      Higgsfield API 是给 builder 的"硬核捷径"——Genjutsu、Cinema Studio 4.0、Soul 以及前沿视频模型，全部一个 API 接通；Seedance 2.5 faces 在美国区可用。跳过自研模型，直接上线创意 AI 应用。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      做"AI 视频应用"的独立开发者，不用再分别接 Runway / Pika / Luma。Higgsfield 一个 API = 多个最强模型 + 角色替换 + 影院级镜头，省下至少 2 周的多供应商集成时间。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">9️⃣</span>OpenClaw 用 test-audit skill 干掉自己 40 万行冗余测试</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/steipete/status/2103147927313199260">@steipete</a></div>
+    <div>
+      <span class="tag tag-workflow">🔧 工作流</span>
+      <span class="tag tag-tutorial">📘 教程</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      OpenClaw deleted around 400k LOC of its own tests without much change in code coverage. Modern models just love writing tests for every tiny change, even if they aren't useful. This skill helped.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      OpenClaw 删掉了大约 40 万行自己的测试代码，覆盖率几乎没变。现代 AI 模型特别喜欢为每个小改动都写一堆测试——哪怕这些测试其实没用。这条 skill 帮了大忙。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      如果你的代码库里"AI 自动写出来的测试"越来越多，跑一次 test-audit：让模型对照"代码改动 vs 测试用例"，把"重复 / 无断言 / 永远 assertTrue(true)"的测试一锅端。30 分钟删 30% 冗余测试是常态。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">🔟</span>Jev "三明治"邮件分类器：端到端筛选"值不值得看"</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/danshipper/status/2103283846645166283">@danshipper</a></div>
+    <div>
+      <span class="tag tag-workflow">🔧 工作流</span>
+      <span class="tag tag-tutorial">📘 教程</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      Another experiment with using Jev on two ends of an email classification system (a Jev sandwich?) to figure out what's worth my attention based on how well I slept and my current vibes.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      又一个实验——Jev 用在邮件分类系统的两端（一个"Jev 三明治"？），根据我"昨晚睡得好不好 + 当前状态"判断哪些邮件值得看。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      "输入个性化状态 + 输出精准筛选"是 2026 年 Agent 范式。复刻思路：①首端 LLM 把"我的状态（睡眠 / 日程 / 心情）"做成上下文；②末端 LLM 对邮件打分 / 重排；③中间是简单的规则 / 嵌入分类。无需微调，就能做出"懂你"的收件箱。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣1️⃣</span>Claude Code 思考模式改革：plan mode → shift+tab effort 调节</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2102813194196758746">@trq212</a></div>
+    <div>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      We're thinking of killing plan mode and using the shift+tab hotkey to adjust effort levels. I don't think the models need plan mode anymore, but if you're a plan mode diehard would love to get your feedback on why.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我们在考虑干掉 plan mode，改用 shift+tab 热键直接调 effort 等级。我觉得现在的模型已经不需要专门的 plan mode 了——但如果你离不开它，欢迎告诉我为什么。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      重度 Claude Code 用户可以提前适应："shift+tab"切 effort（low/medium/high）= 控制思考深度 + token 消耗，比"先 plan 再写"省一步。先在 .clauderc 里给常用任务预设不同 effort，能显著提速。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣2️⃣</span>发布 Claude 产物前先过这条铁律：敢分享 prompt 才分享结果</div>
+      <span class="score">7/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/trq212/status/2103150113103458386">@trq212</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      My rule for sharing Claude output (PRs, artifacts, messages) is that I only do it if I would be happy sharing the prompts.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我分享 Claude 输出（PR、artifact、消息）的铁律：只有当我愿意把 prompt 也一并公开时，才会发结果。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      "敢晒 prompt 才晒结果"——这条筛选标准能帮你过滤掉 90% 的"AI 奇迹帖"。下次转发同事的 AI 输出前，先问他一句：能把 prompt 也发我看一眼吗？3 秒内能拿到的可信度，比 3000 字解释高得多。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣3️⃣</span>Meta Muse 给朋友一年省 1000 刀：自动扫订阅、揪出隐形扣费</div>
+      <span class="score">9/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/alliekmiller/status/2103184486167191949">@alliekmiller</a></div>
+    <div>
+      <span class="tag tag-tool">🛠️ 工具</span>
+      <span class="tag tag-workflow">🔧 工作流</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      My friend just saved over $1,000 a year because of Meta Muse. I walked her (a non-techie who has never used an AI agent) through the Muse setup. She connected it to Gmail, asked it to review all of her subscriptions. It flagged a bunch she had no idea she was paying for — a streaming service she never used, an old gym membership, three duplicate insurance plans...
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      我朋友因为 Meta Muse 一年省下 1000 多美元。我一步步带她（完全不懂技术的 AI 新手）配好 Muse：连上 Gmail，让它审一遍所有订阅。结果它揪出了一堆她自己都不知道在扣费的东西——一个从来不用的流媒体、一张老健身卡、三份重复的保险……
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      完全零门槛的"AI Agent 个人理财"用例。Muse 这一类"代理 + Gmail"组合可以套到：保险优化、信用卡返现梳理、家庭账单对账。先帮家里非技术用户跑一次，亲眼看到省下真金白银，就是 AI 普及最强说服力。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title"><span class="num">1️⃣4️⃣</span>"想治 AI slop？先治你的信息输入"——输出质量 = 输入质量的镜像</div>
+      <span class="score">8/10</span>
+    </div>
+    <div class="source">来源：<a href="https://x.com/zarazhangrui/status/2101123389528457596">@zarazhangrui</a></div>
+    <div>
+      <span class="tag tag-mindset">💡 思维</span>
+    </div>
+    <div class="tweet-original">
+      <div class="label">推文原文</div>
+      It's hard not to create slop when most things you consume are slop. To fix output, first fix input.
+    </div>
+    <div class="tweet-translation">
+      <div class="label">中文翻译</div>
+      当你消费的大多数东西本身就是 slop，就很难不产出 slop。要修输出，先修输入。
+    </div>
+    <div class="application">
+      <div class="label">如何应用</div>
+      立刻能做的一次"输入体检"：①取消所有"AI 摘要"推送，直接读原文；②把 Twitter / 微博首页关注列表清一遍，只留"读完会写点东西"的来源；③让 AI 帮你"重写"而不是"压缩"——前者输入高质量，后者输入低质量。一周后看自己的产出，自然变干净。
+    </div>
+  </div>
+
+  <h2 class="section-title">📊 今日统计</h2>
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="stat-num">14</div>
+      <div class="stat-label">收录总数</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">覆盖分组 (G2-G5)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">8</div>
+      <div class="stat-label">工具类条目</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">3</div>
+      <div class="stat-label">教程类条目</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">6</div>
+      <div class="stat-label">工作流优化</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">🎯 今日趋势速览</h2>
+  <div class="trends">
+    <ol>
+      <li><strong>Qwen 双连发：</strong>Intelligence 三 Agent 套件 + Audio-3.1 全栈降价——阿里在"端侧智能 + 音频"两条战线同时加码。</li>
+      <li><strong>MiniMax-H3 × AMD：</strong>流式视频生成 + 中途改 prompt——"导演式 AI 视频"开始落地。</li>
+      <li><strong>Midjourney 编辑体验重做：</strong>一致角色 + 选区 inpainting + 实时模型预览——图像创作进入"专业工作流"时代。</li>
+      <li><strong>GPT-6 矩阵化：</strong>Sol / Luna 走规模化生产，Voice 接入插件——OpenAI 从"单点模型"转向"分层生态"。</li>
+      <li><strong>Agent 范式升级：</strong>Jev 三明治邮件筛选 + Muse 订阅审计——"两端 LLM + 中间规则"成为主流套路。</li>
+    </ol>
+  </div>
+
+  <footer>
+    生成时间：2026-09-25 10:00 UTC ｜ 数据范围：G2 + G3 + G4 + G5 ｜ G1 数据缺失已标注
+  </footer>
+
+</div>
+</body>
+</html>
